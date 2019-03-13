@@ -178,7 +178,6 @@
             <h6>登陆信息 </h6>
             <font color="red">${errMs}</font>
 
-
                 <input type="email"  name="useremail" placeholder="邮箱：" required=" " >
                 <input type="password" name="userpass" placeholder="密码：" required=" " >
                 <input type="password" name="password" placeholder="确认密码：" required=" " >
