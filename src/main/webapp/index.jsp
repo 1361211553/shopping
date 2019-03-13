@@ -7,5 +7,6 @@
 <body>
 <h1>
    <c:out value="123123">1213</c:out></h1>
+<a href="user">user</a>
 </body>
 </html>
