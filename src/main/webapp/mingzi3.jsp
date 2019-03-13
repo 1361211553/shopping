@@ -7,10 +7,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ include file="appcomm/basePath.jsp" %>
 <html>
 <head>
-    <title>修改性别</title>
+    <title>修改密码</title>
     <link rel="stylesheet" href="css/admin_aa137ba.css">
     <style type="text/css">
         .main-col {
@@ -600,7 +599,7 @@
                         <h3 class="header">&nbsp;个人中心</h3>
                         <ul class="icon-filter">
                             <li>
-                                <a href="geren.jsp" menu="home"class="selected">
+                                <a href="geren.jsp" menu="home" class="selected">
                                     <span class="icon icon-home"></span>
                                 <span class="title">
                                     我的信息
@@ -675,25 +674,23 @@
             <div class="mod">
                 <div class="mod-hd">
                     <a href="geren.jsp" class="back-to">返回</a>
-                    <h3 style="border-left:none;">修改性别</h3>
+                    <h3 style="border-left:none;">修改密码</h3>
                 </div>
                 <!-- 已绑定手机s -->
                 <div class="mod-hd has-bind-phone">
                     <!-- 顶部栏 -->
 
                     <div class="has-bind-title">
-                        <p>当前性别：<span id="oldNick">${user.usersex}</span></p>
+                        <p>当前密码：<span id="oldNick">${user.userpass}</span></p>
 
                     </div>
 
                     <!-- 填写内容 -->
-                    <form id=payment  method="post" action="update?op=updateUsersex">
+                    <form id=payment  method="post" action="update?op=updateUserpass">
                         <div class="login-form-grids animated wow slideInUp" data-wow-delay=".5s">
 
-                            <input type="text" name="usersex" placeholder="性别" required=" " >
+                            <input type="text" name="userpass" placeholder="新密码" required=" " >
 
-
-                            <input type="submit" value="确认">
 
 
                             <font color="red" size="4">${success}</font>
@@ -703,7 +700,8 @@
                     <div class="nick-tips">
                         <p class="nick-tips-title">修改规则</p>
 
-
+                        <p>2.密码长度建议在6-8个字为佳，最大长度不超过20个字符。</p>
+                        <p>3.密码只允许输入中英文、数字及符号“-”、“丶”、“【”、“】”。</p>
 
                     </div>
                     <div class="nick-tips nick-tips-law">

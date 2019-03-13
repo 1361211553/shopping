@@ -124,7 +124,7 @@
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="index.jsp" class="act">主页</a></li>
                     <!-- Mega Menu -->
-                    <jsp:include page="pagehome?op=clicktype"/>
+                    <%--<jsp:include page="pagehome?op=clicktype"/>--%>
 
                     <c:forEach var="ptg" items="${sessionScope.listPTG}">
                         <li class="dropdown">

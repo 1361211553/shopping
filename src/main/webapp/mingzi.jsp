@@ -9,7 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>修改地址</title>
+    <title>修改名字</title>
     <link rel="stylesheet" href="css/admin_aa137ba.css">
     <style type="text/css">
         .main-col {
@@ -465,6 +465,7 @@
 
                 <h3>
                     <c:if test="${user ne null}">
+                        <li>${user}</li>
                         <li><a ><img src="${user.userface}" style="width: 50px; height: 40px;"></a></li>
                         <li><a>
                             <font  color="white" size="4px">${user.username} </font ></a></li>
@@ -599,7 +600,7 @@
                         <h3 class="header">&nbsp;个人中心</h3>
                         <ul class="icon-filter">
                             <li>
-                                <a href="geren.jsp" menu="home"class="selected">
+                                <a href="geren.jsp" menu="home" class="selected">
                                     <span class="icon icon-home"></span>
                                 <span class="title">
                                     我的信息
@@ -673,23 +674,23 @@
         <div class="scroll-content">
             <div class="mod">
                 <div class="mod-hd">
-                    <a href="bianji3.jsp" class="back-to">返回</a>
-                    <h3 style="border-left:none;">修改地址</h3>
+                    <a href="geren.jsp" class="back-to">返回</a>
+                    <h3 style="border-left:none;">修改昵称</h3>
                 </div>
                 <!-- 已绑定手机s -->
                 <div class="mod-hd has-bind-phone">
                     <!-- 顶部栏 -->
 
                     <div class="has-bind-title">
-                        <p>当前地址：<span id="oldNick">${add}</span></p>
+                        <p>当前昵称：<span id="oldNick">${user.username}</span></p>
 
                     </div>
 
                     <!-- 填写内容 -->
-                    <form id=payment  method="post" action="add?op=updateAddress">
+                    <form id=payment  method="post" action="update?op=updateMyUser">
                         <div class="login-form-grids animated wow slideInUp" data-wow-delay=".5s">
 
-                            <input type="text" name="address" placeholder="新地址" required=" " >
+                            <input type="text" name="username" placeholder="新昵称" required=" " >
 
 
                             <input type="submit" value="确认">
@@ -702,8 +703,8 @@
                     <div class="nick-tips">
                         <p class="nick-tips-title">修改规则</p>
 
-                        <p>地址输入到所在市区区，如福建省厦门市思明区。</p>
-                        <p>地址只允许输入中文、数字。</p>
+                        <p>2.昵称长度建议在6-8个字为佳，最大长度不超过20个字符。</p>
+                        <p>3.昵称只允许输入中英文、数字及符号“-”、“丶”、“【”、“】”。</p>
 
                     </div>
                     <div class="nick-tips nick-tips-law">

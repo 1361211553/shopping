@@ -9,7 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>个人订单信息</title>
+    <title>修改地址</title>
     <link rel="stylesheet" href="css/admin_aa137ba.css">
     <style type="text/css">
         .main-col {
@@ -26,7 +26,6 @@
     <link href="css/new_home_index__daf8123.css" rel="stylesheet">
     <script charset="utf-8" type="text/javascript" async="" src="js/underscore_3d00f9f.js"></script>
     <script charset="utf-8" type="text/javascript" async="" src="js/header_search_tip_1b84d58.js"></script>
-    <script type="text/javascript" src="js/header.js"></script>
     <style>@charset "UTF-8";
     .header-search-tips {
         position: relative;
@@ -469,7 +468,7 @@
                         <li><a ><img src="${user.userface}" style="width: 50px; height: 40px;"></a></li>
                         <li><a>
                             <font  color="white" size="4px">${user.username} </font ></a></li>
-                        <li><a href="center.jsp">个人中心</a></li>
+                        <li><a href="geren.jsp">个人中心</a></li>
                         <a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
 
                         <li><a  href="login?op=loginOut">
@@ -600,7 +599,7 @@
                         <h3 class="header">&nbsp;个人中心</h3>
                         <ul class="icon-filter">
                             <li>
-                                <a href="geren.jsp" menu="home"class="selected">
+                                <a href="geren.jsp" menu="home" class="selected">
                                     <span class="icon icon-home"></span>
                                 <span class="title">
                                     我的信息
@@ -608,7 +607,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a menu="userlevel" href="dindan.jsp?op=selectorder&userid=${user.userid}">
+                                <a menu="userlevel" href="dindan.jsp">
                                     <span class="icon icon-userlevel"></span>
                                 <span class="title">
                                     订单管理
@@ -616,10 +615,10 @@
                                 </a>
                             </li>
                             <li>
-                                <a menu="subscribe" >
+                                <a menu="subscribe" href="address.jsp">
                                     <span class="icon icon-subscribe"></span>
                                 <span class="title">
-                                    暂未开放
+                                    我的地址
                                 </span>
                                 </a>
                             </li>
@@ -673,89 +672,63 @@
     <div class="main-col">
         <div class="scroll-content">
             <div class="mod">
-
-                <div class="mod mod-basic account-num" id="account_num">
-
-                    <!-- 手机未认证
-                    <a class="account_num_list block-a bindMobile hidden" id="no_phone" data-is-thirduser="0"
-                       href="javascript:void(0);" target="_blank">
-                        <div class="no_phone"></div>
-                        <div class="msg">
-                            <p class="msg_1">绑定手机</p>
-                            <p class="msg_2">绑定手机保障您的账号安全</p>
-                        </div>
-                        <em class="result"></em>
-                    </a> -->
-                    <!-- 手机已认证 -->
-                    <!-- <a class="account_num_list block-a has-bind-phone"  href="geren.jsp" target="_blank">
-                        <div><img style="width:80px;height:80px;" class="user_icon"
-                                                src="${user.userface}" alt="头像"></div>
-                        <div class="msg" >
-                           <p style="margin-left: 106px">修改绑定手机</p>
-                           <p style="margin-left: 106px">已绑定：<span class="mobile num">134******</span></p>
-                       </div>
-                       <em class="result"></em>
-                   </a>-->
-
-
-
-                   <!-- 非第三方登陆，显示修改密码 -->
-                    <table border="0">
-                        <tbody><tr>
-                            <td align="left"><h2>订单号</h2></td>
-                            <td align="left"><h2>购买日期</h2></td>
-                            <td align="left"><h2>商品列表</h2></td>
-
-                            <td align="left"><h2>数量</h2></td>
-                            <td align="left"><h2>金额</h2></td>
-
-                        </tr>
-                        <jsp:include page="orderpage?op=selectorder"/>
-
-                        <c:forEach var="personorder" items="${requestScope.orderlist}">
-                        <tr>
-                            <td align="left">${personorder.orderid}</td>
-                            <td align="left">${personorder.orderdate}</td>
-                            <td>${personorder.proid}</td>
-                            <td align="left">${personorder.pronum}</td>
-
-                            <td align="left">${personorder.amount}</td>
-                        </tr>
-                        </c:forEach>
-
-                        <%--<c:if test="${sessionScope.orderlist eq null}">--%>
-                        <c:if test="${requestScope.orderlist eq null}">
-                        <tr>
-                            <td colspan="5">您还没有购买任何商品哦，快去<a href="products.jsp" style="font-size: 20px"><font color="red">购买</font></a>吧！</td>
-                        </tr>
-                        </c:if>
-                        <%--</c:if>--%>
-                        <%--<tr>--%>
-                            <%--<td align="left">757</td>--%>
-                            <%--<td align="left">2018-11-30</td>--%>
-                            <%--<td>白菜</td>--%>
-                            <%--<td align="left">757</td>--%>
-
-                            <%--<td align="left">7544</td>--%>
-                        <%--</tr>--%>
-                        <%--<tr>--%>
-                            <%--<td align="left">757</td>--%>
-                            <%--<td align="left">2018-11-30</td>--%>
-                            <%--<td>苹果</td>--%>
-                            <%--<td align="left">757</td>--%>
-
-                            <%--<td align="left">7544</td>--%>
-                        <%--</tr>--%>
-
-                        </tbody></table>
+                <div class="mod-hd">
+                    <a href="bianji3.jsp" class="back-to">返回</a>
+                    <h3 style="border-left:none;">修改地址</h3>
                 </div>
+                <!-- 已绑定手机s -->
+                <div class="mod-hd has-bind-phone">
+                    <!-- 顶部栏 -->
+
+                    <div class="has-bind-title">
+                        <p>当前地址：<span id="oldNick">${add}</span></p>
+
+                    </div>
+
+                    <!-- 填写内容 -->
+                    <form id=payment  method="post" action="add?op=updateAddress">
+                        <div class="login-form-grids animated wow slideInUp" data-wow-delay=".5s">
+
+                            <input type="text" name="address" placeholder="新地址" required=" " >
+
+
+                            <input type="submit" value="确认">
+
+
+                            <font color="red" size="4">${success}</font>
+
+                        </div>
+                    </form>
+                    <div class="nick-tips">
+                        <p class="nick-tips-title">修改规则</p>
+
+                        <p>地址输入到所在市区区，如福建省厦门市思明区。</p>
+                        <p>地址只允许输入中文、数字。</p>
+
+                    </div>
+                    <div class="nick-tips nick-tips-law">
+                        <p class="nick-tips-title">温馨提示</p>
+                        <p>根据《互联网用户账号名称管理规定》第六条规定，任何机构或个人注册和使用的互联网用户账号名称，不得有下列情形：</p>
+                        <p>（一）违反宪法或法律法规规定的；</p>
+                        <p>（二）危害国家安全，泄露国家机密，颠覆国家政权，破坏国家统一的；</p>
+                        <a href="javascript:;" id="lookMoreLaw" class="look-more-law">查看更多</a>
+                        <div id="moreLaw" class="more-law">
+                            <p>（三）损害国家荣誉和利益的，损害公共利益的；</p>
+                            <p>（四）煽动民族仇恨、民族歧视，破坏民族团结的；</p>
+                            <p>（五）破坏国家宗教政策，宣扬邪教和封建迷信的；</p>
+                            <p>（六）散布谣言，扰乱社会秩序，破坏社会稳定的；</p>
+                            <p>（七）散步淫秽、色情、赌博、暴力、凶杀、恐怖或者教唆犯罪的；</p>
+                            <p>（八）侮辱或者诽谤他人，侵害他人合法权益的；</p>
+                            <p>（九）含有法律、行政法规禁止的其他内容的。</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- 已绑定手机e -->
             </div>
-
-
         </div>
 </div>
 
-
+</div>
 <!-- //register -->
 <!-- //footer -->
 <div class="footer">

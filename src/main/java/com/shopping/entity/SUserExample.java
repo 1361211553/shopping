@@ -1,5 +1,7 @@
 package com.shopping.entity;
 
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;

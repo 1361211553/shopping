@@ -174,7 +174,6 @@
     <div class="container">
         <div class="agileinfo_single">
             <%--<jsp:include page="pagehome?op=clickproduct"/>--%>
-            <jsp:include page="pagehome?op=clickproduct"/>
             <div class="col-md-4 agileinfo_single_left">
                 <img id="example" src="${prodetail.productimg}" alt="${prodetail.productcontent}" class="img-responsive" width="300px" height="150px">
             </div>

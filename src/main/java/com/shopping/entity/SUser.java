@@ -1,6 +1,9 @@
 package com.shopping.entity;
 
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+
 import java.util.Date;
+
 
 public class SUser {
     private Integer userid;

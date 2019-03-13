@@ -3,8 +3,12 @@ package com.shopping.dao;
 import com.shopping.entity.SUser;
 import com.shopping.entity.SUserExample;
 import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
+@Mapper
+@Repository("ssUserMapper")
 public interface SUserMapper {
     int deleteByPrimaryKey(Integer userid);
 
