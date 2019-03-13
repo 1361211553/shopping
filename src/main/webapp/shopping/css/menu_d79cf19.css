@@ -1,0 +1,185 @@
+@charset "UTF-8";
+.nav-scroll-wrap .nav-section .icon-recommendtag {
+    background-repeat: no-repeat;
+}
+
+.nav-scroll-wrap .nav-section .icon-room {
+    background-repeat: no-repeat;
+}
+
+.nav-scroll-wrap .nav-section .icon-CDKey_change {
+    background-repeat: no-repeat;
+}
+
+.nav-scroll-wrap .nav-section .icon-maw {
+    background-repeat: no-repeat;
+}
+
+.nav-scroll-wrap .nav-section .icon-auth {
+    background-repeat: no-repeat;
+}
+
+.nav-scroll-wrap .nav-section .icon-ad {
+    background-repeat: no-repeat;
+}
+
+.nav-scroll-wrap .nav-section .icon-fans {
+    background-repeat: no-repeat;
+}
+
+.nav-scroll-wrap .nav-section .icon-artist-sign {
+    background-repeat: no-repeat;
+}
+
+.nav-scroll-wrap .nav-section li .msg_new {
+    right: 63px;
+    top: 16px;
+    width: 8px;
+    height: 8px
+}
+
+.nav-scroll-wrap .nav-section .icon-userlevel {
+    background-repeat: no-repeat;
+}
+
+.nav-scroll-wrap .nav-section .icon-violation {
+    background-repeat: no-repeat;
+}
+
+.nav-scroll-wrap .nav-section .icon-zhifu {
+    background-repeat: no-repeat;
+}
+
+.nav-scroll-wrap .nav-section .icon-live-data {
+    background-repeat: no-repeat;
+}
+
+.nav-scroll-wrap .nav-section .icon-my-video {
+    background-repeat: no-repeat;
+}
+
+.nav-scroll-wrap .nav-section .icon-my-guess {
+    background-repeat: no-repeat;
+}
+
+.to-upload {
+    width: 145px;
+    margin: 20px auto 0
+}
+
+.to-upload p {
+    font-family: 'Microsoft Yahei';
+    color: #999
+}
+
+.to-upload .btn-to-upload {
+    padding: 10px 42px;
+    background: #4AB8F0;
+    border-radius: 3px;
+    font-size: 14px;
+    margin-top: 10px
+}
+
+.nav-scroll-wrap .nav-section .icon-gift {
+    background-repeat: no-repeat;
+}
+
+.profileRoom {
+    position: relative
+}
+
+.profileRoom .profileRoom-tips {
+    display: none;
+    position: absolute;
+    width: 151px;
+    height: 79px;
+    background-image: url(//a.msstatic.com/huya/icenter/main/img/menu/profileRoom-tips_90358fc.png);
+    color: #fff;
+    z-index: 100;
+    top: -70px;
+    left: 65px
+}
+
+.profileRoom .profileRoom-tips p {
+    margin-top: 28px;
+    width: 108px;
+    margin-left: 38px;
+    font-size: 12px
+}
+
+.profileRoom .profileRoom-tips .profileRoom-tips-close {
+    position: absolute;
+    top: 7px;
+    left: 132px;
+    display: block;
+    width: 19px;
+    height: 19px;
+    background-image: url(//a.msstatic.com/huya/icenter/main/img/menu/profileRoom-tips-close_ccc9a08.png);
+    cursor: pointer
+}
+
+@charset "UTF-8";
+.nav-scroll-wrap .nav-section .icon-recommendtag {
+    background-position: 0px 0px
+}
+
+.nav-scroll-wrap .nav-section .icon-room {
+    background-position: -2px -23px
+}
+
+.nav-scroll-wrap .nav-section .icon-CDKey_change {
+    background-position: -2px -44px
+}
+
+.nav-scroll-wrap .nav-section .icon-maw {
+    background-position: -1px -65px
+}
+
+.nav-scroll-wrap .nav-section .icon-auth {
+    background-position: -2px -86px
+}
+
+.nav-scroll-wrap .nav-section .icon-ad {
+    background-position: -1px -108px
+}
+
+.nav-scroll-wrap .nav-section .icon-fans {
+    background-position: -2px -131px
+}
+
+.nav-scroll-wrap .nav-section .icon-artist-sign {
+    background-position: -2px -152px
+}
+
+.nav-scroll-wrap .nav-section .icon-userlevel {
+    background-position: 0px -173px
+}
+
+.nav-scroll-wrap .nav-section .icon-violation {
+    background-position: -2px -194px
+}
+
+.nav-scroll-wrap .nav-section .icon-zhifu {
+    background-position: 0px -217px
+}
+
+.nav-scroll-wrap .nav-section .icon-live-data {
+    background-position: -2px -240px
+}
+
+.nav-scroll-wrap .nav-section .icon-my-video {
+    background-position: -2px -259px
+}
+
+.nav-scroll-wrap .nav-section .icon-my-guess {
+    background-position: -2px -280px
+}
+
+.nav-scroll-wrap .nav-section .icon-gift {
+    background-position: -2px -301px
+}
+
+@charset "UTF-8";
+.nav-scroll-wrap .nav-section .icon-recommendtag, .nav-scroll-wrap .nav-section .icon-room, .nav-scroll-wrap .nav-section .icon-CDKey_change, .nav-scroll-wrap .nav-section .icon-maw, .nav-scroll-wrap .nav-section .icon-auth, .nav-scroll-wrap .nav-section .icon-ad, .nav-scroll-wrap .nav-section .icon-fans, .nav-scroll-wrap .nav-section .icon-artist-sign, .nav-scroll-wrap .nav-section .icon-userlevel, .nav-scroll-wrap .nav-section .icon-violation, .nav-scroll-wrap .nav-section .icon-zhifu, .nav-scroll-wrap .nav-section .icon-live-data, .nav-scroll-wrap .nav-section .icon-my-video, .nav-scroll-wrap .nav-section .icon-my-guess, .nav-scroll-wrap .nav-section .icon-gift {
+    background-image: url(//a.msstatic.com/huya/icenter/main/sprite/menu_z_70c824c.png)
+}

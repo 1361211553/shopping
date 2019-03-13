@@ -1,4 +1,4 @@
-package com.shopping.shopping;
+package com.shopping;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,6 +11,9 @@ public class ShoppingApplicationTests {
 
     @Test
     public void contextLoads() {
+
+
+
     }
 
 }
