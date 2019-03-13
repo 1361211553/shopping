@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.shopping.dao.SPMapper" >
+  <resultMap id="BaseResultMap" type="com.shopping.entity.SP" >
+    <id column="pid" property="pid" jdbcType="INTEGER" />
+    <result column="pname" property="pname" jdbcType="VARCHAR" />
+    <result column="pprice" property="pprice" jdbcType="DOUBLE" />
+    <result column="pimg" property="pimg" jdbcType="VARCHAR" />
+    <result column="pnum" property="pnum" jdbcType="INTEGER" />
+    <result column="pcdate" property="pcdate" jdbcType="DATE" />
+    <result column="pclicks" property="pclicks" jdbcType="INTEGER" />
+    <result column="ptypeid" property="ptypeid" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.shopping.entity.SP" extends="BaseResultMap" >
+    <result column="pdescription" property="pdescription" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    pid, pname, pprice, pimg, pnum, pcdate, pclicks, ptypeid
+  </sql>
+  <sql id="Blob_Column_List" >
+    pdescription
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.shopping.entity.SPExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from s_p
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.shopping.entity.SPExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from s_p
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from s_p
+    where pid = #{pid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from s_p
+    where pid = #{pid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shopping.entity.SP" >
+    insert into s_p (pid, pname, pprice, 
+      pimg, pnum, pcdate, pclicks, 
+      ptypeid, pdescription)
+    values (#{pid,jdbcType=INTEGER}, #{pname,jdbcType=VARCHAR}, #{pprice,jdbcType=DOUBLE}, 
+      #{pimg,jdbcType=VARCHAR}, #{pnum,jdbcType=INTEGER}, #{pcdate,jdbcType=DATE}, #{pclicks,jdbcType=INTEGER}, 
+      #{ptypeid,jdbcType=INTEGER}, #{pdescription,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shopping.entity.SP" >
+    insert into s_p
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pid != null" >
+        pid,
+      </if>
+      <if test="pname != null" >
+        pname,
+      </if>
+      <if test="pprice != null" >
+        pprice,
+      </if>
+      <if test="pimg != null" >
+        pimg,
+      </if>
+      <if test="pnum != null" >
+        pnum,
+      </if>
+      <if test="pcdate != null" >
+        pcdate,
+      </if>
+      <if test="pclicks != null" >
+        pclicks,
+      </if>
+      <if test="ptypeid != null" >
+        ptypeid,
+      </if>
+      <if test="pdescription != null" >
+        pdescription,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pid != null" >
+        #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="pname != null" >
+        #{pname,jdbcType=VARCHAR},
+      </if>
+      <if test="pprice != null" >
+        #{pprice,jdbcType=DOUBLE},
+      </if>
+      <if test="pimg != null" >
+        #{pimg,jdbcType=VARCHAR},
+      </if>
+      <if test="pnum != null" >
+        #{pnum,jdbcType=INTEGER},
+      </if>
+      <if test="pcdate != null" >
+        #{pcdate,jdbcType=DATE},
+      </if>
+      <if test="pclicks != null" >
+        #{pclicks,jdbcType=INTEGER},
+      </if>
+      <if test="ptypeid != null" >
+        #{ptypeid,jdbcType=INTEGER},
+      </if>
+      <if test="pdescription != null" >
+        #{pdescription,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update s_p
+    <set >
+      <if test="record.pid != null" >
+        pid = #{record.pid,jdbcType=INTEGER},
+      </if>
+      <if test="record.pname != null" >
+        pname = #{record.pname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pprice != null" >
+        pprice = #{record.pprice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.pimg != null" >
+        pimg = #{record.pimg,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pnum != null" >
+        pnum = #{record.pnum,jdbcType=INTEGER},
+      </if>
+      <if test="record.pcdate != null" >
+        pcdate = #{record.pcdate,jdbcType=DATE},
+      </if>
+      <if test="record.pclicks != null" >
+        pclicks = #{record.pclicks,jdbcType=INTEGER},
+      </if>
+      <if test="record.ptypeid != null" >
+        ptypeid = #{record.ptypeid,jdbcType=INTEGER},
+      </if>
+      <if test="record.pdescription != null" >
+        pdescription = #{record.pdescription,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update s_p
+    set pid = #{record.pid,jdbcType=INTEGER},
+      pname = #{record.pname,jdbcType=VARCHAR},
+      pprice = #{record.pprice,jdbcType=DOUBLE},
+      pimg = #{record.pimg,jdbcType=VARCHAR},
+      pnum = #{record.pnum,jdbcType=INTEGER},
+      pcdate = #{record.pcdate,jdbcType=DATE},
+      pclicks = #{record.pclicks,jdbcType=INTEGER},
+      ptypeid = #{record.ptypeid,jdbcType=INTEGER},
+      pdescription = #{record.pdescription,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update s_p
+    set pid = #{record.pid,jdbcType=INTEGER},
+      pname = #{record.pname,jdbcType=VARCHAR},
+      pprice = #{record.pprice,jdbcType=DOUBLE},
+      pimg = #{record.pimg,jdbcType=VARCHAR},
+      pnum = #{record.pnum,jdbcType=INTEGER},
+      pcdate = #{record.pcdate,jdbcType=DATE},
+      pclicks = #{record.pclicks,jdbcType=INTEGER},
+      ptypeid = #{record.ptypeid,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shopping.entity.SP" >
+    update s_p
+    <set >
+      <if test="pname != null" >
+        pname = #{pname,jdbcType=VARCHAR},
+      </if>
+      <if test="pprice != null" >
+        pprice = #{pprice,jdbcType=DOUBLE},
+      </if>
+      <if test="pimg != null" >
+        pimg = #{pimg,jdbcType=VARCHAR},
+      </if>
+      <if test="pnum != null" >
+        pnum = #{pnum,jdbcType=INTEGER},
+      </if>
+      <if test="pcdate != null" >
+        pcdate = #{pcdate,jdbcType=DATE},
+      </if>
+      <if test="pclicks != null" >
+        pclicks = #{pclicks,jdbcType=INTEGER},
+      </if>
+      <if test="ptypeid != null" >
+        ptypeid = #{ptypeid,jdbcType=INTEGER},
+      </if>
+      <if test="pdescription != null" >
+        pdescription = #{pdescription,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where pid = #{pid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.shopping.entity.SP" >
+    update s_p
+    set pname = #{pname,jdbcType=VARCHAR},
+      pprice = #{pprice,jdbcType=DOUBLE},
+      pimg = #{pimg,jdbcType=VARCHAR},
+      pnum = #{pnum,jdbcType=INTEGER},
+      pcdate = #{pcdate,jdbcType=DATE},
+      pclicks = #{pclicks,jdbcType=INTEGER},
+      ptypeid = #{ptypeid,jdbcType=INTEGER},
+      pdescription = #{pdescription,jdbcType=LONGVARCHAR}
+    where pid = #{pid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shopping.entity.SP" >
+    update s_p
+    set pname = #{pname,jdbcType=VARCHAR},
+      pprice = #{pprice,jdbcType=DOUBLE},
+      pimg = #{pimg,jdbcType=VARCHAR},
+      pnum = #{pnum,jdbcType=INTEGER},
+      pcdate = #{pcdate,jdbcType=DATE},
+      pclicks = #{pclicks,jdbcType=INTEGER},
+      ptypeid = #{ptypeid,jdbcType=INTEGER}
+    where pid = #{pid,jdbcType=INTEGER}
+  </update>
+</mapper>

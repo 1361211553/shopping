@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.shopping.dao.SOrderdetailMapper" >
+  <resultMap id="BaseResultMap" type="com.shopping.entity.SOrderdetail" >
+    <id column="odid" property="odid" jdbcType="INTEGER" />
+    <result column="oid" property="oid" jdbcType="INTEGER" />
+    <result column="pid" property="pid" jdbcType="INTEGER" />
+    <result column="ppurchasenum" property="ppurchasenum" jdbcType="INTEGER" />
+    <result column="ptotalprice" property="ptotalprice" jdbcType="DOUBLE" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    odid, oid, pid, ppurchasenum, ptotalprice
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.shopping.entity.SOrderdetailExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from s_orderdetail
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from s_orderdetail
+    where odid = #{odid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from s_orderdetail
+    where odid = #{odid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shopping.entity.SOrderdetail" >
+    insert into s_orderdetail (odid, oid, pid, 
+      ppurchasenum, ptotalprice)
+    values (#{odid,jdbcType=INTEGER}, #{oid,jdbcType=INTEGER}, #{pid,jdbcType=INTEGER}, 
+      #{ppurchasenum,jdbcType=INTEGER}, #{ptotalprice,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shopping.entity.SOrderdetail" >
+    insert into s_orderdetail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="odid != null" >
+        odid,
+      </if>
+      <if test="oid != null" >
+        oid,
+      </if>
+      <if test="pid != null" >
+        pid,
+      </if>
+      <if test="ppurchasenum != null" >
+        ppurchasenum,
+      </if>
+      <if test="ptotalprice != null" >
+        ptotalprice,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="odid != null" >
+        #{odid,jdbcType=INTEGER},
+      </if>
+      <if test="oid != null" >
+        #{oid,jdbcType=INTEGER},
+      </if>
+      <if test="pid != null" >
+        #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="ppurchasenum != null" >
+        #{ppurchasenum,jdbcType=INTEGER},
+      </if>
+      <if test="ptotalprice != null" >
+        #{ptotalprice,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update s_orderdetail
+    <set >
+      <if test="record.odid != null" >
+        odid = #{record.odid,jdbcType=INTEGER},
+      </if>
+      <if test="record.oid != null" >
+        oid = #{record.oid,jdbcType=INTEGER},
+      </if>
+      <if test="record.pid != null" >
+        pid = #{record.pid,jdbcType=INTEGER},
+      </if>
+      <if test="record.ppurchasenum != null" >
+        ppurchasenum = #{record.ppurchasenum,jdbcType=INTEGER},
+      </if>
+      <if test="record.ptotalprice != null" >
+        ptotalprice = #{record.ptotalprice,jdbcType=DOUBLE},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update s_orderdetail
+    set odid = #{record.odid,jdbcType=INTEGER},
+      oid = #{record.oid,jdbcType=INTEGER},
+      pid = #{record.pid,jdbcType=INTEGER},
+      ppurchasenum = #{record.ppurchasenum,jdbcType=INTEGER},
+      ptotalprice = #{record.ptotalprice,jdbcType=DOUBLE}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shopping.entity.SOrderdetail" >
+    update s_orderdetail
+    <set >
+      <if test="oid != null" >
+        oid = #{oid,jdbcType=INTEGER},
+      </if>
+      <if test="pid != null" >
+        pid = #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="ppurchasenum != null" >
+        ppurchasenum = #{ppurchasenum,jdbcType=INTEGER},
+      </if>
+      <if test="ptotalprice != null" >
+        ptotalprice = #{ptotalprice,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where odid = #{odid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shopping.entity.SOrderdetail" >
+    update s_orderdetail
+    set oid = #{oid,jdbcType=INTEGER},
+      pid = #{pid,jdbcType=INTEGER},
+      ppurchasenum = #{ppurchasenum,jdbcType=INTEGER},
+      ptotalprice = #{ptotalprice,jdbcType=DOUBLE}
+    where odid = #{odid,jdbcType=INTEGER}
+  </update>
+</mapper>
