@@ -445,7 +445,7 @@
                 event.preventDefault();
                 $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1000);
             });
-        });
+        });a
     </script>
     <script charset="utf-8" type="text/javascript" async=""
             src="js/cheshi.js"></script>
