@@ -13,29 +13,36 @@
     <title>Registered</title>
     <!-- for-mobile-apps -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="keywords" content="" />
-    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
-    function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="keywords" content=""/>
+    <script type="application/x-javascript"> addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+    }, false);
+
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    } </script>
     <!-- //for-mobile-apps -->
-    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-    <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
     <!-- font-awesome icons -->
     <link href="css/font-awesome.css" rel="stylesheet">
     <!-- //font-awesome icons -->
     <!-- js -->
     <script src="js/jquery-1.11.1.min.js"></script>
     <!-- //js -->
-    <link href='http://fonts.googleapis.com/css?family=Raleway:400,100,100italic,200,200italic,300,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,100,100italic,200,200italic,300,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic'
+          rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic'
+          rel='stylesheet' type='text/css'>
     <!-- start-smoth-scrolling -->
     <script type="text/javascript" src="js/move-top.js"></script>
     <script type="text/javascript" src="js/easing.js"></script>
     <script type="text/javascript">
-        jQuery(document).ready(function($) {
-            $(".scroll").click(function(event){
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
                 event.preventDefault();
-                $('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+                $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1000);
             });
         });
     </script>
@@ -59,10 +66,11 @@
             <form action="./cart/cartList.action" method="get" class="last">
                 <%--<input type="hidden" name="cmd" value="_cart">--%>
                 <%--<input type="hidden" name="display" value="1">--%>
-                <button class="w3view-cart" type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></button>
+                <button class="w3view-cart" type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down"
+                                                                                    aria-hidden="true"></i></button>
             </form>
         </div>
-        <div class="clearfix"> </div>
+        <div class="clearfix"></div>
     </div>
 </div>
 
@@ -87,7 +95,7 @@
             </form>
         </div>
 
-        <div class="clearfix"> </div>
+        <div class="clearfix"></div>
     </div>
 </div>
 <!-- //header -->
@@ -97,7 +105,8 @@
         <nav class="navbar navbar-default">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header nav_2">
-                <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
+                <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse"
+                        data-target="#bs-megadropdown-tabs">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -109,11 +118,12 @@
                     <li class="active"><a href="index.jsp" class="act">主页</a></li>
                     <!-- Mega Menu -->
                     <li class="dropdown">
-                    <%--<jsp:include page="pagehome?op=clicktype"/>--%>
+                        <%--<jsp:include page="pagehome?op=clicktype"/>--%>
 
-                    <c:forEach var="ptg" items="${sessionScope.listPTG}">
+                        <c:forEach var="ptg" items="${sessionScope.listPTG}">
                     <li class="dropdown">
-                    <li class="active"><a href="groceries.jsp?op=clicktype&producttypeid=${ptg.producttypeid}" class="act">${ptg.producttypename}</a></li>
+                    <li class="active"><a href="groceries.jsp?op=clicktype&producttypeid=${ptg.producttypeid}"
+                                          class="act">${ptg.producttypename}</a></li>
                     </li>
                     </c:forEach>
                     <%--<li class="active"><a href="groceries.jsp" class="act">水果</a></li>--%>
@@ -153,42 +163,42 @@
 <!-- register -->
 <div class="register">
     <div class="container">
-        <h2>在这里注册</h2>
-
+        <h2>注册界面</h2>
 
 
         <div class="login-form-grids">
 
             <h5>用户信息</h5>
-            <form id=payment  method="post" action="user?op=saveMyUser">
+            <form id=payment method="post" action="user?op=saveMyUser">
 
-                <input type="text" name="username" placeholder="名字：" required=" " >
+                <input type="text" name="username" placeholder="名字：" required=" ">
 
-                <input type="text" name="userphone" placeholder="手机号码：" required=" " >
+                <input type="text" name="userphone" placeholder="手机号码：" required=" ">
+                <input type="radio" name="usersex" value="男">男
+                <input type="radio" name="usersex" value="女">女
 
-            <div class="register-check-box">
-                <div class="check">
-                    <!--
+                <div class="register-check-box">
+                    <div class="check">
+                        <!--
 
 
-                    <label class="checkbox"><input type="checkbox" name="checkbox"><i> </i>Subscribe to Newsletter</label>
-                    -->
+                        <label class="checkbox"><input type="checkbox" name="checkbox"><i> </i>Subscribe to Newsletter</label>
+                        -->
+                    </div>
                 </div>
-            </div>
-            <h6>登陆信息 </h6>
-            <font color="red">${errMs}</font>
+                <h6>登陆信息 </h6>
+                <font color="red">${errMs}</font>
 
-                <input type="email"  name="useremail" placeholder="邮箱：" required=" " >
-                <input type="password" name="userpass" placeholder="密码：" required=" " >
-                <input type="password" name="password" placeholder="确认密码：" required=" " >
+                <input type="email" name="useremail" placeholder="邮箱：" required=" ">
+                <input type="password" name="userpass" placeholder="密码：" required=" ">
+                <input type="password" name="password" placeholder="确认密码：" required=" ">
                 <div class="register-check-box">
 
                 </div>
                 <input type="submit" value="确定">
 
-
+            </form>
         </div>
-        </form>
         <div class="register-home">
             <a href="index.jsp">主页</a>
         </div>
@@ -204,13 +214,14 @@
 
                 <ul class="address">
                     <li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>上海市浦东新区<span>世贸大厦</span></li>
-                    <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mailto:1008611@qq.com">1008611@qq.com</a></li>
+                    <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mailto:1008611@qq.com">1008611@qq.com</a>
+                    </li>
                     <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>100861123</li>
                 </ul>
             </div>
 
 
-            <div class="clearfix"> </div>
+            <div class="clearfix"></div>
         </div>
     </div>
 
@@ -235,7 +246,7 @@
         <div class="payment-w3ls">
             <img src="images/card.png" alt=" " class="img-responsive">
         </div>
-        <div class="clearfix"> </div>
+        <div class="clearfix"></div>
     </div>
 </div>
 <!-- //footer -->
@@ -244,7 +255,7 @@
 <!-- top-header and slider -->
 <!-- here stars scrolling icon -->
 <script type="text/javascript">
-    $(document).ready(function() {
+    $(document).ready(function () {
         /*
          var defaults = {
          containerID: 'toTop', // fading element id
@@ -254,7 +265,7 @@
          };
          */
 
-        $().UItoTop({ easingType: 'easeOutQuart' });
+        $().UItoTop({easingType: 'easeOutQuart'});
 
     });
 </script>
@@ -274,10 +285,17 @@
 <script src="js/skdslider.min.js"></script>
 <link href="css/skdslider.css" rel="stylesheet">
 <script type="text/javascript">
-    jQuery(document).ready(function(){
-        jQuery('#demo1').skdslider({'delay':5000, 'animationSpeed': 2000,'showNextPrev':true,'showPlayButton':true,'autoSlide':true,'animationType':'fading'});
+    jQuery(document).ready(function () {
+        jQuery('#demo1').skdslider({
+            'delay': 5000,
+            'animationSpeed': 2000,
+            'showNextPrev': true,
+            'showPlayButton': true,
+            'autoSlide': true,
+            'animationType': 'fading'
+        });
 
-        jQuery('#responsive').change(function(){
+        jQuery('#responsive').change(function () {
             $('#responsive_wrapper').width(jQuery(this).val());
         });
 
