@@ -10,7 +10,11 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpSession;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 @Controller
 @RequestMapping("user")
@@ -20,27 +24,34 @@ public class UserController {
     @Autowired
     SUserMapper sUserMapper;
 
-    @RequestMapping(value = "login",method = RequestMethod.POST)
+    @RequestMapping(value = "login", method = RequestMethod.POST)
     public ModelAndView login(@RequestParam(value = "username") String username,
                               @RequestParam(value = "userpass") String userpass,
                               HttpSession session) {
 
-
-        System.out.println("666");
         ModelAndView mav = new ModelAndView();
         SUserExample sUserExample = new SUserExample();
-        SUserExample.Criteria criteria =  sUserExample.createCriteria();
+        SUserExample.Criteria criteria = sUserExample.createCriteria();
         if (username != null && userpass != null) {
 
             System.out.println("=============");
             criteria.andUsernameEqualTo(username);
             criteria.andUserpassEqualTo(userpass);
             List<SUser> listsUser = sUserMapper.selectByExample(sUserExample);
-            if (listsUser.size()>0){
+            if (listsUser.size() > 0) {
 
-                session.setAttribute("user", listsUser.get(0));
-                mav.setView(new RedirectView("/index.jsp"));
-            }else {
+                SUser sUser = listsUser.get(0);
+                if (sUser.getSlock() != 1) {
+
+                    session.setAttribute("user", sUser);
+                    mav.setView(new RedirectView("/index.jsp"));
+                } else {
+                    mav.addObject("errMs", "此账号已冻结");
+                    mav.setViewName("login");
+
+                }
+
+            } else {
 
                 mav.addObject("errMs", "账号密码错误");
                 mav.setViewName("login");
@@ -52,7 +63,7 @@ public class UserController {
 
 
     @RequestMapping("loginout")
-    public String loginout(HttpSession session){
+    public String loginout(HttpSession session) {
 
         session.removeAttribute("user");
 
@@ -60,5 +71,42 @@ public class UserController {
 
     }
 
+    @RequestMapping("regist")
+    public ModelAndView regist(@ModelAttribute SUser sUser) {
+
+        System.out.println(sUser);
+        ModelAndView mav = new ModelAndView("login");
+        if (sUser != null) {
+
+            SUserExample sUserExample = new SUserExample();
+            SUserExample.Criteria criteria = sUserExample.createCriteria();
+            criteria.andUsernameEqualTo(sUser.getUsername());
+            criteria.andUserpassEqualTo(sUser.getUserpass());
+            List<SUser> listsUser = sUserMapper.selectByExample(sUserExample);
+            if (listsUser.size() == 0) {
+                Random random = new Random(64+1);
+                sUser.setSlock(0);
+                sUser.setUserface("images/face ("+new Random().nextInt(64-1)+").jpg");
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                String datestr = sdf.format(new Date());
+                try {
+                    sUser.setUserregdate(sdf.parse(datestr));
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                    System.out.println("出错信息===========/user/regist 获取当前时间出错啦=====");
+                }
+                sUserMapper.insertSelective(sUser);
+                mav.addObject("errMs", "此账号已存在");
+                mav.setViewName("login");
+
+            }else {
+
+                mav.addObject("errMs", "此账号已存在");
+                mav.setViewName("registered");
+            }
+
+        }
+        return mav;
+    }
 
 }
