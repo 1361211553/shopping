@@ -169,14 +169,14 @@
         <div class="login-form-grids">
 
             <h5>用户信息</h5>
-            <form id=payment method="post" action="user?op=saveMyUser">
+            <form id=payment method="post" action="/user/regist">
 
                 <input type="text" name="username" placeholder="名字：" required=" ">
 
                 <input type="text" name="userphone" placeholder="手机号码：" required=" ">
                 <input type="radio" name="usersex" value="男">男
                 <input type="radio" name="usersex" value="女">女
-
+                <input type="text" name="userrealname" placeholder="真实姓名：" required=" ">
                 <div class="register-check-box">
                     <div class="check">
                         <!--
@@ -300,6 +300,12 @@
         });
 
     });
+</script>
+<script>
+    function clean() {
+        
+    }
+    
 </script>
 <!-- //main slider-banner -->
 
