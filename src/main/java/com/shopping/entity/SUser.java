@@ -135,4 +135,23 @@ public class SUser {
     public void setSlock(Integer slock) {
         this.slock = slock;
     }
+
+    @Override
+    public String toString() {
+        return "SUser{" +
+                "userid=" + userid +
+                ", username='" + username + '\'' +
+                ", userpass='" + userpass + '\'' +
+                ", userrealname='" + userrealname + '\'' +
+                ", usersex='" + usersex + '\'' +
+                ", userbirthday=" + userbirthday +
+                ", useremail='" + useremail + '\'' +
+                ", userphone='" + userphone + '\'' +
+                ", useraddressid=" + useraddressid +
+                ", userface='" + userface + '\'' +
+                ", userregdate=" + userregdate +
+                ", landingtimes=" + landingtimes +
+                ", slock=" + slock +
+                '}';
+    }
 }

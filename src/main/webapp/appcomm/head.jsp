@@ -23,7 +23,7 @@
                         <li><a href="geren.jsp">个人中心</a></li>
                         <a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
 
-                        <li><a href="login?op=loginOut">
+                        <li><a href="/user/loginout">
                             <font color="white">退出</font></a></li>
 
                     </c:if>

@@ -7,6 +7,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ include file="appcomm/basePath.jsp" %>
 <html>
 <head>
     <title>Login</title>
@@ -59,11 +60,11 @@
 <div class="login">
     <div class="container">
         <h2>登陆窗口</h2>
-        <form id=payment  method="post" action="login?op=loginMyUser">
+        <form id=payment  method="post" action="/user/login">
         <div class="login-form-grids animated wow slideInUp" data-wow-delay=".5s">
 
-            <input type="text" name="username" placeholder="用户名" required=" " value="曾永升">
-            <input type="password" name="userpass" placeholder="密码" required=" " value="123">
+            <input type="text" name="username" placeholder="用户名" required=" " >
+            <input type="password" name="userpass" placeholder="密码" required=" " >
                 <div class="forgot">
                     <a href="#">忘记密码</a>
                 </div>

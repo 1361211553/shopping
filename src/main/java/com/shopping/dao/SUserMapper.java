@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 @Mapper
-@Repository("ssUserMapper")
+@Repository
 public interface SUserMapper {
     int deleteByPrimaryKey(Integer userid);
 
