@@ -90,7 +90,7 @@
                     <!-- Mega Menu -->
 
 
-                    <c:forEach var="sp" items="${listSPtype}">
+                    <c:forEach var="sp" items="${sessionScope.listSPtype}">
                         <li class="dropdown">
                         <li class="active"><a href="#"
                                               class="act">${sp.ptypename}</a></li>
