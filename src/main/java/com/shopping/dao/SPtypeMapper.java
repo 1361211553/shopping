@@ -3,8 +3,13 @@ package com.shopping.dao;
 import com.shopping.entity.SPtype;
 import com.shopping.entity.SPtypeExample;
 import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
+
+@Mapper
+@Repository
 public interface SPtypeMapper {
     int deleteByPrimaryKey(Integer ptypeid);
 

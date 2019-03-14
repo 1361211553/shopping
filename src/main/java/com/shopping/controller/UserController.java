@@ -51,13 +51,14 @@ public class UserController {
     }
 
 
-       @RequestMapping("loginout")
-        public String loginout(HttpSession session){
+    @RequestMapping("loginout")
+    public String loginout(HttpSession session){
 
-            session.removeAttribute("user");
+        session.removeAttribute("user");
 
-            return "redirect:/login.jsp";
+        return "redirect:/login.jsp";
 
-       }
+    }
+
 
 }

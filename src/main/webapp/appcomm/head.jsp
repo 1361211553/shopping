@@ -87,12 +87,12 @@
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="index.jsp" class="act">主页</a></li>
                     <!-- Mega Menu -->
-                    <%--<jsp:include page="pagehome?op=ini"/>--%>
+                    <jsp:include page="/sptype/search"/>
 
-                    <c:forEach var="pt" items="${requestScope.listPT}">
+                    <c:forEach var="sp" items="${listSPtype}">
                         <li class="dropdown">
-                        <li class="active"><a href="groceries.jsp?op=clicktype&producttypeid=${pt.producttypeid}"
-                                              class="act">${pt.producttypename}</a></li>
+                        <li class="active"><a href="#"
+                                              class="act">${sp.ptypename}</a></li>
                         </li>
                     </c:forEach>
                     <%--<li class="dropdown">--%>
