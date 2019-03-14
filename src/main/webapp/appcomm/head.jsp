@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<c:import url="${pageContext.request.contextPath}/sptype/search"/>
 <!-- header -->
 <div class="agileits_header">
     <div class="container">
@@ -87,7 +88,7 @@
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="index.jsp" class="act">主页</a></li>
                     <!-- Mega Menu -->
-                    <jsp:include page="/sptype/search"/>
+
 
                     <c:forEach var="sp" items="${listSPtype}">
                         <li class="dropdown">
