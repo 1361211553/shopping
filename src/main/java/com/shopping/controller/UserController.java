@@ -17,7 +17,7 @@ public class UserController {
     @RequestMapping(value = "login")
     public ModelAndView login(){
 
-        ModelAndView mav =  new ModelAndView("success");
+        ModelAndView mav =  new ModelAndView("index");
 //        UserInfo userInfo = userMapper.find(1);
 //        mav.addObject("user",userInfo);
         return mav;
