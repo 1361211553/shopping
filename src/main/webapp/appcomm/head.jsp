@@ -21,11 +21,11 @@
                         <li><a><img src="${user.userface}" style="width: 50px; height: 40px;"></a></li>
                         <li><a>
                             <font color="white" size="4px">${user.username}</font></a></li>
-                        <li><a href="geren.jsp">个人中心</a></li>
+                        <li><a href="geren.jsp"> <font color="#00bfff" >个人中心</font></a></li>
                         <a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
 
                         <li><a href="/user/loginout">
-                            <font color="white">退出</font></a></li>
+                            <font color="#00bfff">退出</font></a></li>
 
                     </c:if>
                 </h3>
@@ -33,7 +33,7 @@
 
         </div>
         <div class="product_list_header">
-            <form action="./cart/cartList.action" method="get" class="last">
+            <form action="/car/carsearch" method="get" class="last">
                 <%--<input type="hidden" name="cmd" value="_cart">--%>
                 <%--<input type="hidden" name="display" value="1">--%>
                 <button class="w3view-cart" type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down"

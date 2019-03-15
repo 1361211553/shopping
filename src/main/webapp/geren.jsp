@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -7,6 +8,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ include file="appcomm/basePath.jsp" %>
 <html>
 <head>
     <title>Registered</title>
@@ -55,7 +57,6 @@
 <body>
 <!-- header -->
 <%@ include file="appcomm/head.jsp" %>
-
 <!-- //navigation -->
 <!-- breadcrumbs -->
 <div class="breadcrumbs">
@@ -201,7 +202,7 @@
                     <a href="javascript:void(0);" class="change_w"></a>
                     <p class="user_msg">
                             <span class="user_age">
-                                ${user.userage}</span>
+                                <%--${user.userage}--%></span>
 
 
                             <span>
