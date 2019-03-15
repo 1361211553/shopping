@@ -37,4 +37,5 @@ public interface SPMapper {
     int updateByPrimaryKeyWithBLOBs(SP record);
 
     int updateByPrimaryKey(SP record);
+
 }

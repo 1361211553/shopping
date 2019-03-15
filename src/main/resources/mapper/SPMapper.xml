@@ -83,14 +83,14 @@
    select
    <include refid="Base_Column_List" />
     from s_p
-    <if test="ptypeid != null">
+    <if test="ptypeid > 0">
       where ptypeid=#{ptypeid,jdbcType=INTEGER}
     </if>
     <if test="pname != null">
       where pname like  CONCAT('%',#{pname,jdbcType=VARCHAR},'%')
     </if>
-    <if test="pageNum != null">
-      limit ${pageNum},${pageSize}
+    <if test="pageNum >0 and pageSize>0">
+      limit ${(pageNum-1)*pageSize},${pageSize}
     </if>
   </select>
 
@@ -126,6 +126,7 @@
       order by ${orderByClause}
     </if>
   </select>
+
   <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />

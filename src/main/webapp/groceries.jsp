@@ -76,7 +76,7 @@
                             <figure>
                                 <div class="snipcart-item block">
                                     <div class="snipcart-thumb">
-                                        <a href="#"><img title="${op.pdescription}" alt=" " src="${op.pimg}" width="250px" height="150px"></a>
+                                        <a href="/sp/single/${op.pid}"><img title="${op.pdescription}" alt=" " src="${op.pimg}" width="250px" height="150px"></a>
                                         <p>
                                             <c:if test="${fn:length(op.pname) > 15}">${fn:substring(op.pname, 0, 15)}...</c:if>
 
@@ -85,6 +85,8 @@
 
                                         </p>
                                         <h4><font color="red">￥${op.pprice}</font></span> </h4>
+                                        <br>
+                                        <h4>已浏览<font color="red">${op.pclicks}</font>次</h4>
                                         <%--<span>$55.00</span>--%>
                                     </div>
                                     <div class="snipcart-details top_brand_home_details">

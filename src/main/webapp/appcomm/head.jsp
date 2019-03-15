@@ -5,7 +5,7 @@
 <div class="agileits_header">
     <div class="container">
         <div class="w3l_offers">
-            <p>新会员打8.5折. <a href="products.jsp">现在去购物</a></p>
+            <p>点击查看所有产品. <a href="products.jsp">现在就去</a></p>
         </div>
         <div class="agile-login">
 
@@ -56,8 +56,8 @@
             <h1><a href="index.jsp">超市</a></h1>
         </div>
         <div class="w3l_search">
-            <form action="pagehome?op=searchproduct" method="post">
-                <input type="search" name="Search" placeholder="搜索产品..." required="">
+            <form action="/sp/search/1/0" method="post">
+                <input type="search" name="pname" placeholder="搜索产品..." required="" value="">
                 <button type="submit" class="btn btn-default search" aria-label="Left Align">
                     <i class="fa fa-search" aria-hidden="true"> </i>
                 </button>
@@ -92,22 +92,10 @@
 
                     <c:forEach var="sp" items="${sessionScope.listSPtype}">
                         <li class="dropdown">
-                        <li class="active"><a href="/sp/search/1/${sp.ptypeid}/${inull}.action"
+                        <li class="active"><a href="/sp/search/1/${sp.ptypeid}"
                                               class="act">${sp.ptypename}</a></li>
                         </li>
                     </c:forEach>
-                    <%--<li class="dropdown">--%>
-                    <%--<li class="active"><a href="household.jsp" class="act">蔬菜</a></li>--%>
-
-                    <%--</li>--%>
-                    <%--<li class="dropdown">--%>
-                    <%--<li class="active"><a href="personalcare.jsp" class="act">肉类</a></li>--%>
-
-                    <%--</li>--%>
-                    <%--<li class="dropdown">--%>
-                    <%--<li class="active"><a href="packagedfoods.jsp" class="act">零食</a></li>--%>
-
-                    <%--</li>--%>
 
 
                 </ul>
