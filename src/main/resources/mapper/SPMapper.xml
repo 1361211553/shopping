@@ -78,6 +78,22 @@
   <sql id="Blob_Column_List" >
     pdescription
   </sql>
+
+  <select id="onPage" resultMap="BaseResultMap">
+   select
+   <include refid="Base_Column_List" />
+    from s_p
+    <if test="ptypeid != null">
+      where ptypeid=#{ptypeid,jdbcType=INTEGER}
+    </if>
+    <if test="pname != null">
+      where pname like  CONCAT('%',#{pname,jdbcType=VARCHAR},'%')
+    </if>
+    <if test="pageNum != null">
+      limit ${pageNum},${pageSize}
+    </if>
+  </select>
+
   <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.shopping.entity.SPExample" >
     select
     <if test="distinct" >

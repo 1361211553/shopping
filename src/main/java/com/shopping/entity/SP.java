@@ -92,4 +92,19 @@ public class SP {
     public void setPdescription(String pdescription) {
         this.pdescription = pdescription == null ? null : pdescription.trim();
     }
+
+    @Override
+    public String toString() {
+        return "SP{" +
+                "pid=" + pid +
+                ", pname='" + pname + '\'' +
+                ", pprice=" + pprice +
+                ", pimg='" + pimg + '\'' +
+                ", pnum=" + pnum +
+                ", pcdate=" + pcdate +
+                ", pclicks=" + pclicks +
+                ", ptypeid=" + ptypeid +
+                ", pdescription='" + pdescription + '\'' +
+                '}';
+    }
 }

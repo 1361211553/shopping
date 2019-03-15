@@ -1,6 +1,8 @@
 package com.shopping;
 
+import com.shopping.dao.SPMapper;
 import com.shopping.dao.SUserMapper;
+import com.shopping.entity.SP;
 import com.shopping.entity.SUser;
 import com.shopping.entity.SUserExample;
 import org.junit.Test;
@@ -18,6 +20,8 @@ public class ShoppingApplicationTests {
 
     @Autowired
     SUserMapper sUserMapper;
+    @Autowired
+    SPMapper spMapper;
     @Test
     public void contextLoads() {
 
@@ -25,15 +29,19 @@ public class ShoppingApplicationTests {
 //        SUser sUser = new SUser();
 //        sUser.setUsername("test");
 //        sUser.setUserpass("123123");
-        SUserExample sUserExample = new SUserExample();
-        SUserExample.Criteria criteria =  sUserExample.createCriteria();
-        criteria.andUsernameEqualTo("test");
-        List<SUser> sUsers = sUserMapper.selectByExample(sUserExample);
-        for (SUser sUser1: sUsers) {
-            System.out.println(sUser1);
+//        SUserExample sUserExample = new SUserExample();
+//        SUserExample.Criteria criteria =  sUserExample.createCriteria();
+//        criteria.andUsernameEqualTo("test");
+//        List<SUser> sUsers = sUserMapper.selectByExample(sUserExample);
+//        for (SUser sUser1: sUsers) {
+//            System.out.println(sUser1);
+//        }
+
+        List<SP> list =  spMapper.onPage(0,5,null,"吊");
+
+        for (SP sp:list) {
+            System.out.println(sp);
         }
-
-
     }
 
 }

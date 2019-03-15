@@ -11,6 +11,9 @@ import org.springframework.stereotype.Repository;
 @Mapper
 @Repository
 public interface SPMapper {
+
+    List<SP> onPage(Integer pageNum,Integer pageSize,Integer ptypeid,String pname);
+
     int deleteByPrimaryKey(Integer pid);
 
     int insert(SP record);
