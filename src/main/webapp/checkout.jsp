@@ -74,15 +74,15 @@
 
                     <tr class="rem1">
                         <td class="invert">${vs.count}</td>
-                        <td class="invert-image"><a href="single.jsp"><img src="${cl.productimg}" alt=" "
+                        <td class="invert-image"><a href="single.jsp"><img src="${cl.pimg}" alt=" "
                                                                            class="img-responsive"
-                                                                           style="height: 100px"/></a></td>
-                        <td class="invert">${cl.productname}</td>
+                                                                           style="height: 100px" width="50px"/></a></td>
+                        <td class="invert">${cl.pname}</td>
                         <td class="invert">
                             <div class="quantity">
                                 <div class="quantity-select">
                                     <div class="entry value-minus">&nbsp;</div>
-                                    <div class="entry value"><span>${proNums[vs.index]}</span></div>
+                                    <div class="entry value"><span>${listcar[vs.index].pnum}</span></div>
                                     <div class="entry value-plus active">&nbsp;</div>
                                 </div>
                             </div>
@@ -90,7 +90,7 @@
 
                         <td class="invert">
                             <div class="rem">
-                                <a href="./cart/cartDel/${cl.productid}/${proNums[vs.index]}.action">
+                                <a class="d" pid="${cl.pid}">
                                     <div class="close1"></div>
                                 </a>
                             </div>
@@ -187,6 +187,32 @@
 
         });
     </script>
+<script>
+
+    $(document).ready(function () {
+
+        $(".d").click(function () {
+            var pid = $(this).attr("pid");
+            $.ajax({
+                url:'/car/cardel',
+                type:'post',
+                contentType:'application/json;charset=utf-8',
+                dataType:"json",
+                data:{"pid":pid},
+                success:function(result) {
+                    if (result == 1){
+                        alert('删除成功');
+                    } else {
+                        alert("删除失败");
+                    }
+                }
+
+            })
+        })
+
+    })
+
+</script>
     <!-- //main slider-banner -->
 
 </body>
