@@ -90,7 +90,7 @@
 
                         <td class="invert">
                             <div class="rem">
-                                <a class="d" pid="${cl.pid}">
+                                <a class="d" pid="${cl.pid}" pname="${cl.pname}">
                                     <div class="close1"></div>
                                 </a>
                             </div>
@@ -192,16 +192,20 @@
     $(document).ready(function () {
 
         $(".d").click(function () {
+            var obj = $(this);
             var pid = $(this).attr("pid");
+            var pname = $(this).attr("pname");
             $.ajax({
                 url:'/car/cardel',
-                type:'post',
-                contentType:'application/json;charset=utf-8',
+                type:'POST',
                 dataType:"json",
-                data:{"pid":pid},
+                data:{
+                    'pid':pid,
+                },
                 success:function(result) {
                     if (result == 1){
-                        alert('删除成功');
+                        alert('成功删除【'+pname+'】商品');
+                       obj.parents('tr').remove();
                     } else {
                         alert("删除失败");
                     }

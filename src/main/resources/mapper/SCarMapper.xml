@@ -93,7 +93,7 @@
     delete from s_car
     where cid = #{cid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleterByPid" parameterType="java.lang.Integer">
+  <delete id="deleteByPid" parameterType="java.lang.Integer">
     delete from s_car
     where pid=#{pid,jdbcType=INTEGER}
   </delete>
