@@ -92,7 +92,7 @@
 
                     <c:forEach var="sp" items="${sessionScope.listSPtype}">
                         <li class="dropdown">
-                        <li class="active"><a href="#"
+                        <li class="active"><a href="/sp/search/1/${sp.ptypeid}/${inull}"
                                               class="act">${sp.ptypename}</a></li>
                         </li>
                     </c:forEach>

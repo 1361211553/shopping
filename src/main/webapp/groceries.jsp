@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -64,7 +65,7 @@
         <%--<jsp:include page="pagehome?op=clicktype"/>--%>
 
         <div class="agile_top_brands_grids">
-            <c:forEach var="pro" items="${requestScope.product}">
+            <c:forEach var="op" items="${listOP}">
             <div class="col-md-4 top_brand_left">
                 <div class="hover14 column">
                     <div class="agile_top_brand_left_grid">
@@ -75,13 +76,19 @@
                             <figure>
                                 <div class="snipcart-item block">
                                     <div class="snipcart-thumb">
-                                        <a href="single.jsp?op=clickproduct&productid=${pro.productid}"><img title="${pro.productcontent}" alt=" " src="${pro.productimg}" width="250px" height="150px"></a>
-                                        <p>${pro.productname}</p>
-                                        <h4><font color="red">￥${pro.productsale}/${pro.productunit}</font><span>￥${pro.productprice}/${pro.productunit}</span> </h4>
+                                        <a href="#"><img title="${op.pdescription}" alt=" " src="${op.pimg}" width="250px" height="150px"></a>
+                                        <p>
+                                            <c:if test="${fn:length(op.pname) > 15}">${fn:substring(op.pname, 0, 15)}...</c:if>
+
+
+                                            <c:if test="${fn:length(op.pname) <= 15}">${op.pname}</c:if>
+
+                                        </p>
+                                        <h4><font color="red">￥${op.pprice}</font></span> </h4>
                                         <%--<span>$55.00</span>--%>
                                     </div>
                                     <div class="snipcart-details top_brand_home_details">
-                                        <form action="./cart/cartAdd/${pro.productid}.action" method="post">
+                                        <form action="#" method="post">
                                             <fieldset>
                                                 <input type="hidden" name="productNum" style="width: 30px;" value="1">
                                         <%--<input type="hidden" name="cmd" value="_cart">--%>
@@ -104,317 +111,63 @@
                 </div>
             </div>
             </c:forEach>
-            <%--<div class="col-md-4 top_brand_left">--%>
-                <%--<div class="hover14 column">--%>
-                    <%--<div class="agile_top_brand_left_grid">--%>
-                        <%--<div class="agile_top_brand_left_grid_pos">--%>
-                            <%--<img src="images/offer.png" alt=" " class="img-responsive">--%>
-                        <%--</div>--%>
-                        <%--<div class="agile_top_brand_left_grid1">--%>
-                            <%--<figure>--%>
-                                <%--<div class="snipcart-item block">--%>
-                                    <%--<div class="snipcart-thumb">--%>
-                                        <%--<a href="single.jsp"><img title=" " alt=" " src="images/15.png"></a>--%>
-                                        <%--<p>Moong Dal</p>--%>
-                                        <%--<h4>$30.99 <span>$45.00</span></h4>--%>
-                                    <%--</div>--%>
-                                    <%--<div class="snipcart-details top_brand_home_details">--%>
-                                        <%--<form action="#" method="post">--%>
-                                            <%--<fieldset>--%>
-                                                <%--<input type="hidden" name="cmd" value="_cart">--%>
-                                                <%--<input type="hidden" name="add" value="1">--%>
-                                                <%--<input type="hidden" name="business" value=" ">--%>
-                                                <%--<input type="hidden" name="item_name" value="basmati rise">--%>
-                                                <%--<input type="hidden" name="amount" value="30.99">--%>
-                                                <%--<input type="hidden" name="discount_amount" value="1.00">--%>
-                                                <%--<input type="hidden" name="currency_code" value="USD">--%>
-                                                <%--<input type="hidden" name="return" value=" ">--%>
-                                                <%--<input type="hidden" name="cancel_return" value=" ">--%>
-                                                <%--<input type="submit" name="submit" value="添加到购物车" class="button">--%>
-                                            <%--</fieldset>--%>
-                                        <%--</form>--%>
-                                    <%--</div>--%>
-                                <%--</div>--%>
-                            <%--</figure>--%>
-                        <%--</div>--%>
-                    <%--</div>--%>
-                <%--</div>--%>
-            <%--</div>--%>
-            <%--<div class="col-md-4 top_brand_left">--%>
-                <%--<div class="hover14 column">--%>
-                    <%--<div class="agile_top_brand_left_grid">--%>
-                        <%--<div class="agile_top_brand_left_grid_pos">--%>
-                            <%--<img src="images/offer.png" alt=" " class="img-responsive">--%>
-                        <%--</div>--%>
-                        <%--<div class="agile_top_brand_left_grid_pos">--%>
-                            <%--<img src="images/offer.png" alt=" " class="img-responsive">--%>
-                        <%--</div>--%>
-                        <%--<div class="agile_top_brand_left_grid1">--%>
-                            <%--<figure>--%>
-                                <%--<div class="snipcart-item block">--%>
-                                    <%--<div class="snipcart-thumb">--%>
-                                        <%--<a href="single.jsp"><img src="images/16.png" alt=" " class="img-responsive"></a>--%>
-                                        <%--<p>Channa</p>--%>
-                                        <%--<h4>$80.99 <span>$105.00</span></h4>--%>
-                                    <%--</div>--%>
-                                    <%--<div class="snipcart-details top_brand_home_details">--%>
-                                        <%--<form action="#" method="post">--%>
-                                            <%--<fieldset>--%>
-                                                <%--<input type="hidden" name="cmd" value="_cart">--%>
-                                                <%--<input type="hidden" name="add" value="1">--%>
-                                                <%--<input type="hidden" name="business" value=" ">--%>
-                                                <%--<input type="hidden" name="item_name" value="Pepsi soft drink">--%>
-                                                <%--<input type="hidden" name="amount" value="80.00">--%>
-                                                <%--<input type="hidden" name="discount_amount" value="1.00">--%>
-                                                <%--<input type="hidden" name="currency_code" value="USD">--%>
-                                                <%--<input type="hidden" name="return" value=" ">--%>
-                                                <%--<input type="hidden" name="cancel_return" value=" ">--%>
-                                                <%--<input type="submit" name="submit" value="添加到购物车" class="button">--%>
-                                            <%--</fieldset>--%>
-                                        <%--</form>--%>
-                                    <%--</div>--%>
-                                <%--</div>--%>
-                            <%--</figure>--%>
-                        <%--</div>--%>
-                    <%--</div>--%>
-                <%--</div>--%>
-            <%--</div>--%>
-            <%--<div class="clearfix"> </div>--%>
-        <%--</div>--%>
-        <%--<div class="agile_top_brands_grids">--%>
-            <%--<div class="col-md-4 top_brand_left">--%>
-                <%--<div class="hover14 column">--%>
-                    <%--<div class="agile_top_brand_left_grid">--%>
-                        <%--<div class="agile_top_brand_left_grid_pos">--%>
-                            <%--<img src="images/offer.png" alt=" " class="img-responsive">--%>
-                        <%--</div>--%>
-                        <%--<div class="agile_top_brand_left_grid1">--%>
-                            <%--<figure>--%>
-                                <%--<div class="snipcart-item block">--%>
-                                    <%--<div class="snipcart-thumb">--%>
-                                        <%--<a href="single.jsp"><img title=" " alt=" " src="images/17.png"></a>--%>
-                                        <%--<p>Arhar Dal</p>--%>
-                                        <%--<h4>$35.99 <span>$55.00</span></h4>--%>
-                                    <%--</div>--%>
-                                    <%--<div class="snipcart-details top_brand_home_details">--%>
-                                        <%--<form action="#" method="post">--%>
-                                            <%--<fieldset>--%>
-                                                <%--<input type="hidden" name="cmd" value="_cart">--%>
-                                                <%--<input type="hidden" name="add" value="1">--%>
-                                                <%--<input type="hidden" name="business" value=" ">--%>
-                                                <%--<input type="hidden" name="item_name" value="Fortune Sunflower Oil">--%>
-                                                <%--<input type="hidden" name="amount" value="35.99">--%>
-                                                <%--<input type="hidden" name="discount_amount" value="1.00">--%>
-                                                <%--<input type="hidden" name="currency_code" value="USD">--%>
-                                                <%--<input type="hidden" name="return" value=" ">--%>
-                                                <%--<input type="hidden" name="cancel_return" value=" ">--%>
-                                                <%--<input type="submit" name="submit" value="添加到购物车" class="button">--%>
-                                            <%--</fieldset>--%>
-                                        <%--</form>--%>
-                                    <%--</div>--%>
-                                <%--</div>--%>
-                            <%--</figure>--%>
-                        <%--</div>--%>
-                    <%--</div>--%>
-                <%--</div>--%>
-            <%--</div>--%>
-            <%--<div class="col-md-4 top_brand_left">--%>
-                <%--<div class="hover14 column">--%>
-                    <%--<div class="agile_top_brand_left_grid">--%>
-                        <%--<div class="agile_top_brand_left_grid_pos">--%>
-                            <%--<img src="images/offer.png" alt=" " class="img-responsive">--%>
-                        <%--</div>--%>
-                        <%--<div class="agile_top_brand_left_grid1">--%>
-                            <%--<figure>--%>
-                                <%--<div class="snipcart-item block">--%>
-                                    <%--<div class="snipcart-thumb">--%>
-                                        <%--<a href="single.jsp"><img title=" " alt=" " src="images/14.png"></a>--%>
-                                        <%--<p>Toor Dal</p>--%>
-                                        <%--<h4>$30.99 <span>$45.00</span></h4>--%>
-                                    <%--</div>--%>
-                                    <%--<div class="snipcart-details top_brand_home_details">--%>
-                                        <%--<form action="#" method="post">--%>
-                                            <%--<fieldset>--%>
-                                                <%--<input type="hidden" name="cmd" value="_cart">--%>
-                                                <%--<input type="hidden" name="add" value="1">--%>
-                                                <%--<input type="hidden" name="business" value=" ">--%>
-                                                <%--<input type="hidden" name="item_name" value="basmati rise">--%>
-                                                <%--<input type="hidden" name="amount" value="30.99">--%>
-                                                <%--<input type="hidden" name="discount_amount" value="1.00">--%>
-                                                <%--<input type="hidden" name="currency_code" value="USD">--%>
-                                                <%--<input type="hidden" name="return" value=" ">--%>
-                                                <%--<input type="hidden" name="cancel_return" value=" ">--%>
-                                                <%--<input type="submit" name="submit" value="添加到购物车" class="button">--%>
-                                            <%--</fieldset>--%>
-                                        <%--</form>--%>
-                                    <%--</div>--%>
-                                <%--</div>--%>
-                            <%--</figure>--%>
-                        <%--</div>--%>
-                    <%--</div>--%>
-                <%--</div>--%>
-            <%--</div>--%>
-            <%--<div class="col-md-4 top_brand_left">--%>
-                <%--<div class="hover14 column">--%>
-                    <%--<div class="agile_top_brand_left_grid">--%>
-                        <%--<div class="agile_top_brand_left_grid_pos">--%>
-                            <%--<img src="images/offer.png" alt=" " class="img-responsive">--%>
-                        <%--</div>--%>
-                        <%--<div class="agile_top_brand_left_grid_pos">--%>
-                            <%--<img src="images/offer.png" alt=" " class="img-responsive">--%>
-                        <%--</div>--%>
-                        <%--<div class="agile_top_brand_left_grid1">--%>
-                            <%--<figure>--%>
-                                <%--<div class="snipcart-item block">--%>
-                                    <%--<div class="snipcart-thumb">--%>
-                                        <%--<a href="single.jsp"><img src="images/15.png" alt=" " class="img-responsive"></a>--%>
-                                        <%--<p>Moong Dal</p>--%>
-                                        <%--<h4>$80.99 <span>$105.00</span></h4>--%>
-                                    <%--</div>--%>
-                                    <%--<div class="snipcart-details top_brand_home_details">--%>
-                                        <%--<form action="#" method="post">--%>
-                                            <%--<fieldset>--%>
-                                                <%--<input type="hidden" name="cmd" value="_cart">--%>
-                                                <%--<input type="hidden" name="add" value="1">--%>
-                                                <%--<input type="hidden" name="business" value=" ">--%>
-                                                <%--<input type="hidden" name="item_name" value="Pepsi soft drink">--%>
-                                                <%--<input type="hidden" name="amount" value="80.00">--%>
-                                                <%--<input type="hidden" name="discount_amount" value="1.00">--%>
-                                                <%--<input type="hidden" name="currency_code" value="USD">--%>
-                                                <%--<input type="hidden" name="return" value=" ">--%>
-                                                <%--<input type="hidden" name="cancel_return" value=" ">--%>
-                                                <%--<input type="submit" name="submit" value="添加到购物车" class="button">--%>
-                                            <%--</fieldset>--%>
-                                        <%--</form>--%>
-                                    <%--</div>--%>
-                                <%--</div>--%>
-                            <%--</figure>--%>
-                        <%--</div>--%>
-                    <%--</div>--%>
-                <%--</div>--%>
-            <%--</div>--%>
-            <%--<div class="clearfix"> </div>--%>
-        <%--</div>--%>
-        <%--<div class="agile_top_brands_grids">--%>
-            <%--<div class="col-md-4 top_brand_left">--%>
-                <%--<div class="hover14 column">--%>
-                    <%--<div class="agile_top_brand_left_grid">--%>
-                        <%--<div class="agile_top_brand_left_grid_pos">--%>
-                            <%--<img src="images/offer.png" alt=" " class="img-responsive">--%>
-                        <%--</div>--%>
-                        <%--<div class="agile_top_brand_left_grid1">--%>
-                            <%--<figure>--%>
-                                <%--<div class="snipcart-item block">--%>
-                                    <%--<div class="snipcart-thumb">--%>
-                                        <%--<a href="single.jsp"><img title=" " alt=" " src="images/16.png"></a>--%>
-                                        <%--<p>Channa</p>--%>
-                                        <%--<h4>$35.99 <span>$55.00</span></h4>--%>
-                                    <%--</div>--%>
-                                    <%--<div class="snipcart-details top_brand_home_details">--%>
-                                        <%--<form action="#" method="post">--%>
-                                            <%--<fieldset>--%>
-                                                <%--<input type="hidden" name="cmd" value="_cart">--%>
-                                                <%--<input type="hidden" name="add" value="1">--%>
-                                                <%--<input type="hidden" name="business" value=" ">--%>
-                                                <%--<input type="hidden" name="item_name" value="Fortune Sunflower Oil">--%>
-                                                <%--<input type="hidden" name="amount" value="35.99">--%>
-                                                <%--<input type="hidden" name="discount_amount" value="1.00">--%>
-                                                <%--<input type="hidden" name="currency_code" value="USD">--%>
-                                                <%--<input type="hidden" name="return" value=" ">--%>
-                                                <%--<input type="hidden" name="cancel_return" value=" ">--%>
-                                                <%--<input type="submit" name="submit" value="添加到购物车" class="button">--%>
-                                            <%--</fieldset>--%>
-                                        <%--</form>--%>
-                                    <%--</div>--%>
-                                <%--</div>--%>
-                            <%--</figure>--%>
-                        <%--</div>--%>
-                    <%--</div>--%>
-                <%--</div>--%>
-            <%--</div>--%>
-            <%--<div class="col-md-4 top_brand_left">--%>
-                <%--<div class="hover14 column">--%>
-                    <%--<div class="agile_top_brand_left_grid">--%>
-                        <%--<div class="agile_top_brand_left_grid_pos">--%>
-                            <%--<img src="images/offer.png" alt=" " class="img-responsive">--%>
-                        <%--</div>--%>
-                        <%--<div class="agile_top_brand_left_grid1">--%>
-                            <%--<figure>--%>
-                                <%--<div class="snipcart-item block">--%>
-                                    <%--<div class="snipcart-thumb">--%>
-                                        <%--<a href="single.jsp"><img title=" " alt=" " src="images/17.png"></a>--%>
-                                        <%--<p>Arhar Dal</p>--%>
-                                        <%--<h4>$30.99 <span>$45.00</span></h4>--%>
-                                    <%--</div>--%>
-                                    <%--<div class="snipcart-details top_brand_home_details">--%>
-                                        <%--<form action="#" method="post">--%>
-                                            <%--<fieldset>--%>
-                                                <%--<input type="hidden" name="cmd" value="_cart">--%>
-                                                <%--<input type="hidden" name="add" value="1">--%>
-                                                <%--<input type="hidden" name="business" value=" ">--%>
-                                                <%--<input type="hidden" name="item_name" value="basmati rise">--%>
-                                                <%--<input type="hidden" name="amount" value="30.99">--%>
-                                                <%--<input type="hidden" name="discount_amount" value="1.00">--%>
-                                                <%--<input type="hidden" name="currency_code" value="USD">--%>
-                                                <%--<input type="hidden" name="return" value=" ">--%>
-                                                <%--<input type="hidden" name="cancel_return" value=" ">--%>
-                                                <%--<input type="submit" name="submit" value="添加到购物车" class="button">--%>
-                                            <%--</fieldset>--%>
-                                        <%--</form>--%>
-                                    <%--</div>--%>
-                                <%--</div>--%>
-                            <%--</figure>--%>
-                        <%--</div>--%>
-                    <%--</div>--%>
-                <%--</div>--%>
-            <%--</div>--%>
-            <%--<div class="col-md-4 top_brand_left">--%>
-                <%--<div class="hover14 column">--%>
-                    <%--<div class="agile_top_brand_left_grid">--%>
-                        <%--<div class="agile_top_brand_left_grid_pos">--%>
-                            <%--<img src="images/offer.png" alt=" " class="img-responsive">--%>
-                        <%--</div>--%>
-                        <%--<div class="agile_top_brand_left_grid_pos">--%>
-                            <%--<img src="images/offer.png" alt=" " class="img-responsive">--%>
-                        <%--</div>--%>
-                        <%--<div class="agile_top_brand_left_grid1">--%>
-                            <%--<figure>--%>
-                                <%--<div class="snipcart-item block">--%>
-                                    <%--<div class="snipcart-thumb">--%>
-                                        <%--<a href="single.jsp"><img src="images/14.png" alt=" " class="img-responsive"></a>--%>
-                                        <%--<p>Toor Dal</p>--%>
-                                        <%--<h4>$80.99 <span>$105.00</span></h4>--%>
-                                    <%--</div>--%>
-                                    <%--<div class="snipcart-details top_brand_home_details">--%>
-                                        <%--<form action="#" method="post">--%>
-                                            <%--<fieldset>--%>
-                                                <%--<input type="hidden" name="cmd" value="_cart">--%>
-                                                <%--<input type="hidden" name="add" value="1">--%>
-                                                <%--<input type="hidden" name="business" value=" ">--%>
-                                                <%--<input type="hidden" name="item_name" value="Pepsi soft drink">--%>
-                                                <%--<input type="hidden" name="amount" value="80.00">--%>
-                                                <%--<input type="hidden" name="discount_amount" value="1.00">--%>
-                                                <%--<input type="hidden" name="currency_code" value="USD">--%>
-                                                <%--<input type="hidden" name="return" value=" ">--%>
-                                                <%--<input type="hidden" name="cancel_return" value=" ">--%>
-                                                <%--<input type="submit" name="submit" value="添加到购物车" class="button">--%>
-                                            <%--</fieldset>--%>
-                                        <%--</form>--%>
-                                    <%--</div>--%>
-                                <%--</div>--%>
-                            <%--</figure>--%>
-                        <%--</div>--%>
-                    <%--</div>--%>
-                <%--</div>--%>
-            <%--</div>--%>
+
             <div class="clearfix"> </div>
         </div>
 
+            <nav class="numbering"><%--上下页按钮--%>
+                <ul class="pagination paging">
+                    <c:if test="${currentpage-1 == 0}">
+                        <li>
+                            <a href="products.jsp?op=searchPage&pageNo=${currentpage}" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                    </c:if>
+                    <c:if test="${currentpage-1 != 0}">
+                        <li>
+                            <a href="products.jsp?op=searchPage&pageNo=${currentpage-1}" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                    </c:if>
+
+                    <c:forEach var="n" begin="1" end="${requestScope.pagenum}">
+                        <li <c:if test="${n eq currentpage}">class="active"</c:if>><a href="products.jsp?op=searchPage&pageNo=${n}">${n}<span class="sr-only">(current)</span></a></li>
+                    </c:forEach>
+
+                    <%--<li><a href="#">2</a></li>--%>
+                    <%--<li><a href="#">3</a></li>--%>
+                    <%--<li><a href="#">4</a></li>--%>
+                    <%--<li><a href="#">5</a></li>--%>
+                    <c:if test="${currentpage != pageall}">
+                        <li>
+                            <a href="products.jsp?op=searchPage&pageNo=${currentpage+1}" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </c:if>
+                    <c:if test="${currentpage == pageall}">
+                        <li>
+                            <a href="products.jsp?op=searchPage&pageNo=${currentpage}" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </c:if>
+                </ul>
+            </nav>
+
     </div>
     <div class="clearfix"> </div>
+
+
+
 </div>
 </div>
 <!--- groceries --->
+
+
+
 <!-- //footer -->
 <%@ include file="appcomm/foot.jsp" %>
 <!-- //footer -->
