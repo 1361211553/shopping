@@ -97,8 +97,17 @@
 
                                 <table>
                                     <tr>
-                                        <td>数量：</td>
+                                        <td>数量：ss</td>
                                         <td><input type="text" name="productNum" style="width: 30px;" value="1"></td>
+                                        <td class="inver2t">
+                                            <div class="quantity">
+                                                <div class="quantity-select">
+                                                    <div class="entry value-minus">&nbsp;</div>
+                                                    <div class="entry value"><span>255</span></div>
+                                                    <div class="entry value-plus active">&nbsp;</div>
+                                                </div>
+                                            </div>
+                                        </td>
                                     </tr>
                                 </table>
 

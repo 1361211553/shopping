@@ -106,11 +106,22 @@ public class CarController {
         return row;
     }
 
+    @RequestMapping("carempty")
+    public ModelAndView carempty(HttpSession session){
+
+        ModelAndView mav = new ModelAndView("redirect:/car/carsearch");
+        SUser sUser = (SUser) session.getAttribute("user");
+        scarMapper.deleteByUserid(sUser.getUserid());
+        return mav;
+    }
+
     @RequestMapping("cardel")
     @ResponseBody
-    public int cardel(@RequestParam Integer pid)  {
+    public int cardel(@RequestParam Integer pid,HttpSession session)  {
 
+        Integer carNum = (Integer) session.getAttribute("carNum");
        int row = scarMapper.deleteByPid(pid);
+       session.setAttribute("carNum",carNum-1);
         return row;
 
     }

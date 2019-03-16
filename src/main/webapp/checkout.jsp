@@ -56,7 +56,7 @@
 <!-- checkout -->
 <div class="checkout">
     <div class="container">
-        <h2>您的购物车包含: <span>${fn:length(productList)} 个产品</span></h2>
+        <h2>您的购物车包含: <span class="chanpin">${fn:length(productList)}</span> 个产品</h2>
         <div class="checkout-right">
             <table class="timetable_sub">
                 <thead>
@@ -91,7 +91,7 @@
                         <td class="invert">￥<font color="red">${cl.pprice}</font></td>
                         <td class="invert">
                             <div class="rem">
-                                <a class="d" pid="${cl.pid}" pname="${cl.pname}">
+                                <a class="d" pid="${cl.pid}" pname="${cl.pname}" pnum="${listcar[vs.index].pnum}" price="${cl.pprice}">
                                     <div class="close1"></div>
                                 </a>
                             </div>
@@ -125,10 +125,11 @@
         <div class="checkout-left">
             <div class="checkout-left-basket">
                 <h4>账单</h4>
-                <ul><li><font color="black" size="4px">商品总价 : </font><i>-</i> <span>￥<font color="red" size="4px">${countPrice}</font></span></li></ul>
+                <ul><li><font color="black" size="4px">商品总价 : </font><i>-</i> <span>￥<font color="red" size="4px" class="font02">${countPrice}</font></span></li></ul>
             </div>
             <div class="checkout-right-basket">
-                <a href="index.jsp"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>继续购物</a>
+                <a href="index.jsp" ><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>继续购物</a>
+                <a href="/car/carempty"  onclick="return carempty()"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>清空购物车</a>
                 <a href="index.jsp"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>提交订单</a>
             </div>
             <div class="clearfix"> </div>
@@ -185,32 +186,52 @@
     </script>
 <script>
 
+    function carempty(){
+
+        if (confirm("确定清空购物车吗?")){
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
     $(document).ready(function () {
 
         $(".d").click(function () {
             var obj = $(this);
             var pid = $(this).attr("pid");
             var pname = $(this).attr("pname");
-            var num = $(".font01").html();
-            $.ajax({
-                url:'/car/cardel',
-                type:'POST',
-                dataType:"json",
-                data:{
-                    'pid':pid,
-                },
-                success:function(result) {
-                    if (result == 1){
-                        alert('成功删除【'+pname+'】商品');
-                       obj.parents('tr').remove();
-                       $(".font01").html(parseInt(num)-parseInt(1));
+            var num = $(this).attr("pnum");
+            var price = $(this).attr("price");
+            var countPrice = $(".font02").html();
+            var chanpin = $(".chanpin").html();
 
-                    } else {
-                        alert("删除失败");
+            if (confirm('确定删除【'+pname+'】吗？')){
+                $.ajax({
+                    url:'/car/cardel',
+                    type:'POST',
+                    dataType:"json",
+                    data:{
+                        'pid':pid,
+                    },
+                    success:function(result) {
+                        if (result == 1){
+                            alert('成功删除【'+pname+'】商品');
+                            obj.parents('tr').remove();
+
+                            $(".font02").html(parseFloat(countPrice-price*num).toFixed(2));
+                            $(".font01").html(parseInt(num)-parseInt(1));
+                            $(".chanpin").html(parseInt(chanpin)-1);
+
+                        } else {
+                            alert("删除失败");
+                        }
                     }
-                }
 
-            })
+                })
+            }
+
         })
 
     })

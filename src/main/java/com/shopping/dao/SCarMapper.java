@@ -14,7 +14,7 @@ public interface SCarMapper {
     int deleteByPrimaryKey(Integer cid);
 
     int deleteByPid(Integer pid);
-
+    int deleteByUserid(Integer userid);
     int insert(SCar record);
 
     int insertSelective(SCar record);

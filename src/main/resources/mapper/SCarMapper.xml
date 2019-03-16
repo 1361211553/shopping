@@ -97,6 +97,10 @@
     delete from s_car
     where pid=#{pid,jdbcType=INTEGER}
   </delete>
+  <delete id="deleteByUserid" parameterType="java.lang.Integer">
+     delete from s_car
+    where userid=#{userid,jdbcType=INTEGER}
+  </delete>
   <insert id="insert" parameterType="com.shopping.entity.SCar" >
     insert into s_car (cid, userid, pid, 
       pnum)
