@@ -76,4 +76,6 @@ public class SPController {
         mav.setViewName("single");
         return mav;
     }
+
+
 }
