@@ -5,7 +5,7 @@
 <div class="agileits_header">
     <div class="container">
         <div class="w3l_offers">
-            <p>点击查看所有产品. <a href="products.jsp">现在就去</a></p>
+            <p>点击查看所有商品. <a href="sp/search/1/0">现在就去</a></p>
         </div>
         <div class="agile-login">
 
@@ -57,7 +57,7 @@
         </div>
         <div class="w3l_search">
             <form action="/sp/search/1/0" method="post">
-                <input type="search" name="pname" placeholder="搜索产品..." required="" value="">
+                <input type="search" name="pname" placeholder="搜索产品..." required="" value="${sP.pname}">
                 <button type="submit" class="btn btn-default search" aria-label="Left Align">
                     <i class="fa fa-search" aria-hidden="true"> </i>
                 </button>

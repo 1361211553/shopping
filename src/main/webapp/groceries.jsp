@@ -119,39 +119,39 @@
 
             <nav class="numbering"><%--上下页按钮--%>
                 <ul class="pagination paging">
-                    <c:if test="${currentpage-1 == 0}">
+                    <c:if test="${currentPage-1 == 0}">
                         <li>
-                            <a href="products.jsp?op=searchPage&pageNo=${currentpage}" aria-label="Previous">
+                            <a href="sp/search/${currentPage}/${sP.ptypeid}?pname=${sP.pname}" aria-label="Previous">
                                 <span aria-hidden="true">&laquo;</span>
                             </a>
                         </li>
                     </c:if>
-                    <c:if test="${currentpage-1 != 0}">
+                    <c:if test="${currentPage-1 != 0}">
                         <li>
-                            <a href="products.jsp?op=searchPage&pageNo=${currentpage-1}" aria-label="Previous">
+                            <a href="sp/search/${currentPage-1}/${sP.ptypeid}?pname=${sP.pname}" aria-label="Previous">
                                 <span aria-hidden="true">&laquo;</span>
                             </a>
                         </li>
                     </c:if>
 
-                    <c:forEach var="n" begin="1" end="${requestScope.pagenum}">
-                        <li <c:if test="${n eq currentpage}">class="active"</c:if>><a href="products.jsp?op=searchPage&pageNo=${n}">${n}<span class="sr-only">(current)</span></a></li>
+                    <c:forEach var="n" begin="1" end="${pageAll}">
+                        <li <c:if test="${n eq currentPage}">class="active"</c:if>><a href="sp/search/${n}/${sP.ptypeid}?pname=${sP.pname}">${n}<span class="sr-only">(current)</span></a></li>
                     </c:forEach>
 
                     <%--<li><a href="#">2</a></li>--%>
                     <%--<li><a href="#">3</a></li>--%>
                     <%--<li><a href="#">4</a></li>--%>
                     <%--<li><a href="#">5</a></li>--%>
-                    <c:if test="${currentpage != pageall}">
+                    <c:if test="${currentPage != pageAll}">
                         <li>
-                            <a href="products.jsp?op=searchPage&pageNo=${currentpage+1}" aria-label="Next">
+                            <a href="sp/search/${currentPage+1}/${sP.ptypeid}?pname=${sP.pname}" aria-label="Next">
                                 <span aria-hidden="true">&raquo;</span>
                             </a>
                         </li>
                     </c:if>
-                    <c:if test="${currentpage == pageall}">
+                    <c:if test="${currentPage == pageAll}">
                         <li>
-                            <a href="products.jsp?op=searchPage&pageNo=${currentpage}" aria-label="Next">
+                            <a href="sp/search/${currentPage}/${sP.ptypeid}?pname=${sP.pname}" aria-label="Next">
                                 <span aria-hidden="true">&raquo;</span>
                             </a>
                         </li>

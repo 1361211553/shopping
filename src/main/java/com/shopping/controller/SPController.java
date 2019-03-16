@@ -3,7 +3,8 @@ package com.shopping.controller;
 import com.shopping.dao.SPMapper;
 import com.shopping.entity.SP;
 import com.shopping.entity.SPExample;
-import org.apache.ibatis.session.RowBounds;
+import com.shopping.service.SPServiceI;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -19,6 +20,8 @@ public class SPController {
 
     @Autowired
     SPMapper spMapper;
+    @Autowired
+    SPServiceI spServiceI;
     //查询单个种类商品
     @RequestMapping("search/{currentPage}/{ptypeid}")
     public ModelAndView searchPage(@PathVariable(value="currentPage") Integer currentPage,
@@ -39,7 +42,7 @@ public class SPController {
 
         //先查出总页数
         Integer sps = spMapper.selectByExample(example).size();//查询记录的总条数
-
+        System.out.println(sps);
         Integer pageAll = sps%9==0? sps/9:sps/9+1;
 
         //查询分页所得的数据
@@ -47,10 +50,12 @@ public class SPController {
             currentPage = pageAll;
         }
 
-        List<SP> listOP = spMapper.selectByExample(example);
+        List<SP> listOP =spServiceI.selectByExampleWithPage(sP,currentPage,pageSize);
+        System.out.println("listOP"+listOP.size());
         mav.addObject("listOP",listOP);
         mav.addObject("pageAll",pageAll);
         mav.addObject("currentPage",currentPage);
+        mav.addObject("sP",sP);
         mav.setViewName("groceries");
         return mav;
     }
