@@ -1,5 +1,6 @@
 package com.shopping.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.shopping.dao.SCarMapper;
@@ -10,15 +11,12 @@ import com.shopping.entity.SP;
 import com.shopping.entity.SUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,17 +60,9 @@ public class CarController {
 
     @RequestMapping("cardel")
     @ResponseBody
-    public String cardel(@RequestParam(value = "pid", required = false) Integer pid) throws JsonProcessingException {
+    public int cardel(@RequestParam Integer pid)  {
 
-        ObjectMapper objectMapper = new ObjectMapper();
-        String s = objectMapper.writeValueAsString("");
-        System.out.println("===========" + pid);
-//        int row = scarMapper.deleteByPid(pid);
-        String row = "0";
-
-//        PrintWriter out =  response.getWriter();
-//        if ()
-//        out.write("");
+       int row = scarMapper.deleteByPid(Integer.valueOf(pid));
         return row;
 
     }
