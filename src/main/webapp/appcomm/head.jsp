@@ -48,12 +48,12 @@
     <div class="container">
         <div class="w3ls_logo_products_left1">
             <ul class="phone_email">
-                <li><i class="fa fa-phone" aria-hidden="true"></i>超市电话请拨打 : 10086</li>
+                <li><i class="fa fa-phone" aria-hidden="true"></i>商城电话请拨打 : 10086</li>
 
             </ul>
         </div>
         <div class="w3ls_logo_products_left">
-            <h1><a href="index.jsp">超市</a></h1>
+            <h1><a href="index.jsp">网上电器商城</a></h1>
         </div>
         <div class="w3l_search">
             <form action="/sp/search/1/0" method="post">
