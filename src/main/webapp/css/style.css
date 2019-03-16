@@ -1199,7 +1199,7 @@ td.invert-image a img {
 }
 .checkout-left-basket {
     float: left;
-    width: 25%;
+    width: 70%;
 }
 .checkout-right-basket{
     float: right;
@@ -2635,7 +2635,7 @@ h3.agileits-icons-title {
         font-size: 12px;
     }
     .checkout-left-basket {
-        width: 34%;
+        width: 70%;
     }
     .agileinfo_single_left {
         float: left;
@@ -2834,7 +2834,7 @@ h3.agileits-icons-title {
         width: 71%;
     }
     .checkout-left-basket {
-        width: 42%;
+        width: 60%;
     }
     .agileinfo_single h2 {
         font-size: 1.2em;
@@ -2923,7 +2923,7 @@ h3.agileits-icons-title {
         width: 46%;
     }
     .checkout-left-basket {
-        width: 49%;
+        width: 70%;
     }
     td.invert-image a img {
         width: 65%;
@@ -3014,7 +3014,7 @@ h3.agileits-icons-title {
         width: 90%;
     }
     .checkout-left-basket {
-        width: 57%;
+        width: 70%;
     }
     .checkout-right-basket {
         margin: 3em 0 0 0em;

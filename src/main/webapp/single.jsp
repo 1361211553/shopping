@@ -122,7 +122,7 @@
                             </form>
                         </c:if>
                         <c:if test="${sessionScope.user ne null}">
-                            <form action="./cart/cartAdd/${prodetail.productid}.action" method="post">
+                            <form action="/car/caradd/${sp.pid}" method="post">
 
                                 <table>
                                     <tr>
@@ -183,7 +183,7 @@
                                         <h4><font color="red">￥${st.productsale}/${st.productunit}</font><span>￥${st.productprice}/${st.productunit}</span></h4>
                                     </div>
                                     <div class="snipcart-details top_brand_home_details">
-                                        <form action="#" method="post">
+                                        <form action="/car/caradd/" method="post">
                                             <fieldset>
                                                 <%--<input type="hidden" name="cmd" value="_cart">--%>
                                                 <%--<input type="hidden" name="add" value="1">--%>

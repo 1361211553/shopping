@@ -52,8 +52,8 @@
 <div class="breadcrumbs">
     <div class="container">
         <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
-            <li><a href="/sptype/search"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>主页</a></li>
-            <li class="active">${producttypename}页面</li>
+            <li><a href="index.jsp"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>主页</a></li>
+            <li class="active">页面</li>
         </ol>
     </div>
 </div>
@@ -90,7 +90,7 @@
                                         <%--<span>$55.00</span>--%>
                                     </div>
                                     <div class="snipcart-details top_brand_home_details">
-                                        <form action="#" method="post">
+                                        <form action="/car/caradd/${op.pid}" method="post">
                                             <fieldset>
                                                 <input type="hidden" name="productNum" style="width: 30px;" value="1">
                                         <%--<input type="hidden" name="cmd" value="_cart">--%>
