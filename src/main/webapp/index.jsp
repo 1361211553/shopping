@@ -139,28 +139,45 @@
                                                             <h4>已浏览<font color="red">${click.pclicks}</font>次</h4>
                                                         </div>
                                                         <div class="snipcart-details top_brand_home_details">
-                                                            <form action="./cart/cartAdd/${click.pid}.action"
-                                                                  method="post">
+                                                            <c:if test="${sessionScope.user eq null}">
+                                                                <form action="/login.jsp" method="post">
+                                                                    <fieldset>
+                                                                        <input type="hidden" name="productNum" style="width: 30px;"
+                                                                               value="1">
+                                                                            <%--<input type="hidden" name="cmd" value="_cart">--%>
+                                                                            <%--<input type="hidden" name="add" value="1">--%>
+                                                                            <%--<input type="hidden" name="business" value=" ">--%>
+                                                                            <%--<input type="hidden" name="item_name" value="Fortune Sunflower Oil">--%>
+                                                                            <%--<input type="hidden" name="amount" value="${pro.productprice}">--%>
+                                                                            <%--<input type="hidden" name="discount_amount" value="1.00">--%>
+                                                                            <%--<input type="hidden" name="currency_code" value="USD">--%>
+                                                                            <%--<input type="hidden" name="return" value="加入购物车">--%>
+                                                                            <%--<input type="hidden" name="cancel_return" value=" ">--%>
+                                                                        <input type="submit" name="submit" value="添加到购物车" class="button"
+                                                                               onclick="click01()">
+                                                                    </fieldset>
+                                                                </form>
+                                                            </c:if>
+                                                            <c:if test="${sessionScope.user ne null}">
+
                                                                 <fieldset>
-                                                                    <input type="hidden" name="productNum"
-                                                                           style="width: 30px;" value="1">
-                                                                    <%--<input type="hidden" name="cmd" value="_cart"/>--%>
-                                                                    <%--<input type="hidden" name="add" value="1"/>--%>
-                                                                    <%--<input type="hidden" name="business" value=" "/>--%>
-                                                                    <%--<input type="hidden" name="item_name"--%>
-                                                                           <%--value="Fortune Sunflower Oil"/>--%>
-                                                                    <%--<input type="hidden" name="amount" value="2.5"/>--%>
-                                                                    <%--<input type="hidden" name="discount_amount"--%>
-                                                                           <%--value="1.00"/>--%>
-                                                                    <%--<input type="hidden" name="currency_code"--%>
-                                                                           <%--value="USD"/>--%>
-                                                                    <%--<input type="hidden" name="return" value=" "/>--%>
-                                                                    <%--<input type="hidden" name="cancel_return"--%>
-                                                                           <%--value=" "/>--%>
-                                                                    <input type="submit" name="submit" value="添加到购物车"
-                                                                           class="button"/>
+                                                                    <input type="hidden" name="productNum" style="width: 30px;"
+                                                                           value="1">
+                                                                        <%--<input type="hidden" name="cmd" value="_cart">--%>
+                                                                        <%--<input type="hidden" name="add" value="1">--%>
+                                                                        <%--<input type="hidden" name="business" value=" ">--%>
+                                                                        <%--<input type="hidden" name="item_name" value="Fortune Sunflower Oil">--%>
+                                                                        <%--<input type="hidden" name="amount" value="${pro.productprice}">--%>
+                                                                        <%--<input type="hidden" name="discount_amount" value="1.00">--%>
+                                                                        <%--<input type="hidden" name="currency_code" value="USD">--%>
+                                                                        <%--<input type="hidden" name="return" value="加入购物车">--%>
+                                                                        <%--<input type="hidden" name="cancel_return" value=" ">--%>
+                                                                    <input type="button" pid="${click.pid}" name="submit"
+                                                                           value="添加到购物车"
+                                                                           class="button">
                                                                 </fieldset>
-                                                            </form>
+
+                                                            </c:if>
                                                         </div>
                                                     </div>
                                                 </figure>
@@ -219,28 +236,45 @@
                                                             <h4>已浏览<font color="red">${sale.pclicks}</font>次</h4>
                                                         </div>
                                                         <div class="snipcart-details top_brand_home_details">
-                                                            <form action="./cart/cartAdd/${prodetail.productid}.action"
-                                                                  method="post">
+                                                            <c:if test="${sessionScope.user eq null}">
+                                                                <form action="/login.jsp" method="post">
+                                                                    <fieldset>
+                                                                        <input type="hidden" name="productNum" style="width: 30px;"
+                                                                               value="1">
+                                                                            <%--<input type="hidden" name="cmd" value="_cart">--%>
+                                                                            <%--<input type="hidden" name="add" value="1">--%>
+                                                                            <%--<input type="hidden" name="business" value=" ">--%>
+                                                                            <%--<input type="hidden" name="item_name" value="Fortune Sunflower Oil">--%>
+                                                                            <%--<input type="hidden" name="amount" value="${pro.productprice}">--%>
+                                                                            <%--<input type="hidden" name="discount_amount" value="1.00">--%>
+                                                                            <%--<input type="hidden" name="currency_code" value="USD">--%>
+                                                                            <%--<input type="hidden" name="return" value="加入购物车">--%>
+                                                                            <%--<input type="hidden" name="cancel_return" value=" ">--%>
+                                                                        <input type="submit" name="submit" value="添加到购物车" class="button"
+                                                                               onclick="click01()">
+                                                                    </fieldset>
+                                                                </form>
+                                                            </c:if>
+                                                            <c:if test="${sessionScope.user ne null}">
+
                                                                 <fieldset>
-                                                                    <input type="hidden" name="productNum"
-                                                                           style="width: 30px;" value="1">
-                                                                        <%--<input type="hidden" name="cmd" value="_cart"/>--%>
-                                                                        <%--<input type="hidden" name="add" value="1"/>--%>
-                                                                        <%--<input type="hidden" name="business" value=" "/>--%>
-                                                                        <%--<input type="hidden" name="item_name"--%>
-                                                                        <%--value="Fortune Sunflower Oil"/>--%>
-                                                                        <%--<input type="hidden" name="amount" value="2.5"/>--%>
-                                                                        <%--<input type="hidden" name="discount_amount"--%>
-                                                                        <%--value="1.00"/>--%>
-                                                                        <%--<input type="hidden" name="currency_code"--%>
-                                                                        <%--value="USD"/>--%>
-                                                                        <%--<input type="hidden" name="return" value=" "/>--%>
-                                                                        <%--<input type="hidden" name="cancel_return"--%>
-                                                                        <%--value=" "/>--%>
-                                                                    <input type="submit" name="submit" value="添加到购物车"
-                                                                                                  class="button"/>
+                                                                    <input type="hidden" name="productNum" style="width: 30px;"
+                                                                           value="1">
+                                                                        <%--<input type="hidden" name="cmd" value="_cart">--%>
+                                                                        <%--<input type="hidden" name="add" value="1">--%>
+                                                                        <%--<input type="hidden" name="business" value=" ">--%>
+                                                                        <%--<input type="hidden" name="item_name" value="Fortune Sunflower Oil">--%>
+                                                                        <%--<input type="hidden" name="amount" value="${pro.productprice}">--%>
+                                                                        <%--<input type="hidden" name="discount_amount" value="1.00">--%>
+                                                                        <%--<input type="hidden" name="currency_code" value="USD">--%>
+                                                                        <%--<input type="hidden" name="return" value="加入购物车">--%>
+                                                                        <%--<input type="hidden" name="cancel_return" value=" ">--%>
+                                                                    <input type="button" pid="${sale.pid}" name="submit"
+                                                                           value="添加到购物车"
+                                                                           class="button">
                                                                 </fieldset>
-                                                            </form>
+
+                                                            </c:if>
                                                         </div>
                                                     </div>
                                                 </figure>
@@ -470,6 +504,40 @@
 <!-- //footer -->
 <!-- Bootstrap Core JavaScript -->
 <script src="js/bootstrap.min.js"></script>
+<script>
+    function click01() {
+        alert("请登录后操作");
+    }
+
+    $(document).ready(function () {
+
+        $(".button").click(function () {
+
+            var pid = $(this).attr("pid");
+            var  num =$(".font01").html();
+            $.ajax({
+                url: '/car/caradd',
+                type: 'POST',
+                dataType: "json",
+                data: {
+                    'pid': pid,
+                },
+                success: function (result) {
+                    if (result == 1) {
+                        alert('添加成功');
+                        $(".font01").html(parseInt(num)+parseInt(1));
+                    }else if (result == 2){
+                        alert('添加成功');
+                    } else {
+                        alert("添加失败");
+                    }
+                }
+            })
+
+        })
+    })
+
+</script>
 
 <!-- top-header and slider -->
 <!-- here stars scrolling icon -->
