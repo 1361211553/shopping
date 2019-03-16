@@ -39,7 +39,8 @@ public class a {
         Double s = i+d;
         DecimalFormat decimalFormat = new DecimalFormat(".00");
 
-        System.out.println(decimalFormat.format(d+i));
+        System.out.println(decimalFormat.format(i*3));
+        System.out.println(i*3);
     }
 }
 

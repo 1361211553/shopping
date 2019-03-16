@@ -65,6 +65,7 @@
                     <th>产品图片</th>
                     <th>产品名称</th>
                     <th>产品数量</th>
+                    <th>产品单价</th>
                     <th>删除</th>
                 </tr>
                 </thead>
@@ -76,7 +77,7 @@
                         <td class="invert">${vs.count}</td>
                         <td class="invert-image"><a href="single.jsp"><img src="${cl.pimg}" alt=" "
                                                                            class="img-responsive"
-                                                                           style="height: 100px" width="50px"/></a></td>
+                                                                          style=" width: 100px" /></a></td>
                         <td class="invert">${cl.pname}</td>
                         <td class="inver2t">
                             <div class="quantity">
@@ -87,7 +88,7 @@
                                 </div>
                             </div>
                         </td>
-
+                        <td class="invert">$<font color="red">${cl.pprice}</font></td>
                         <td class="invert">
                             <div class="rem">
                                 <a class="d" pid="${cl.pid}" pname="${cl.pname}">
@@ -124,11 +125,7 @@
         <div class="checkout-left">
             <div class="checkout-left-basket">
                 <h4>账单</h4>
-                <ul>
-                    <c:forEach items="${requestScope.productList}" var="cl" varStatus="vs">
-                    <li>${cl.pname}<i>-</i> <span>$${cl.pprice} </span></li>
-                    </c:forEach>
-                </ul>
+                <ul><li><font color="black" size="4px">商品总价 : </font><i>-</i> <span>$<font color="red" size="4px">${countPrice}</font></span></li></ul>
             </div>
             <div class="checkout-right-basket">
                 <a href="index.jsp"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>继续购物</a>
