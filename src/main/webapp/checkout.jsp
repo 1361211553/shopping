@@ -78,7 +78,7 @@
                                                                            class="img-responsive"
                                                                            style="height: 100px" width="50px"/></a></td>
                         <td class="invert">${cl.pname}</td>
-                        <td class="invert">
+                        <td class="inver2t">
                             <div class="quantity">
                                 <div class="quantity-select">
                                     <div class="entry value-minus">&nbsp;</div>
@@ -125,11 +125,9 @@
             <div class="checkout-left-basket">
                 <h4>账单</h4>
                 <ul>
-                    <li>产品1<i>-</i> <span>$15.00 </span></li>
-                    <li>产品2 <i>-</i> <span>$25.00 </span></li>
-                    <li>产品3 <i>-</i> <span>$29.00 </span></li>
-                    <li>服务费<i>-</i> <span>$15.00</span></li>
-                    <li>总计 <i>-</i> <span>$84.00</span></li>
+                    <c:forEach items="${requestScope.productList}" var="cl" varStatus="vs">
+                    <li>${cl.pname}<i>-</i> <span>$${cl.pprice} </span></li>
+                    </c:forEach>
                 </ul>
             </div>
             <div class="checkout-right-basket">
