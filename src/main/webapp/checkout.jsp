@@ -88,7 +88,7 @@
                                 </div>
                             </div>
                         </td>
-                        <td class="invert">$<font color="red">${cl.pprice}</font></td>
+                        <td class="invert">￥<font color="red">${cl.pprice}</font></td>
                         <td class="invert">
                             <div class="rem">
                                 <a class="d" pid="${cl.pid}" pname="${cl.pname}">
@@ -125,10 +125,11 @@
         <div class="checkout-left">
             <div class="checkout-left-basket">
                 <h4>账单</h4>
-                <ul><li><font color="black" size="4px">商品总价 : </font><i>-</i> <span>$<font color="red" size="4px">${countPrice}</font></span></li></ul>
+                <ul><li><font color="black" size="4px">商品总价 : </font><i>-</i> <span>￥<font color="red" size="4px">${countPrice}</font></span></li></ul>
             </div>
             <div class="checkout-right-basket">
                 <a href="index.jsp"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>继续购物</a>
+                <a href="index.jsp"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>提交订单</a>
             </div>
             <div class="clearfix"> </div>
         </div>
@@ -190,6 +191,7 @@
             var obj = $(this);
             var pid = $(this).attr("pid");
             var pname = $(this).attr("pname");
+            var num = $(".font01").html();
             $.ajax({
                 url:'/car/cardel',
                 type:'POST',
@@ -201,6 +203,8 @@
                     if (result == 1){
                         alert('成功删除【'+pname+'】商品');
                        obj.parents('tr').remove();
+                       $(".font01").html(parseInt(num)-parseInt(1));
+
                     } else {
                         alert("删除失败");
                     }

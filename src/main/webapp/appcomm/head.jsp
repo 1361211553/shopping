@@ -37,7 +37,8 @@
                 <%--<input type="hidden" name="cmd" value="_cart">--%>
                 <%--<input type="hidden" name="display" value="1">--%>
                 <button class="w3view-cart" type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down"
-                                                                                    aria-hidden="true"></i></button>
+                                                                                    aria-hidden="true"></i>
+                </button><i><font color="red" size="2px" class="font01">${carNum}</font></i>
             </form>
         </div>
         <div class="clearfix"></div>

@@ -93,7 +93,7 @@
 
 
                         <c:if test="${sessionScope.user eq null}">
-                            <form action="./cart/cartAddTest.action" method="post">
+                            <form action="/login.jsp" method="post">
 
                                 <table>
                                     <tr>
@@ -122,12 +122,11 @@
                             </form>
                         </c:if>
                         <c:if test="${sessionScope.user ne null}">
-                            <form action="/car/caradd/${sp.pid}" method="post">
 
                                 <table>
                                     <tr>
                                         <td>数量：</td>
-                                        <td><input type="text" name="productNum" style="width: 30px;" value="1"></td>
+                                        <td><input type="text" class="pnum" name="productNum" style="width: 30px;" value="1"></td>
                                     </tr>
                                 </table>
 
@@ -142,11 +141,10 @@
                                         <%--<input type="hidden" name="currency_code" value="USD">--%>
                                         <%--<input type="hidden" name="return" value=" ">--%>
                                         <%--<input type="hidden" name="cancel_return" value=" ">--%>
-                                    <input type="submit" name="submit" value="添加到购物车" class="button" onclick="cart()">
+                                    <input type="button" name="submit"  pid="${sp.pid}" value="添加到购物车" class="button">
 
 
                                 </fieldset>
-                        </form>
                         </c:if>
                     </div>
                 </div>
@@ -217,14 +215,41 @@
     <!-- Bootstrap Core JavaScript -->
 <script>
 
-    function cart() {
-        alert("提交到购物车成功");
-    }
-
     function cartTest() {
         alert("请先登录后操作");
     }
 
+</script>
+<script>
+    $(document).ready(function () {
+
+        $(".button").click(function () {
+
+            var pid = $(this).attr("pid");
+            var pnum = $(".pnum").val();
+            var  num =$(".font01").html();
+            $.ajax({
+                url: '/car/caradd',
+                type: 'POST',
+                dataType: "json",
+                data: {
+                    'pid': pid,
+                    'pnum':pnum,
+                },
+                success: function (result) {
+                    if (result == 1) {
+                        alert('添加成功');
+                        $(".font01").html(parseInt(num)+parseInt(1));
+                    }else if (result == 2){
+                        alert('添加成功');
+                    } else {
+                        alert("添加失败");
+                    }
+                }
+            })
+
+        })
+    })
 </script>
     <script src="js/bootstrap.min.js"></script>
     <!-- top-header and slider -->

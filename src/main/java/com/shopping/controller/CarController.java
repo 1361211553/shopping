@@ -51,6 +51,8 @@ public class CarController {
                 countPrice = Double.valueOf(str);
             }
 
+
+             session.setAttribute("carNum",listcar.size());
             mav.addObject("productList", listsp);
             mav.addObject("listcar", listcar);
             mav.addObject("countPrice",countPrice);
@@ -63,31 +65,52 @@ public class CarController {
         }
         return mav;
     }
-    @RequestMapping(value = "caradd/{pid}",method = RequestMethod.POST)
-    public ModelAndView caradd(@PathVariable(name = "pid" ) Integer pid,HttpSession session,
-                               @RequestParam(value = "productNum",required = false) Integer pnum){
+    @RequestMapping(value = "caradd",method = RequestMethod.POST)
+    @ResponseBody
+        public int caradd(@RequestParam Integer pid,HttpSession session,
+                          @RequestParam(required = false) Integer pnum){
 
-        ModelAndView mav = new ModelAndView("redirect:/car/carsearch");
         SUser sUser = (SUser) session.getAttribute("user");
-        SCar sCar = new SCar();
-        sCar.setPid(pid);
-        sCar.setUserid(sUser.getUserid());
-        if (pnum != null){
-            sCar.setPnum(pnum);
+        Integer carNum =(Integer) session.getAttribute("carNum");
+
+        SCarExample sCarExample = new SCarExample();
+        SCarExample.Criteria criteria = sCarExample.createCriteria();
+        criteria.andPidEqualTo(pid);
+        List<SCar> listCar =  scarMapper.selectByExample(sCarExample);
+        int row = 2;
+        if (listCar.size() > 0){
+
+            SCar sCar = new SCar();
+            sCar.setCid(listCar.get(0).getCid());
+            if (pnum != null){
+
+                sCar.setPnum(listCar.get(0).getPnum()+pnum);
+            }else {
+                sCar.setPnum(listCar.get(0).getPnum()+1);
+            }
+            scarMapper.updateByPrimaryKeySelective(sCar);
         }else {
-            sCar.setPnum(1);
+
+            SCar sCar = new SCar();
+            sCar.setPid(pid);
+            sCar.setUserid(sUser.getUserid());
+            if (pnum != null){
+                sCar.setPnum(pnum);
+            }else {
+                sCar.setPnum(1);
+            }
+            session.setAttribute("carNum",carNum+1);
+            row = scarMapper.insertSelective(sCar);
+
         }
-
-        scarMapper.insertSelective(sCar);
-
-        return mav;
+        return row;
     }
 
     @RequestMapping("cardel")
     @ResponseBody
     public int cardel(@RequestParam Integer pid)  {
 
-       int row = scarMapper.deleteByPid(Integer.valueOf(pid));
+       int row = scarMapper.deleteByPid(pid);
         return row;
 
     }

@@ -8,7 +8,7 @@
                 <h3>基本信息</h3>
 
                 <ul class="address">
-                    <li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>厦门市软件园二期<span>经纬盈创</span></li>
+                    <li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>厦门市<span></span></li>
                     <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a
                             href="mailto:info@example.com">1008611@qq.com</a></li>
                     <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>100861123</li>

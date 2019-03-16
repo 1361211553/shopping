@@ -1,6 +1,9 @@
 package com.shopping.controller;
 
+import com.shopping.dao.SCarMapper;
 import com.shopping.dao.SUserMapper;
+import com.shopping.entity.SCar;
+import com.shopping.entity.SCarExample;
 import com.shopping.entity.SUser;
 import com.shopping.entity.SUserExample;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +26,8 @@ public class UserController {
 
     @Autowired
     SUserMapper sUserMapper;
+    @Autowired
+    SCarMapper sCarMapper;
 
     @RequestMapping(value = "login", method = RequestMethod.POST)
     public ModelAndView login(@RequestParam(value = "username") String username,
@@ -34,7 +39,6 @@ public class UserController {
         SUserExample.Criteria criteria = sUserExample.createCriteria();
         if (username != null && userpass != null) {
 
-            System.out.println("=============");
             criteria.andUsernameEqualTo(username);
             criteria.andUserpassEqualTo(userpass);
             List<SUser> listsUser = sUserMapper.selectByExample(sUserExample);
@@ -43,7 +47,12 @@ public class UserController {
                 SUser sUser = listsUser.get(0);
                 if (sUser.getSlock() != 1) {
 
+                    SCarExample sCarExample = new SCarExample();
+                    SCarExample.Criteria criteria1 = sCarExample.createCriteria();
+                    criteria1.andUseridEqualTo(sUser.getUserid());
+                    List<SCar> listcar = sCarMapper.selectByExample(sCarExample);
                     session.setAttribute("user", sUser);
+                    session.setAttribute("carNum",listcar.size());
                     mav.setView(new RedirectView("/index.jsp"));
                 } else {
                     mav.addObject("errMs", "此账号已冻结");
@@ -66,6 +75,7 @@ public class UserController {
     public String loginout(HttpSession session) {
 
         session.removeAttribute("user");
+        session.removeAttribute("carNum");
 
         return "redirect:/login.jsp";
 
@@ -84,9 +94,9 @@ public class UserController {
             criteria.andUserpassEqualTo(sUser.getUserpass());
             List<SUser> listsUser = sUserMapper.selectByExample(sUserExample);
             if (listsUser.size() == 0) {
-                Random random = new Random(64+1);
+                Random random = new Random(64 + 1);
                 sUser.setSlock(0);
-                sUser.setUserface("images/face ("+new Random().nextInt(64-1)+").jpg");
+                sUser.setUserface("images/face (" + new Random().nextInt(64 - 1) + ").jpg");
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                 String datestr = sdf.format(new Date());
                 try {
@@ -99,7 +109,7 @@ public class UserController {
                 mav.addObject("errMs", "此账号已存在");
                 mav.setViewName("login");
 
-            }else {
+            } else {
 
                 mav.addObject("errMs", "此账号已存在");
                 mav.setViewName("registered");
