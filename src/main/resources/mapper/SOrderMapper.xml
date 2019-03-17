@@ -7,6 +7,7 @@
     <result column="pcount" property="pcount" jdbcType="INTEGER" />
     <result column="ptotalprice" property="ptotalprice" jdbcType="DOUBLE" />
     <result column="pstatus" property="pstatus" jdbcType="INTEGER" />
+    <result column="orderdate" property="orderdate" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -67,7 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    oid, userid, pcount, ptotalprice, pstatus
+    oid, userid, pcount, ptotalprice, pstatus, orderdate
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.shopping.entity.SOrderExample" >
     select
@@ -96,9 +97,11 @@
   </delete>
   <insert id="insert" parameterType="com.shopping.entity.SOrder" >
     insert into s_order (oid, userid, pcount, 
-      ptotalprice, pstatus)
+      ptotalprice, pstatus, orderdate
+      )
     values (#{oid,jdbcType=VARCHAR}, #{userid,jdbcType=INTEGER}, #{pcount,jdbcType=INTEGER}, 
-      #{ptotalprice,jdbcType=DOUBLE}, #{pstatus,jdbcType=INTEGER})
+      #{ptotalprice,jdbcType=DOUBLE}, #{pstatus,jdbcType=INTEGER}, #{orderdate,jdbcType=TIMESTAMP}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.shopping.entity.SOrder" >
     insert into s_order
@@ -118,6 +121,9 @@
       <if test="pstatus != null" >
         pstatus,
       </if>
+      <if test="orderdate != null" >
+        orderdate,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="oid != null" >
@@ -134,6 +140,9 @@
       </if>
       <if test="pstatus != null" >
         #{pstatus,jdbcType=INTEGER},
+      </if>
+      <if test="orderdate != null" >
+        #{orderdate,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -155,6 +164,9 @@
       <if test="record.pstatus != null" >
         pstatus = #{record.pstatus,jdbcType=INTEGER},
       </if>
+      <if test="record.orderdate != null" >
+        orderdate = #{record.orderdate,jdbcType=TIMESTAMP},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -166,7 +178,8 @@
       userid = #{record.userid,jdbcType=INTEGER},
       pcount = #{record.pcount,jdbcType=INTEGER},
       ptotalprice = #{record.ptotalprice,jdbcType=DOUBLE},
-      pstatus = #{record.pstatus,jdbcType=INTEGER}
+      pstatus = #{record.pstatus,jdbcType=INTEGER},
+      orderdate = #{record.orderdate,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -186,6 +199,9 @@
       <if test="pstatus != null" >
         pstatus = #{pstatus,jdbcType=INTEGER},
       </if>
+      <if test="orderdate != null" >
+        orderdate = #{orderdate,jdbcType=TIMESTAMP},
+      </if>
     </set>
     where oid = #{oid,jdbcType=VARCHAR}
   </update>
@@ -194,7 +210,8 @@
     set userid = #{userid,jdbcType=INTEGER},
       pcount = #{pcount,jdbcType=INTEGER},
       ptotalprice = #{ptotalprice,jdbcType=DOUBLE},
-      pstatus = #{pstatus,jdbcType=INTEGER}
+      pstatus = #{pstatus,jdbcType=INTEGER},
+      orderdate = #{orderdate,jdbcType=TIMESTAMP}
     where oid = #{oid,jdbcType=VARCHAR}
   </update>
 </mapper>

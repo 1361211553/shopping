@@ -1,5 +1,7 @@
 package com.shopping.entity;
 
+import java.util.Date;
+
 public class SOrder {
     private String oid;
 
@@ -10,6 +12,8 @@ public class SOrder {
     private Double ptotalprice;
 
     private Integer pstatus;
+
+    private Date orderdate;
 
     public String getOid() {
         return oid;
@@ -49,5 +53,13 @@ public class SOrder {
 
     public void setPstatus(Integer pstatus) {
         this.pstatus = pstatus;
+    }
+
+    public Date getOrderdate() {
+        return orderdate;
+    }
+
+    public void setOrderdate(Date orderdate) {
+        this.orderdate = orderdate;
     }
 }

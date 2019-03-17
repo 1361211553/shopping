@@ -1,6 +1,7 @@
 package com.shopping.entity;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class SOrderExample {
@@ -411,6 +412,66 @@ public class SOrderExample {
 
         public Criteria andPstatusNotBetween(Integer value1, Integer value2) {
             addCriterion("pstatus not between", value1, value2, "pstatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderdateIsNull() {
+            addCriterion("orderdate is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderdateIsNotNull() {
+            addCriterion("orderdate is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderdateEqualTo(Date value) {
+            addCriterion("orderdate =", value, "orderdate");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderdateNotEqualTo(Date value) {
+            addCriterion("orderdate <>", value, "orderdate");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderdateGreaterThan(Date value) {
+            addCriterion("orderdate >", value, "orderdate");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderdateGreaterThanOrEqualTo(Date value) {
+            addCriterion("orderdate >=", value, "orderdate");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderdateLessThan(Date value) {
+            addCriterion("orderdate <", value, "orderdate");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderdateLessThanOrEqualTo(Date value) {
+            addCriterion("orderdate <=", value, "orderdate");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderdateIn(List<Date> values) {
+            addCriterion("orderdate in", values, "orderdate");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderdateNotIn(List<Date> values) {
+            addCriterion("orderdate not in", values, "orderdate");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderdateBetween(Date value1, Date value2) {
+            addCriterion("orderdate between", value1, value2, "orderdate");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderdateNotBetween(Date value1, Date value2) {
+            addCriterion("orderdate not between", value1, value2, "orderdate");
             return (Criteria) this;
         }
     }
