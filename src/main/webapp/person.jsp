@@ -118,7 +118,12 @@
                 </form>
                 <div class="user_info">
                     <h2 style="font-size: 25px;" class="uesr_n">${user.username}</h2>
+                    <c:if test="${user.usersex eq '女'}">
                     <span class="user_sex user_sex-female"></span>
+                    </c:if>
+                    <c:if test="${user.usersex eq '男'}">
+                    <span class="user_sex user_sex-male"></span>
+                    </c:if>
 
                     <!-- <p class="yy_num"><span>YY:</span><span id="YY">1262956343</span></p> -->
                     <!-- 非第三方登陆，显示修改昵称、密码 -->

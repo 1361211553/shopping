@@ -1,418 +1,19 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
-  Date: 2018/11/27
-  Time: 16:25
+  Date: 2018/11/20
+  Time: 16:14
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ include file="appcomm/basePath.jsp" %>
 <html>
 <head>
-    <title>修改地址</title>
+    <title>Registered</title>
     <link rel="stylesheet" href="css/admin_aa137ba.css">
-    <style type="text/css">
-        .main-col {
-            *padding-bottom: 140px;
-        }
-
-        .main-col, .anchor-col, .anchor-content {
-            min-height: 1400px;
-        }
-    </style>
-    <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
-    <link href="css/userinfo_set_801d6eb.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/user_nick_e4452bb.css">
     <link href="css/new_home_index__daf8123.css" rel="stylesheet">
-    <script charset="utf-8" type="text/javascript" async="" src="js/underscore_3d00f9f.js"></script>
-    <script charset="utf-8" type="text/javascript" async="" src="js/header_search_tip_1b84d58.js"></script>
-    <style>@charset "UTF-8";
-    .header-search-tips {
-        position: relative;
-        width: 250px;
-        background-color: #fff;
-        border: 1px solid #e0e0e0;
-        font-size: 12px;
-        box-shadow: 0 3px 8px 2px rgba(1, 1, 1, .1);
-        border-radius: 5px
-    }
-
-    .header-search-tips li {
-        line-height: 30px;
-        height: 30px;
-        color: #666;
-        overflow: hidden;
-        cursor: pointer;
-        padding: 0 15px
-    }
-
-    .header-search-tips li:hover {
-        color: #f90;
-        background-color: #ececec
-    }
-
-    .header-search-tips .his-items em {
-        width: 14px;
-        height: 14px;
-        text-align: center;
-        line-height: 14px;
-        display: inline-block;
-        background: url(https://a.msstatic.com/huya/main/img/header/sprite/search_icon_b4d8025.png);
-        margin-right: 8px;
-        vertical-align: middle;
-        *display: inline;
-        *zoom: 1
-    }
-
-    .header-search-tips .his-items .del-item-link {
-        float: right;
-        padding: 0 5px;
-        height: 30px;
-        margin-right: -5px
-    }
-
-    .header-search-tips .his-items .del-item-link span {
-        display: inline-block;
-        *display: block;
-        *margin-top: 12px;
-        vertical-align: middle;
-        width: 8px;
-        height: 7px;
-        background: url(https://a.msstatic.com/huya/main/img/header/sprite/search_clear_69b8269.png?__sprite);
-        text-indent: -9999em
-    }
-
-    .header-search-tips .clear-his-btn {
-        display: block;
-        margin: 6px 15px 8px;
-        font-size: 12px;
-        line-height: 28px;
-        border-radius: 14px;
-        color: #555;
-        background: #F1F2F4;
-        text-align: center;
-        text-decoration: none
-    }
-
-    .header-search-tips .clear-his-btn i {
-        padding-left: 5px;
-        font-family: \5b8b\4f53
-    }
-
-    .header-search-tips .clear-his-btn:hover {
-        text-decoration: none;
-        background: #ff9600;
-        color: #fff
-    }
-
-    .header-search-tips .his-items-line {
-        height: 0;
-        border-bottom: 1px solid #e6e6e6;
-        margin-bottom: 6px
-    }
-
-    .header-search-tips .search-items {
-        padding-bottom: 7px
-    }
-
-    .header-search-tips .search-items em {
-        width: 16px;
-        height: 16px;
-        text-align: center;
-        line-height: 16px;
-        font-size: 12px;
-        display: inline-block;
-        *display: inline;
-        *zoom: 1;
-        background: #d8d8d8;
-        color: #666;
-        border-radius: 8px;
-        margin-right: 8px
-    }
-
-    .header-search-tips .search-items em.top-item {
-        background: #ff6d00;
-        color: #fff
-    }
-
-    .header-search-tips .search-item-hover {
-        color: #666;
-        background-color: #ececec
-    }
-
-    .header-search-tips .search-item-hover .suggest-text {
-        width: 7em
-    }
-
-    .header-search-tips .search-item-hover .suggest-text.hot {
-        width: 7em
-    }
-
-    .header-search-tips .search-item-hover .suggest-link {
-        display: block
-    }
-
-    .header-search-tips .suggest-text {
-        display: inline-block;
-        vertical-align: top;
-        width: 100%;
-        height: 30px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap
-    }
-
-    .header-search-tips .suggest-text.hot {
-        width: 12em
-    }
-
-    .header-search-tips .suggest-link {
-        display: none;
-        float: right;
-        color: #f90
-    }
-
-    .header-search-tips .suggest-link:hover {
-        cursor: pointer;
-        color: #f90
-    }</style>
-    <style>.nav-expand-game dl {
-        margin: 0 -5px 10px 0
-    }
-
-    .nav-expand-game dt {
-        margin-bottom: 5px;
-        color: #555;
-        font-weight: 700;
-        font-size: 14px
-    }
-
-    .nav-expand-game dd {
-        float: left;
-        margin: 0 5px 5px 0
-    }
-
-    .nav-expand-game dd a {
-        display: block;
-        width: 78px;
-        height: 22px;
-        border: 1px solid #e3e7e8;
-        text-align: center;
-        line-height: 22px;
-        border-radius: 11px;
-        text-decoration: none;
-        color: #666;
-        font-size: 12px;
-        white-space: nowrap;
-        word-wrap: normal;
-        overflow: hidden;
-        -ms-text-overflow: ellipsis;
-        text-overflow: ellipsis
-    }
-
-    .nav-expand-game dd a:hover {
-        color: #fff;
-        background: #ff9600;
-        border: 1px solid #ff9600
-    }
-
-    .nav-expand-game img {
-        width: 250px;
-        height: 60px;
-        border-radius: 3px
-    }</style>
-    <style>@keyframes matchLiving {
-               0% {
-                   background-position: 0 0
-               }
-               100% {
-                   background-position: -108px 0
-               }
-           }
-
-    .hy-header-match-panel {
-        word-wrap: normal;
-        font-size: 12px
-    }
-
-    .hy-header-match-sec {
-        margin-bottom: 10px
-    }
-
-    .hy-header-match-sec:last-child {
-        margin-bottom: 0
-    }
-
-    .hy-header-match-sec-hd {
-        padding: 0 0 5px 15px;
-        color: #555;
-        font-size: 14px;
-        font-weight: 700
-    }
-
-    .hy-header-match-list {
-        width: 100%
-    }
-
-    .hy-header-match-list ul {
-        zoom: 1
-    }
-
-    .hy-header-match-list ul:before, .hy-header-match-list ul:after {
-        display: table;
-        content: ""
-    }
-
-    .hy-header-match-list ul:after {
-        clear: both
-    }
-
-    .hy-header-match-list li {
-        height: 30px
-    }
-
-    .hy-header-match-list li .match-item {
-        display: block;
-        padding-left: 15px;
-        line-height: 30px;
-        text-decoration: none;
-        color: #666;
-        font-size: 12px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis
-    }
-
-    .hy-header-match-list li .match-item:hover {
-        background: #f1f1f1;
-        text-decoration: none
-    }
-
-    .hy-header-match-list li .match-item:hover .match-name {
-        color: #ff9600
-    }
-
-    .hy-header-match-list li .match-item .icon-living, .hy-header-match-list li .match-item .icon-replay {
-        position: relative;
-        top: 4px;
-        margin-right: 5px;
-        display: inline-block;
-        width: 18px;
-        height: 18px;
-        border-radius: 50%
-    }
-
-    .hy-header-match-list li .match-item .icon-living {
-        background-color: #f80;
-        background-image: url(https://a.msstatic.com/huya/main/img/header/icon_live_917bc61.png);
-        webkit-animation: matchLiving .6s steps(6) infinite;
-        animation: matchLiving .6s steps(6) infinite
-    }
-
-    .hy-header-match-list li .match-item .icon-replay {
-        background-image: url(https://a.msstatic.com/huya/main/img/header/icon_replay_02a1bcc.png)
-    }
-
-    .hy-header-match-list li .match-item .team-score {
-        display: inline-block;
-        margin: 0 2px;
-        width: 14px;
-        height: 17px;
-        text-align: center;
-        line-height: 17px;
-        font-weight: 700;
-        color: #616161;
-        background: url(https://a.msstatic.com/huya/main/img/header/score_1ccdacc.png)
-    }
-
-    .hy-header-match-preview {
-        padding-left: 15px
-    }
-
-    .hy-header-match-preview ul {
-        border-left: 1px solid #CDCDCD;
-        margin-left: 2px
-    }
-
-    .hy-header-match-preview li {
-        position: relative;
-        padding: 0 15px 0 4px;
-        margin: 0 0 7px 6px;
-        line-height: 30px
-    }
-
-    .hy-header-match-preview li:after {
-        position: absolute;
-        left: -11px;
-        top: 11px;
-        display: inline-block;
-        content: "";
-        width: 9px;
-        height: 9px;
-        background: url(https://a.msstatic.com/huya/main/img/dot_11a8167.png)
-    }
-
-    .hy-header-match-preview li:last-child {
-        margin-bottom: 0
-    }
-
-    .hy-header-match-preview li div {
-        zoom: 1
-    }
-
-    .hy-header-match-preview li div:before, .hy-header-match-preview li div:after {
-        display: table;
-        content: ""
-    }
-
-    .hy-header-match-preview li div:after {
-        clear: both
-    }
-
-    .hy-header-match-preview li:hover {
-        background-color: #f1f1f1
-    }
-
-    .hy-header-match-preview-time {
-        float: left;
-        color: #62B5F7;
-        margin-right: 5px
-    }
-
-    .hy-header-match-preview-name {
-        float: left;
-        max-width: 9.5em;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        overflow: hidden;
-        color: #666
-    }
-
-    .hy-header-match-preview-btn {
-        float: right;
-        margin-top: 5px;
-        width: 4em;
-        line-height: 20px;
-        border-radius: 10px;
-        text-decoration: none;
-        background: #62B5F7;
-        color: #fff;
-        text-align: center
-    }
-
-    .hy-header-match-preview-btn:hover {
-        background: #7CC6FF;
-        text-decoration: none;
-        color: #fff
-    }
-
-    .hy-header-match-preview-btn.hy-header-match-preview-btn-gray {
-        background: #BABDC1
-    }
-
-    .hy-header-match-empty {
-        padding-left: 15px
-    }</style>
     <!-- for-mobile-apps -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -456,7 +57,6 @@
 <body>
 <!-- header -->
 <%@ include file="appcomm/head.jsp" %>
-
 <!-- //navigation -->
 <!-- breadcrumbs -->
 <div class="breadcrumbs">
@@ -473,71 +73,105 @@
 
     <link rel="stylesheet" type="text/css" href="css/menu_d79cf19.css">
     <script>
-        var currentMenu = 'userinfo',
+        var currentMenu = 'home',
                 indexUrl = "//i.huya.com/",
                 indexFile = "index.php";
     </script>
     <script type="text/javascript" src="js/main_menu_29d4193.js"></script>
     <script type="text/javascript" src="js/cookies.js"></script>
+    <!-- column-->
     <%@ include file="appcomm/column.jsp" %>
+    <!-- column-->
     <div class="main-col">
         <div class="scroll-content">
-            <div class="mod">
-                <div class="mod-hd">
-                    <a href="edit.jsp" class="back-to">返回</a>
-                    <h3 style="border-left:none;">修改地址</h3>
+            <div class="mod mod-user-center">
+                <img style="width:120px;height:120px;" class="user_icon"
+                     src="${user.userface}" alt="头像">
+
+                <img class="img_hover" src="//a.msstatic.com/huya/icenter/main/img/header_hover_6f5fb29.png" alt="上传图像">
+                <form id="img_submit" enctype="multipart/form-data" method="post"
+                      action="https://i.huya.com/index.php?m=Home&amp;do=ajaxUlogo">
+                    <div id="fileImg" class="uploadify" style="height: 120px; width: 120px;">
+                        <object id="SWFUpload_0" type="application/x-shockwave-flash"
+                                data="base/uploadify/uploadify.swf?preventswfcaching=1543221865973" width="120"
+                                height="120" class="swfupload" style="position: absolute; z-index: 1;">
+                            <param name="wmode" value="transparent">
+                            <param name="movie" value="base/uploadify/uploadify.swf?preventswfcaching=1543221865973">
+                            <param name="quality" value="high">
+                            <param name="menu" value="false">
+                            <param name="allowScriptAccess" value="always">
+                            <param name="flashvars"
+                                   value="movieName=SWFUpload_0&amp;uploadURL=%2Findex.php%3Fm%3DCaptcha%26do%3DsaveImg&amp;useQueryString=false&amp;requeueOnError=false&amp;httpSuccess=&amp;assumeSuccessTimeout=30&amp;params=&amp;filePostName=avatar&amp;fileTypes=*.gif%3B%20*.jpg%3B%20*.png%3B*.jpeg&amp;fileTypesDescription=Image%20Files&amp;fileSizeLimit=1MB&amp;fileUploadLimit=0&amp;fileQueueLimit=999&amp;debugEnabled=false&amp;buttonImageURL=%2F&amp;buttonWidth=120&amp;buttonHeight=120&amp;buttonText=&amp;buttonTextTopPadding=0&amp;buttonTextLeftPadding=0&amp;buttonTextStyle=color%3A%20%23000000%3B%20font-size%3A%2016pt%3B&amp;buttonAction=-110&amp;buttonDisabled=false&amp;buttonCursor=-2">
+                        </object>
+                        <div id="fileImg-button" class="uploadify-button "
+                             style="height: 120px; line-height: 120px; width: 120px;"><span
+                                class="uploadify-button-text">上传图片</span></div>
+                    </div>
+                    <div id="fileImg-queue" class="uploadify-queue"></div>
+                    <input type="hidden" name="uid" value="1170642926">
+                    <input type="hidden" name="w" id="img_width" value="">
+                    <input type="hidden" name="h" id="img_height" value="">
+                    <input type="hidden" name="x1" id="x1" value="">
+                    <input type="hidden" name="y1" id="y1" value="">
+                    <input type="hidden" name="x2" id="x2" value="">
+                    <input type="hidden" name="y2" id="y2" value="">
+                </form>
+                <div class="user_info">
+                    <h2 style="font-size: 25px;" class="uesr_n">${user.username}</h2>
+                    <c:if test="${user.usersex eq '女'}">
+                    <span class="user_sex user_sex-female"></span>
+                    </c:if>
+                    <c:if test="${user.usersex eq '男'}">
+                    <span class="user_sex user_sex-male"></span>
+                    </c:if>
+
+                    <!-- <p class="yy_num"><span>YY:</span><span id="YY">1262956343</span></p> -->
+                    <!-- 非第三方登陆，显示修改昵称、密码 -->
+                    <div class="change">
+
+                        <input id="other_name" type="text" maxlength="20">
+                        <a href="javascript:void(0);" class="btn sure_change">确定</a>
+                        <a href="javascript:void(0);" class="btn quit_change">取消</a>
+                    </div>
+
+                    <a href="javascript:void(0);" class="change_w"></a>
+                    <p class="user_msg">
+                            <span class="user_age">
+                                <%--${user.userage}--%></span>
+
+                    </p>
+
+
                 </div>
-                <!-- 已绑定手机s -->
-                <div class="mod-hd has-bind-phone">
-                    <!-- 顶部栏 -->
-
-                    <div class="has-bind-title">
-                        <p>当前地址：<span id="oldNick">${add}</span></p>
-
-                    </div>
-
-                    <!-- 填写内容 -->
-                    <form id=payment  method="post" action="add?op=updateAddress">
-                        <div class="login-form-grids animated wow slideInUp" data-wow-delay=".5s">
-
-                            <input type="text" name="address" placeholder="新地址" required=" " >
-
-
-                            <input type="submit" value="确认">
-
-
-                            <font color="red" size="4">${success}</font>
-
-                        </div>
-                    </form>
-                    <div class="nick-tips">
-                        <p class="nick-tips-title">修改规则</p>
-
-                        <p>地址输入到所在市区区，如福建省厦门市思明区。</p>
-                        <p>地址只允许输入中文、数字。</p>
-
-                    </div>
-                    <div class="nick-tips nick-tips-law">
-                        <p class="nick-tips-title">温馨提示</p>
-                        <p>根据《互联网用户账号名称管理规定》第六条规定，任何机构或个人注册和使用的互联网用户账号名称，不得有下列情形：</p>
-                        <p>（一）违反宪法或法律法规规定的；</p>
-                        <p>（二）危害国家安全，泄露国家机密，颠覆国家政权，破坏国家统一的；</p>
-                        <a href="javascript:;" id="lookMoreLaw" class="look-more-law">查看更多</a>
-                        <div id="moreLaw" class="more-law">
-                            <p>（三）损害国家荣誉和利益的，损害公共利益的；</p>
-                            <p>（四）煽动民族仇恨、民族歧视，破坏民族团结的；</p>
-                            <p>（五）破坏国家宗教政策，宣扬邪教和封建迷信的；</p>
-                            <p>（六）散布谣言，扰乱社会秩序，破坏社会稳定的；</p>
-                            <p>（七）散步淫秽、色情、赌博、暴力、凶杀、恐怖或者教唆犯罪的；</p>
-                            <p>（八）侮辱或者诽谤他人，侵害他人合法权益的；</p>
-                            <p>（九）含有法律、行政法规禁止的其他内容的。</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- 已绑定手机e -->
             </div>
         </div>
-</div>
+        <!-- 账号管理 -->
+        <div class="mod mod-basic account-num" id="account_num">
+
+
+
+            <!-- 非第三方登陆，显示修改密码 -->
+            <a class="account_num_list block-a" href="addressadd.jsp" target="_blank" id="changeNum">
+                <div class="password"></div>
+                <div class="msg">
+                    <p class="msg_1">新增地址</p>
+
+                </div>
+                <em class="result"></em>
+            </a>
+
+            <a class="account_num_list block-a" href="addressmodify.jsp" target="_blank">
+                <div class="no_anchor"></div>
+                <div class="msg">
+                    <p class="msg_1">修改地址</p>
+
+                </div>
+                <em class="result"></em>
+            </a>
+
+
+        </div>
+    </div>
 
 </div>
 <!-- //register -->

@@ -1,5 +1,6 @@
 package com.shopping.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.shopping.dao.SCarMapper;
 import com.shopping.dao.SUserMapper;
 import com.shopping.entity.SCar;
@@ -7,12 +8,17 @@ import com.shopping.entity.SCarExample;
 import com.shopping.entity.SUser;
 import com.shopping.entity.SUserExample;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -116,7 +122,8 @@ public class UserController {
         return mav;
     }
     @RequestMapping("update")
-    public ModelAndView updateUser(@ModelAttribute SUser sUser,HttpSession session){
+    public ModelAndView updateUser(@ModelAttribute SUser sUser,
+            HttpSession session){
         ModelAndView mav = new ModelAndView();
         //查询这个用户的所有信息
         SUser user = sUserMapper.selectByPrimaryKey(sUser.getUserid());
@@ -126,18 +133,9 @@ public class UserController {
         if (sUser!=null){
             SUserExample.Criteria criteria = example.createCriteria();
             if (sUser.getUsername()!=null && !"".equals(sUser.getUsername())){
-                //判断昵称是否重复
-                criteria.andUsernameEqualTo(sUser.getUsername());
-                List<SUser> val = sUserMapper.selectByExample(example);
-                if (val.size()==0){
-                    user.setUsername(sUser.getUsername());
-                    mav.addObject("error","");
-                }else{
-                    mav.addObject("error","该昵称已存在");
-                    mav.setViewName("editname");
-                    return mav;
-                }
 
+                user.setUsername(sUser.getUsername());
+                mav.addObject("error","");
             }
             if (sUser.getUsersex()!=null && !"".equals(sUser.getUsersex())){
                 user.setUsersex(sUser.getUsersex());
@@ -160,7 +158,6 @@ public class UserController {
             if (sUser.getUserrealname()!=null && !"".equals(sUser.getUserrealname())){
                 user.setUserrealname(sUser.getUserrealname());
             }
-
         }
         System.out.println(user.getUserid());
         int i = sUserMapper.updateByPrimaryKey(user);
@@ -172,20 +169,46 @@ public class UserController {
 
     @RequestMapping(value = "updatePass",method = RequestMethod.POST)
     public ModelAndView updatePass(@ModelAttribute SUser sUser,
-            @RequestParam(value = "newuserpass") String newuserpass){
+            @RequestParam(value = "newuserpass") String newuserpass,
+            HttpSession session){
         ModelAndView mav = new ModelAndView();
 
         SUser user = sUserMapper.selectByPrimaryKey(sUser.getUserid());
 
         user.setUserpass(newuserpass);
-        mav.addObject("errorCode","");
+
 
         int i = sUserMapper.updateByPrimaryKeySelective(user);
         System.out.println("成功修改"+i+"次");
+        session.setAttribute("user",user);
         mav.setViewName("person");
 
         return mav;
     }
+    @RequestMapping("validate")
+    @ResponseBody
+    public void validate(String username, HttpServletResponse response) throws IOException {
 
+        SUserExample sUserExample = new SUserExample();
+        SUserExample.Criteria criteria = sUserExample.createCriteria();
+        criteria.andUsernameEqualTo(username);
+
+        List<SUser> listsUser = sUserMapper.selectByExample(sUserExample);
+
+        String s = JSON.toJSONString(listsUser.size());
+
+        response.setCharacterEncoding("utf-8");
+        response.setContentType("text/html; charset=utf-8");
+        PrintWriter pw = response.getWriter();
+        pw.print(s);
+
+        pw.flush();
+        pw.close();
+    }
+
+    @InitBinder
+    public void initBinder(ServletRequestDataBinder binder){
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd"), true));
+    }
 
 }

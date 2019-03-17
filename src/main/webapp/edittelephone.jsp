@@ -501,14 +501,14 @@
                     </div>
 
                     <!-- 填写内容 -->
-                    <form id=payment  method="post" action="/user/update">
+                    <form id="updatetelephone"  method="post" action="/user/update">
                         <div class="login-form-grids animated wow slideInUp" data-wow-delay=".5s">
 
                             <input type="hidden" name="userid" value="${user.userid}" >
 
                             <input type="text" name="userphone" placeholder="新手机号码" required=" " >
 
-                            <input type="submit" value="确认">
+                            <input type="button" style="width: 255px;height: 40px" id="settelephone"  value="确认">
                             <font color="red">${success}</font>
 
 
@@ -651,6 +651,19 @@
     });
 </script>
 <!-- //main slider-banner -->
+<script>
+    $("#settelephone").on("click",function () {
+        var str =/^0{0,1}(13[0-9]|15[7-9]|153|156|18[7-9])[0-9]{8}$/;
+        var telephone = $("input[name='userphone']").val();
+
+        if(str.test(telephone)){
+            alert("修改成功！");
+            $("#updatetelephone").submit();
+        }else{
+            alert("您输入的手机号码有误！");
+        }
+    });
+</script>
 
 </body>
 </html>
