@@ -30,7 +30,7 @@
                             </a>
                         </li>
                         <li>
-                            <a menu="subscribe" href="add?op=searchAddress">
+                            <a menu="subscribe" href="address.jsp">
 
                                 <span class="icon icon-subscribe"></span>
                                 <span class="title">

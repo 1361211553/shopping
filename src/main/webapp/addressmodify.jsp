@@ -7,10 +7,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ include file="appcomm/basePath.jsp" %>
 <html>
 <head>
-    <title>修改密码</title>
+    <title>修改地址</title>
     <link rel="stylesheet" href="css/admin_aa137ba.css">
     <style type="text/css">
         .main-col {
@@ -27,7 +26,7 @@
     <link href="css/new_home_index__daf8123.css" rel="stylesheet">
     <script charset="utf-8" type="text/javascript" async="" src="js/underscore_3d00f9f.js"></script>
     <script charset="utf-8" type="text/javascript" async="" src="js/header_search_tip_1b84d58.js"></script>
-    <style>
+    <style>@charset "UTF-8";
     .header-search-tips {
         position: relative;
         width: 250px;
@@ -446,7 +445,7 @@
                 event.preventDefault();
                 $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1000);
             });
-        });a
+        });
     </script>
     <script charset="utf-8" type="text/javascript" async=""
             src="js/cheshi.js"></script>
@@ -457,8 +456,6 @@
 <body>
 <!-- header -->
 <%@ include file="appcomm/head.jsp" %>
-<!-- //header -->
-<!-- navigation -->
 
 <!-- //navigation -->
 <!-- breadcrumbs -->
@@ -487,43 +484,37 @@
         <div class="scroll-content">
             <div class="mod">
                 <div class="mod-hd">
-                    <a href="person.jsp" class="back-to">返回</a>
-                    <h3 style="border-left:none;">修改密码</h3>
+                    <a href="edit.jsp" class="back-to">返回</a>
+                    <h3 style="border-left:none;">修改地址</h3>
                 </div>
                 <!-- 已绑定手机s -->
                 <div class="mod-hd has-bind-phone">
                     <!-- 顶部栏 -->
 
                     <div class="has-bind-title">
-                        <p><span id="oldNick"></span></p>
+                        <p>当前地址：<span id="oldNick">${add}</span></p>
 
                     </div>
 
                     <!-- 填写内容 -->
-                    <form id="updatepassword"  method="post" action="/user/updatePass">
+                    <form id=payment  method="post" action="add?op=updateAddress">
                         <div class="login-form-grids animated wow slideInUp" data-wow-delay=".5s">
 
-                            <input type="hidden" name="userid" value="${user.userid}" >
+                            <input type="text" name="address" placeholder="新地址" required=" " >
 
-                            <input type="hidden" name="olduserpass" required=" " value="${user.userpass}" >
 
-                            <input type="password" name="userpass" placeholder="请输入旧密码" required=" " >
+                            <input type="submit" value="确认">
 
-                            <input type="password" name="newuserpass" placeholder="请输入新密码" required=" " >
 
-                            <input type="password" name="renewuserpass" placeholder="请再输入一次新密码" required=" " >
-                            <br>
-                            <input type="button" id="setpassword" style="width:255px;height:40px" value="确认修改">
-
-                            <font color="red" size="4">${errorCode}</font>
+                            <font color="red" size="4">${success}</font>
 
                         </div>
                     </form>
                     <div class="nick-tips">
                         <p class="nick-tips-title">修改规则</p>
 
-                        <p>2.密码长度建议在6-8个字为佳，最大长度不超过20个字符。</p>
-
+                        <p>地址输入到所在市区区，如福建省厦门市思明区。</p>
+                        <p>地址只允许输入中文、数字。</p>
 
                     </div>
                     <div class="nick-tips nick-tips-law">
@@ -551,57 +542,7 @@
 </div>
 <!-- //register -->
 <!-- //footer -->
-<div class="footer">
-    <div class="container">
-        <div class="w3_footer_grids">
-            <div class="col-md-3 w3_footer_grid">
-                <h3>基本信息</h3>
-
-                <ul class="address">
-                    <li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>上海市浦东新区<span>世贸大厦</span></li>
-                    <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mailto:1008611@qq.com">1008611@qq.com</a>
-                    </li>
-                    <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>100861123</li>
-                </ul>
-            </div>
-            <div class="col-md-3 w3_footer_grid">
-                <h3>用户</h3>
-                <ul class="info">
-
-                    <c:if test="${user eq null}">
-                        <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="login.jsp">登陆</a></li>
-                        <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="registered.jsp">创建用户</a></li>
-                    </c:if>
-                    <c:if test="${user ne null}">
-                        <li><i class="fa fa-arrow-right" aria-hidden="true">欢迎您</i><a href="person.jsp"><font color="white" size="4px">${user.username}</font></a></li>
-
-                    </c:if>
-                </ul>
-
-
-            </div>
-
-            <div class="clearfix"></div>
-        </div>
-    </div>
-
-    <div class="footer-copy">
-
-        <div class="container">
-
-        </div>
-    </div>
-
-</div>
-<div class="footer-botm">
-    <div class="container">
-
-        <div class="payment-w3ls">
-            <img src="images/card.png" alt=" " class="img-responsive">
-        </div>
-        <div class="clearfix"></div>
-    </div>
-</div>
+<%@ include file="appcomm/foot.jsp" %>
 <!-- //footer -->
 <!-- Bootstrap Core JavaScript -->
 <script src="js/bootstrap.min.js"></script>
@@ -638,7 +579,6 @@
 <script src="js/skdslider.min.js"></script>
 <link href="css/skdslider.css" rel="stylesheet">
 <script type="text/javascript">
-
     jQuery(document).ready(function () {
         jQuery('#demo1').skdslider({
             'delay': 5000,
@@ -653,33 +593,6 @@
             $('#responsive_wrapper').width(jQuery(this).val());
         });
 
-    });
-</script>
-
-<script>
-
-    $("#setpassword").on("click",function () {
-        var oldpass=$("input[name='olduserpass']").val();
-        var pass=$("input[name='userpass']").val();
-        var newpass =$("input[name='newuserpass']").val();
-        var renewpass =$("input[name='renewuserpass']").val();
-
-
-        if(oldpass == pass){
-            if (newpass.length>=6 && newpass.length<20) {
-                if (newpass == renewpass) {
-                    alert("修改成功！");
-                    $("#updatepassword").submit();
-                }else{
-                    alert("两次密码输入不一致");
-                }
-            }else{
-                alert("输入的密码不符合规范");
-            }
-
-        }else{
-            alert("原始密码错误");
-        }
     });
 </script>
 <!-- //main slider-banner -->
