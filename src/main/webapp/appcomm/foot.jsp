@@ -23,7 +23,7 @@
                     <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="registered.jsp">创建用户</a></li>
                 </c:if>
                 <c:if test="${user ne null}">
-                    <li><i class="fa fa-arrow-right" aria-hidden="true">欢迎您</i><a href="geren.jsp"><font color="white" size="4px">${user.username}</font></a></li>
+                    <li><i class="fa fa-arrow-right" aria-hidden="true">欢迎您</i><a href="person.jsp"><font color="white" size="4px">${user.username}</font></a></li>
 
                 </c:if>
 

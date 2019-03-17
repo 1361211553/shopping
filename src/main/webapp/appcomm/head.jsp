@@ -21,7 +21,7 @@
                         <li><a><img src="${user.userface}" style="width: 50px; height: 40px;"></a></li>
                         <li><a>
                             <font color="white" size="4px">${user.username}</font></a></li>
-                        <li><a href="geren.jsp"> <font color="#00bfff" >个人中心</font></a></li>
+                        <li><a href="person.jsp"> <font color="#00bfff" >个人中心</font></a></li>
                         <a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
 
                         <li><a href="/user/loginout">

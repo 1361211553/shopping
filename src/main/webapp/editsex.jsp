@@ -482,89 +482,12 @@
     </script>
     <script type="text/javascript" src="js/main_menu_29d4193.js"></script>
     <script type="text/javascript" src="js/cookies.js"></script>
-    <div class="admin-menu">
-        <div class="content">
-            <div class="nav-scroll-wrap">
-                <div class="scroll-content">
-                    <div class="nav-section" style="padding-bottom:0">
-                        <h3 class="header">&nbsp;个人中心</h3>
-                        <ul class="icon-filter">
-                            <li>
-                                <a href="geren.jsp" menu="home" class="selected">
-                                    <span class="icon icon-home"></span>
-                                <span class="title">
-                                    我的信息
-                                </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a menu="userlevel" href="dindan.jsp">
-                                    <span class="icon icon-userlevel"></span>
-                                <span class="title">
-                                    订单管理
-                                </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a menu="subscribe" href="address.jsp">
-                                    <span class="icon icon-subscribe"></span>
-                                <span class="title">
-                                    我的地址
-                                </span>
-                                </a>
-                            </li>
-                            <li id="msg-li">
-                                <a menu="msg" >
-                                    <span class="icon icon-msg"></span>
-                                <span class="title">
-                                    暂未开放
-                                </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a menu="noble" >
-                                    <span class="icon icon-noble"></span>
-                                <span class="title">
-                                    暂未开放
-                                </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a menu="myRoom" >
-                                    <span class="icon icon-room"></span>
-                                <span class="title">
-                                    暂未开放
-                                </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a menu="money" >
-                                    <span class="icon icon-money"></span>
-                                <span class="title">
-                                    暂未开放
-                                </span>
-                                </a>
-                            </li>
-
-
-
-                        </ul>
-                    </div>
-
-
-
-                </div>
-
-
-            </div>
-
-        </div>
-    </div>
+    <%@ include file="appcomm/column.jsp" %>
     <div class="main-col">
         <div class="scroll-content">
             <div class="mod">
                 <div class="mod-hd">
-                    <a href="geren.jsp" class="back-to">返回</a>
+                    <a href="person.jsp" class="back-to">返回</a>
                     <h3 style="border-left:none;">修改性别</h3>
                 </div>
                 <!-- 已绑定手机s -->
@@ -577,10 +500,15 @@
                     </div>
 
                     <!-- 填写内容 -->
-                    <form id=payment  method="post" action="update?op=updateUsersex">
+                    <form id=payment  method="post" action="/user/update">
                         <div class="login-form-grids animated wow slideInUp" data-wow-delay=".5s">
 
-                            <input type="text" name="usersex" placeholder="性别" required=" " >
+                            <input type="hidden" name="userid" value="${user.userid}" >
+
+                            <select name="usersex">
+                                <option value="男">------男-----我是铁铮铮的汉子------</option>
+                                <option value="女">------女-----我是水灵灵的妹子------</option>
+                            </select>
 
 
                             <input type="submit" value="确认">
@@ -643,7 +571,7 @@
                         <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="registered.jsp">创建用户</a></li>
                     </c:if>
                     <c:if test="${user ne null}">
-                        <li><i class="fa fa-arrow-right" aria-hidden="true">欢迎您</i><a href="geren.jsp"><font color="white" size="4px">${user.username}</font></a></li>
+                        <li><i class="fa fa-arrow-right" aria-hidden="true">欢迎您</i><a href="person.jsp"><font color="white" size="4px">${user.username}</font></a></li>
 
                     </c:if>
                 </ul>

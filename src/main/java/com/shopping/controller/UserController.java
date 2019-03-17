@@ -21,7 +21,7 @@ import java.util.Random;
 
 @Controller
 @RequestMapping("user")
-
+@SessionAttributes({"errorCode"})
 public class UserController {
 
     @Autowired
@@ -74,9 +74,11 @@ public class UserController {
     @RequestMapping("loginout")
     public String loginout(HttpSession session) {
 
+
+
         session.removeAttribute("user");
         session.removeAttribute("carNum");
-
+        session.setAttribute("errMs","");
         return "redirect:/login.jsp";
 
     }
@@ -91,22 +93,17 @@ public class UserController {
             SUserExample sUserExample = new SUserExample();
             SUserExample.Criteria criteria = sUserExample.createCriteria();
             criteria.andUsernameEqualTo(sUser.getUsername());
-            criteria.andUserpassEqualTo(sUser.getUserpass());
+
             List<SUser> listsUser = sUserMapper.selectByExample(sUserExample);
             if (listsUser.size() == 0) {
                 Random random = new Random(64 + 1);
                 sUser.setSlock(0);
                 sUser.setUserface("images/face (" + new Random().nextInt(64 - 1) + ").jpg");
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                String datestr = sdf.format(new Date());
-                try {
-                    sUser.setUserregdate(sdf.parse(datestr));
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                    System.out.println("出错信息===========/user/regist 获取当前时间出错啦=====");
-                }
+
+                sUser.setUserregdate(new Date());
+
                 sUserMapper.insertSelective(sUser);
-                mav.addObject("errMs", "此账号已存在");
+                mav.addObject("errMs", "注册成功");
                 mav.setViewName("login");
 
             } else {
@@ -118,5 +115,77 @@ public class UserController {
         }
         return mav;
     }
+    @RequestMapping("update")
+    public ModelAndView updateUser(@ModelAttribute SUser sUser,HttpSession session){
+        ModelAndView mav = new ModelAndView();
+        //查询这个用户的所有信息
+        SUser user = sUserMapper.selectByPrimaryKey(sUser.getUserid());
+
+        SUserExample example = new SUserExample();
+        
+        if (sUser!=null){
+            SUserExample.Criteria criteria = example.createCriteria();
+            if (sUser.getUsername()!=null && !"".equals(sUser.getUsername())){
+                //判断昵称是否重复
+                criteria.andUsernameEqualTo(sUser.getUsername());
+                List<SUser> val = sUserMapper.selectByExample(example);
+                if (val.size()==0){
+                    user.setUsername(sUser.getUsername());
+                    mav.addObject("error","");
+                }else{
+                    mav.addObject("error","该昵称已存在");
+                    mav.setViewName("editname");
+                    return mav;
+                }
+
+            }
+            if (sUser.getUsersex()!=null && !"".equals(sUser.getUsersex())){
+                user.setUsersex(sUser.getUsersex());
+            }
+            if (sUser.getUserphone()!=null && !"".equals(sUser.getUserphone())){
+                user.setUserphone(sUser.getUserphone());
+            }
+
+            if (sUser.getUseremail()!=null && !"".equals(sUser.getUseremail())){
+                user.setUseremail(sUser.getUseremail());
+            }
+            if(sUser.getUserbirthday()!=null && !"".equals(sUser.getUserbirthday())){
+                user.setUserbirthday(sUser.getUserbirthday());
+            }
+            
+            if (sUser.getUseraddressid()!=null && sUser.getUseraddressid()>0){
+                user.setUseraddressid(sUser.getUseraddressid());
+            }
+
+            if (sUser.getUserrealname()!=null && !"".equals(sUser.getUserrealname())){
+                user.setUserrealname(sUser.getUserrealname());
+            }
+
+        }
+        System.out.println(user.getUserid());
+        int i = sUserMapper.updateByPrimaryKey(user);
+        session.setAttribute("user",user);
+        System.out.println("成功修改"+i+"次");
+        mav.setViewName("person");
+        return mav;
+    }
+
+    @RequestMapping(value = "updatePass",method = RequestMethod.POST)
+    public ModelAndView updatePass(@ModelAttribute SUser sUser,
+            @RequestParam(value = "newuserpass") String newuserpass){
+        ModelAndView mav = new ModelAndView();
+
+        SUser user = sUserMapper.selectByPrimaryKey(sUser.getUserid());
+
+        user.setUserpass(newuserpass);
+        mav.addObject("errorCode","");
+
+        int i = sUserMapper.updateByPrimaryKeySelective(user);
+        System.out.println("成功修改"+i+"次");
+        mav.setViewName("person");
+
+        return mav;
+    }
+
 
 }

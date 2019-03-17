@@ -2,14 +2,15 @@
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
-  Date: 2018/11/20
-  Time: 16:14
+  Date: 2018/11/27
+  Time: 16:25
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ include file="appcomm/basePath.jsp" %>
 <html>
 <head>
-    <title>Registered</title>
+    <title>修改名字</title>
     <link rel="stylesheet" href="css/admin_aa137ba.css">
     <style type="text/css">
         .main-col {
@@ -22,10 +23,11 @@
     </style>
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
     <link href="css/userinfo_set_801d6eb.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/user_nick_e4452bb.css">
     <link href="css/new_home_index__daf8123.css" rel="stylesheet">
     <script charset="utf-8" type="text/javascript" async="" src="js/underscore_3d00f9f.js"></script>
     <script charset="utf-8" type="text/javascript" async="" src="js/header_search_tip_1b84d58.js"></script>
-    <style>
+    <style>@charset "UTF-8";
     .header-search-tips {
         position: relative;
         width: 250px;
@@ -452,7 +454,7 @@
             src="js/cheshi2.js"></script>
     <!-- start-smoth-scrolling -->
 </head>
-<body class="w-1000 hy-hd-vp-s">
+<body>
 <!-- header -->
 <%@ include file="appcomm/head.jsp" %>
 
@@ -468,7 +470,6 @@
 </div>
 <!-- //breadcrumbs -->
 <!-- register -->
-
 <div class="admin-wrap">
 
     <link rel="stylesheet" type="text/css" href="css/menu_d79cf19.css">
@@ -479,121 +480,66 @@
     </script>
     <script type="text/javascript" src="js/main_menu_29d4193.js"></script>
     <script type="text/javascript" src="js/cookies.js"></script>
-    <div class="admin-menu">
-        <div class="content">
-            <div class="nav-scroll-wrap">
-                <div class="scroll-content">
-                    <div class="nav-section" style="padding-bottom:0">
-                        <h3 class="header">&nbsp;个人中心</h3>
-                        <ul class="icon-filter">
-                            <li>
-                                <a menu="home" href="geren.jsp" class="selected">
-                                    <span class="icon icon-home"></span>
-                                <span class="title">
-                                    我的信息
-                                </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a menu="userlevel" href="dindan.jsp">
-                                    <span class="icon icon-userlevel"></span>
-                                <span class="title">
-                                    订单管理
-                                </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a menu="subscribe" href="address.jsp">
-                                    <span class="icon icon-subscribe"></span>
-                                <span class="title">
-                                    我的地址
-                                </span>
-                                </a>
-                            </li>
-                            <li id="msg-li">
-                                <a menu="msg" >
-                                    <span class="icon icon-msg"></span>
-                                <span class="title">
-                                    暂未开放
-                                </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a menu="noble" >
-                                    <span class="icon icon-noble"></span>
-                                <span class="title">
-                                    暂未开放
-                                </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a menu="myRoom" >
-                                    <span class="icon icon-room"></span>
-                                <span class="title">
-                                    暂未开放
-                                </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a menu="money" >
-                                    <span class="icon icon-money"></span>
-                                <span class="title">
-                                    暂未开放
-                                </span>
-                                </a>
-                            </li>
+    <%@ include file="appcomm/column.jsp" %>
+    <div class="main-col">
+        <div class="scroll-content">
+            <div class="mod">
+                <div class="mod-hd">
+                    <a href="person.jsp" class="back-to">返回</a>
+                    <h3 style="border-left:none;">修改昵称</h3>
+                </div>
+                <!-- 已绑定手机s -->
+                <div class="mod-hd has-bind-phone">
+                    <!-- 顶部栏 -->
 
+                    <div class="has-bind-title">
+                        <p>当前昵称：<span id="oldNick">${user.username}</span></p>
 
-
-                        </ul>
                     </div>
 
+                    <!-- 填写内容 -->
+                    <form id=payment  method="post" action="/user/update">
+                        <div class="login-form-grids animated wow slideInUp" data-wow-delay=".5s">
+
+                            <input type="hidden" name="userid" value="${user.userid}" >
+
+                            <input type="text" name="userrealname" placeholder="真实姓名" required=" " >
 
 
+                            <input type="submit" value="确认修改">
+
+
+                            <font color="red" size="4">${success}</font>
+
+                        </div>
+                    </form>
+                    <div class="nick-tips">
+                        <p class="nick-tips-title">修改规则</p>
+
+                        <p>2.昵称长度建议在6-8个字为佳，最大长度不超过20个字符。</p>
+                        <p>3.昵称只允许输入中英文、数字及符号“-”、“丶”、“【”、“】”。</p>
+
+                    </div>
+                    <div class="nick-tips nick-tips-law">
+                        <p class="nick-tips-title">温馨提示</p>
+                        <p>根据《互联网用户账号名称管理规定》第六条规定，任何机构或个人注册和使用的互联网用户账号名称，不得有下列情形：</p>
+                        <p>（一）违反宪法或法律法规规定的；</p>
+                        <p>（二）危害国家安全，泄露国家机密，颠覆国家政权，破坏国家统一的；</p>
+                        <a href="javascript:;" id="lookMoreLaw" class="look-more-law">查看更多</a>
+                        <div id="moreLaw" class="more-law">
+                            <p>（三）损害国家荣誉和利益的，损害公共利益的；</p>
+                            <p>（四）煽动民族仇恨、民族歧视，破坏民族团结的；</p>
+                            <p>（五）破坏国家宗教政策，宣扬邪教和封建迷信的；</p>
+                            <p>（六）散布谣言，扰乱社会秩序，破坏社会稳定的；</p>
+                            <p>（七）散步淫秽、色情、赌博、暴力、凶杀、恐怖或者教唆犯罪的；</p>
+                            <p>（八）侮辱或者诽谤他人，侵害他人合法权益的；</p>
+                            <p>（九）含有法律、行政法规禁止的其他内容的。</p>
+                        </div>
+                    </div>
                 </div>
-
-
+                <!-- 已绑定手机e -->
             </div>
-
         </div>
-    </div>        <div class="main-col">
-    <div class="scroll-content">
-        <div class="mod userInfo-edit">
-            <div class="mod-hd">
-                <a href="geren.jsp" class="back-to">返回</a>
-                <h3 style="border-left: none;">编辑资料</h3>
-            </div>
-
-            <form id="userInfoEdit" class="form-edit">
-                <ul>
-                    <li>
-                        <span class="edit-item">昵称</span>
-                        <span>${user.username}</span>
-                        <a href="mingzi.jsp" class="edit-nick">修改昵称</a>
-                    </li>
-
-                    <li>
-                        <span class="edit-item">性别</span>
-                        <span>${user.usersex}</span>
-                        <a href="mingzi5.jsp" class="edit-nick">修改性别</a>
-
-
-                    </li>
-
-
-                    <!--
-
-                    //这边添加时间地区控件
-
-
-                     -->
-
-
-                </ul>
-
-            </form>
-        </div>
-    </div>
 </div>
 
 </div>

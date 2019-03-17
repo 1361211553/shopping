@@ -7,9 +7,10 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ include file="appcomm/basePath.jsp" %>
 <html>
 <head>
-    <title>修改地址</title>
+    <title>修改邮箱</title>
     <link rel="stylesheet" href="css/admin_aa137ba.css">
     <style type="text/css">
         .main-col {
@@ -456,6 +457,9 @@
 <body>
 <!-- header -->
 <%@ include file="appcomm/head.jsp" %>
+<!-- //header -->
+<!-- navigation -->
+
 
 <!-- //navigation -->
 <!-- breadcrumbs -->
@@ -484,23 +488,23 @@
         <div class="scroll-content">
             <div class="mod">
                 <div class="mod-hd">
-                    <a href="edit.jsp" class="back-to">返回</a>
-                    <h3 style="border-left:none;">修改地址</h3>
+                    <a href="person.jsp" class="back-to">返回</a>
+                    <h3 style="border-left:none;">修改邮箱</h3>
                 </div>
                 <!-- 已绑定手机s -->
                 <div class="mod-hd has-bind-phone">
                     <!-- 顶部栏 -->
 
                     <div class="has-bind-title">
-                        <p>当前地址：<span id="oldNick">${add}</span></p>
+                        <p>当前邮箱：<span id="oldNick">${user.useremail}</span></p>
 
                     </div>
 
                     <!-- 填写内容 -->
-                    <form id=payment  method="post" action="add?op=updateAddress">
+                    <form id=payment  method="post" action="update?op=updateUseremail">
                         <div class="login-form-grids animated wow slideInUp" data-wow-delay=".5s">
 
-                            <input type="text" name="address" placeholder="新地址" required=" " >
+                            <input type="text" name="useremail" placeholder="新邮箱" required=" " >
 
 
                             <input type="submit" value="确认">
@@ -513,8 +517,8 @@
                     <div class="nick-tips">
                         <p class="nick-tips-title">修改规则</p>
 
-                        <p>地址输入到所在市区区，如福建省厦门市思明区。</p>
-                        <p>地址只允许输入中文、数字。</p>
+
+                        <p>邮箱只允许输入中英文、数字及符号@。</p>
 
                     </div>
                     <div class="nick-tips nick-tips-law">
@@ -542,7 +546,57 @@
 </div>
 <!-- //register -->
 <!-- //footer -->
-<%@ include file="appcomm/foot.jsp" %>
+<div class="footer">
+    <div class="container">
+        <div class="w3_footer_grids">
+            <div class="col-md-3 w3_footer_grid">
+                <h3>基本信息</h3>
+
+                <ul class="address">
+                    <li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>上海市浦东新区<span>世贸大厦</span></li>
+                    <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mailto:1008611@qq.com">1008611@qq.com</a>
+                    </li>
+                    <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>100861123</li>
+                </ul>
+            </div>
+            <div class="col-md-3 w3_footer_grid">
+                <h3>用户</h3>
+                <ul class="info">
+
+                    <c:if test="${user eq null}">
+                        <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="login.jsp">登陆</a></li>
+                        <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="registered.jsp">创建用户</a></li>
+                    </c:if>
+                    <c:if test="${user ne null}">
+                        <li><i class="fa fa-arrow-right" aria-hidden="true">欢迎您</i><a href="person.jsp"><font color="white" size="4px">${user.username}</font></a></li>
+
+                    </c:if>
+                </ul>
+
+
+            </div>
+
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+    <div class="footer-copy">
+
+        <div class="container">
+
+        </div>
+    </div>
+
+</div>
+<div class="footer-botm">
+    <div class="container">
+
+        <div class="payment-w3ls">
+            <img src="images/card.png" alt=" " class="img-responsive">
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
 <!-- //footer -->
 <!-- Bootstrap Core JavaScript -->
 <script src="js/bootstrap.min.js"></script>

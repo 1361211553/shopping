@@ -79,79 +79,9 @@
     </script>
     <script type="text/javascript" src="js/main_menu_29d4193.js"></script>
     <script type="text/javascript" src="js/cookies.js"></script>
-    <div class="admin-menu">
-        <div class="content">
-            <div class="nav-scroll-wrap">
-                <div class="scroll-content">
-                    <div class="nav-section" style="padding-bottom:0">
-                        <h3 class="header">&nbsp;个人中心</h3>
-                        <ul class="icon-filter">
-                            <li>
-                                <a menu="home" href="geren.jsp" class="selected">
-                                    <span class="icon icon-home"></span>
-                                <span class="title">
-                                    我的信息
-                                </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a menu="userlevel" href="dindan.jsp?op=selectorder&userid=${user.userid}">
-                                    <span class="icon icon-userlevel"></span>
-                                <span class="title">
-                                    订单管理
-                                </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a menu="subscribe" href="add?op=searchAddress">
-
-                                    <span class="icon icon-subscribe"></span>
-                                <span class="title">
-                                    我的地址
-                                </span>
-                                </a>
-                            </li>
-                            <li id="msg-li">
-                                <a menu="msg" >
-                                    <span class="icon icon-msg"></span>
-                                <span class="title">
-                                    暂未开放
-                                </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a menu="noble" >
-                                    <span class="icon icon-noble"></span>
-                                <span class="title">
-                                    暂未开放
-                                </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a menu="myRoom" >
-                                    <span class="icon icon-room"></span>
-                                <span class="title">
-                                    暂未开放
-                                </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a menu="money" >
-                                    <span class="icon icon-money"></span>
-                                <span class="title">
-                                    暂未开放
-                                </span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-
-            </div>
-
-        </div>
-    </div>
+    <!-- column-->
+    <%@ include file="appcomm/column.jsp" %>
+    <!-- column-->
     <div class="main-col">
         <div class="scroll-content">
             <div class="mod mod-user-center">
@@ -206,7 +136,7 @@
 
 
                             <span>
-                                <a href="bianji3.jsp" class="edit-information clickstat" eid="click/grzx/myinfo/edit"
+                                <a href="edit.jsp" class="edit-information clickstat" eid="click/grzx/myinfo/edit"
                                    eid_desc="点击/个人中心/我的信息/编辑">编辑资料</a>
                             </span>
                     </p>
@@ -229,18 +159,18 @@
                 <em class="result"></em>
             </a> -->
             <!-- 手机已认证 -->
-            <a class="account_num_list block-a has-bind-phone" id="phone" href="mingzi2.jsp" target="_blank">
+            <a class="account_num_list block-a has-bind-phone" id="phone" href="edittelephone.jsp" target="_blank">
                 <div class="phone"></div>
                 <div class="msg">
                     <p class="msg_1">修改绑定手机</p>
-                    <p class="msg_2">已绑定：<span class="mobile num">134******</span></p>
+                    <p class="msg_2">已绑定：<span class="mobile num">${user.userphone}</span></p>
                 </div>
                 <em class="result"></em>
             </a>
 
 
             <!-- 非第三方登陆，显示修改密码 -->
-            <a class="account_num_list block-a" href="mingzi3.jsp" target="_blank" id="changeNum">
+            <a class="account_num_list block-a" href="editpassword.jsp" target="_blank" id="changeNum">
                 <div class="password"></div>
                 <div class="msg">
                     <p class="msg_1">修改密码</p>
@@ -249,7 +179,7 @@
                 <em class="result"></em>
             </a>
 
-            <a class="account_num_list block-a" href="mingzi4.jsp" target="_blank">
+            <a class="account_num_list block-a" href="editmail.jsp" target="_blank">
                 <div class="no_anchor"></div>
                 <div class="msg">
                     <p class="msg_1">绑定邮箱</p>

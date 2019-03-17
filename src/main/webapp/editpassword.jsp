@@ -10,7 +10,7 @@
 <%@ include file="appcomm/basePath.jsp" %>
 <html>
 <head>
-    <title>修改邮箱</title>
+    <title>修改密码</title>
     <link rel="stylesheet" href="css/admin_aa137ba.css">
     <style type="text/css">
         .main-col {
@@ -27,7 +27,7 @@
     <link href="css/new_home_index__daf8123.css" rel="stylesheet">
     <script charset="utf-8" type="text/javascript" async="" src="js/underscore_3d00f9f.js"></script>
     <script charset="utf-8" type="text/javascript" async="" src="js/header_search_tip_1b84d58.js"></script>
-    <style>@charset "UTF-8";
+    <style>
     .header-search-tips {
         position: relative;
         width: 250px;
@@ -446,7 +446,7 @@
                 event.preventDefault();
                 $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1000);
             });
-        });
+        });a
     </script>
     <script charset="utf-8" type="text/javascript" async=""
             src="js/cheshi.js"></script>
@@ -459,7 +459,6 @@
 <%@ include file="appcomm/head.jsp" %>
 <!-- //header -->
 <!-- navigation -->
-
 
 <!-- //navigation -->
 <!-- breadcrumbs -->
@@ -483,119 +482,48 @@
     </script>
     <script type="text/javascript" src="js/main_menu_29d4193.js"></script>
     <script type="text/javascript" src="js/cookies.js"></script>
-    <div class="admin-menu">
-        <div class="content">
-            <div class="nav-scroll-wrap">
-                <div class="scroll-content">
-                    <div class="nav-section" style="padding-bottom:0">
-                        <h3 class="header">&nbsp;个人中心</h3>
-                        <ul class="icon-filter">
-                            <li>
-                                <a href="geren.jsp" menu="home" class="selected">
-                                    <span class="icon icon-home"></span>
-                                <span class="title">
-                                    我的信息
-                                </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a menu="userlevel" href="dindan.jsp">
-                                    <span class="icon icon-userlevel"></span>
-                                <span class="title">
-                                    订单管理
-                                </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a menu="subscribe" href="address.jsp">
-                                    <span class="icon icon-subscribe"></span>
-                                <span class="title">
-                                    我的地址
-                                </span>
-                                </a>
-                            </li>
-                            <li id="msg-li">
-                                <a menu="msg" >
-                                    <span class="icon icon-msg"></span>
-                                <span class="title">
-                                    暂未开放
-                                </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a menu="noble" >
-                                    <span class="icon icon-noble"></span>
-                                <span class="title">
-                                    暂未开放
-                                </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a menu="myRoom" >
-                                    <span class="icon icon-room"></span>
-                                <span class="title">
-                                    暂未开放
-                                </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a menu="money" >
-                                    <span class="icon icon-money"></span>
-                                <span class="title">
-                                    暂未开放
-                                </span>
-                                </a>
-                            </li>
-
-
-
-                        </ul>
-                    </div>
-
-
-
-                </div>
-
-
-            </div>
-
-        </div>
-    </div>
+    <%@ include file="appcomm/column.jsp" %>
     <div class="main-col">
         <div class="scroll-content">
             <div class="mod">
                 <div class="mod-hd">
-                    <a href="geren.jsp" class="back-to">返回</a>
-                    <h3 style="border-left:none;">修改邮箱</h3>
+                    <a href="person.jsp" class="back-to">返回</a>
+                    <h3 style="border-left:none;">修改密码</h3>
                 </div>
                 <!-- 已绑定手机s -->
                 <div class="mod-hd has-bind-phone">
                     <!-- 顶部栏 -->
 
                     <div class="has-bind-title">
-                        <p>当前邮箱：<span id="oldNick">${user.useremail}</span></p>
+                        <p><span id="oldNick"></span></p>
 
                     </div>
 
                     <!-- 填写内容 -->
-                    <form id=payment  method="post" action="update?op=updateUseremail">
+                    <form id="payment"  method="post" action="#">
                         <div class="login-form-grids animated wow slideInUp" data-wow-delay=".5s">
 
-                            <input type="text" name="useremail" placeholder="新邮箱" required=" " >
+                            <input type="hidden" name="userid" value="${user.userid}" >
 
+                            <input type="hidden" name="olduserpass" required=" " value="${user.userpass}" >
 
-                            <input type="submit" value="确认">
+                            <input type="password" name="userpass" placeholder="请输入旧密码" required=" " >
 
+                            <input type="password" name="newuserpass" placeholder="请输入新密码" required=" " >
 
-                            <font color="red" size="4">${success}</font>
+                            <input type="password" name="renewuserpass" placeholder="请再输入一次新密码" required=" " >
+
+                            <input type="submit" id="setpassword" value="确认修改">
+
+                            <font color="red" size="4">${errorCode}</font>
 
                         </div>
                     </form>
                     <div class="nick-tips">
                         <p class="nick-tips-title">修改规则</p>
 
-
-                        <p>邮箱只允许输入中英文、数字及符号@。</p>
+                        <p>2.密码长度建议在6-8个字为佳，最大长度不超过20个字符。</p>
+                        <p>3.密码只允许输入中英文、数字及符号“-”、“丶”、“【”、“】”。</p>
 
                     </div>
                     <div class="nick-tips nick-tips-law">
@@ -645,7 +573,7 @@
                         <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="registered.jsp">创建用户</a></li>
                     </c:if>
                     <c:if test="${user ne null}">
-                        <li><i class="fa fa-arrow-right" aria-hidden="true">欢迎您</i><a href="geren.jsp"><font color="white" size="4px">${user.username}</font></a></li>
+                        <li><i class="fa fa-arrow-right" aria-hidden="true">欢迎您</i><a href="person.jsp"><font color="white" size="4px">${user.username}</font></a></li>
 
                     </c:if>
                 </ul>
@@ -710,6 +638,7 @@
 <script src="js/skdslider.min.js"></script>
 <link href="css/skdslider.css" rel="stylesheet">
 <script type="text/javascript">
+
     jQuery(document).ready(function () {
         jQuery('#demo1').skdslider({
             'delay': 5000,
@@ -725,6 +654,34 @@
         });
 
     });
+</script>
+
+<script>
+
+    $("#setpassword").on("click",function () {
+        var oldpass=$("input[name='olduserpass']").val();
+        var pass=$("input[name='userpass']").val();
+        var newpass =$("input[name='newuserpass']").val();
+        var renewpass =$("input[name='renewuserpass']").val();
+
+        if(oldpass == pass){
+            if (newpass.length>=6 && newpass.length<20 && ) {
+                if (newpass == renewpass) {
+                    alert("修改成功！");
+                    location.href="/user/updatePass";
+                }else{
+                    alert("两次密码输入不一致");
+                }
+            }else{
+                alert("新密码不能为空");
+            }
+
+        }else{
+            alert("原始密码错误");
+        }
+
+
+    })
 </script>
 <!-- //main slider-banner -->
 

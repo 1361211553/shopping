@@ -480,89 +480,12 @@
     </script>
     <script type="text/javascript" src="js/main_menu_29d4193.js"></script>
     <script type="text/javascript" src="js/cookies.js"></script>
-    <div class="admin-menu">
-        <div class="content">
-            <div class="nav-scroll-wrap">
-                <div class="scroll-content">
-                    <div class="nav-section" style="padding-bottom:0">
-                        <h3 class="header">&nbsp;个人中心</h3>
-                        <ul class="icon-filter">
-                            <li>
-                                <a href="geren.jsp" menu="home" class="selected">
-                                    <span class="icon icon-home"></span>
-                                <span class="title">
-                                    我的信息
-                                </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a menu="userlevel" href="dindan.jsp">
-                                    <span class="icon icon-userlevel"></span>
-                                <span class="title">
-                                    订单管理
-                                </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a menu="subscribe" href="address.jsp">
-                                    <span class="icon icon-subscribe"></span>
-                                <span class="title">
-                                    我的地址
-                                </span>
-                                </a>
-                            </li>
-                            <li id="msg-li">
-                                <a menu="msg" >
-                                    <span class="icon icon-msg"></span>
-                                <span class="title">
-                                    暂未开放
-                                </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a menu="noble" >
-                                    <span class="icon icon-noble"></span>
-                                <span class="title">
-                                    暂未开放
-                                </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a menu="myRoom" >
-                                    <span class="icon icon-room"></span>
-                                <span class="title">
-                                    暂未开放
-                                </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a menu="money" >
-                                    <span class="icon icon-money"></span>
-                                <span class="title">
-                                    暂未开放
-                                </span>
-                                </a>
-                            </li>
-
-
-
-                        </ul>
-                    </div>
-
-
-
-                </div>
-
-
-            </div>
-
-        </div>
-    </div>
+    <%@ include file="appcomm/column.jsp" %>
     <div class="main-col">
         <div class="scroll-content">
             <div class="mod">
                 <div class="mod-hd">
-                    <a href="geren.jsp" class="back-to">返回</a>
+                    <a href="person.jsp" class="back-to">返回</a>
                     <h3 style="border-left:none;">修改昵称</h3>
                 </div>
                 <!-- 已绑定手机s -->
@@ -575,8 +498,10 @@
                     </div>
 
                     <!-- 填写内容 -->
-                    <form id=payment  method="post" action="update?op=updateMyUser">
+                    <form id="payment"  method="post" action="/user/update">
                         <div class="login-form-grids animated wow slideInUp" data-wow-delay=".5s">
+
+                            <input type="hidden" name="userid" value="${user.userid}" >
 
                             <input type="text" name="username" placeholder="新昵称" required=" " >
 
@@ -584,7 +509,7 @@
                             <input type="submit" value="确认">
 
 
-                            <font color="red" size="4">${success}</font>
+                            <font color="red" size="4">${error}</font>
 
                         </div>
                     </form>
@@ -640,6 +565,8 @@
         $().UItoTop({easingType: 'easeOutQuart'});
 
     });
+
+    $()
 </script>
 <!-- //here ends scrolling icon -->
 <script src="js/minicart.min.js"></script>

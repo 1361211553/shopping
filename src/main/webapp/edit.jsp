@@ -2,14 +2,14 @@
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
-  Date: 2018/11/27
-  Time: 16:25
+  Date: 2018/11/20
+  Time: 16:14
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>个人订单信息</title>
+    <title>Registered</title>
     <link rel="stylesheet" href="css/admin_aa137ba.css">
     <style type="text/css">
         .main-col {
@@ -22,12 +22,10 @@
     </style>
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
     <link href="css/userinfo_set_801d6eb.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/user_nick_e4452bb.css">
     <link href="css/new_home_index__daf8123.css" rel="stylesheet">
     <script charset="utf-8" type="text/javascript" async="" src="js/underscore_3d00f9f.js"></script>
     <script charset="utf-8" type="text/javascript" async="" src="js/header_search_tip_1b84d58.js"></script>
-    <script type="text/javascript" src="js/header.js"></script>
-    <style>@charset "UTF-8";
+    <style>
     .header-search-tips {
         position: relative;
         width: 250px;
@@ -454,7 +452,7 @@
             src="js/cheshi2.js"></script>
     <!-- start-smoth-scrolling -->
 </head>
-<body>
+<body class="w-1000 hy-hd-vp-s">
 <!-- header -->
 <%@ include file="appcomm/head.jsp" %>
 
@@ -470,6 +468,7 @@
 </div>
 <!-- //breadcrumbs -->
 <!-- register -->
+
 <div class="admin-wrap">
 
     <link rel="stylesheet" type="text/css" href="css/menu_d79cf19.css">
@@ -480,173 +479,55 @@
     </script>
     <script type="text/javascript" src="js/main_menu_29d4193.js"></script>
     <script type="text/javascript" src="js/cookies.js"></script>
-    <div class="admin-menu">
-        <div class="content">
-            <div class="nav-scroll-wrap">
-                <div class="scroll-content">
-                    <div class="nav-section" style="padding-bottom:0">
-                        <h3 class="header">&nbsp;个人中心</h3>
-                        <ul class="icon-filter">
-                            <li>
-                                <a href="geren.jsp" menu="home" class="selected">
-                                    <span class="icon icon-home"></span>
-                                <span class="title">
-                                    我的信息
-                                </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a menu="userlevel" href="dindan.jsp?op=selectorder&userid=${user.userid}">
-                                    <span class="icon icon-userlevel"></span>
-                                <span class="title">
-                                    订单管理
-                                </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a menu="subscribe" >
-                                    <span class="icon icon-subscribe"></span>
-                                <span class="title">
-                                    暂未开放
-                                </span>
-                                </a>
-                            </li>
-                            <li id="msg-li">
-                                <a menu="msg" >
-                                    <span class="icon icon-msg"></span>
-                                <span class="title">
-                                    暂未开放
-                                </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a menu="noble" >
-                                    <span class="icon icon-noble"></span>
-                                <span class="title">
-                                    暂未开放
-                                </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a menu="myRoom" >
-                                    <span class="icon icon-room"></span>
-                                <span class="title">
-                                    暂未开放
-                                </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a menu="money" >
-                                    <span class="icon icon-money"></span>
-                                <span class="title">
-                                    暂未开放
-                                </span>
-                                </a>
-                            </li>
-
-
-
-                        </ul>
-                    </div>
-
-
-
-                </div>
-
-
+    <%@ include file="appcomm/column.jsp" %>
+    <div class="main-col">
+    <div class="scroll-content">
+        <div class="mod userInfo-edit">
+            <div class="mod-hd">
+                <a href="person.jsp" class="back-to">返回</a>
+                <h3 style="border-left: none;">编辑资料</h3>
             </div>
 
+            <form id="userInfoEdit" class="form-edit">
+                <ul>
+                    <li>
+                        <span class="edit-item">昵称</span>
+                        <span>${user.username}</span>
+                        <a href="editname.jsp" class="edit-nick">修改昵称</a>
+                    </li>
+
+                    <li>
+                        <span class="edit-item">性别</span>
+                        <span>${user.usersex}</span>
+                        <a href="editsex.jsp" class="edit-nick">修改性别</a>
+                    </li>
+
+                    <li>
+                        <span class="edit-item">真实姓名</span>
+                        <span>${user.userrealname}</span>
+                        <a href="editrealname.jsp" class="edit-nick">修改真实姓名</a>
+                    </li>
+
+
+                    <!--
+
+                    //这边添加时间地区控件
+
+
+                     -->
+
+
+                </ul>
+
+            </form>
         </div>
     </div>
-    <div class="main-col">
-        <div class="scroll-content">
-            <div class="mod">
-
-                <div class="mod mod-basic account-num" id="account_num">
-
-                    <!-- 手机未认证
-                    <a class="account_num_list block-a bindMobile hidden" id="no_phone" data-is-thirduser="0"
-                       href="javascript:void(0);" target="_blank">
-                        <div class="no_phone"></div>
-                        <div class="msg">
-                            <p class="msg_1">绑定手机</p>
-                            <p class="msg_2">绑定手机保障您的账号安全</p>
-                        </div>
-                        <em class="result"></em>
-                    </a> -->
-                    <!-- 手机已认证 -->
-                    <!-- <a class="account_num_list block-a has-bind-phone"  href="geren.jsp" target="_blank">
-                        <div><img style="width:80px;height:80px;" class="user_icon"
-                                                src="${user.userface}" alt="头像"></div>
-                        <div class="msg" >
-                           <p style="margin-left: 106px">修改绑定手机</p>
-                           <p style="margin-left: 106px">已绑定：<span class="mobile num">134******</span></p>
-                       </div>
-                       <em class="result"></em>
-                   </a>-->
-
-
-
-                   <!-- 非第三方登陆，显示修改密码 -->
-                    <table border="0">
-                        <tbody><tr>
-                            <td align="left"><h2>订单号</h2></td>
-                            <td align="left"><h2>购买日期</h2></td>
-                            <td align="left"><h2>商品列表</h2></td>
-
-                            <td align="left"><h2>数量</h2></td>
-                            <td align="left"><h2>金额</h2></td>
-
-                        </tr>
-                        <jsp:include page="orderpage?op=selectorder"/>
-
-                        <c:forEach var="personorder" items="${requestScope.orderlist}">
-                        <tr>
-                            <td align="left">${personorder.orderid}</td>
-                            <td align="left">${personorder.orderdate}</td>
-                            <td>${personorder.proid}</td>
-                            <td align="left">${personorder.pronum}</td>
-
-                            <td align="left">${personorder.amount}</td>
-                        </tr>
-                        </c:forEach>
-
-                        <%--<c:if test="${sessionScope.orderlist eq null}">--%>
-                        <c:if test="${requestScope.orderlist eq null}">
-                        <tr>
-                            <td colspan="5">您还没有购买任何商品哦，快去<a href="products.jsp" style="font-size: 20px"><font color="red">购买</font></a>吧！</td>
-                        </tr>
-                        </c:if>
-                        <%--</c:if>--%>
-                        <%--<tr>--%>
-                            <%--<td align="left">757</td>--%>
-                            <%--<td align="left">2018-11-30</td>--%>
-                            <%--<td>白菜</td>--%>
-                            <%--<td align="left">757</td>--%>
-
-                            <%--<td align="left">7544</td>--%>
-                        <%--</tr>--%>
-                        <%--<tr>--%>
-                            <%--<td align="left">757</td>--%>
-                            <%--<td align="left">2018-11-30</td>--%>
-                            <%--<td>苹果</td>--%>
-                            <%--<td align="left">757</td>--%>
-
-                            <%--<td align="left">7544</td>--%>
-                        <%--</tr>--%>
-
-                        </tbody></table>
-                </div>
-            </div>
-
-
-        </div>
 </div>
 
-
+</div>
 <!-- //register -->
 <!-- //footer -->
-    <%@ include file="appcomm/foot.jsp" %>
+<%@ include file="appcomm/foot.jsp" %>
 <!-- //footer -->
 <!-- Bootstrap Core JavaScript -->
 <script src="js/bootstrap.min.js"></script>
