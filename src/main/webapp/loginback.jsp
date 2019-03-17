@@ -5,7 +5,7 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>系统登录 - 国贸供应商管理系统</title>
-    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/css/style.css" />
+    <link type="text/css" rel="stylesheet" href="css2/style.css" />
     <script type="text/javascript">
 	/* if(top.location!=self.location){
 	      top.location=self.location;
@@ -18,7 +18,7 @@
             <h1>国贸供应商管理系统</h1>
         </header>
         <section class="loginCont">
-	        <form class="loginForm" action="${pageContext.request.contextPath }/ui/login.html"  name="actionForm" id="actionForm"  method="post" >
+	        <form class="loginForm" action="WEB-INF/jsp/userlist.jsp"  name="actionForm" id="actionForm"  method="post" >
 				<div class="info">${error }</div>
 				<div class="inputbox">
                     <label for="user">用户名：</label>

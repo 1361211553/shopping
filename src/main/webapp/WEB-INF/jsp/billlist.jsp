@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>	
-<%@include file="/jsp/common/head.jsp"%>
+<%@include file="/WEB-INF/jsp/common/head.jsp"%>
 
 <div class="right">
        <div class="location">
@@ -105,8 +105,8 @@
     </div>
 </div>
 
-<%@include file="/jsp/common/foot.jsp" %>
-<script type="text/javascript" src="${pageContext.request.contextPath }/js/billlist.js"></script>
+<%@include file="/WEB-INF/jsp/common/foot.jsp" %>
+<script type="text/javascript" src="${pageContext.request.contextPath }/js2/billlist.js"></script>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript">
  function goOnclick(){

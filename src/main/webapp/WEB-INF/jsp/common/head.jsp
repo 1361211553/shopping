@@ -7,8 +7,8 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>国贸供应商管理系统</title>
-    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />
-    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/public.css" />
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css2/style.css" />
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css2/public.css" />
 </head>
 <body>
 <!--头部-->
