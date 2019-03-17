@@ -500,7 +500,7 @@
                     </div>
 
                     <!-- 填写内容 -->
-                    <form id="payment"  method="post" action="#">
+                    <form id="updatepassword"  method="post" action="/user/updatePass">
                         <div class="login-form-grids animated wow slideInUp" data-wow-delay=".5s">
 
                             <input type="hidden" name="userid" value="${user.userid}" >
@@ -512,8 +512,8 @@
                             <input type="password" name="newuserpass" placeholder="请输入新密码" required=" " >
 
                             <input type="password" name="renewuserpass" placeholder="请再输入一次新密码" required=" " >
-
-                            <input type="submit" id="setpassword" value="确认修改">
+                            <br>
+                            <input type="button"  value="确认修改">
 
                             <font color="red" size="4">${errorCode}</font>
 
@@ -523,7 +523,7 @@
                         <p class="nick-tips-title">修改规则</p>
 
                         <p>2.密码长度建议在6-8个字为佳，最大长度不超过20个字符。</p>
-                        <p>3.密码只允许输入中英文、数字及符号“-”、“丶”、“【”、“】”。</p>
+
 
                     </div>
                     <div class="nick-tips nick-tips-law">
@@ -664,24 +664,23 @@
         var newpass =$("input[name='newuserpass']").val();
         var renewpass =$("input[name='renewuserpass']").val();
 
+
         if(oldpass == pass){
-            if (newpass.length>=6 && newpass.length<20 && ) {
+            if (newpass.length>=6 && newpass.length<20) {
                 if (newpass == renewpass) {
                     alert("修改成功！");
-                    location.href="/user/updatePass";
+                    $("#updatepassword").submit();
                 }else{
                     alert("两次密码输入不一致");
                 }
             }else{
-                alert("新密码不能为空");
+                alert("输入的密码不符合规范");
             }
 
         }else{
             alert("原始密码错误");
         }
-
-
-    })
+    });
 </script>
 <!-- //main slider-banner -->
 

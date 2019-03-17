@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -506,6 +507,12 @@
                         <span class="edit-item">真实姓名</span>
                         <span>${user.userrealname}</span>
                         <a href="editrealname.jsp" class="edit-nick">修改真实姓名</a>
+                    </li>
+
+                    <li>
+                        <span class="edit-item">出生日期</span>
+                        <span><fmt:formatDate value='${user.userbirthday}' pattern='yyyy年MM月dd日'/></span>
+                        <a href="editbirthday.jsp" class="edit-nick">修改出生日期</a>
                     </li>
 
 

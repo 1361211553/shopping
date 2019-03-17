@@ -498,7 +498,7 @@
                     </div>
 
                     <!-- 填写内容 -->
-                    <form id="payment"  method="post" action="/user/update">
+                    <form id="editname"  method="post" action="/user/update">
                         <div class="login-form-grids animated wow slideInUp" data-wow-delay=".5s">
 
                             <input type="hidden" name="userid" value="${user.userid}" >
@@ -506,7 +506,7 @@
                             <input type="text" name="username" placeholder="新昵称" required=" " >
 
 
-                            <input type="submit" value="确认">
+                            <input type="button" style="width: 255px;height: 40px" id="setname" value="确认">
 
 
                             <font color="red" size="4">${error}</font>
@@ -602,5 +602,30 @@
 </script>
 <!-- //main slider-banner -->
 
+<script>
+    $("#setname").on("click",function(){
+
+
+        $.ajax({
+            type:"POST",
+            url:"/user/validate",
+            data:{username:$("input[name='username']").val()},
+            dataType:"json",
+            success:function(data){
+
+                if(data == 0){
+                    $("#editname").submit();
+                    alert("修改成功！");
+
+                }else{
+                    alert("该昵称已存在！");
+                }
+
+            }
+
+        });
+    });
+
+</script>
 </body>
 </html>

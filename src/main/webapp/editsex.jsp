@@ -500,7 +500,7 @@
                     </div>
 
                     <!-- 填写内容 -->
-                    <form id=payment  method="post" action="/user/update">
+                    <form id="updatesex"  method="post" action="/user/update">
                         <div class="login-form-grids animated wow slideInUp" data-wow-delay=".5s">
 
                             <input type="hidden" name="userid" value="${user.userid}" >
@@ -511,7 +511,7 @@
                             </select>
 
 
-                            <input type="submit" value="确认">
+                            <input type="button" id="setsex" style="width: 255px;height: 40px" value="确认">
 
 
                             <font color="red" size="4">${success}</font>
@@ -653,6 +653,14 @@
     });
 </script>
 <!-- //main slider-banner -->
+<script>
+    $("#setsex").on("click",function () {
+
+        alert("修改成功！");
+        $("#updatesex").submit();
+
+    });
+</script>
 
 </body>
 </html>

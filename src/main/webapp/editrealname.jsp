@@ -498,7 +498,7 @@
                     </div>
 
                     <!-- 填写内容 -->
-                    <form id=payment  method="post" action="/user/update">
+                    <form id="updaterealname"  method="post" action="/user/update">
                         <div class="login-form-grids animated wow slideInUp" data-wow-delay=".5s">
 
                             <input type="hidden" name="userid" value="${user.userid}" >
@@ -506,7 +506,7 @@
                             <input type="text" name="userrealname" placeholder="真实姓名" required=" " >
 
 
-                            <input type="submit" value="确认修改">
+                            <input type="button" style="width: 255px;height: 40px" id="setrealname"  value="确认修改">
 
 
                             <font color="red" size="4">${success}</font>
@@ -599,6 +599,14 @@
     });
 </script>
 <!-- //main slider-banner -->
+<script>
+    $("#setrealname").on("click",function () {
+
+        alert("修改成功！");
+        $("#updaterealname").submit();
+
+    });
+</script>
 
 </body>
 </html>

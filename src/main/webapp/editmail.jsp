@@ -501,16 +501,17 @@
                     </div>
 
                     <!-- 填写内容 -->
-                    <form id=payment  method="post" action="update?op=updateUseremail">
+                    <form id="updateemail"  method="post" action="/user/update">
                         <div class="login-form-grids animated wow slideInUp" data-wow-delay=".5s">
+
+                            <input type="hidden" name="userid" value="${user.userid}" >
 
                             <input type="text" name="useremail" placeholder="新邮箱" required=" " >
 
 
-                            <input type="submit" value="确认">
+                            <input type="button" style="width: 255px;height: 40px" id="setemail" value="确认">
 
 
-                            <font color="red" size="4">${success}</font>
 
                         </div>
                     </form>
@@ -650,6 +651,20 @@
     });
 </script>
 <!-- //main slider-banner -->
+
+<script>
+    $("#setemail").on("click",function () {
+        var str =/^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
+        var email = $("input[name='useremail']").val();
+
+        if(str.test(email)){
+            alert("修改成功！");
+            $("#updateemail").submit();
+        }else{
+            alert("您输入的邮箱有误！");
+        }
+    });
+</script>
 
 </body>
 </html>
