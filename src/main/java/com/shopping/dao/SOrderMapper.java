@@ -3,8 +3,13 @@ package com.shopping.dao;
 import com.shopping.entity.SOrder;
 import com.shopping.entity.SOrderExample;
 import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
+
+@Mapper
+@Repository
 public interface SOrderMapper {
     int deleteByPrimaryKey(String oid);
 

@@ -5,7 +5,7 @@
 
 <html>
 <head>
-    <title>Checkout</title>
+    <title>购物车</title>
 
   
     <!-- for-mobile-apps -->
@@ -48,7 +48,7 @@
     <div class="container">
         <ol class="breadcrumb breadcrumb1">
             <li><a href="index.jsp"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>主页</a></li>
-            <li class="active">结账页面</li>
+            <li class="active">订单页面</li>
         </ol>
     </div>
 </div>
@@ -56,7 +56,7 @@
 <!-- checkout -->
 <div class="checkout">
     <div class="container">
-        <h2>您的购物车包含: <span class="chanpin">${fn:length(productList)}</span> 个产品</h2>
+        <h2>您的订单包含 <span class="chanpin">${fn:length(productList)}</span> 个产品</h2>
         <div class="checkout-right">
             <table class="timetable_sub">
                 <thead>
@@ -130,7 +130,7 @@
             <div class="checkout-right-basket">
                 <a href="index.jsp" ><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>继续购物</a>
                 <a href="/car/carempty"  onclick="return carempty()"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>清空购物车</a>
-                <a href="index.jsp"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>提交订单</a>
+                <a href="index.jsp"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>去结算</a>
             </div>
             <div class="clearfix"> </div>
         </div>

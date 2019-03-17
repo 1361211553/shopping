@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -7,6 +8,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ include file="appcomm/basePath.jsp" %>
 <html>
 <head>
     <title>个人订单信息</title>
@@ -513,24 +515,45 @@
                    <!-- 非第三方登陆，显示修改密码 -->
                     <table border="0">
                         <tbody><tr>
-                            <td align="left"><h2>订单号</h2></td>
-                            <td align="left"><h2>购买日期</h2></td>
-                            <td align="left"><h2>商品列表</h2></td>
+                            <td align="left"><h4>订单号</h4></td>
+                            <td align="left"><h4>购买日期</h4></td>
+                                <td align="left"><h4>购买数量</h4></td>
+                            <td align="left"><h4>订单价格</h4></td>
+                            <td align="left"><h4>订单状态</h4></td>
+                            <td align="left"><h4>操作</h4></td>
 
-                            <td align="left"><h2>数量</h2></td>
-                            <td align="left"><h2>金额</h2></td>
 
                         </tr>
-                        <jsp:include page="orderpage?op=selectorder"/>
-
                         <c:forEach var="personorder" items="${requestScope.orderlist}">
                         <tr>
-                            <td align="left">${personorder.orderid}</td>
-                            <td align="left">${personorder.orderdate}</td>
-                            <td>${personorder.proid}</td>
-                            <td align="left">${personorder.pronum}</td>
+                            <td align="left">${personorder.oid}</td>
+                             <td align="left"><fmt:formatDate value="${personorder.orderdate}"  type="date" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+                            <td>${personorder.pcount}</td>
+                            <td align="left">￥${personorder.ptotalprice}</td>
 
-                            <td align="left">${personorder.amount}</td>
+                            <c:if test="${personorder.pstatus==0}">
+                                <td align="left">未付款</td>
+                                <td><a href="" onclick="return false">查看</a></td>
+                                <td><a href="" onclick="return false">立即付款</a></td>
+                            </c:if>
+
+                            <c:if test="${personorder.pstatus==1}">
+                                <td align="left">未发货</td>
+                                <td><a href="" onclick="return false">查看</a></td>
+                                <td></td>
+                            </c:if>
+
+                            <c:if test="${personorder.pstatus==2}">
+                                <td align="left">已发货</td>
+                                <td><a href="" onclick="return false">查看</a></td>
+                                <td><a href="" onclick="return false">确认收货</a></td>
+                            </c:if>
+
+                            <c:if test="${personorder.pstatus==3}">
+                                <td align="left">已完成</td>
+                                <td><a href="" onclick="return false">查看</a></td>
+                            </c:if>
+
                         </tr>
                         </c:forEach>
 
@@ -569,7 +592,7 @@
 
 <!-- //register -->
 <!-- //footer -->
-    <%@ include file="appcomm/foot.jsp" %>
+
 <!-- //footer -->
 <!-- Bootstrap Core JavaScript -->
 <script src="js/bootstrap.min.js"></script>
