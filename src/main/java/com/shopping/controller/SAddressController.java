@@ -3,12 +3,16 @@ package com.shopping.controller;
 import com.shopping.dao.SAddressMapper;
 import com.shopping.entity.SAddress;
 import com.shopping.entity.SAddressExample;
+import com.shopping.entity.SUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -18,18 +22,52 @@ public class SAddressController {
     @Autowired
     SAddressMapper sAddressMapper;
 
-    @RequestMapping("search/{userid}")
-    public ModelAndView searchByUserid(@PathVariable(value="userid") Integer userid){
-        ModelAndView mav = new ModelAndView();
+    @RequestMapping("search")
+    public ModelAndView searchByUserid(HttpSession session){
 
+        ModelAndView mav = new ModelAndView("address");
+        SUser sUser = (SUser) session.getAttribute("user");
         SAddressExample example = new SAddressExample();
         SAddressExample.Criteria criteria = example.createCriteria();
-        if(userid>0){
-            criteria.andUseridEqualTo(userid);
-        }
+        criteria.andUseridEqualTo(sUser.getUserid());
+        example.setOrderByClause(" status desc");
         List<SAddress> listAddress = sAddressMapper.selectByExample(example);
-        mav.addObject("listAddress",listAddress);
+        mav.addObject("addresslist",listAddress);
 
         return mav;
     }
+
+    @RequestMapping("edit/{addressid}")
+    public ModelAndView edit(@PathVariable Integer addressid,HttpSession session) {
+
+        ModelAndView mav = new ModelAndView("redirect:/address/search");
+        SAddressExample sAddressExample = new SAddressExample();
+        SUser sUser = (SUser) session.getAttribute("user");
+        SAddressExample.Criteria criteria = sAddressExample.createCriteria();
+        //查出1的
+        criteria.andUseridEqualTo(sUser.getUserid());
+        criteria.andStatusEqualTo(1);
+        List<SAddress> addresseslist =  sAddressMapper.selectByExample(sAddressExample);
+        //把1变成0
+        SAddress sAddress = new SAddress();
+        sAddress.setAddreessid(addresseslist.get(0).getAddreessid());
+        sAddress.setStatus(0);
+        sAddressMapper.updateByPrimaryKeySelective(sAddress);
+        //把0变成1
+        sAddress.setAddreessid(addressid);
+        sAddress.setStatus(1);
+        sAddressMapper.updateByPrimaryKeySelective(sAddress);
+        return mav;
+
+    }
+
+    @RequestMapping("del")
+    @ResponseBody
+    public int del(@RequestParam Integer addressid) {
+
+        int row = sAddressMapper.deleteByPrimaryKey(addressid);
+
+        return row;
+    }
+
 }

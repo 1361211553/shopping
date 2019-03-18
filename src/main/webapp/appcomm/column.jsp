@@ -22,7 +22,7 @@
                             </a>
                         </li>
                         <li>
-                            <a menu="userlevel" href="orders.jsp?op=selectorder&userid=${user.userid}">
+                            <a menu="userlevel" href="/order/search">
                                 <span class="icon icon-userlevel"></span>
                                 <span class="title">
                                     订单管理
@@ -30,7 +30,7 @@
                             </a>
                         </li>
                         <li>
-                            <a menu="subscribe" href="address.jsp">
+                            <a menu="subscribe" href="/address/search">
 
                                 <span class="icon icon-subscribe"></span>
                                 <span class="title">
