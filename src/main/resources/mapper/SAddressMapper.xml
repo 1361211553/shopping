@@ -5,9 +5,13 @@
     <id column="addreessid" property="addreessid" jdbcType="INTEGER" />
     <result column="userid" property="userid" jdbcType="INTEGER" />
     <result column="consignee" property="consignee" jdbcType="VARCHAR" />
-    <result column="addressname" property="addressname" jdbcType="VARCHAR" />
+    <result column="province" property="province" jdbcType="VARCHAR" />
     <result column="addressphone" property="addressphone" jdbcType="VARCHAR" />
     <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="zip" property="zip" jdbcType="VARCHAR" />
+    <result column="city" property="city" jdbcType="VARCHAR" />
+    <result column="dist" property="dist" jdbcType="VARCHAR" />
+    <result column="detailed" property="detailed" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -68,7 +72,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    addreessid, userid, consignee, addressname, addressphone, status
+    addreessid, userid, consignee, province, addressphone, status, zip, city, dist, detailed
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.shopping.entity.SAddressExample" >
     select
@@ -97,10 +101,12 @@
   </delete>
   <insert id="insert" parameterType="com.shopping.entity.SAddress" >
     insert into s_address (addreessid, userid, consignee, 
-      addressname, addressphone, status
+      province, addressphone, status, 
+      zip, city, dist, detailed
       )
     values (#{addreessid,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{consignee,jdbcType=VARCHAR}, 
-      #{addressname,jdbcType=VARCHAR}, #{addressphone,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}
+      #{province,jdbcType=VARCHAR}, #{addressphone,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
+      #{zip,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, #{dist,jdbcType=VARCHAR}, #{detailed,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.shopping.entity.SAddress" >
@@ -115,14 +121,26 @@
       <if test="consignee != null" >
         consignee,
       </if>
-      <if test="addressname != null" >
-        addressname,
+      <if test="province != null" >
+        province,
       </if>
       <if test="addressphone != null" >
         addressphone,
       </if>
       <if test="status != null" >
         status,
+      </if>
+      <if test="zip != null" >
+        zip,
+      </if>
+      <if test="city != null" >
+        city,
+      </if>
+      <if test="dist != null" >
+        dist,
+      </if>
+      <if test="detailed != null" >
+        detailed,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -135,14 +153,26 @@
       <if test="consignee != null" >
         #{consignee,jdbcType=VARCHAR},
       </if>
-      <if test="addressname != null" >
-        #{addressname,jdbcType=VARCHAR},
+      <if test="province != null" >
+        #{province,jdbcType=VARCHAR},
       </if>
       <if test="addressphone != null" >
         #{addressphone,jdbcType=VARCHAR},
       </if>
       <if test="status != null" >
         #{status,jdbcType=INTEGER},
+      </if>
+      <if test="zip != null" >
+        #{zip,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="dist != null" >
+        #{dist,jdbcType=VARCHAR},
+      </if>
+      <if test="detailed != null" >
+        #{detailed,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -158,14 +188,26 @@
       <if test="record.consignee != null" >
         consignee = #{record.consignee,jdbcType=VARCHAR},
       </if>
-      <if test="record.addressname != null" >
-        addressname = #{record.addressname,jdbcType=VARCHAR},
+      <if test="record.province != null" >
+        province = #{record.province,jdbcType=VARCHAR},
       </if>
       <if test="record.addressphone != null" >
         addressphone = #{record.addressphone,jdbcType=VARCHAR},
       </if>
       <if test="record.status != null" >
         status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.zip != null" >
+        zip = #{record.zip,jdbcType=VARCHAR},
+      </if>
+      <if test="record.city != null" >
+        city = #{record.city,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dist != null" >
+        dist = #{record.dist,jdbcType=VARCHAR},
+      </if>
+      <if test="record.detailed != null" >
+        detailed = #{record.detailed,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -177,9 +219,13 @@
     set addreessid = #{record.addreessid,jdbcType=INTEGER},
       userid = #{record.userid,jdbcType=INTEGER},
       consignee = #{record.consignee,jdbcType=VARCHAR},
-      addressname = #{record.addressname,jdbcType=VARCHAR},
+      province = #{record.province,jdbcType=VARCHAR},
       addressphone = #{record.addressphone,jdbcType=VARCHAR},
-      status = #{record.status,jdbcType=INTEGER}
+      status = #{record.status,jdbcType=INTEGER},
+      zip = #{record.zip,jdbcType=VARCHAR},
+      city = #{record.city,jdbcType=VARCHAR},
+      dist = #{record.dist,jdbcType=VARCHAR},
+      detailed = #{record.detailed,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -193,14 +239,26 @@
       <if test="consignee != null" >
         consignee = #{consignee,jdbcType=VARCHAR},
       </if>
-      <if test="addressname != null" >
-        addressname = #{addressname,jdbcType=VARCHAR},
+      <if test="province != null" >
+        province = #{province,jdbcType=VARCHAR},
       </if>
       <if test="addressphone != null" >
         addressphone = #{addressphone,jdbcType=VARCHAR},
       </if>
       <if test="status != null" >
         status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="zip != null" >
+        zip = #{zip,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="dist != null" >
+        dist = #{dist,jdbcType=VARCHAR},
+      </if>
+      <if test="detailed != null" >
+        detailed = #{detailed,jdbcType=VARCHAR},
       </if>
     </set>
     where addreessid = #{addreessid,jdbcType=INTEGER}
@@ -209,9 +267,13 @@
     update s_address
     set userid = #{userid,jdbcType=INTEGER},
       consignee = #{consignee,jdbcType=VARCHAR},
-      addressname = #{addressname,jdbcType=VARCHAR},
+      province = #{province,jdbcType=VARCHAR},
       addressphone = #{addressphone,jdbcType=VARCHAR},
-      status = #{status,jdbcType=INTEGER}
+      status = #{status,jdbcType=INTEGER},
+      zip = #{zip,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      dist = #{dist,jdbcType=VARCHAR},
+      detailed = #{detailed,jdbcType=VARCHAR}
     where addreessid = #{addreessid,jdbcType=INTEGER}
   </update>
 </mapper>

@@ -198,6 +198,7 @@
 
     $(document).ready(function () {
 
+
         $(".d").click(function () {
             var obj = $(this);
             var pid = $(this).attr("pid");

@@ -86,27 +86,34 @@
                 </tr>
                 </thead>
 
-                <%--<c:forEach items="${requestScope.productList}" var="cl" varStatus="vs">--%>
+                <c:if test="${address != null}">
+                    <tr class="rem1">
+                        <td class="invert">${address.consignee}</td>
+                        <td class="invert-image">${address.consignee}${address.city}${address.dist}${address.detailed}</td>
+                        <td class="invert">${address.addressphone}</td>
+                        <td class="inver2t">${address.zip}</td>
+                    </tr>
+                </c:if>
 
-
+                <c:if test="${address == null}">
                 <tr class="rem1">
-                    <td class="invert"><input type="text"></td>
+                    <td class="invert"><input type="text" placeholder="请填写收货人姓名"></td>
                     <td class="invert-image">
                         <div id="city_4">
                             <select class="prov"></select>
                             <select class="city" disabled="disabled"></select>
                             <select class="dist" disabled="disabled"></select>
-                            <input type="text">
+                            <input type="text" placeholder="请填写详细地址">
                         </div>
 
-                    <td class="invert"><input type="text"></td>
+                    <td class="invert"><input type="text" placeholder="请填写联系人号码"></td>
                     <td class="inver2t">
-                        <input type="text">
+                        <input type="text" placeholder="请填写地址邮编">
                     </td>
 
                 </tr>
+                </c:if>
 
-                <%--</c:forEach>--%>
                 <!--quantity-->
                 <!--quantity-->
             </table>

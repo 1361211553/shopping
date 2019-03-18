@@ -7,11 +7,19 @@ public class SAddress {
 
     private String consignee;
 
-    private String addressname;
+    private String province;
 
     private String addressphone;
 
     private Integer status;
+
+    private String zip;
+
+    private String city;
+
+    private String dist;
+
+    private String detailed;
 
     public Integer getAddreessid() {
         return addreessid;
@@ -37,12 +45,12 @@ public class SAddress {
         this.consignee = consignee == null ? null : consignee.trim();
     }
 
-    public String getAddressname() {
-        return addressname;
+    public String getProvince() {
+        return province;
     }
 
-    public void setAddressname(String addressname) {
-        this.addressname = addressname == null ? null : addressname.trim();
+    public void setProvince(String province) {
+        this.province = province == null ? null : province.trim();
     }
 
     public String getAddressphone() {
@@ -59,5 +67,37 @@ public class SAddress {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public String getZip() {
+        return zip;
+    }
+
+    public void setZip(String zip) {
+        this.zip = zip == null ? null : zip.trim();
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city == null ? null : city.trim();
+    }
+
+    public String getDist() {
+        return dist;
+    }
+
+    public void setDist(String dist) {
+        this.dist = dist == null ? null : dist.trim();
+    }
+
+    public String getDetailed() {
+        return detailed;
+    }
+
+    public void setDetailed(String detailed) {
+        this.detailed = detailed == null ? null : detailed.trim();
     }
 }

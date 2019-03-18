@@ -26,7 +26,7 @@
     <link href="css/new_home_index__daf8123.css" rel="stylesheet">
     <script charset="utf-8" type="text/javascript" async="" src="js/underscore_3d00f9f.js"></script>
     <script charset="utf-8" type="text/javascript" async="" src="js/header_search_tip_1b84d58.js"></script>
-    <style>@charset "UTF-8";
+    <style>
     .header-search-tips {
         position: relative;
         width: 250px;
