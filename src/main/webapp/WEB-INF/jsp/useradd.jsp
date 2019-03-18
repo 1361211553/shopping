@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@include file="/jsp/common/head.jsp"%>
+<%@include file="/WEB-INF/jsp/common/head.jsp"%>
 
 <div class="right">
         <div class="location">
@@ -68,5 +68,5 @@
         </div>
 </div>
 </section>
-<%@include file="/jsp/common/foot.jsp" %>
-<script type="text/javascript" src="${pageContext.request.contextPath }/js/useradd.js"></script>
+<%@include file="/WEB-INF/jsp/common/foot.jsp" %>
+<script type="text/javascript" src="${pageContext.request.contextPath }/js2/useradd.js"></script>
