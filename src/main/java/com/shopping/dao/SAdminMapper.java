@@ -3,8 +3,13 @@ package com.shopping.dao;
 import com.shopping.entity.SAdmin;
 import com.shopping.entity.SAdminExample;
 import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
+
+@Mapper
+@Repository
 public interface SAdminMapper {
     int deleteByPrimaryKey(Integer adminid);
 

@@ -206,6 +206,12 @@ public class UserController {
         pw.close();
     }
 
+
+
+
+
+
+
     @InitBinder
     public void initBinder(ServletRequestDataBinder binder){
         binder.registerCustomEditor(Date.class, new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd"), true));
