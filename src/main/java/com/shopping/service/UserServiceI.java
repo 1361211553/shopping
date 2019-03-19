@@ -8,5 +8,5 @@ public interface UserServiceI {
 
     List<SUser> selectByExample(SUser sUser);
 
-    List<SUser> selectByExampleWithPage(SUser sUser,Integer pageNo,Integer pageSize);
+    List<SUser> selectByExampleWithPage(SUser sUser, Integer pageNo, Integer pageSize);
 }

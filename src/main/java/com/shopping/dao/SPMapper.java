@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface SPMapper {
 
-    List<SP> onPage(Integer pageNum,Integer pageSize,Integer ptypeid,String pname);
+    List<SP> onPage(Integer pageNum, Integer pageSize, Integer ptypeid, String pname);
 
     int deleteByPrimaryKey(Integer pid);
 

@@ -27,155 +27,155 @@
     <script charset="utf-8" type="text/javascript" async="" src="js/underscore_3d00f9f.js"></script>
     <script charset="utf-8" type="text/javascript" async="" src="js/header_search_tip_1b84d58.js"></script>
     <style>
-    .header-search-tips {
-        position: relative;
-        width: 250px;
-        background-color: #fff;
-        border: 1px solid #e0e0e0;
-        font-size: 12px;
-        box-shadow: 0 3px 8px 2px rgba(1, 1, 1, .1);
-        border-radius: 5px
-    }
+        .header-search-tips {
+            position: relative;
+            width: 250px;
+            background-color: #fff;
+            border: 1px solid #e0e0e0;
+            font-size: 12px;
+            box-shadow: 0 3px 8px 2px rgba(1, 1, 1, .1);
+            border-radius: 5px
+        }
 
-    .header-search-tips li {
-        line-height: 30px;
-        height: 30px;
-        color: #666;
-        overflow: hidden;
-        cursor: pointer;
-        padding: 0 15px
-    }
+        .header-search-tips li {
+            line-height: 30px;
+            height: 30px;
+            color: #666;
+            overflow: hidden;
+            cursor: pointer;
+            padding: 0 15px
+        }
 
-    .header-search-tips li:hover {
-        color: #f90;
-        background-color: #ececec
-    }
+        .header-search-tips li:hover {
+            color: #f90;
+            background-color: #ececec
+        }
 
-    .header-search-tips .his-items em {
-        width: 14px;
-        height: 14px;
-        text-align: center;
-        line-height: 14px;
-        display: inline-block;
-        background: url(https://a.msstatic.com/huya/main/img/header/sprite/search_icon_b4d8025.png);
-        margin-right: 8px;
-        vertical-align: middle;
-        *display: inline;
-        *zoom: 1
-    }
+        .header-search-tips .his-items em {
+            width: 14px;
+            height: 14px;
+            text-align: center;
+            line-height: 14px;
+            display: inline-block;
+            background: url(https://a.msstatic.com/huya/main/img/header/sprite/search_icon_b4d8025.png);
+            margin-right: 8px;
+            vertical-align: middle;
+            *display: inline;
+            *zoom: 1
+        }
 
-    .header-search-tips .his-items .del-item-link {
-        float: right;
-        padding: 0 5px;
-        height: 30px;
-        margin-right: -5px
-    }
+        .header-search-tips .his-items .del-item-link {
+            float: right;
+            padding: 0 5px;
+            height: 30px;
+            margin-right: -5px
+        }
 
-    .header-search-tips .his-items .del-item-link span {
-        display: inline-block;
-        *display: block;
-        *margin-top: 12px;
-        vertical-align: middle;
-        width: 8px;
-        height: 7px;
-        background: url(https://a.msstatic.com/huya/main/img/header/sprite/search_clear_69b8269.png?__sprite);
-        text-indent: -9999em
-    }
+        .header-search-tips .his-items .del-item-link span {
+            display: inline-block;
+            *display: block;
+            *margin-top: 12px;
+            vertical-align: middle;
+            width: 8px;
+            height: 7px;
+            background: url(https://a.msstatic.com/huya/main/img/header/sprite/search_clear_69b8269.png?__sprite);
+            text-indent: -9999em
+        }
 
-    .header-search-tips .clear-his-btn {
-        display: block;
-        margin: 6px 15px 8px;
-        font-size: 12px;
-        line-height: 28px;
-        border-radius: 14px;
-        color: #555;
-        background: #F1F2F4;
-        text-align: center;
-        text-decoration: none
-    }
+        .header-search-tips .clear-his-btn {
+            display: block;
+            margin: 6px 15px 8px;
+            font-size: 12px;
+            line-height: 28px;
+            border-radius: 14px;
+            color: #555;
+            background: #F1F2F4;
+            text-align: center;
+            text-decoration: none
+        }
 
-    .header-search-tips .clear-his-btn i {
-        padding-left: 5px;
-        font-family: \5b8b\4f53
-    }
+        .header-search-tips .clear-his-btn i {
+            padding-left: 5px;
+            font-family: \5b8b\4f53
+        }
 
-    .header-search-tips .clear-his-btn:hover {
-        text-decoration: none;
-        background: #ff9600;
-        color: #fff
-    }
+        .header-search-tips .clear-his-btn:hover {
+            text-decoration: none;
+            background: #ff9600;
+            color: #fff
+        }
 
-    .header-search-tips .his-items-line {
-        height: 0;
-        border-bottom: 1px solid #e6e6e6;
-        margin-bottom: 6px
-    }
+        .header-search-tips .his-items-line {
+            height: 0;
+            border-bottom: 1px solid #e6e6e6;
+            margin-bottom: 6px
+        }
 
-    .header-search-tips .search-items {
-        padding-bottom: 7px
-    }
+        .header-search-tips .search-items {
+            padding-bottom: 7px
+        }
 
-    .header-search-tips .search-items em {
-        width: 16px;
-        height: 16px;
-        text-align: center;
-        line-height: 16px;
-        font-size: 12px;
-        display: inline-block;
-        *display: inline;
-        *zoom: 1;
-        background: #d8d8d8;
-        color: #666;
-        border-radius: 8px;
-        margin-right: 8px
-    }
+        .header-search-tips .search-items em {
+            width: 16px;
+            height: 16px;
+            text-align: center;
+            line-height: 16px;
+            font-size: 12px;
+            display: inline-block;
+            *display: inline;
+            *zoom: 1;
+            background: #d8d8d8;
+            color: #666;
+            border-radius: 8px;
+            margin-right: 8px
+        }
 
-    .header-search-tips .search-items em.top-item {
-        background: #ff6d00;
-        color: #fff
-    }
+        .header-search-tips .search-items em.top-item {
+            background: #ff6d00;
+            color: #fff
+        }
 
-    .header-search-tips .search-item-hover {
-        color: #666;
-        background-color: #ececec
-    }
+        .header-search-tips .search-item-hover {
+            color: #666;
+            background-color: #ececec
+        }
 
-    .header-search-tips .search-item-hover .suggest-text {
-        width: 7em
-    }
+        .header-search-tips .search-item-hover .suggest-text {
+            width: 7em
+        }
 
-    .header-search-tips .search-item-hover .suggest-text.hot {
-        width: 7em
-    }
+        .header-search-tips .search-item-hover .suggest-text.hot {
+            width: 7em
+        }
 
-    .header-search-tips .search-item-hover .suggest-link {
-        display: block
-    }
+        .header-search-tips .search-item-hover .suggest-link {
+            display: block
+        }
 
-    .header-search-tips .suggest-text {
-        display: inline-block;
-        vertical-align: top;
-        width: 100%;
-        height: 30px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap
-    }
+        .header-search-tips .suggest-text {
+            display: inline-block;
+            vertical-align: top;
+            width: 100%;
+            height: 30px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap
+        }
 
-    .header-search-tips .suggest-text.hot {
-        width: 12em
-    }
+        .header-search-tips .suggest-text.hot {
+            width: 12em
+        }
 
-    .header-search-tips .suggest-link {
-        display: none;
-        float: right;
-        color: #f90
-    }
+        .header-search-tips .suggest-link {
+            display: none;
+            float: right;
+            color: #f90
+        }
 
-    .header-search-tips .suggest-link:hover {
-        cursor: pointer;
-        color: #f90
-    }</style>
+        .header-search-tips .suggest-link:hover {
+            cursor: pointer;
+            color: #f90
+        }</style>
     <style>.nav-expand-game dl {
         margin: 0 -5px 10px 0
     }
@@ -420,6 +420,7 @@
     <script type="application/x-javascript"> addEventListener("load", function () {
         setTimeout(hideURLbar, 0);
     }, false);
+
     function hideURLbar() {
         window.scrollTo(0, 1);
     } </script>
@@ -452,6 +453,17 @@
     <script charset="utf-8" type="text/javascript" async=""
             src="js/cheshi2.js"></script>
     <!-- start-smoth-scrolling -->
+    <script type="text/javascript" src="address/js/jquery.cityselect.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#city_4").citySelect({
+                prov: "湖南",
+                city: "长沙",
+                dist: "岳麓区",
+                nodata: "none"
+            });
+        });
+    </script>
 </head>
 <body>
 <!-- header -->
@@ -474,8 +486,8 @@
     <link rel="stylesheet" type="text/css" href="css/menu_d79cf19.css">
     <script>
         var currentMenu = 'userinfo',
-                indexUrl = "//i.huya.com/",
-                indexFile = "index.php";
+            indexUrl = "//i.huya.com/",
+            indexFile = "index.php";
     </script>
     <script type="text/javascript" src="js/main_menu_29d4193.js"></script>
     <script type="text/javascript" src="js/cookies.js"></script>
@@ -492,16 +504,24 @@
                     <!-- 顶部栏 -->
 
                     <div class="has-bind-title">
-                        <p>当前地址：<span id="oldNick">${add}</span></p>
+                        <p>当前地址：<span id="oldNick">收货人姓名：${address.consignee}联系号码：${address.addressphone}
+                            收货地址：${address.city}${address.dist}${address.detailed}邮编：>${address.zip}</span></p>
 
                     </div>
 
                     <!-- 填写内容 -->
-                    <form id=payment  method="post" action="add?op=updateAddress">
-                        <div class="login-form-grids animated wow slideInUp" data-wow-delay=".5s">
+                    <form id=payment method="post" action="/address/update/${address.addressid}">
+                        <div class="login-form-grids animated wow slideInUp" style="width: 70%" data-wow-delay=".5s">
 
-                            <input type="text" name="address" placeholder="新地址" required=" " >
+                            收货人姓名：<input type="text" name="consignee">
+                            联系号码：<input type="text" name="addressphone">
+                                <div id="city_4">
+                                        选择地址：<select class="prov" name="province"></select>
+                                        <select class="city" disabled="disabled" name="city"></select>
+                                        <select class="dist" disabled="disabled" name="dist"></select>
+                                        <input name="detailed" type="text" placeholder="请填写详细地址">
 
+                                </div>
 
                             <input type="submit" value="确认">
 
@@ -537,7 +557,7 @@
                 <!-- 已绑定手机e -->
             </div>
         </div>
-</div>
+    </div>
 
 </div>
 <!-- //register -->
