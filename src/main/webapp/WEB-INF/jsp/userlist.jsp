@@ -51,7 +51,7 @@
                    <c:forEach var="user" items="${listUsers }" varStatus="status">
 					<tr style="font-size: 15px">
 						<td>
-						<span><img src="${user.userface}" style="width: 40px;height: 40px"/></span>
+						<span><img src="${user.userface}" style="width: 50px;height: 50px"/></span>
 						</td>
 						<td>
 						<span>${user.username }</span>

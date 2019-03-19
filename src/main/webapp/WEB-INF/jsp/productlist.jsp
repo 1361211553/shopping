@@ -72,8 +72,8 @@
 
 						<td>
 						<span><a class="viewUser" href="${pageContext.request.contextPath }/sp/view/${sp.pid}"><img src="${pageContext.request.contextPath }/images/read.png" alt="查看" title="查看"/></a></span>
-						<span><a class="modifyUser" href="${pageContext.request.contextPath }/address/toModify/${address.id}.html"><img src="${pageContext.request.contextPath }/images/xiugai.png" alt="修改" title="修改"/></a></span>
-						<span><a class="deleteAddress" href="javascript:;" method="deleteAddress" addressid="${address.id }" contact="${address.contact }" addressname="${address.addressdesc }"><img src="${pageContext.request.contextPath }/images/schu.png" alt="删除" title="删除"/></a></span>
+						<span><a class="modifyP" href="${pageContext.request.contextPath }/sp/toModify/${sp.pid}"><img src="${pageContext.request.contextPath }/images/xiugai.png" alt="修改" title="修改"/></a></span>
+						<span><a class="deleteP" href="javascript:;" method="deleteAddress" pid="${sp.pid }" pname="${sp.pname }" ><img src="${pageContext.request.contextPath }/images/schu.png" alt="删除" title="删除"/></a></span>
 						</td>
 					</tr>
 				</c:forEach>
@@ -108,11 +108,11 @@
 
 <!--点击删除按钮后弹出的页面-->
 <div class="zhezhao"></div>
-<div class="remove" id="removeAddress">
+<div class="remove" id="removeP">
     <div class="removerChid">
         <h2>提示</h2>
         <div class="removeMain">
-            <p>你确定要删除该地址吗？</p>
+            <p>你确定要删除该商品吗？</p>
             <a href="#" id="yes">确定</a>
             <a href="#" id="no">取消</a>
         </div>
@@ -121,16 +121,16 @@
 
 <%@include file="/WEB-INF/jsp/common/foot.jsp" %>
 <script>
-  var addressid;
-  var addressObj;
-  $(".deleteAddress").on("click",function(){
-    addressObj=$(this);
-    addressid=addressObj.attr("addressid");
-    var contact=addressObj.attr("contact");
-    var addressname=addressObj.attr("addressname");
-    changeDLGContent("您是否要删除地址id为"+addressid+",联系人为"+contact+",地址为"+addressname+"的记录吗？");
+  var pid;
+  var pObj;
+  $(".deleteP").on("click",function(){
+    pObj=$(this);
+    pid=pObj.attr("pid");
+
+    var pname=pObj.attr("pname");
+    changeDLGContent("您是否要删除商品id为"+pid+",商品名为"+pname+"的记录吗？");
     $(".zhezhao").css("display","block");
-    $("#removeAddress").fadeIn();
+    $("#removeP").fadeIn();
   });
   
   $("#no").on("click",function(){
@@ -141,13 +141,13 @@
     
     $.ajax({
       type:"POST",
-      url:path+"/address/delete.html",
-	  data:{id:addressid},
+      url:path+"/sp/delete",
+	  data:{pid:pid},
 	  dataType:"json",
 	  success:function(data){
 		if(data == 1){
-		  addressObj.parents("tr").remove();
-		  
+		  pObj.parents("tr").remove();
+		  alert("删除成功");
 		}else{
 		  alert("该记录已经不存在");
 		}
@@ -167,7 +167,7 @@
   
   function cancel(){
     $(".zhezhao").css("display","none");
-    $("#removeAddress").fadeOut();
+    $("#removeP").fadeOut();
   }
   
   $("#toAddressNum").on("click",function(){

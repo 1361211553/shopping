@@ -1,5 +1,6 @@
 package com.shopping.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.shopping.dao.SPMapper;
 import com.shopping.dao.SPtypeMapper;
 import com.shopping.entity.SP;
@@ -14,6 +15,9 @@ import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -143,6 +147,44 @@ public class SPController {
         mav.addObject("sptypename",sPtype.getPtypename());
         mav.setViewName("WEB-INF/jsp/productview");
         return  mav;
+    }
+    @RequestMapping("delete")
+    @ResponseBody
+    public void delete(Integer pid, HttpServletResponse response) throws IOException {
+
+        System.out.println(pid);
+
+        int i = spMapper.deleteByPrimaryKey(pid);
+
+        String s =JSON.toJSONString(i);
+
+        response.setCharacterEncoding("utf-8");
+        response.setContentType("text/html; charset=utf-8");
+        PrintWriter pw = response.getWriter();
+        pw.print(s);
+
+        pw.flush();
+        pw.close();
+
+    }
+    @RequestMapping("toModify/{pid}")
+    public ModelAndView toModify(@ModelAttribute(value="pid") Integer pid){
+        ModelAndView mav = new ModelAndView();
+        SP sp = spMapper.selectByPrimaryKey(pid);
+        mav.addObject("showsp",sp);
+
+        mav.setViewName("WEB-INF/jsp/productmodify");
+        return mav;
+    }
+    @RequestMapping("modify")
+    public ModelAndView modify(@ModelAttribute SP sP){
+        ModelAndView mav = new ModelAndView();
+
+        spMapper.updateByPrimaryKey(sP);
+
+        mav.setViewName("redirect:/sp/searchBack/1/0");
+
+        return mav;
     }
 
 

@@ -8,57 +8,49 @@
             <span><font color="red">${message }</font></span>
         </div>
         <div class="providerAdd">
-        <form id="modifyAddressForm" name="userForm" method="post" action="${pageContext.request.contextPath }/address/modify/${loginUI.id }.html">
+        <form id="modifyAddressForm" name="userForm" method="post" action="${pageContext.request.contextPath }/sp/modify/${loginUI.id }">
 			<input type="hidden" name="method" value="modifyexe">
-			<input type="hidden" name="id" value="${address.id }"/>
+			<input type="hidden" name="id" value="${showsp.pid }"/>
 			   <div>
-                    <label for="contact">联系人名称：</label>
-                    <input type="text" name="contact" id="contact" value="${address.contact }"> 
+                    <label for="pname">商品名称：</label>
+                    <input type="text" name="pname" id="pname" value="${showsp.pname }">
 					<font color="red"></font>
                </div>
                
                <div>
-                    <label for="addressdesc">详细地址：</label>
-                    <input type="text" name="addressdesc" id="addressDesc" value="${address.addressdesc }"> 
+                    <label for="pprice">商品价格：</label>
+                    <input type="text" name="pprice" id="pprice" value="${showsp.pprice }">
 					<font color="red"></font>
                </div>
 			   
 			   <div>
-                    <label for="postcode">邮政编码：</label>
-                    <input type="text" id="postcode" name="postcode" value="${address.postcode }">
+                    <label for="pnum">商品数量：</label>
+                    <input type="text" id="pnum" name="pnum" value="${showsp.pnum }">
                     <font color="red"></font>
                </div>
 			   
-			   <div>
-                    <label for="tel">联系人电话：</label>
-                    <input type="text" id="tel" name="tel" value="${address.tel }">
-                    <font color="red"></font>
-               </div>
+
 		       <div>
-                    <label for="createdby">创建者id</label>
-                    <input type="text" name="createdby" id="createdby" readonly="readonly" value="${address.id }"> 
+                    <label for="pdescription" style="position:relative;bottom: 140px">商品描述</label>
+                    <textarea name="pdescription" id="pdescription" cols="30" rows="10">${showsp.pdescription}</textarea>
                     <font color="red"></font>
                </div>
-               <div>
-                    <label for="creationdate">创建时间</label>
-                    <input type="text" name="creationdate" id="creationdate" readonly="readonly" 
-                     value="<fmt:formatDate value='${address.creationdate}' pattern='yyyy-MM-dd'/>">
-                </div>
+
 				<div>
-                    <label >对接人姓名：</label>
+                    <label >商品类别：</label>
                     <!-- 列出所有的对接人姓名 -->
 					
-					<select name="userid" id="userid">
-					    <c:forEach var="User" items="${userList }">
+					<select name="ptypeid" id="ptypeid">
+					    <c:forEach var="t" items="${listSPtype }">
 					    <option
-					    <c:if test="${User.id == address.userid }">selected="selected"</c:if>
-					     value="${User.id }" >${User.username }</option>    
+					    <c:if test="${t.ptypeid == showsp.ptypeid}">selected="selected"</c:if>
+					     value="${t.ptypeid }" >${t.ptypename }</option>
 					    </c:forEach>
 					</select>
         			<font color="red"></font>
                 </div>
-			 <div class="providerAddBtn">
-                    <input type="button" name="save" id="saveAddress" value="保存" />
+			    <div class="providerAddBtn">
+                    <input type="button" name="save" id="saveSP" value="保存" />
                     <input type="button" id="back" name="back" value="返回"/>
                 </div>
             </form>
@@ -82,7 +74,7 @@
 <%@include file="/WEB-INF/jsp/common/foot.jsp" %>
 
 <script>
-    $("#saveAddress").on("click",function(){
+    $("#saveSP").on("click",function(){
         $('.zhezhao').css('display', 'block');
 	    $('#modifyAddress').fadeIn();
 	
@@ -102,54 +94,54 @@
     });
     
      //验证
-    $("#contact").on("blur",function(){
-        if($("#contact").val()!=null && $("#contact").val()!=""){
-            validateTip($("#contact").next(),{"color":"green"},imgYes,true);
+    $("#pname").on("blur",function(){
+        if($("#pname").val()!=null && $("#pname").val()!=""){
+            validateTip($("#pname").next(),{"color":"green"},imgYes,true);
         }else{
-            validateTip($("#contact").next(),{"color":"red"},imgNo+" 联系人不能为空，请输入",false);
+            validateTip($("#pname").next(),{"color":"red"},imgNo+" 商品名不能为空，请输入",false);
         }
     }).on("focus",function(){
-        validateTip($("#contact").next(),{"color":"#666666"},"* 请输入联系人",false);
+        validateTip($("#pname").next(),{"color":"#666666"},"* 请输入商品名",false);
     });
     
-    $("#addressDesc").on("blur",function(){
-        if($("#addressDesc").val()!=null && $("#addressDesc").val()!=""){
-            validateTip($("#addressDesc").next(),{"color":"green"},imgYes,true);
+    $("#pdescription").on("blur",function(){
+        if($("#pdescription").val()!=null && $("#pdescription").val()!=""){
+            validateTip($("#pdescription").next(),{"color":"green"},imgYes,true);
         }else{
-            validateTip($("#addressDesc").next(),{"color":"red"},imgNo+" 地址不能为空，请输入",false);
+            validateTip($("#pdescription").next(),{"color":"red"},imgNo+" 商品详细信息不能为空，请输入",false);
         }
     }).on("focus",function(){
-        validateTip($("#addressDesc").next(),{"color":"#666666"},"* 请输入地址",false);
+        validateTip($("#pdescription").next(),{"color":"#666666"},"* 请输入商品详细信息",false);
     });
     
-    $("#postcode").on("blur",function(){
-        var str=/^[1-9][0-9]{5}$/;
-        if($("#postcode").val()!=null && $("#postcode").val()!=""){
-            if($("#postcode").val().match(str)){
-                validateTip($("#postcode").next(),{"color":"green"},imgYes,true);
+    $("#pprice").on("blur",function(){
+        var str=/^((0{1}\.\d+)|([1-9]\d*\.{1}\d+)|([1-9]+\d*)|0)$/;
+        if($("#pprice").val()!=null && $("#pprice").val()!=""){
+            if($("#pprice").val().match(str)){
+                validateTip($("#pprice").next(),{"color":"green"},imgYes,true);
             }else{
-                validateTip($("#postcode").next(),{"color":"red"},imgNo+" 请输入正确的邮政编码",false);
+                validateTip($("#pprice").next(),{"color":"red"},imgNo+" 请输入正确的价格",false);
             }
         }else{
-            validateTip($("#postcode").next(),{"color":"red"},imgNo+" 邮政编码不能为空，请输入",false);
+            validateTip($("#pprice").next(),{"color":"red"},imgNo+" 商品价格不能为空，请输入",false);
         }
     }).on("focus",function(){
-        validateTip($("#postcode").next(),{"color":"#666666"},"* 请输入邮政编码",false);
+        validateTip($("#pprice").next(),{"color":"#666666"},"* 请输入商品价格",false);
     });
     
-    $("#tel").on("blur",function(){
-        var str=/^1(3[0-9]|5[189]|8[6789])[0-9]{8}$/;
-        if($("#tel").val()!=null && $("#tel").val()!=""){
-            if($("#tel").val().match(str)){
-                validateTip($("#tel").next(),{"color":"green"},imgYes,true);
+    $("#pnum").on("blur",function(){
+        var str=/^[+]{0,1}(\d+)$/;
+        if($("#pnum").val()!=null && $("#pnum").val()!=""){
+            if($("#pnum").val().match(str)){
+                validateTip($("#pnum").next(),{"color":"green"},imgYes,true);
             }else{
-                validateTip($("#tel").next(),{"color":"red"},imgNo+" 请输入正确的手机号码",false);
+                validateTip($("#pnum").next(),{"color":"red"},imgNo+" 请输入正确的商品数量",false);
             }
         }else{
-            validateTip($("#tel").next(),{"color":"red"},imgNo+" 手机号码不能为空，请输入",false);
+            validateTip($("#pnum").next(),{"color":"red"},imgNo+" 商品数量不能为空，请输入",false);
         }
     }).on("focus",function(){
-        validateTip($("#tel").next(),{"color":"#666666"},"* 请输入手机号码",false);
+        validateTip($("#pnum").next(),{"color":"#666666"},"* 请输入商品数量",false);
     });
 </script>
 <%-- <script type="text/javascript" src="${pageContext.request.contextPath }/js/usermodify.js"></script> --%>
