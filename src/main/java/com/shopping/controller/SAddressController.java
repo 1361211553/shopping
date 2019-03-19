@@ -50,11 +50,11 @@ public class SAddressController {
         List<SAddress> addresseslist =  sAddressMapper.selectByExample(sAddressExample);
         //把1变成0
         SAddress sAddress = new SAddress();
-        sAddress.setAddreessid(addresseslist.get(0).getAddreessid());
+        sAddress.setAddressid(addresseslist.get(0).getAddressid());
         sAddress.setStatus(0);
         sAddressMapper.updateByPrimaryKeySelective(sAddress);
         //把0变成1
-        sAddress.setAddreessid(addressid);
+        sAddress.setAddressid(addressid);
         sAddress.setStatus(1);
         sAddressMapper.updateByPrimaryKeySelective(sAddress);
         return mav;
@@ -64,7 +64,7 @@ public class SAddressController {
     @RequestMapping("del")
     @ResponseBody
     public int del(@RequestParam Integer addressid) {
-
+        System.out.println(addressid);
         int row = sAddressMapper.deleteByPrimaryKey(addressid);
 
         return row;

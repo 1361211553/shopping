@@ -104,63 +104,63 @@ public class SAddressExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
-        public Criteria andAddreessidIsNull() {
-            addCriterion("addreessid is null");
+        public Criteria andAddressidIsNull() {
+            addCriterion("addressid is null");
             return (Criteria) this;
         }
 
-        public Criteria andAddreessidIsNotNull() {
-            addCriterion("addreessid is not null");
+        public Criteria andAddressidIsNotNull() {
+            addCriterion("addressid is not null");
             return (Criteria) this;
         }
 
-        public Criteria andAddreessidEqualTo(Integer value) {
-            addCriterion("addreessid =", value, "addreessid");
+        public Criteria andAddressidEqualTo(Integer value) {
+            addCriterion("addressid =", value, "addressid");
             return (Criteria) this;
         }
 
-        public Criteria andAddreessidNotEqualTo(Integer value) {
-            addCriterion("addreessid <>", value, "addreessid");
+        public Criteria andAddressidNotEqualTo(Integer value) {
+            addCriterion("addressid <>", value, "addressid");
             return (Criteria) this;
         }
 
-        public Criteria andAddreessidGreaterThan(Integer value) {
-            addCriterion("addreessid >", value, "addreessid");
+        public Criteria andAddressidGreaterThan(Integer value) {
+            addCriterion("addressid >", value, "addressid");
             return (Criteria) this;
         }
 
-        public Criteria andAddreessidGreaterThanOrEqualTo(Integer value) {
-            addCriterion("addreessid >=", value, "addreessid");
+        public Criteria andAddressidGreaterThanOrEqualTo(Integer value) {
+            addCriterion("addressid >=", value, "addressid");
             return (Criteria) this;
         }
 
-        public Criteria andAddreessidLessThan(Integer value) {
-            addCriterion("addreessid <", value, "addreessid");
+        public Criteria andAddressidLessThan(Integer value) {
+            addCriterion("addressid <", value, "addressid");
             return (Criteria) this;
         }
 
-        public Criteria andAddreessidLessThanOrEqualTo(Integer value) {
-            addCriterion("addreessid <=", value, "addreessid");
+        public Criteria andAddressidLessThanOrEqualTo(Integer value) {
+            addCriterion("addressid <=", value, "addressid");
             return (Criteria) this;
         }
 
-        public Criteria andAddreessidIn(List<Integer> values) {
-            addCriterion("addreessid in", values, "addreessid");
+        public Criteria andAddressidIn(List<Integer> values) {
+            addCriterion("addressid in", values, "addressid");
             return (Criteria) this;
         }
 
-        public Criteria andAddreessidNotIn(List<Integer> values) {
-            addCriterion("addreessid not in", values, "addreessid");
+        public Criteria andAddressidNotIn(List<Integer> values) {
+            addCriterion("addressid not in", values, "addressid");
             return (Criteria) this;
         }
 
-        public Criteria andAddreessidBetween(Integer value1, Integer value2) {
-            addCriterion("addreessid between", value1, value2, "addreessid");
+        public Criteria andAddressidBetween(Integer value1, Integer value2) {
+            addCriterion("addressid between", value1, value2, "addressid");
             return (Criteria) this;
         }
 
-        public Criteria andAddreessidNotBetween(Integer value1, Integer value2) {
-            addCriterion("addreessid not between", value1, value2, "addreessid");
+        public Criteria andAddressidNotBetween(Integer value1, Integer value2) {
+            addCriterion("addressid not between", value1, value2, "addressid");
             return (Criteria) this;
         }
 

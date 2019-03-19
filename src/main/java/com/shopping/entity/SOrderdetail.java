@@ -3,13 +3,15 @@ package com.shopping.entity;
 public class SOrderdetail {
     private Integer odid;
 
-    private Integer oid;
+    private String oid;
 
     private Integer pid;
 
     private Integer ppurchasenum;
 
     private Double ptotalprice;
+
+    private Integer addressid;
 
     public Integer getOdid() {
         return odid;
@@ -19,12 +21,12 @@ public class SOrderdetail {
         this.odid = odid;
     }
 
-    public Integer getOid() {
+    public String getOid() {
         return oid;
     }
 
-    public void setOid(Integer oid) {
-        this.oid = oid;
+    public void setOid(String oid) {
+        this.oid = oid == null ? null : oid.trim();
     }
 
     public Integer getPid() {
@@ -49,5 +51,13 @@ public class SOrderdetail {
 
     public void setPtotalprice(Double ptotalprice) {
         this.ptotalprice = ptotalprice;
+    }
+
+    public Integer getAddressid() {
+        return addressid;
+    }
+
+    public void setAddressid(Integer addressid) {
+        this.addressid = addressid;
     }
 }

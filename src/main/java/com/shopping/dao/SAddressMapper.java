@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 @Mapper
 @Repository
 public interface SAddressMapper {
-    int deleteByPrimaryKey(Integer addreessid);
+    int deleteByPrimaryKey(Integer addressid);
 
     int insert(SAddress record);
 
@@ -19,7 +19,7 @@ public interface SAddressMapper {
 
     List<SAddress> selectByExample(SAddressExample example);
 
-    SAddress selectByPrimaryKey(Integer addreessid);
+    SAddress selectByPrimaryKey(Integer addressid);
 
     int updateByExampleSelective(@Param("record") SAddress record, @Param("example") SAddressExample example);
 

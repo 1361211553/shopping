@@ -26,9 +26,9 @@
     <link href="css/userinfo_set_801d6eb.css" rel="stylesheet">
     <link rel="stylesheet" href="css/user_nick_e4452bb.css">
     <link href="css/new_home_index__daf8123.css" rel="stylesheet">
-    <script charset="utf-8" type="text/javascript" async="" src="js/underscore_3d00f9f.js"></script>
-    <script charset="utf-8" type="text/javascript" async="" src="js/header_search_tip_1b84d58.js"></script>
-    <script type="text/javascript" src="js/header.js"></script>
+    <%--<script charset="utf-8" type="text/javascript" async="" src="js/underscore_3d00f9f.js"></script>--%>
+    <%--<script charset="utf-8" type="text/javascript" async="" src="js/header_search_tip_1b84d58.js"></script>--%>
+    <%--<script type="text/javascript" src="js/header.js"></script>--%>
     <style>
         .header-search-tips {
             position: relative;
@@ -420,13 +420,100 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="keywords" content=""/>
-    <script type="application/x-javascript"> addEventListener("load", function () {
+    <%--  1 --%>
+    <%--<script src="js/bootstrap.min.js"></script>--%>
+    <script>
+
+        $(document).ready(function () {
+
+
+            $("#shan1").click(function () {
+                if(confirm("确定删除该地址吗")) {
+                    var addressid = $(this).attr('addressid');
+                    $.ajax({
+
+                        url: 'address/del',
+                        type: 'POST',
+                        data: {addressid:addressid},
+                        success: function (data) {
+
+                            if (data == 1){
+                                alert("删除成功");
+                                $(this).parents("tr").remove();
+                            } else {
+                                alert("删除失败");
+                            }
+
+                        }
+
+
+                    })
+                }
+
+            })
+
+
+        })
+
+    </script>
+    <!-- top-header and slider -->
+    <!-- here stars scrolling icon -->
+    <%--<script type="text/javascript">
+        $(document).ready(function () {
+            /*
+             var defaults = {
+             containerID: 'toTop', // fading element id
+             containerHoverID: 'toTopHover', // fading element hover id
+             scrollSpeed: 1200,
+             easingType: 'linear'
+             };
+             */
+
+            $().UItoTop({easingType: 'easeOutQuart'});
+
+        });
+    </script>--%>
+    <!-- //here ends scrolling icon -->
+    <script src="js/minicart.min.js"></script>
+    <script>
+        // Mini Cart
+        paypal.minicart.render({
+            action: '#'
+        });
+
+        if (~window.location.search.indexOf('reset=true')) {
+            paypal.minicart.reset();
+        }
+    </script>
+    <!-- main slider-banner -->
+    <%--<script src="js/skdslider.min.js"></script>--%>
+    <link href="css/skdslider.css" rel="stylesheet">
+    <%--<script type="text/javascript">
+        jQuery(document).ready(function () {
+            jQuery('#demo1').skdslider({
+                'delay': 5000,
+                'animationSpeed': 2000,
+                'showNextPrev': true,
+                'showPlayButton': true,
+                'autoSlide': true,
+                'animationType': 'fading'
+            });
+
+            jQuery('#responsive').change(function () {
+                $('#responsive_wrapper').width(jQuery(this).val());
+            });
+
+        });
+    </script>--%>
+
+
+   <%-- <script type="application/x-javascript"> addEventListener("load", function () {
         setTimeout(hideURLbar, 0);
     }, false);
 
     function hideURLbar() {
         window.scrollTo(0, 1);
-    } </script>
+    } </script>--%>
     <!-- //for-mobile-apps -->
     <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
     <link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
@@ -434,14 +521,14 @@
     <link href="css/font-awesome.css" rel="stylesheet">
     <!-- //font-awesome icons -->
     <!-- js -->
-    <script src="js/jquery-1.11.1.min.js"></script>
+
     <!-- //js -->
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,100,100italic,200,200italic,300,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic'
           rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic'
           rel='stylesheet' type='text/css'>
     <!-- start-smoth-scrolling -->
-    <script type="text/javascript" src="js/move-top.js"></script>
+   <%-- <script type="text/javascript" src="js/move-top.js"></script>
     <script type="text/javascript" src="js/easing.js"></script>
     <script type="text/javascript">
         jQuery(document).ready(function ($) {
@@ -454,7 +541,7 @@
     <script charset="utf-8" type="text/javascript" async=""
             src="js/cheshi.js"></script>
     <script charset="utf-8" type="text/javascript" async=""
-            src="js/cheshi2.js"></script>
+            src="js/cheshi2.js"></script>--%>
     <!-- start-smoth-scrolling -->
 </head>
 <body>
@@ -536,7 +623,7 @@
                                     <td align="left"><a href="addressmodify.jsp">修改</a>&emsp;<a href="/address/del">删除</a></td>
                                 </c:if>
                                 <c:if test="${address.status == 0}">
-                                    <td align="left"><a href="addressmodify.jsp">修改</a>&emsp;<a onclick="shan01()" class="shan1" addressid="${address.addreessid}">删除</a>&emsp;<a href="/address/edit/${address.addreessid}">设为默认地址</a></td>
+                                    <td align="left"><a href="addressmodify.jsp">修改</a>&emsp;<a onclick="shan01()" id="shan1" addressid="${address.addreessid}">删除</a>&emsp;<a href="/address/edit/${address.addreessid}">设为默认地址</a></td>
                                 </c:if>
 
                                 <c:if test="${address.status == 1}">
@@ -589,91 +676,7 @@
 
     <!-- //footer -->
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-    <script>
 
-        $(document).ready(function () {
-
-            alert("666666666");
-
-            $("#shan1").click(function () {
-                alert("是");
-                if(confirm("确定删除该地址吗")) {
-                    var addressid = $(this).attr('addressid');
-                    $.ajax({
-
-                        url: 'address/del',
-                        type: 'POST',
-                        data: addressid,
-                        success: function (data) {
-
-                            if (data == 1){
-                                alert("删除成功");
-                            } else {
-                                alert("删除失败");
-                            }
-
-                        }
-
-
-                    })
-                }
-
-            })
-
-
-        })
-
-    </script>
-    <!-- top-header and slider -->
-    <!-- here stars scrolling icon -->
-    <script type="text/javascript">
-        $(document).ready(function () {
-            /*
-             var defaults = {
-             containerID: 'toTop', // fading element id
-             containerHoverID: 'toTopHover', // fading element hover id
-             scrollSpeed: 1200,
-             easingType: 'linear'
-             };
-             */
-
-            $().UItoTop({easingType: 'easeOutQuart'});
-
-        });
-    </script>
-    <!-- //here ends scrolling icon -->
-    <script src="js/minicart.min.js"></script>
-    <script>
-        // Mini Cart
-        paypal.minicart.render({
-            action: '#'
-        });
-
-        if (~window.location.search.indexOf('reset=true')) {
-            paypal.minicart.reset();
-        }
-    </script>
-    <!-- main slider-banner -->
-    <script src="js/skdslider.min.js"></script>
-    <link href="css/skdslider.css" rel="stylesheet">
-    <script type="text/javascript">
-        jQuery(document).ready(function () {
-            jQuery('#demo1').skdslider({
-                'delay': 5000,
-                'animationSpeed': 2000,
-                'showNextPrev': true,
-                'showPlayButton': true,
-                'autoSlide': true,
-                'animationType': 'fading'
-            });
-
-            jQuery('#responsive').change(function () {
-                $('#responsive_wrapper').width(jQuery(this).val());
-            });
-
-        });
-    </script>
     <!-- //main slider-banner -->
 
 </body>
