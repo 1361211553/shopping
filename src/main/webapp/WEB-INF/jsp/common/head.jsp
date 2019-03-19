@@ -32,7 +32,7 @@
              <ul class="list">
               <li ><a href="${pageContext.request.contextPath}/sp/searchBack/1/0">订单管理</a></li>
               <li><a href="${pageContext.request.contextPath}/sp/searchBack/1/0">商品管理</a></li>
-              <li><a href="${pageContext.request.contextPath }/jsp/user.do?method=query">用户管理</a></li>           
+              <li><a href="${pageContext.request.contextPath }/backuser/search/1">用户管理</a></li>
               <li><a href="${pageContext.request.contextPath }/jsp/pwdmodify.jsp">密码修改</a></li>
               <li><a href="${pageContext.request.contextPath }/jsp/logout.do">退出系统</a></li>
               <li><a href="${pageContext.request.contextPath }/jsp/user.do?method=query">商品类别管理</a></li>

@@ -50,7 +50,7 @@ public class SPController {
         //先查出总页数
         Integer sps = spMapper.selectByExample(example).size();//查询记录的总条数
         System.out.println(sps);
-        Integer pageAll = sps%9==0? sps/9:sps/9+1;
+        Integer pageAll = sps%pageSize==0? sps/pageSize:sps/pageSize+1;
 
         //查询分页所得的数据
         if(currentPage > pageAll){

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 <%@include file="/WEB-INF/jsp/common/head.jsp"%>
         <div class="right">
             <div class="location">
@@ -31,41 +32,54 @@
             <!--用户-->
             <table class="providerTable" cellpadding="0" cellspacing="0">
                 <tr class="firstTr">
-                    <th width="10%">用户编码</th>
-                    <th width="20%">用户名称</th>
-                    <th width="10%">性别</th>
-                    <th width="10%">年龄</th>
-                    <th width="10%">电话</th>
-                    <th width="10%">用户角色</th>
-                    <th width="30%">操作</th>
+                    <th width="10%">用户头像</th>
+					<th width="10%">用户账号</th>
+                    <th width="10%">用户真实姓名</th>
+                    <th width="10%">用户性别</th>
+                    <th width="10%">用户电话</th>
+                    <th width="10%">登录次数</th>
+                    <th width="10%">账户状态</th>
+					<th width="20%">注册时间</th>
+                    <th width="10%">查看信息</th>
                 </tr>
-                   <c:forEach var="user" items="${userList }" varStatus="status">
-					<tr>
+                   <c:forEach var="user" items="${listUsers }" varStatus="status">
+					<tr style="font-size: 15px">
 						<td>
-						<span>${user.userCode }</span>
+						<span><img src="${user.userface}" style="width: 40px;height: 40px"/></span>
 						</td>
 						<td>
-						<span>${user.userName }</span>
+						<span>${user.username }</span>
 						</td>
 						<td>
 							<span>
-								<c:if test="${user.gender==1}">男</c:if>
-								<c:if test="${user.gender==2}">女</c:if>
+									${user.userrealname}
 							</span>
 						</td>
 						<td>
-						<span>${user.age}</span>
+							<span>
+								${user.usersex}
+							</span>
 						</td>
 						<td>
-						<span>${user.phone}</span>
+						<span>${user.userphone}</span>
 						</td>
 						<td>
-							<span>${user.userRoleName}</span>
+						<span>${user.landingtimes}</span>
 						</td>
 						<td>
-						<span><a class="viewUser" href="javascript:;" userid=${user.id } username=${user.userName }><img src="${pageContext.request.contextPath }/images/read.png" alt="查看" title="查看"/></a></span>
-						<span><a class="modifyUser" href="javascript:;" userid=${user.id } username=${user.userName }><img src="${pageContext.request.contextPath }/images/xiugai.png" alt="修改" title="修改"/></a></span>
-						<span><a class="deleteUser" href="javascript:;" userid=${user.id } username=${user.userName }><img src="${pageContext.request.contextPath }/images/schu.png" alt="删除" title="删除"/></a></span>
+							<c:if test="${user.slock == 1}">
+							<span><a href="#" style="color: red;font-weight:bold " onclick="changestate(${user.slock},${user.userid})">冻结</a> </span>
+							</c:if>
+							<c:if test="${user.slock == 0}">
+							<span><a href="#" style="color:green;font-weight:bold" onclick="changestate(${user.slock},${user.userid} )">正常</a></span>
+							</c:if>
+						</td>
+						<td>
+							<span><fmt:formatDate value='${user.userregdate}' pattern='yyyy-MM-dd'/></span>
+						</td>
+						<td>
+						<span><a class="viewUser" href="javascript:;"><img src="${pageContext.request.contextPath }/images/read.png" alt="查看" title="查看"/></a></span>
+
 						</td>
 					</tr>
 				</c:forEach>
@@ -85,7 +99,8 @@
     <div class="removerChid">
         <h2>提示</h2>
         <div class="removeMain">
-            <p>你确定要删除该用户吗？</p>
+			<p></p>
+
             <a href="#" id="yes">确定</a>
             <a href="#" id="no">取消</a>
         </div>
@@ -93,4 +108,37 @@
 </div>
 
 <%@include file="/WEB-INF/jsp/common/foot.jsp" %>
-<script type="text/javascript" src="${pageContext.request.contextPath }/js2/userlist.js"></script>
+
+<script>
+	function changestate(data,userid) {
+
+        $(".zhezhao").css("display","block");
+        $("#removeUse").fadeIn();
+
+        $("#no").on("click",function(){
+            cancel();
+        });
+        if(data == 0){
+            changeDLGContent("你确定要冻结用户id为"+userid+"的用户吗？");
+
+		}else{
+            changeDLGContent("你确定要解冻用户id为"+userid+"的用户吗？");
+		}
+
+        $("#yes").on("click",function () {
+            window.location.href="/backuser/changestate/"+data+"/"+userid;
+        });
+    }
+
+    function cancel(){
+        $(".zhezhao").css("display","none");
+        $("#removeUse").fadeOut();
+    }
+
+    function changeDLGContent(contentStr){
+        var p = $(".removeMain").find("p");
+        p.html(contentStr);
+    }
+
+</script>
+

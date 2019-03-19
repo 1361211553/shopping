@@ -80,8 +80,6 @@ public class UserController {
     @RequestMapping("loginout")
     public String loginout(HttpSession session) {
 
-
-
         session.removeAttribute("user");
         session.removeAttribute("carNum");
         session.setAttribute("errMs","");
@@ -177,7 +175,6 @@ public class UserController {
 
         user.setUserpass(newuserpass);
 
-
         int i = sUserMapper.updateByPrimaryKeySelective(user);
         System.out.println("成功修改"+i+"次");
         session.setAttribute("user",user);
@@ -205,12 +202,6 @@ public class UserController {
         pw.flush();
         pw.close();
     }
-
-
-
-
-
-
 
     @InitBinder
     public void initBinder(ServletRequestDataBinder binder){
