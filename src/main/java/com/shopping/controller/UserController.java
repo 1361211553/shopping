@@ -80,8 +80,6 @@ public class UserController {
     @RequestMapping("loginout")
     public String loginout(HttpSession session) {
 
-
-
         session.removeAttribute("user");
         session.removeAttribute("carNum");
         session.setAttribute("errMs","");
@@ -176,7 +174,6 @@ public class UserController {
         SUser user = sUserMapper.selectByPrimaryKey(sUser.getUserid());
 
         user.setUserpass(newuserpass);
-
 
         int i = sUserMapper.updateByPrimaryKeySelective(user);
         System.out.println("成功修改"+i+"次");

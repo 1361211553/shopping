@@ -25,15 +25,17 @@
 				</c:if>
        		</select>
 			 
-			<span>是否付款：</span>
+			<span>订单状态：</span>
 			<select name="queryIsPayment">
 				<option value="0">--请选择--</option>
 				<option value="1" ${queryIsPayment == 1 ? "selected=\"selected\"":"" }>未付款</option>
-				<option value="2" ${queryIsPayment == 2 ? "selected=\"selected\"":"" }>已付款</option>
+				<option value="2" ${queryIsPayment == 2 ? "selected=\"selected\"":"" }>付款未发货</option>
+				<option value="3" ${queryIsPayment == 3 ? "selected=\"selected\"":"" }>发货未收货</option>
+				<option value="4" ${queryIsPayment == 4 ? "selected=\"selected\"":"" }>交易成功</option>
        		</select>
 			
 			 <input	value="查 询" type="submit" id="searchbutton">
-			 <a href="${pageContext.request.contextPath }/bill/tosave.html">添加订单</a>
+
 		</form>
        </div>
        <!--账单表格 样式和供应商公用-->
