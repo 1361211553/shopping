@@ -63,7 +63,7 @@ public class SUserBackController {
         SUser sUser = sUserMapper.selectByPrimaryKey(userid);
 
         if (state == 1){
-            sUser.setSlock(2);
+            sUser.setSlock(0);
         }else{
             sUser.setSlock(1);
         }

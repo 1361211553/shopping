@@ -74,6 +74,8 @@
 <%@include file="/WEB-INF/jsp/common/foot.jsp" %>
 
 <script>
+
+    var n = 0;
     $("#saveSP").on("click",function(){
         $('.zhezhao').css('display', 'block');
 	    $('#modifyAddress').fadeIn();
@@ -83,11 +85,6 @@
         $('.zhezhao').css('display', 'none');
 	    $('#modifyAddress').fadeOut();
     });
-    $("#yes").on("click",function(){
-        $('.zhezhao').css('display', 'none');
-	    $('#modifyAddress').fadeOut();
-	    $("#modifyAddressForm").submit();
-    });
     
     $("#back").on("click",function(){
         history.back(-1);
@@ -96,6 +93,7 @@
      //验证
     $("#pname").on("blur",function(){
         if($("#pname").val()!=null && $("#pname").val()!=""){
+            n=1;
             validateTip($("#pname").next(),{"color":"green"},imgYes,true);
         }else{
             validateTip($("#pname").next(),{"color":"red"},imgNo+" 商品名不能为空，请输入",false);
@@ -106,6 +104,7 @@
     
     $("#pdescription").on("blur",function(){
         if($("#pdescription").val()!=null && $("#pdescription").val()!=""){
+            n=1;
             validateTip($("#pdescription").next(),{"color":"green"},imgYes,true);
         }else{
             validateTip($("#pdescription").next(),{"color":"red"},imgNo+" 商品详细信息不能为空，请输入",false);
@@ -118,6 +117,7 @@
         var str=/^((0{1}\.\d+)|([1-9]\d*\.{1}\d+)|([1-9]+\d*)|0)$/;
         if($("#pprice").val()!=null && $("#pprice").val()!=""){
             if($("#pprice").val().match(str)){
+                n=1;
                 validateTip($("#pprice").next(),{"color":"green"},imgYes,true);
             }else{
                 validateTip($("#pprice").next(),{"color":"red"},imgNo+" 请输入正确的价格",false);
@@ -133,6 +133,7 @@
         var str=/^[+]{0,1}(\d+)$/;
         if($("#pnum").val()!=null && $("#pnum").val()!=""){
             if($("#pnum").val().match(str)){
+                n=1;
                 validateTip($("#pnum").next(),{"color":"green"},imgYes,true);
             }else{
                 validateTip($("#pnum").next(),{"color":"red"},imgNo+" 请输入正确的商品数量",false);
@@ -142,6 +143,19 @@
         }
     }).on("focus",function(){
         validateTip($("#pnum").next(),{"color":"#666666"},"* 请输入商品数量",false);
+    });
+
+    $("#yes").on("click",function(){
+        $('.zhezhao').css('display', 'none');
+        $('#modifyAddress').fadeOut();
+        alert(n);
+        if(n == 1){
+            alert("保存成功！");
+            $("#modifyAddressForm").submit();
+        }else{
+            alert("请检查输入的错误");
+        }
+
     });
 </script>
 <%-- <script type="text/javascript" src="${pageContext.request.contextPath }/js/usermodify.js"></script> --%>

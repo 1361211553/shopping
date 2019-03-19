@@ -15,8 +15,8 @@
     <header class="publicHeader">
         <h1>在线电器商城管理系统</h1>
         <div class="publicHeaderR">
-            <p><span>下午好！</span><span style="color: #fff21b"> ${userSession.userName }</span> , 欢迎你！</p>
-            <a href="${pageContext.request.contextPath }/ui/exit.html">退出</a>
+            <p><span>下午好！</span><span style="color: #fff21b"> ${sessionScope.sAdmin.adminname}</span> , 欢迎你！</p>
+            <a href="${pageContext.request.contextPath }/admin/loginOut">退出</a>
         </div>
     </header>
 <!--时间-->
@@ -33,8 +33,8 @@
               <li ><a href="${pageContext.request.contextPath}/sp/searchBack/1/0">订单管理</a></li>
               <li><a href="${pageContext.request.contextPath}/sp/searchBack/1/0">商品管理</a></li>
               <li><a href="${pageContext.request.contextPath }/backuser/search/1">用户管理</a></li>
-              <li><a href="${pageContext.request.contextPath }/jsp/pwdmodify.jsp">密码修改</a></li>
-              <li><a href="${pageContext.request.contextPath }/jsp/logout.do">退出系统</a></li>
+              <li><a href="${pageContext.request.contextPath }/admin/toPass">密码修改</a></li>
+              <li><a href="${pageContext.request.contextPath }/admin/loginOut">退出系统</a></li>
               <li><a href="${pageContext.request.contextPath }/jsp/user.do?method=query">商品类别管理</a></li>
              </ul>
          </nav>

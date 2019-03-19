@@ -21,12 +21,12 @@
 	        <form class="loginForm" action="/admin/login"  name="actionForm" id="actionForm"  method="post" >
 				<div class="info">${error }</div>
 				<div class="inputbox">
-                    <label for="user">用户名：</label>
-					<input type="text" class="input-text" id="userCode" name="userCode" placeholder="请输入用户名" required value="admin"/>
+                    <label for="adminname">用户名：</label>
+					<input type="text" class="input-text" id="adminname" name="adminname" placeholder="请输入用户名" required value="admin"/>
 				</div>	
 				<div class="inputbox">
-                    <label for="mima">密码：</label>
-                    <input type="password" id="userPassword" name="userPassword" placeholder="请输入密码" required value="123123"/>
+                    <label for="adminpass">密码：</label>
+                    <input type="password" id="adminpass" name="adminpass" placeholder="请输入密码" required value="123123"/>
                 </div>	
 				<div class="subBtn">
 					
