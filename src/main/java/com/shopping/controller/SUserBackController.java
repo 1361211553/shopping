@@ -10,13 +10,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.view.RedirectView;
 
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.PrintWriter;
+import org.springframework.web.servlet.ModelAndView;
+
 import java.util.List;
 
 @Controller
@@ -33,6 +29,7 @@ public class SUserBackController {
     public ModelAndView search(@ModelAttribute SUser sUser,
             @PathVariable(value="pageCurrent") Integer pageCurrent){
         ModelAndView mav = new ModelAndView();
+        System.out.println(sUser.toString());
 
         Integer pageSize = 10;//每页的记录数
 
@@ -60,15 +57,32 @@ public class SUserBackController {
              @PathVariable(value="userid") Integer userid  ) {
         ModelAndView mav = new ModelAndView();
 
+        System.out.println(state);
+        System.out.println(userid);
+
         SUser sUser = sUserMapper.selectByPrimaryKey(userid);
 
         if (state == 1){
-            sUser.setSlock(0);
+            sUser.setSlock(2);
         }else{
             sUser.setSlock(1);
         }
-        mav.setViewName("redirect:backuser/search/1");
+        sUserMapper.updateByPrimaryKeySelective(sUser);
 
+        mav.setViewName("redirect:/backuser/search/1");
+
+        return mav;
+    }
+
+    @RequestMapping("showview/{userid}")
+    public ModelAndView showview(@PathVariable(value="userid") Integer userid){
+        ModelAndView mav = new ModelAndView();
+
+        SUser sUser = sUserMapper.selectByPrimaryKey(userid);
+
+        mav.addObject("showuser",sUser);
+
+        mav.setViewName("WEB-INF/jsp/userview");
         return mav;
     }
 }
