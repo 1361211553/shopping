@@ -100,4 +100,20 @@ public class SAddress {
     public void setDetailed(String detailed) {
         this.detailed = detailed == null ? null : detailed.trim();
     }
+
+    @Override
+    public String toString() {
+        return "SAddress{" +
+                "addressid=" + addressid +
+                ", userid=" + userid +
+                ", consignee='" + consignee + '\'' +
+                ", province='" + province + '\'' +
+                ", addressphone='" + addressphone + '\'' +
+                ", status=" + status +
+                ", zip='" + zip + '\'' +
+                ", city='" + city + '\'' +
+                ", dist='" + dist + '\'' +
+                ", detailed='" + detailed + '\'' +
+                '}';
+    }
 }

@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface SPServiceI {
 
-    List<SP> selectByExampleWithPage(SP sp,Integer pageNo,Integer pageSize );
+    List<SP> selectByExampleWithPage(SP sp, Integer pageNo, Integer pageSize);
 }

@@ -6,10 +6,7 @@ import com.shopping.entity.SAddressExample;
 import com.shopping.entity.SUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
@@ -48,11 +45,15 @@ public class SAddressController {
         criteria.andUseridEqualTo(sUser.getUserid());
         criteria.andStatusEqualTo(1);
         List<SAddress> addresseslist =  sAddressMapper.selectByExample(sAddressExample);
-        //把1变成0
         SAddress sAddress = new SAddress();
-        sAddress.setAddressid(addresseslist.get(0).getAddressid());
-        sAddress.setStatus(0);
-        sAddressMapper.updateByPrimaryKeySelective(sAddress);
+        if (addresseslist.size()>0){
+            //把1变成0
+
+            sAddress.setAddressid(addresseslist.get(0).getAddressid());
+            sAddress.setStatus(0);
+            sAddressMapper.updateByPrimaryKeySelective(sAddress);
+        }
+
         //把0变成1
         sAddress.setAddressid(addressid);
         sAddress.setStatus(1);
@@ -64,10 +65,36 @@ public class SAddressController {
     @RequestMapping("del")
     @ResponseBody
     public int del(@RequestParam Integer addressid) {
-        System.out.println(addressid);
+
         int row = sAddressMapper.deleteByPrimaryKey(addressid);
 
         return row;
     }
 
+    @RequestMapping("insert")
+    public ModelAndView update(@ModelAttribute SAddress sAddress) {
+
+        ModelAndView mav = new ModelAndView("redirect:/address/search");
+        System.out.println(sAddress.toString());
+        sAddressMapper.updateByPrimaryKeySelective(sAddress);
+        return mav;
+    }
+
+    @RequestMapping("update/{addressid}")
+    public ModelAndView update(@PathVariable Integer addressid,@ModelAttribute SAddress sAddress) {
+
+        ModelAndView mav = new ModelAndView("redirect:/address/search");     
+        sAddress.setAddressid(addressid);
+        sAddressMapper.updateByPrimaryKey(sAddress);
+        return mav;
+    }
+
+    @RequestMapping("updateByfind")
+    public ModelAndView updateByfind(@RequestParam Integer addressid) {
+
+        ModelAndView mav = new ModelAndView("addressmodify");
+        SAddress sAddress = sAddressMapper.selectByPrimaryKey(addressid);
+        mav.addObject("address",sAddress);
+        return mav;
+    }
 }

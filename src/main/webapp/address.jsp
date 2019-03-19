@@ -427,7 +427,8 @@
         $(document).ready(function () {
 
 
-            $("#shan1").click(function () {
+            $(".shan1").click(function () {
+                var obj = $(this);
                 if(confirm("确定删除该地址吗")) {
                     var addressid = $(this).attr('addressid');
                     $.ajax({
@@ -439,7 +440,7 @@
 
                             if (data == 1){
                                 alert("删除成功");
-                                $(this).parents("tr").remove();
+                               obj.parents("tr").remove();
                             } else {
                                 alert("删除失败");
                             }
@@ -620,10 +621,14 @@
                                 <td align="left">${address.addressphone}</td>
                                 <td align="left">${address.zip}</td>
                                 <c:if test="${address.status == 1}">
-                                    <td align="left"><a href="addressmodify.jsp">修改</a>&emsp;<a href="/address/del">删除</a></td>
+                                    <td align="left"><a href="addressmodify.jsp">修改</a>&emsp;<a href="javascript:;" onclick="shan01()" class="shan1" addressid="${address.addressid}">删除</a></td>
                                 </c:if>
                                 <c:if test="${address.status == 0}">
-                                    <td align="left"><a href="addressmodify.jsp">修改</a>&emsp;<a onclick="shan01()" id="shan1" addressid="${address.addreessid}">删除</a>&emsp;<a href="/address/edit/${address.addreessid}">设为默认地址</a></td>
+                                    <td align="left">
+                                        <a href="">修改</a>
+                                        <a   href="javascript:;" onclick="shan01()" class="shan1" addressid="${address.addressid}">删除</a>
+                                        <a href="/address/edit/${address.addressid}">设为默认地址</a>
+                                    </td>
                                 </c:if>
 
                                 <c:if test="${address.status == 1}">
