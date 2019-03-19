@@ -1,7 +1,7 @@
 package com.shopping.entity;
 
 public class SAddress {
-    private Integer addreessid;
+    private Integer addressid;
 
     private Integer userid;
 
@@ -21,12 +21,12 @@ public class SAddress {
 
     private String detailed;
 
-    public Integer getAddreessid() {
-        return addreessid;
+    public Integer getAddressid() {
+        return addressid;
     }
 
-    public void setAddreessid(Integer addreessid) {
-        this.addreessid = addreessid;
+    public void setAddressid(Integer addressid) {
+        this.addressid = addressid;
     }
 
     public Integer getUserid() {

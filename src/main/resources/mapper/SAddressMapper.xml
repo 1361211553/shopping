@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.shopping.dao.SAddressMapper" >
   <resultMap id="BaseResultMap" type="com.shopping.entity.SAddress" >
-    <id column="addreessid" property="addreessid" jdbcType="INTEGER" />
+    <id column="addressid" property="addressid" jdbcType="INTEGER" />
     <result column="userid" property="userid" jdbcType="INTEGER" />
     <result column="consignee" property="consignee" jdbcType="VARCHAR" />
     <result column="province" property="province" jdbcType="VARCHAR" />
@@ -72,7 +72,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    addreessid, userid, consignee, province, addressphone, status, zip, city, dist, detailed
+    addressid, userid, consignee, province, addressphone, status, zip, city, dist, detailed
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.shopping.entity.SAddressExample" >
     select
@@ -93,18 +93,18 @@
     select 
     <include refid="Base_Column_List" />
     from s_address
-    where addreessid = #{addreessid,jdbcType=INTEGER}
+    where addressid = #{addressid,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from s_address
-    where addreessid = #{addreessid,jdbcType=INTEGER}
+    where addressid = #{addressid,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.shopping.entity.SAddress" >
-    insert into s_address (addreessid, userid, consignee, 
+    insert into s_address (addressid, userid, consignee, 
       province, addressphone, status, 
       zip, city, dist, detailed
       )
-    values (#{addreessid,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{consignee,jdbcType=VARCHAR}, 
+    values (#{addressid,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{consignee,jdbcType=VARCHAR}, 
       #{province,jdbcType=VARCHAR}, #{addressphone,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
       #{zip,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, #{dist,jdbcType=VARCHAR}, #{detailed,jdbcType=VARCHAR}
       )
@@ -112,8 +112,8 @@
   <insert id="insertSelective" parameterType="com.shopping.entity.SAddress" >
     insert into s_address
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="addreessid != null" >
-        addreessid,
+      <if test="addressid != null" >
+        addressid,
       </if>
       <if test="userid != null" >
         userid,
@@ -144,8 +144,8 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="addreessid != null" >
-        #{addreessid,jdbcType=INTEGER},
+      <if test="addressid != null" >
+        #{addressid,jdbcType=INTEGER},
       </if>
       <if test="userid != null" >
         #{userid,jdbcType=INTEGER},
@@ -179,8 +179,8 @@
   <update id="updateByExampleSelective" parameterType="map" >
     update s_address
     <set >
-      <if test="record.addreessid != null" >
-        addreessid = #{record.addreessid,jdbcType=INTEGER},
+      <if test="record.addressid != null" >
+        addressid = #{record.addressid,jdbcType=INTEGER},
       </if>
       <if test="record.userid != null" >
         userid = #{record.userid,jdbcType=INTEGER},
@@ -216,7 +216,7 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update s_address
-    set addreessid = #{record.addreessid,jdbcType=INTEGER},
+    set addressid = #{record.addressid,jdbcType=INTEGER},
       userid = #{record.userid,jdbcType=INTEGER},
       consignee = #{record.consignee,jdbcType=VARCHAR},
       province = #{record.province,jdbcType=VARCHAR},
@@ -261,7 +261,7 @@
         detailed = #{detailed,jdbcType=VARCHAR},
       </if>
     </set>
-    where addreessid = #{addreessid,jdbcType=INTEGER}
+    where addressid = #{addressid,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.shopping.entity.SAddress" >
     update s_address
@@ -274,6 +274,6 @@
       city = #{city,jdbcType=VARCHAR},
       dist = #{dist,jdbcType=VARCHAR},
       detailed = #{detailed,jdbcType=VARCHAR}
-    where addreessid = #{addreessid,jdbcType=INTEGER}
+    where addressid = #{addressid,jdbcType=INTEGER}
   </update>
 </mapper>
