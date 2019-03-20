@@ -30,7 +30,7 @@
          <h2 class="leftH2"><span class="span1"></span>功能列表 <span></span></h2>
          <nav>
              <ul class="list">
-              <li ><a href="${pageContext.request.contextPath}/sp/searchBack/1/0">订单管理</a></li>
+              <li ><a href="${pageContext.request.contextPath}/backorder/search/1">订单管理</a></li>
               <li><a href="${pageContext.request.contextPath}/sp/searchBack/1/0">商品管理</a></li>
               <li><a href="${pageContext.request.contextPath }/backuser/search/1">用户管理</a></li>
               <li><a href="${pageContext.request.contextPath }/admin/toPass">密码修改</a></li>

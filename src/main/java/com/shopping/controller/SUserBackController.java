@@ -52,6 +52,7 @@ public class SUserBackController {
         mav.setViewName("WEB-INF/jsp/userlist");
         return mav;
     }
+    //改变用户状态
     @RequestMapping("changestate/{state}/{userid}")
     public ModelAndView changestate(@PathVariable(value="state") Integer state,
              @PathVariable(value="userid") Integer userid  ) {
@@ -73,7 +74,7 @@ public class SUserBackController {
 
         return mav;
     }
-
+    //查看用户详细信息
     @RequestMapping("showview/{userid}")
     public ModelAndView showview(@PathVariable(value="userid") Integer userid){
         ModelAndView mav = new ModelAndView();
@@ -85,4 +86,6 @@ public class SUserBackController {
         mav.setViewName("WEB-INF/jsp/userview");
         return mav;
     }
+
+
 }

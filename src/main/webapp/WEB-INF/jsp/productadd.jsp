@@ -12,7 +12,7 @@
             <div>
                 <label for="pimg">选择商品图片</label>
 
-                <input type="file" value="123"/>
+                <input type="file" name="file" value="123"/>
                 <input type="submit" value="上传" style="position: relative;top: 8px;width:100px;font-size:12px: "/>
 
 
