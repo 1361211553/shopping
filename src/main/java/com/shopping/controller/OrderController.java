@@ -4,10 +4,7 @@ import com.shopping.dao.*;
 import com.shopping.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
@@ -82,8 +79,7 @@ public class OrderController {
     }
 
     @RequestMapping("add")
-    public ModelAndView add(HttpSession session,@ModelAttribute SAddress sAddress){
-
+    public ModelAndView add(HttpSession session,@ModelAttribute SAddress sAddress,@RequestParam(required = false) Integer id){
 
         ModelAndView mav = new ModelAndView("redirect:/order/search");
         Map<Double,SP> map = (Map<Double, SP>) session.getAttribute("pmap");
@@ -98,10 +94,20 @@ public class OrderController {
         sOrder.setPstatus(1);
         sOrder.setOrderdate(new Date());
         sOrder.setPcount(map.size());
-        sOrder.setReciphone(sAddress.getAddressphone());
-        sOrder.setRecipients(sAddress.getConsignee());
+
+        if (id != null){
+
+            SAddress sAddresss = sAddressMapper.selectByPrimaryKey(id);
+            sOrder.setReciphone(sAddresss.getAddressphone());
+            sOrder.setRecipients(sAddresss.getConsignee());
+            sOrder.setAddress(sAddresss.getProvince()+sAddresss.getCity()+sAddresss.getDist());
+        }else {
+            sOrder.setReciphone(sAddress.getAddressphone());
+            sOrder.setRecipients(sAddress.getConsignee());
+            sOrder.setAddress(sAddress.getProvince()+sAddress.getCity()+sAddress.getDist());
+        }
         sOrder.setPtotalprice(countPrice);
-        sOrder.setAddress(sAddress.getProvince()+sAddress.getCity()+sAddress.getDist());
+
         Random random = new Random();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddhhmmssSSS");
         String oid = String.valueOf(simpleDateFormat.format(new Date())+random.nextInt(999));
@@ -127,4 +133,15 @@ public class OrderController {
         return mav;
     }
 
+    @RequestMapping("affirm")
+    @ResponseBody
+    public int affirm(@RequestParam String oid){
+
+        SOrder sOrder = new SOrder();
+        sOrder.setOid(oid);
+        sOrder.setPstatus(4);
+        int row = sOrderMapper.updateByPrimaryKeySelective(sOrder);
+
+        return row;
+    }
 }

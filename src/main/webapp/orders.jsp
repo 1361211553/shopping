@@ -455,6 +455,37 @@
     <script charset="utf-8" type="text/javascript" async=""
             src="js/cheshi2.js"></script>
     <!-- start-smoth-scrolling -->
+    <script>
+
+        $(document).ready(function () {
+
+            $(".queren").click(function () {
+                var oid = $(this).attr('oid');
+                var obj = $(this);
+                if (confirm("是否确认收货")){
+
+                    $.ajax({
+
+                        url:'/order/affirm',
+                        type:'POST',
+                        data:{'oid':oid},
+                        success:function (data) {
+                            if (data == 1){
+
+                                alert("确认收货成功");
+                                obj.parents('td').remove();
+                                $(".fahuo").html('交易完成');
+                            }
+                        }
+
+                    })
+
+                }
+
+            })
+        })
+
+    </script>
 </head>
 <body>
 <!-- header -->
@@ -520,7 +551,7 @@
                                 <td align="left"><h4>购买数量</h4></td>
                             <td align="left"><h4>订单价格</h4></td>
                             <td align="left"><h4>订单状态</h4></td>
-                            <td align="left"><h4>操作</h4></td>
+                            <td align="left"><h4></h4></td>
 
 
                         </tr>
@@ -534,25 +565,25 @@
 
                             <c:if test="${personorder.pstatus==1}">
                                 <td align="left">未付款</td>
-                                <td><a href="" onclick="return false">查看</a></td>
+                                <td><a href="javascript:;" >查看</a></td>
+                                <td><a href="javascript:;" >立即付款</a></td>
                                 <td></td>
                             </c:if>
 
                             <c:if test="${personorder.pstatus==2}">
                                 <td align="left">未发货</td>
-                                <td><a href="" onclick="return false">查看</a></td>
-                                <td><a href="" onclick="return false">确认收货</a></td>
+                                <td><a href="javascript:;" >查看</a></td>
                             </c:if>
 
                             <c:if test="${personorder.pstatus==3}">
-                                <td align="left">已发货</td>
-                                <td><a href="" onclick="return false">查看</a></td>
+                                <td align="left" class="fahuo">已发货</td>
+                                <td><a href="javascript:;" >查看</a></td>
+                                <td><a href="javascript:;"  oid="${personorder.oid}" class="queren">确认收货</a></td>
                             </c:if>
 
                             <c:if test="${personorder.pstatus==4}">
                                 <td align="left">已完成</td>
-                                <td><a href="" onclick="return false">查看</a></td>
-                                <td><a href="" onclick="return false">立即付款</a></td>
+                                <td><a href="javascript:;" >查看</a></td>
                             </c:if>
                         </tr>
                         </c:forEach>
@@ -600,6 +631,8 @@
 <!-- here stars scrolling icon -->
 <script type="text/javascript">
     $(document).ready(function () {
+
+
         /*
          var defaults = {
          containerID: 'toTop', // fading element id
@@ -630,6 +663,7 @@
 <link href="css/skdslider.css" rel="stylesheet">
 <script type="text/javascript">
     jQuery(document).ready(function () {
+
         jQuery('#demo1').skdslider({
             'delay': 5000,
             'animationSpeed': 2000,

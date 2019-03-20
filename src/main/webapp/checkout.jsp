@@ -122,7 +122,7 @@
                 <!--quantity-->
             </table>
         </div>
-        <div class="checkout-left">
+        <div class="checkout-left" >
             <div class="checkout-left-basket">
                 <h4>账单</h4>
                 <ul><li><font color="black" size="4px">商品总价 : </font><i>-</i> <span>￥<font color="red" size="4px" class="font02">${countPrice}</font></span></li></ul>
@@ -200,6 +200,7 @@
 
 
         $(".d").click(function () {
+            var count =  $(".font01").html();
             var obj = $(this);
             var pid = $(this).attr("pid");
             var pname = $(this).attr("pname");
@@ -222,7 +223,7 @@
                             obj.parents('tr').remove();
 
                             $(".font02").html(parseFloat(countPrice-price*num).toFixed(2));
-                            $(".font01").html(parseInt(num)-parseInt(1));
+                            $(".font01").html(parseInt(count)-1);
                             $(".chanpin").html(parseInt(chanpin)-1);
 
                         } else {

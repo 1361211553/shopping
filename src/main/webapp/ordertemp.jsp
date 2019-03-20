@@ -82,7 +82,7 @@
 
             <div id="div01">
 
-            <select style=" border-color: orange; font-size:20px;width:1120px;height: 50px" name="addressid" >
+            <select style=" border-color: orange; font-size:20px;width:1120px;height: 50px" name="id" >
                 <c:forEach items="${addresslist}" var="address">
                     <option value="${address.addressid}">收货人姓名：${address.consignee} 联系人号码：${address.addressphone} 收货地址：${address.consignee}${address.city}${address.dist}${address.detailed} 地址邮编：${address.zip}</option>
                 </c:forEach>
