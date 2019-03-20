@@ -43,8 +43,8 @@ public class CarController {
             Double countPrice = 0.00;
             DecimalFormat decimalFormat = new DecimalFormat(".00");
             for (int i = 0; i < listcar.size(); i++) {
-                SP sp = new SP();
-                sp = spMapper.selectByPrimaryKey(listcar.get(i).getPid());
+
+                SP sp = spMapper.selectByPrimaryKey(listcar.get(i).getPid());
                 listsp.add(sp);
                 String countPricestr = decimalFormat.format((sp.getPprice()) * (listcar.get(i).getPnum()));
                 String str = decimalFormat.format(countPrice += Double.valueOf(countPricestr));

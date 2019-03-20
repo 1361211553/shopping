@@ -130,7 +130,7 @@
             <div class="checkout-right-basket">
                 <a href="index.jsp" ><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>继续购物</a>
                 <a href="/car/carempty"  onclick="return carempty()"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>清空购物车</a>
-                <a href="index.jsp"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>去结算</a>
+                <a href="/order/temp"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>去结算</a>
             </div>
             <div class="clearfix"> </div>
         </div>

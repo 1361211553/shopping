@@ -44,18 +44,20 @@
     <!-- start-smoth-scrolling -->
     <%--<link rel="stylesheet" type="text/css" href="address/css/main.css"/>--%>
     <script type="text/javascript" src="address/js/jquery.cityselect.js"></script>
-    <script type="text/javascript">
-        $(function () {
-            $("#city_4").citySelect({
-                prov: "湖南",
-                city: "长沙",
-                dist: "岳麓区",
-                nodata: "none"
-            });
-        });
-    </script>
+    <%--<script type="text/javascript">--%>
+        <%--$(function () {--%>
+            <%--$("#city_4").citySelect({--%>
+                <%--prov: "湖南",--%>
+                <%--city: "长沙",--%>
+                <%--dist: "岳麓区",--%>
+                <%--nodata: "none"--%>
+            <%--});--%>
+        <%--});--%>
+    <%--</script>--%>
+
 </head>
 <body>
+
 <!-- header -->
 <%@ include file="appcomm/head.jsp" %>
 
@@ -72,60 +74,36 @@
 <!-- //breadcrumbs -->
 <!-- checkout -->
 <div class="checkout">
+    <form action="/order/add" method="post" id="form01">
+
     <div class="container">
         <h2>收货地址：</h2>
-        <div class="checkout-right">
+        <div class="checkout-right" >
 
-            <table class="timetable_sub">
-                <thead>
-                <tr>
-                    <th>收货人姓名</th>
-                    <th>收货地址</th>
-                    <th>联系人号码</th>
-                    <th>地址邮编</th>
-                </tr>
-                </thead>
+            <div id="div01">
 
-                <c:if test="${address != null}">
-                    <tr class="rem1">
-                        <td class="invert">${address.consignee}</td>
-                        <td class="invert-image">${address.consignee}${address.city}${address.dist}${address.detailed}</td>
-                        <td class="invert">${address.addressphone}</td>
-                        <td class="inver2t">${address.zip}</td>
-                    </tr>
-                </c:if>
+            <select style=" border-color: orange; font-size:20px;width:1120px;height: 50px" name="addressid" >
+                <c:forEach items="${addresslist}" var="address">
+                    <option value="${address.addressid}">收货人姓名：${address.consignee} 联系人号码：${address.addressphone} 收货地址：${address.consignee}${address.city}${address.dist}${address.detailed} 地址邮编：${address.zip}</option>
+                </c:forEach>
+            </select>
 
-                <c:if test="${address == null}">
-                <tr class="rem1">
-                    <td class="invert"><input type="text" placeholder="请填写收货人姓名"></td>
-                    <td class="invert-image">
-                        <div id="city_4">
-                            <select class="prov"></select>
-                            <select class="city" disabled="disabled"></select>
-                            <select class="dist" disabled="disabled"></select>
-                            <input type="text" placeholder="请填写详细地址">
-                        </div>
+            </div>
 
-                    <td class="invert"><input type="text" placeholder="请填写联系人号码"></td>
-                    <td class="inver2t">
-                        <input type="text" placeholder="请填写地址邮编">
-                    </td>
 
-                </tr>
-                </c:if>
+            <div id="div02" >
 
-                <!--quantity-->
-                <!--quantity-->
-            </table>
-            <div class="checkout-left">
-                <div class="checkout-right-basket">
-                    <a href="index.jsp"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>更改收货地址</a>
+            </div>
+            <div class="checkout-left" >
+                <div class="checkout-right-basket" >
+
+                    <a class="a01" style="margin: 200px 150px 100px 100px" obj="0"  href="javascript:;"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span><font id="span01">填写新的收货地址</font></a>
                 </div>
                 <div class="clearfix"></div>
             </div>
         </div>
         <br><br>
-        <h2>您的订单包含了: <span class="chanpin">${fn:length(productList)}</span> 个产品</h2>
+        <h2>您的订单包含了: <span class="chanpin">${fn:length(pmap)}</span> 个产品</h2>
         <div class="checkout-right">
             <table class="timetable_sub">
                 <thead>
@@ -139,41 +117,18 @@
                 </tr>
                 </thead>
 
-                <c:forEach items="${requestScope.productList}" var="cl" varStatus="vs">
-
+                <c:forEach items="${sessionScope.pmap}" var="cl" varStatus="vs">
 
                     <tr class="rem1">
-                        <td class="invert">${vs.count}</td>
-                        <td class="invert-image"><a href="single.jsp"><img src="${cl.pimg}" alt=" "
-                                                                           class="img-responsive"
-                                                                           style=" width: 100px"/></a></td>
-                        <td class="invert">${cl.pname}</td>
-                        <td class="inver2t">
-                            <div class="quantity">
-                                <div class="quantity-select">
-                                    <div class="entry value-minus">&nbsp;</div>
-                                    <div class="entry value"><span>${listcar[vs.index].pnum}</span></div>
-                                    <div class="entry value-plus active">&nbsp;</div>
-                                </div>
-                            </div>
+                        <td class="invert-image">
+                            <img src="${cl.value.pimg}" alt=" " style=" width: 130px"/>
                         </td>
-                        <td class="invert">￥<font color="red">${cl.pprice}</font></td>
+                        <td class="invert" >${cl.value.pname}</td>
+                        <td class="invert">￥<font color="red">${cl.value.pprice}</font></td>
                         <td class="invert">
-                            <div class="rem">
-                                <a class="d" pid="${cl.pid}" pname="${cl.pname}" pnum="${listcar[vs.index].pnum}"
-                                   price="${cl.pprice}">
-                                    <div class="close1"></div>
-                                </a>
-                            </div>
-                                <%--<script>$(document).ready(function (c) {--%>
-                                <%--$('.close1').on('click', function (c) {--%>
-                                <%--$('.rem1').fadeOut('slow', function (c) {--%>
-                                <%--$('.rem1').remove();--%>
-                                <%--});--%>
-                                <%--});--%>
-                                <%--});--%>
-                                <%--</script>--%>
+                                ${listcar[vs.index].pnum}件
                         </td>
+                        <td>￥<font color="red">${cl.key}</font></td>
                     </tr>
 
                 </c:forEach>
@@ -202,12 +157,13 @@
                 </ul>
             </div>
             <div class="checkout-right-basket">
-                <a href="index.jsp"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>返回购物车</a>
-                <a href="index.jsp"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>提交订单</a>
+                <a href="/car/carsearch"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>返回购物车</a>
+              <a href="javascript:;" id="a001"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>提交订单</a>
             </div>
             <div class="clearfix"></div>
         </div>
     </div>
+    </form>
 </div>
 <!-- //checkout -->
 <!-- //footer -->
@@ -266,53 +222,69 @@
 </script>
 <script>
 
-    function carempty() {
-
-        if (confirm("确定清空购物车吗?")) {
-            return true;
-        } else {
-            return false;
-        }
-
-    }
-
     $(document).ready(function () {
 
-        $(".d").click(function () {
-            var obj = $(this);
-            var pid = $(this).attr("pid");
-            var pname = $(this).attr("pname");
-            var num = $(this).attr("pnum");
-            var price = $(this).attr("price");
-            var countPrice = $(".font02").html();
-            var chanpin = $(".chanpin").html();
+        $("#a001").click(function () {
 
-            if (confirm('确定删除【' + pname + '】吗？')) {
-                $.ajax({
-                    url: '/car/cardel',
-                    type: 'POST',
-                    dataType: "json",
-                    data: {
-                        'pid': pid,
-                    },
-                    success: function (result) {
-                        if (result == 1) {
-                            alert('成功删除【' + pname + '】商品');
-                            obj.parents('tr').remove();
-
-                            $(".font02").html(parseFloat(countPrice - price * num).toFixed(2));
-                            $(".font01").html(parseInt(num) - parseInt(1));
-                            $(".chanpin").html(parseInt(chanpin) - 1);
-
-                        } else {
-                            alert("删除失败");
-                        }
-                    }
-
-                })
-            }
+            $("#form01").submit();
 
         })
+         $(".a01").click(function () {
+             var obj = $(this).attr('obj');
+             if (obj == 0){
+                 $("#div01").html('');
+                 $("#div02").html('  <table class="timetable_sub">\n' +
+                     '                <thead>\n' +
+                     '                <tr>\n' +
+                     '                    <th>收货人姓名</th>\n' +
+                     '                    <th>收货地址</th>\n' +
+                     '                    <th>联系人号码</th>\n' +
+                     '                    <th>地址邮编</th>\n' +
+                     '                </tr>\n' +
+                     '                </thead>\n' +
+                     '\n' +
+                     '                <tr class="rem1">\n' +
+                     '                    <td class="invert"><input type="text" name="consignee" placeholder="请填写收货人姓名"></td>\n' +
+                     '                    <td class="invert-image">\n' +
+                     '                        <div id="city_4">\n' +
+                     '                            <select class="prov" name="province"></select>\n' +
+                     '                            <select class="city" disabled="disabled" name="city"></select>\n' +
+                     '                            <select class="dist" disabled="disabled" name="dist"></select>\n' +
+                     '                            <input name="detailed" type="text" placeholder="请填写详细地址">\n' +
+                     '                        </div>\n' +
+                     '\n' +
+                     '                    <td class="invert"><input name="addressphone" type="text" placeholder="请填写联系人号码"></td>\n' +
+                     '                    <td class="inver2t">\n' +
+                     '                        <input type="text" name="zip" placeholder="请填写地址邮编">\n' +
+                     '                    </td>\n' +
+                     '\n' +
+                     '                </tr>\n' +
+                     '\n' +
+                     '                <!--quantity-->\n' +
+                     '                <!--quantity-->\n' +
+                     '            </table>');
+                 $(this).attr('obj','1');
+                 $("#span01").html('使用已有地址');
+
+                         $("#city_4").citySelect({
+                             prov: "湖南",
+                             city: "长沙",
+                             dist: "岳麓区",
+                             nodata: "none"
+                         });
+
+             } else {
+                 $(this).attr('obj','0');
+                 $("#div02").html('');
+                 $("#div01").html('<select style=" border-color: orange; font-size:20px;width:1120px;height: 50px"  name="addressid">\n' +
+                     '                <c:forEach items="${addresslist}" var="address">\n' +
+                     '                    <option value="${address.addressid}">收货人姓名：${address.consignee} 联系人号码：${address.addressphone} 收货地址：${address.consignee}${address.city}${address.dist}${address.detailed} 地址邮编：${address.zip}</option>\n' +
+                     '                </c:forEach>\n' +
+                     '            </select>');
+                 $("#span01").html('填写新的收货地址');
+             }
+
+            })
 
     })
 
