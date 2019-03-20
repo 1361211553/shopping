@@ -75,7 +75,7 @@
 
                     <tr class="rem1">
                         <td class="invert">${vs.count}</td>
-                        <td class="invert-image"><a href="single.jsp"><img src="${cl.pimg}" alt=" "
+                        <td class="invert-image"><a href="/sp/single/${cl.pid}"><img src="${cl.pimg}" alt=" "
                                                                            class="img-responsive"
                                                                           style=" width: 100px" /></a></td>
                         <td class="invert">${cl.pname}</td>

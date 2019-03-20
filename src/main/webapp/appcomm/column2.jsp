@@ -14,7 +14,7 @@
                     <h3 class="header">&nbsp;个人中心</h3>
                     <ul class="icon-filter">
                         <li>
-                            <a menu="home" href="person.jsp"  class="selected">
+                            <a menu="home" href="person.jsp" >
                                 <span class="icon icon-home"></span>
                                 <span class="title">
                                     我的信息
@@ -22,7 +22,7 @@
                             </a>
                         </li>
                         <li>
-                            <a menu="userlevel" href="/order/search">
+                            <a menu="userlevel" href="/order/search"  class="selected">
                                 <span class="icon icon-userlevel"></span>
                                 <span class="title">
                                     订单管理

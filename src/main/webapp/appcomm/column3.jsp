@@ -14,7 +14,7 @@
                     <h3 class="header">&nbsp;个人中心</h3>
                     <ul class="icon-filter">
                         <li>
-                            <a menu="home" href="person.jsp"  class="selected">
+                            <a menu="home" href="person.jsp"  >
                                 <span class="icon icon-home"></span>
                                 <span class="title">
                                     我的信息
@@ -30,7 +30,7 @@
                             </a>
                         </li>
                         <li>
-                            <a menu="subscribe" href="/address/search">
+                            <a menu="subscribe" href="/address/search" class="selected">
 
                                 <span class="icon icon-subscribe"></span>
                                 <span class="title">

@@ -63,10 +63,10 @@
         <form id=payment  method="post" action="/user/login">
         <div class="login-form-grids animated wow slideInUp" data-wow-delay=".5s">
 
-            <input type="text" name="username" placeholder="用户名" required=" " >
-            <input type="password" name="userpass" placeholder="密码" required=" " >
+            <input type="text" name="username" placeholder="用户名"  autocomplete="off" >
+            <input type="password" name="userpass" placeholder="密码"  autocomplete="off">
                 <div class="forgot">
-                    <a href="#">忘记密码</a>
+
                 </div>
                 <input type="submit" value="登陆">
 

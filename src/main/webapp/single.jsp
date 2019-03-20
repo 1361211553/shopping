@@ -62,10 +62,12 @@
         <div class="agileinfo_single">
             <%--<jsp:include page="pagehome?op=clickproduct"/>--%>
             <div class="col-md-4 agileinfo_single_left">
-                <img id="example" src="${sp.pimg}" alt="${sp.pdescription}" class="img-responsive" width="300px" height="150px">
+                <img id="example" src="${sp.pimg}" title="${sp.pdescription}" class="img-responsive" width="300px" height="150px">
             </div>
             <div class="col-md-8 agileinfo_single_right">
-                <h2>${sp.pdescription}</h2>
+                <h2>${sp.pname}</h2>
+                <h4>${sp.pdescription}</h4>
+                <br>
                 <div class="rating1">
 						<span class="starRating">
 							<input id="rating5" type="radio" name="rating" value="5">
@@ -99,7 +101,7 @@
                                     <tr>
                                         <td>数量：ss</td>
                                         <td><input type="text" name="productNum" style="width: 30px;" value="1"></td>
-                                        <td class="inver2t">
+                                        <td class="inver2t" style="width: 500px">
                                             <div class="quantity">
                                                 <div class="quantity-select">
                                                     <div class="entry value-minus">&nbsp;</div>
@@ -180,6 +182,9 @@
                                     <div class="snipcart-thumb">
                                         <a href="products.jsp"><img title="${st.productcontent}" alt=" " src="${st.productimg}" width="250px" height="150px"></a>
                                         <p>${st.productname}</p>
+
+                                        <p style="font-size: 20px">${st.productcontent}</p>
+
                                         <div class="stars">
                                             <i class="fa fa-star blue-star" aria-hidden="true"></i>
                                             <i class="fa fa-star blue-star" aria-hidden="true"></i>

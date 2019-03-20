@@ -513,7 +513,7 @@
     </script>
     <script type="text/javascript" src="js/main_menu_29d4193.js"></script>
     <script type="text/javascript" src="js/cookies.js"></script>
-    <%@ include file="appcomm/column.jsp" %>
+    <%@ include file="appcomm/column2.jsp" %>
     <div class="main-col">
         <div class="scroll-content">
             <div class="mod">
