@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="com.shopping.entity.SOrderdetail" >
     <id column="orderdetailid" property="orderdetailid" jdbcType="INTEGER" />
     <result column="pid" property="pid" jdbcType="INTEGER" />
-    <result column="oid" property="oid" jdbcType="INTEGER" />
+    <result column="oid" property="oid" jdbcType="VARCHAR" />
     <result column="ppurchasenum" property="ppurchasenum" jdbcType="INTEGER" />
     <result column="ptotalprice" property="ptotalprice" jdbcType="DOUBLE" />
   </resultMap>
@@ -97,7 +97,7 @@
   <insert id="insert" parameterType="com.shopping.entity.SOrderdetail" >
     insert into s_orderdetail (orderdetailid, pid, oid, 
       ppurchasenum, ptotalprice)
-    values (#{orderdetailid,jdbcType=INTEGER}, #{pid,jdbcType=INTEGER}, #{oid,jdbcType=INTEGER}, 
+    values (#{orderdetailid,jdbcType=INTEGER}, #{pid,jdbcType=INTEGER}, #{oid,jdbcType=VARCHAR}, 
       #{ppurchasenum,jdbcType=INTEGER}, #{ptotalprice,jdbcType=DOUBLE})
   </insert>
   <insert id="insertSelective" parameterType="com.shopping.entity.SOrderdetail" >
@@ -127,7 +127,7 @@
         #{pid,jdbcType=INTEGER},
       </if>
       <if test="oid != null" >
-        #{oid,jdbcType=INTEGER},
+        #{oid,jdbcType=VARCHAR},
       </if>
       <if test="ppurchasenum != null" >
         #{ppurchasenum,jdbcType=INTEGER},
@@ -147,7 +147,7 @@
         pid = #{record.pid,jdbcType=INTEGER},
       </if>
       <if test="record.oid != null" >
-        oid = #{record.oid,jdbcType=INTEGER},
+        oid = #{record.oid,jdbcType=VARCHAR},
       </if>
       <if test="record.ppurchasenum != null" >
         ppurchasenum = #{record.ppurchasenum,jdbcType=INTEGER},
@@ -164,7 +164,7 @@
     update s_orderdetail
     set orderdetailid = #{record.orderdetailid,jdbcType=INTEGER},
       pid = #{record.pid,jdbcType=INTEGER},
-      oid = #{record.oid,jdbcType=INTEGER},
+      oid = #{record.oid,jdbcType=VARCHAR},
       ppurchasenum = #{record.ppurchasenum,jdbcType=INTEGER},
       ptotalprice = #{record.ptotalprice,jdbcType=DOUBLE}
     <if test="_parameter != null" >
@@ -178,7 +178,7 @@
         pid = #{pid,jdbcType=INTEGER},
       </if>
       <if test="oid != null" >
-        oid = #{oid,jdbcType=INTEGER},
+        oid = #{oid,jdbcType=VARCHAR},
       </if>
       <if test="ppurchasenum != null" >
         ppurchasenum = #{ppurchasenum,jdbcType=INTEGER},
@@ -192,7 +192,7 @@
   <update id="updateByPrimaryKey" parameterType="com.shopping.entity.SOrderdetail" >
     update s_orderdetail
     set pid = #{pid,jdbcType=INTEGER},
-      oid = #{oid,jdbcType=INTEGER},
+      oid = #{oid,jdbcType=VARCHAR},
       ppurchasenum = #{ppurchasenum,jdbcType=INTEGER},
       ptotalprice = #{ptotalprice,jdbcType=DOUBLE}
     where orderdetailid = #{orderdetailid,jdbcType=INTEGER}

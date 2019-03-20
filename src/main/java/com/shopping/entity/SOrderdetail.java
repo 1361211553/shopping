@@ -5,7 +5,7 @@ public class SOrderdetail {
 
     private Integer pid;
 
-    private Integer oid;
+    private String oid;
 
     private Integer ppurchasenum;
 
@@ -27,12 +27,12 @@ public class SOrderdetail {
         this.pid = pid;
     }
 
-    public Integer getOid() {
+    public String getOid() {
         return oid;
     }
 
-    public void setOid(Integer oid) {
-        this.oid = oid;
+    public void setOid(String oid) {
+        this.oid = oid == null ? null : oid.trim();
     }
 
     public Integer getPpurchasenum() {

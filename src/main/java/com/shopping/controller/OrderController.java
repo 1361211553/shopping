@@ -74,9 +74,9 @@ public class OrderController {
         }
 
         mav.addObject("addresslist",listAddress);
-        mav.addObject("countPrice",countPrice);
         mav.addObject("listcar",sCarlist);
         session.setAttribute("pmap", map);
+        session.setAttribute("countPrice",countPrice);
         return  mav;
 
     }
@@ -86,6 +86,8 @@ public class OrderController {
 
         Map<Double,SP> map = (Map<Double, SP>) session.getAttribute("pmap");
         session.removeAttribute("pmap");
+        Double countPrice = (Double) session.getAttribute("countPrice");
+        session.removeAttribute("countPrice");
         SUser sUser = (SUser) session.getAttribute("user");
 
         SOrder sOrder = new SOrder();
@@ -95,7 +97,8 @@ public class OrderController {
         sOrder.setPcount(map.size());
         sOrder.setReciphone(sAddress.getAddressphone());
         sOrder.setRecipients(sAddress.getConsignee());
-        sOrder.setPtotalprice(1.22);
+        sOrder.setPtotalprice(countPrice);
+        sOrder.setAddress(sAddress.getProvince()+sAddress.getCity()+sAddress.getDist());
         Random random = new Random();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddhhmmssSSS");
         sOrder.setOid(String.valueOf(Date.parse(simpleDateFormat.format(new Date())+random.nextInt(999))));
@@ -103,8 +106,8 @@ public class OrderController {
 
 
         SOrderdetail sOrderdetail = new SOrderdetail();
-
-//        sOrderdetailMapper.insertSelective();
+        sOrderdetail.setOid(sOrder.getOid());
+        sOrderdetailMapper.insertSelective(sOrderdetail);
 
         ModelAndView mav = new ModelAndView();
 
