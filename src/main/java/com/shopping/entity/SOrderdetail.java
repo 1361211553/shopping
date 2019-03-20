@@ -50,4 +50,15 @@ public class SOrderdetail {
     public void setPtotalprice(Double ptotalprice) {
         this.ptotalprice = ptotalprice;
     }
+
+    @Override
+    public String toString() {
+        return "SOrderdetail{" +
+                "orderdetailid=" + orderdetailid +
+                ", pid=" + pid +
+                ", oid='" + oid + '\'' +
+                ", ppurchasenum=" + ppurchasenum +
+                ", ptotalprice=" + ptotalprice +
+                '}';
+    }
 }

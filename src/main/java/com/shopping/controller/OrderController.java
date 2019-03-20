@@ -74,7 +74,7 @@ public class OrderController {
         }
 
         mav.addObject("addresslist",listAddress);
-        mav.addObject("listcar",sCarlist);
+        session.setAttribute("listcar",sCarlist);
         session.setAttribute("pmap", map);
         session.setAttribute("countPrice",countPrice);
         return  mav;
@@ -84,7 +84,10 @@ public class OrderController {
     @RequestMapping("add")
     public ModelAndView add(HttpSession session,@ModelAttribute SAddress sAddress){
 
+
+        ModelAndView mav = new ModelAndView("redirect:/order/search");
         Map<Double,SP> map = (Map<Double, SP>) session.getAttribute("pmap");
+        List<SCar> carlist = (List<SCar>) session.getAttribute("listcar");
         session.removeAttribute("pmap");
         Double countPrice = (Double) session.getAttribute("countPrice");
         session.removeAttribute("countPrice");
@@ -101,17 +104,26 @@ public class OrderController {
         sOrder.setAddress(sAddress.getProvince()+sAddress.getCity()+sAddress.getDist());
         Random random = new Random();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddhhmmssSSS");
-        sOrder.setOid(String.valueOf(Date.parse(simpleDateFormat.format(new Date())+random.nextInt(999))));
+        String oid = String.valueOf(simpleDateFormat.format(new Date())+random.nextInt(999));
+        sOrder.setOid(oid);
         sOrderMapper.insertSelective(sOrder);
 
 
         SOrderdetail sOrderdetail = new SOrderdetail();
         sOrderdetail.setOid(sOrder.getOid());
-        sOrderdetailMapper.insertSelective(sOrderdetail);
 
-        ModelAndView mav = new ModelAndView();
+        int i = 0;
+        for (Double key: map.keySet()) {
+            sOrderdetail.setPtotalprice(key);
+            sOrderdetail.setPid(map.get(key).getPid());
+            sOrderdetail.setPpurchasenum(carlist.get(i).getPnum());
+            System.out.println(sOrderdetail);
+            sOrderdetailMapper.insert(sOrderdetail);
+            i++;
+        }
 
-
+        sCarMapper.deleteByUserid(sUser.getUserid());
+        session.setAttribute("carNum",0);
         return mav;
     }
 

@@ -52,7 +52,7 @@ public class CarController {
             }
 
 
-             session.setAttribute("carNum",listcar.size());
+            session.setAttribute("carNum",listcar.size());
             mav.addObject("productList", listsp);
             mav.addObject("listcar", listcar);
             mav.addObject("countPrice",countPrice);
