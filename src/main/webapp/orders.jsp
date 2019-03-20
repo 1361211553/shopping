@@ -548,7 +548,7 @@
                         <tbody><tr>
                             <td align="left"><h4>订单号</h4></td>
                             <td align="left"><h4>购买日期</h4></td>
-                                <td align="left"><h4>购买数量</h4></td>
+                                <td align="left"><h4>购买商品</h4></td>
                             <td align="left"><h4>订单价格</h4></td>
                             <td align="left"><h4>订单状态</h4></td>
                             <td align="left"><h4></h4></td>
@@ -559,7 +559,7 @@
                         <tr>
                             <td align="left">${personorder.oid}</td>
                              <td align="left"><fmt:formatDate value="${personorder.orderdate}"  type="date" pattern="yyyy-MM-dd HH:mm:ss"/></td>
-                            <td>${personorder.pcount}</td>
+                            <td>${personorder.pcount}件</td>
                             <td align="left">￥${personorder.ptotalprice}</td>
 
 
