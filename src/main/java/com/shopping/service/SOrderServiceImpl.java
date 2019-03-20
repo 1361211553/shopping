@@ -29,6 +29,15 @@ public class SOrderServiceImpl implements SOrderServiceI {
             if(sOrder.getUserid()!=null && !"".equals(sOrder.getUserid())){
                 criteria.andPstatusEqualTo(sOrder.getUserid());
             }
+            if(sOrder.getReciphone()!=null && !"".equals(sOrder.getReciphone())){
+                criteria.andReciphoneEqualTo(sOrder.getReciphone());
+            }
+            if (sOrder.getRecipients()!=null && !"".equals(sOrder.getRecipients())){
+                criteria.andRecipientsEqualTo(sOrder.getRecipients());
+            }
+            if (sOrder.getAddress()!=null && !"".equals(sOrder.getAddress())){
+                criteria.andAddressLike("%"+sOrder.getAddress()+"%");
+            }
         }
         return sOrderMapper.selectByExample(example);
     }
@@ -50,6 +59,16 @@ public class SOrderServiceImpl implements SOrderServiceI {
             if(sOrder.getUserid()!=null && !"".equals(sOrder.getUserid())){
                 criteria.andPstatusEqualTo(sOrder.getUserid());
             }
+            if(sOrder.getReciphone()!=null && !"".equals(sOrder.getReciphone())){
+                criteria.andReciphoneEqualTo(sOrder.getReciphone());
+            }
+            if (sOrder.getRecipients()!=null && !"".equals(sOrder.getRecipients())){
+                criteria.andRecipientsEqualTo(sOrder.getRecipients());
+            }
+            if (sOrder.getAddress()!=null && !"".equals(sOrder.getAddress())){
+                criteria.andAddressLike("%"+sOrder.getAddress()+"%");
+            }
+
         }
 
 
