@@ -78,7 +78,7 @@
 </section>
 <!--点击修改按钮后弹出的页面-->
 <div class="zhezhao"></div>
-<div class="remove" id="addAddress">
+<div class="remove" id="addP">
     <div class="removerChid">
         <h2>提示</h2>
         <div class="removeMain">
@@ -94,15 +94,15 @@
 <script>
     $("#add").on("click",function(){
         $('.zhezhao').css('display', 'block');
-	    $('#addAddress').fadeIn();
+	    $('#addP').fadeIn();
 	});
     $("#no").on("click",function(){
         $('.zhezhao').css('display', 'none');
-	    $('#addAddress').fadeOut();
+	    $('#addP').fadeOut();
     });
     $("#yes").on("click",function(){
         $('.zhezhao').css('display', 'none');
-	    $('#addAddress').fadeOut();
+	    $('#addP').fadeOut();
 	    $("#addProductForm").submit();
     });
     
@@ -110,54 +110,72 @@
         history.back(-1);
     });
     //验证
-    $("#contact").on("blur",function(){
-        if($("#contact").val()!=null && $("#contact").val()!=""){
-            validateTip($("#contact").next(),{"color":"green"},imgYes,true);
+    //验证
+    $("#pname").on("blur",function(){
+        if($("#pname").val()!=null && $("#pname").val()!=""){
+            n=1;
+            validateTip($("#pname").next(),{"color":"green"},imgYes,true);
         }else{
-            validateTip($("#contact").next(),{"color":"red"},imgNo+" 联系人不能为空，请输入",false);
+            validateTip($("#pname").next(),{"color":"red"},imgNo+" 商品名不能为空，请输入",false);
         }
     }).on("focus",function(){
-        validateTip($("#contact").next(),{"color":"#666666"},"* 请输入联系人",false);
+        validateTip($("#pname").next(),{"color":"#666666"},"* 请输入商品名",false);
     });
-    
-    $("#addressDesc").on("blur",function(){
-        if($("#addressDesc").val()!=null && $("#addressDesc").val()!=""){
-            validateTip($("#addressDesc").next(),{"color":"green"},imgYes,true);
+
+    $("#pdescription").on("blur",function(){
+        if($("#pdescription").val()!=null && $("#pdescription").val()!=""){
+            n=1;
+            validateTip($("#pdescription").next(),{"color":"green"},imgYes,true);
         }else{
-            validateTip($("#addressDesc").next(),{"color":"red"},imgNo+" 地址不能为空，请输入",false);
+            validateTip($("#pdescription").next(),{"color":"red"},imgNo+" 商品详细信息不能为空，请输入",false);
         }
     }).on("focus",function(){
-        validateTip($("#addressDesc").next(),{"color":"#666666"},"* 请输入地址",false);
+        validateTip($("#pdescription").next(),{"color":"#666666"},"* 请输入商品详细信息",false);
     });
-    
-    $("#postcode").on("blur",function(){
-        var str=/^[1-9][0-9]{5}$/;
-        if($("#postcode").val()!=null && $("#postcode").val()!=""){
-            if($("#postcode").val().match(str)){
-                validateTip($("#postcode").next(),{"color":"green"},imgYes,true);
+
+    $("#pprice").on("blur",function(){
+        var str=/^((0{1}\.\d+)|([1-9]\d*\.{1}\d+)|([1-9]+\d*)|0)$/;
+        if($("#pprice").val()!=null && $("#pprice").val()!=""){
+            if($("#pprice").val().match(str)){
+                n=1;
+                validateTip($("#pprice").next(),{"color":"green"},imgYes,true);
             }else{
-                validateTip($("#postcode").next(),{"color":"red"},imgNo+" 请输入正确的邮政编码",false);
+                validateTip($("#pprice").next(),{"color":"red"},imgNo+" 请输入正确的价格",false);
             }
         }else{
-            validateTip($("#postcode").next(),{"color":"red"},imgNo+" 邮政编码不能为空，请输入",false);
+            validateTip($("#pprice").next(),{"color":"red"},imgNo+" 商品价格不能为空，请输入",false);
         }
     }).on("focus",function(){
-        validateTip($("#postcode").next(),{"color":"#666666"},"* 请输入邮政编码",false);
+        validateTip($("#pprice").next(),{"color":"#666666"},"* 请输入商品价格",false);
     });
-    
-    $("#tel").on("blur",function(){
-        var str=/^1(3[0-9]|5[189]|8[6789])[0-9]{8}$/;
-        if($("#tel").val()!=null && $("#tel").val()!=""){
-            if($("#tel").val().match(str)){
-                validateTip($("#tel").next(),{"color":"green"},imgYes,true);
+
+    $("#pnum").on("blur",function(){
+        var str=/^[+]{0,1}(\d+)$/;
+        if($("#pnum").val()!=null && $("#pnum").val()!=""){
+            if($("#pnum").val().match(str)){
+                n=1;
+                validateTip($("#pnum").next(),{"color":"green"},imgYes,true);
             }else{
-                validateTip($("#tel").next(),{"color":"red"},imgNo+" 请输入正确的手机号码",false);
+                validateTip($("#pnum").next(),{"color":"red"},imgNo+" 请输入正确的商品数量",false);
             }
         }else{
-            validateTip($("#tel").next(),{"color":"red"},imgNo+" 手机号码不能为空，请输入",false);
+            validateTip($("#pnum").next(),{"color":"red"},imgNo+" 商品数量不能为空，请输入",false);
         }
     }).on("focus",function(){
-        validateTip($("#tel").next(),{"color":"#666666"},"* 请输入手机号码",false);
+        validateTip($("#pnum").next(),{"color":"#666666"},"* 请输入商品数量",false);
+    });
+
+    $("#yes").on("click",function(){
+        $('.zhezhao').css('display', 'none');
+        $('#modifyAddress').fadeOut();
+        alert(n);
+        if(n == 1){
+            alert("保存成功！");
+            $("#modifyAddressForm").submit();
+        }else{
+            alert("请检查输入的错误");
+        }
+
     });
 </script>
 <%-- <script type="text/javascript" src="${pageContext.request.contextPath }/js/useradd.js"></script> --%>

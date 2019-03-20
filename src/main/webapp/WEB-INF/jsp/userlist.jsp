@@ -27,7 +27,7 @@
 					<select name="slock" id="slock">
 						<option value="">--请选择--</option>
 						<option value="1" <c:if test="${sUser.slock == 1}">selected="selected"</c:if>>--冻结--</option>
-						<option value="2" <c:if test="${sUser.slock == 2}">selected="selected"</c:if>>--正常--</option>
+						<option value="0" <c:if test="${sUser.slock == 0}">selected="selected"</c:if>>--正常--</option>
 					</select>
 					 
 
@@ -76,7 +76,7 @@
 							<c:if test="${user.slock == 1}">
 							<span><a href="#" style="color: red;font-weight:bold " onclick="changestate(${user.slock},${user.userid})">冻结</a> </span>
 							</c:if>
-							<c:if test="${user.slock == 2}">
+							<c:if test="${user.slock == 0}">
 							<span><a href="#" style="color:green;font-weight:bold" onclick="changestate(${user.slock},${user.userid} )">正常</a></span>
 							</c:if>
 						</td>
@@ -138,7 +138,7 @@
         $("#no").on("click",function(){
             cancel();
         });
-        if(data == 2){
+        if(data == 0){
             changeDLGContent("你确定要冻结用户id为"+userid+"的用户吗？");
 
 		}else{
