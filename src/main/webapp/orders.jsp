@@ -531,29 +531,29 @@
                             <td>${personorder.pcount}</td>
                             <td align="left">￥${personorder.ptotalprice}</td>
 
-                            <c:if test="${personorder.pstatus==0}">
-                                <td align="left">未付款</td>
-                                <td><a href="" onclick="return false">查看</a></td>
-                                <td><a href="" onclick="return false">立即付款</a></td>
-                            </c:if>
 
                             <c:if test="${personorder.pstatus==1}">
-                                <td align="left">未发货</td>
+                                <td align="left">未付款</td>
                                 <td><a href="" onclick="return false">查看</a></td>
                                 <td></td>
                             </c:if>
 
                             <c:if test="${personorder.pstatus==2}">
-                                <td align="left">已发货</td>
+                                <td align="left">未发货</td>
                                 <td><a href="" onclick="return false">查看</a></td>
                                 <td><a href="" onclick="return false">确认收货</a></td>
                             </c:if>
 
                             <c:if test="${personorder.pstatus==3}">
-                                <td align="left">已完成</td>
+                                <td align="left">已发货</td>
                                 <td><a href="" onclick="return false">查看</a></td>
                             </c:if>
 
+                            <c:if test="${personorder.pstatus==4}">
+                                <td align="left">已完成</td>
+                                <td><a href="" onclick="return false">查看</a></td>
+                                <td><a href="" onclick="return false">立即付款</a></td>
+                            </c:if>
                         </tr>
                         </c:forEach>
 
