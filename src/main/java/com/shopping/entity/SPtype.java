@@ -5,6 +5,8 @@ public class SPtype {
 
     private String ptypename;
 
+    private Integer ptypestate;
+
     public Integer getPtypeid() {
         return ptypeid;
     }
@@ -19,5 +21,13 @@ public class SPtype {
 
     public void setPtypename(String ptypename) {
         this.ptypename = ptypename == null ? null : ptypename.trim();
+    }
+
+    public Integer getPtypestate() {
+        return ptypestate;
+    }
+
+    public void setPtypestate(Integer ptypestate) {
+        this.ptypestate = ptypestate;
     }
 }

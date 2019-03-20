@@ -15,7 +15,6 @@ public class UserServiceImpl implements UserServiceI{
     @Autowired
     SUserMapper sUserMapper;
 
-
     @Override
     public List<SUser> selectByExample(SUser sUser) {
         SUserExample example = new SUserExample();

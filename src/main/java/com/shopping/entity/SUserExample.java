@@ -1,7 +1,5 @@
 package com.shopping.entity;
 
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
@@ -671,66 +669,6 @@ public class SUserExample {
 
         public Criteria andUserphoneNotBetween(String value1, String value2) {
             addCriterion("userphone not between", value1, value2, "userphone");
-            return (Criteria) this;
-        }
-
-        public Criteria andUseraddressidIsNull() {
-            addCriterion("useraddressid is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andUseraddressidIsNotNull() {
-            addCriterion("useraddressid is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andUseraddressidEqualTo(Integer value) {
-            addCriterion("useraddressid =", value, "useraddressid");
-            return (Criteria) this;
-        }
-
-        public Criteria andUseraddressidNotEqualTo(Integer value) {
-            addCriterion("useraddressid <>", value, "useraddressid");
-            return (Criteria) this;
-        }
-
-        public Criteria andUseraddressidGreaterThan(Integer value) {
-            addCriterion("useraddressid >", value, "useraddressid");
-            return (Criteria) this;
-        }
-
-        public Criteria andUseraddressidGreaterThanOrEqualTo(Integer value) {
-            addCriterion("useraddressid >=", value, "useraddressid");
-            return (Criteria) this;
-        }
-
-        public Criteria andUseraddressidLessThan(Integer value) {
-            addCriterion("useraddressid <", value, "useraddressid");
-            return (Criteria) this;
-        }
-
-        public Criteria andUseraddressidLessThanOrEqualTo(Integer value) {
-            addCriterion("useraddressid <=", value, "useraddressid");
-            return (Criteria) this;
-        }
-
-        public Criteria andUseraddressidIn(List<Integer> values) {
-            addCriterion("useraddressid in", values, "useraddressid");
-            return (Criteria) this;
-        }
-
-        public Criteria andUseraddressidNotIn(List<Integer> values) {
-            addCriterion("useraddressid not in", values, "useraddressid");
-            return (Criteria) this;
-        }
-
-        public Criteria andUseraddressidBetween(Integer value1, Integer value2) {
-            addCriterion("useraddressid between", value1, value2, "useraddressid");
-            return (Criteria) this;
-        }
-
-        public Criteria andUseraddressidNotBetween(Integer value1, Integer value2) {
-            addCriterion("useraddressid not between", value1, value2, "useraddressid");
             return (Criteria) this;
         }
 

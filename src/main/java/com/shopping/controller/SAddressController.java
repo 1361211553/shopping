@@ -72,25 +72,41 @@ public class SAddressController {
     }
 
     @RequestMapping("insert")
-    public ModelAndView update(@ModelAttribute SAddress sAddress) {
+    public ModelAndView update(@ModelAttribute SAddress sAddress,HttpSession session) {
 
         ModelAndView mav = new ModelAndView("redirect:/address/search");
-        System.out.println(sAddress.toString());
-        sAddressMapper.updateByPrimaryKeySelective(sAddress);
+        SUser sUser = (SUser) session.getAttribute("user");
+
+        SAddressExample example = new SAddressExample();
+        SAddressExample.Criteria criteria = example.createCriteria();
+        criteria.andUseridEqualTo(sUser.getUserid());
+        criteria.andStatusEqualTo(1);
+        List<SAddress> sAddresslist = sAddressMapper.selectByExample(example);
+        sAddress.setUserid(sUser.getUserid());
+        if (sAddresslist.size() > 0){
+
+            sAddress.setStatus(0);
+            sAddressMapper.insertSelective(sAddress);
+        }else {
+            sAddress.setStatus(1);
+            sAddressMapper.insertSelective(sAddress);
+        }
         return mav;
     }
 
     @RequestMapping("update/{addressid}")
-    public ModelAndView update(@PathVariable Integer addressid,@ModelAttribute SAddress sAddress) {
+    public ModelAndView update(@PathVariable Integer addressid,HttpSession session,@ModelAttribute SAddress sAddress) {
 
+        SUser sUser = (SUser) session.getAttribute("user");
         ModelAndView mav = new ModelAndView("redirect:/address/search");     
         sAddress.setAddressid(addressid);
-        sAddressMapper.updateByPrimaryKey(sAddress);
+        sAddress.setUserid(sUser.getUserid());
+        sAddressMapper.updateByPrimaryKeySelective(sAddress);
         return mav;
     }
 
-    @RequestMapping("updateByfind")
-    public ModelAndView updateByfind(@RequestParam Integer addressid) {
+    @RequestMapping("updateByfind/{addressid}")
+    public ModelAndView updateByfind(@PathVariable Integer addressid) {
 
         ModelAndView mav = new ModelAndView("addressmodify");
         SAddress sAddress = sAddressMapper.selectByPrimaryKey(addressid);

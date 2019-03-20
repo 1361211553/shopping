@@ -1,9 +1,6 @@
 package com.shopping.entity;
 
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-
 import java.util.Date;
-
 
 public class SUser {
     private Integer userid;
@@ -21,8 +18,6 @@ public class SUser {
     private String useremail;
 
     private String userphone;
-
-    private Integer useraddressid;
 
     private String userface;
 
@@ -96,14 +91,6 @@ public class SUser {
         this.userphone = userphone == null ? null : userphone.trim();
     }
 
-    public Integer getUseraddressid() {
-        return useraddressid;
-    }
-
-    public void setUseraddressid(Integer useraddressid) {
-        this.useraddressid = useraddressid;
-    }
-
     public String getUserface() {
         return userface;
     }
@@ -134,24 +121,5 @@ public class SUser {
 
     public void setSlock(Integer slock) {
         this.slock = slock;
-    }
-
-    @Override
-    public String toString() {
-        return "SUser{" +
-                "userid=" + userid +
-                ", username='" + username + '\'' +
-                ", userpass='" + userpass + '\'' +
-                ", userrealname='" + userrealname + '\'' +
-                ", usersex='" + usersex + '\'' +
-                ", userbirthday=" + userbirthday +
-                ", useremail='" + useremail + '\'' +
-                ", userphone='" + userphone + '\'' +
-                ", useraddressid=" + useraddressid +
-                ", userface='" + userface + '\'' +
-                ", userregdate=" + userregdate +
-                ", landingtimes=" + landingtimes +
-                ", slock=" + slock +
-                '}';
     }
 }

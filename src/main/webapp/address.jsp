@@ -600,7 +600,7 @@
                    </a>-->
 
                     <!-- 非第三方登陆，显示修改密码 -->
-                    <button style="float: right">新增地址</button>
+                    <button style="float: right" onclick="window.location.href='/addressadd.jsp'">新增地址</button>
                     <table>
 
                         <thead>
@@ -608,10 +608,9 @@
                             <th><h4>收货人姓名</h4></th>
                             <th><h4>收货地址</h4></th>
                             <th><h4>联系号码</h4></th>
-                            <th><h4>地址邮编</h4></th>
+                            <th><h4>邮编</h4></th>
                             <th><h4>操作</h4></th>
                             <th><h4></h4></th>
-
                         </tr>
                         </thead>
                         <c:forEach var="address" items="${addresslist}">
@@ -621,11 +620,11 @@
                                 <td align="left">${address.addressphone}</td>
                                 <td align="left">${address.zip}</td>
                                 <c:if test="${address.status == 1}">
-                                    <td align="left"><a href="addressmodify.jsp">修改</a>&emsp;<a href="javascript:;" onclick="shan01()" class="shan1" addressid="${address.addressid}">删除</a></td>
+                                    <td align="left"><a href="/address/updateByfind/${address.addressid}">修改</a>&emsp;<a href="javascript:;" onclick="shan01()" class="shan1" addressid="${address.addressid}">删除</a></td>
                                 </c:if>
                                 <c:if test="${address.status == 0}">
                                     <td align="left">
-                                        <a href="">修改</a>
+                                        <a href="/address/updateByfind/${address.addressid}">修改</a>
                                         <a   href="javascript:;" onclick="shan01()" class="shan1" addressid="${address.addressid}">删除</a>
                                         <a href="/address/edit/${address.addressid}">设为默认地址</a>
                                     </td>

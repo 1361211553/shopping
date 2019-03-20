@@ -10,7 +10,6 @@
     <result column="userbirthday" property="userbirthday" jdbcType="DATE" />
     <result column="useremail" property="useremail" jdbcType="VARCHAR" />
     <result column="userphone" property="userphone" jdbcType="VARCHAR" />
-    <result column="useraddressid" property="useraddressid" jdbcType="INTEGER" />
     <result column="userface" property="userface" jdbcType="VARCHAR" />
     <result column="userregdate" property="userregdate" jdbcType="TIMESTAMP" />
     <result column="landingtimes" property="landingtimes" jdbcType="INTEGER" />
@@ -76,7 +75,7 @@
   </sql>
   <sql id="Base_Column_List" >
     userid, username, userpass, userrealname, usersex, userbirthday, useremail, userphone, 
-    useraddressid, userface, userregdate, landingtimes, slock
+    userface, userregdate, landingtimes, slock
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.shopping.entity.SUserExample" >
     select
@@ -106,14 +105,14 @@
   <insert id="insert" parameterType="com.shopping.entity.SUser" >
     insert into s_user (userid, username, userpass, 
       userrealname, usersex, userbirthday, 
-      useremail, userphone, useraddressid, 
-      userface, userregdate, landingtimes, 
-      slock)
+      useremail, userphone, userface, 
+      userregdate, landingtimes, slock
+      )
     values (#{userid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{userpass,jdbcType=VARCHAR}, 
       #{userrealname,jdbcType=VARCHAR}, #{usersex,jdbcType=VARCHAR}, #{userbirthday,jdbcType=DATE}, 
-      #{useremail,jdbcType=VARCHAR}, #{userphone,jdbcType=VARCHAR}, #{useraddressid,jdbcType=INTEGER}, 
-      #{userface,jdbcType=VARCHAR}, #{userregdate,jdbcType=TIMESTAMP}, #{landingtimes,jdbcType=INTEGER}, 
-      #{slock,jdbcType=INTEGER})
+      #{useremail,jdbcType=VARCHAR}, #{userphone,jdbcType=VARCHAR}, #{userface,jdbcType=VARCHAR}, 
+      #{userregdate,jdbcType=TIMESTAMP}, #{landingtimes,jdbcType=INTEGER}, #{slock,jdbcType=INTEGER}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.shopping.entity.SUser" >
     insert into s_user
@@ -141,9 +140,6 @@
       </if>
       <if test="userphone != null" >
         userphone,
-      </if>
-      <if test="useraddressid != null" >
-        useraddressid,
       </if>
       <if test="userface != null" >
         userface,
@@ -182,9 +178,6 @@
       </if>
       <if test="userphone != null" >
         #{userphone,jdbcType=VARCHAR},
-      </if>
-      <if test="useraddressid != null" >
-        #{useraddressid,jdbcType=INTEGER},
       </if>
       <if test="userface != null" >
         #{userface,jdbcType=VARCHAR},
@@ -227,9 +220,6 @@
       <if test="record.userphone != null" >
         userphone = #{record.userphone,jdbcType=VARCHAR},
       </if>
-      <if test="record.useraddressid != null" >
-        useraddressid = #{record.useraddressid,jdbcType=INTEGER},
-      </if>
       <if test="record.userface != null" >
         userface = #{record.userface,jdbcType=VARCHAR},
       </if>
@@ -257,7 +247,6 @@
       userbirthday = #{record.userbirthday,jdbcType=DATE},
       useremail = #{record.useremail,jdbcType=VARCHAR},
       userphone = #{record.userphone,jdbcType=VARCHAR},
-      useraddressid = #{record.useraddressid,jdbcType=INTEGER},
       userface = #{record.userface,jdbcType=VARCHAR},
       userregdate = #{record.userregdate,jdbcType=TIMESTAMP},
       landingtimes = #{record.landingtimes,jdbcType=INTEGER},
@@ -290,9 +279,6 @@
       <if test="userphone != null" >
         userphone = #{userphone,jdbcType=VARCHAR},
       </if>
-      <if test="useraddressid != null" >
-        useraddressid = #{useraddressid,jdbcType=INTEGER},
-      </if>
       <if test="userface != null" >
         userface = #{userface,jdbcType=VARCHAR},
       </if>
@@ -317,7 +303,6 @@
       userbirthday = #{userbirthday,jdbcType=DATE},
       useremail = #{useremail,jdbcType=VARCHAR},
       userphone = #{userphone,jdbcType=VARCHAR},
-      useraddressid = #{useraddressid,jdbcType=INTEGER},
       userface = #{userface,jdbcType=VARCHAR},
       userregdate = #{userregdate,jdbcType=TIMESTAMP},
       landingtimes = #{landingtimes,jdbcType=INTEGER},

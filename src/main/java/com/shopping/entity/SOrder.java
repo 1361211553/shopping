@@ -15,6 +15,12 @@ public class SOrder {
 
     private Date orderdate;
 
+    private String address;
+
+    private String recipients;
+
+    private String reciphone;
+
     public String getOid() {
         return oid;
     }
@@ -61,5 +67,29 @@ public class SOrder {
 
     public void setOrderdate(Date orderdate) {
         this.orderdate = orderdate;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address == null ? null : address.trim();
+    }
+
+    public String getRecipients() {
+        return recipients;
+    }
+
+    public void setRecipients(String recipients) {
+        this.recipients = recipients == null ? null : recipients.trim();
+    }
+
+    public String getReciphone() {
+        return reciphone;
+    }
+
+    public void setReciphone(String reciphone) {
+        this.reciphone = reciphone == null ? null : reciphone.trim();
     }
 }

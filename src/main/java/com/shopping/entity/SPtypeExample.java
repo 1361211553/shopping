@@ -233,6 +233,66 @@ public class SPtypeExample {
             addCriterion("ptypename not between", value1, value2, "ptypename");
             return (Criteria) this;
         }
+
+        public Criteria andPtypestateIsNull() {
+            addCriterion("ptypestate is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPtypestateIsNotNull() {
+            addCriterion("ptypestate is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPtypestateEqualTo(Integer value) {
+            addCriterion("ptypestate =", value, "ptypestate");
+            return (Criteria) this;
+        }
+
+        public Criteria andPtypestateNotEqualTo(Integer value) {
+            addCriterion("ptypestate <>", value, "ptypestate");
+            return (Criteria) this;
+        }
+
+        public Criteria andPtypestateGreaterThan(Integer value) {
+            addCriterion("ptypestate >", value, "ptypestate");
+            return (Criteria) this;
+        }
+
+        public Criteria andPtypestateGreaterThanOrEqualTo(Integer value) {
+            addCriterion("ptypestate >=", value, "ptypestate");
+            return (Criteria) this;
+        }
+
+        public Criteria andPtypestateLessThan(Integer value) {
+            addCriterion("ptypestate <", value, "ptypestate");
+            return (Criteria) this;
+        }
+
+        public Criteria andPtypestateLessThanOrEqualTo(Integer value) {
+            addCriterion("ptypestate <=", value, "ptypestate");
+            return (Criteria) this;
+        }
+
+        public Criteria andPtypestateIn(List<Integer> values) {
+            addCriterion("ptypestate in", values, "ptypestate");
+            return (Criteria) this;
+        }
+
+        public Criteria andPtypestateNotIn(List<Integer> values) {
+            addCriterion("ptypestate not in", values, "ptypestate");
+            return (Criteria) this;
+        }
+
+        public Criteria andPtypestateBetween(Integer value1, Integer value2) {
+            addCriterion("ptypestate between", value1, value2, "ptypestate");
+            return (Criteria) this;
+        }
+
+        public Criteria andPtypestateNotBetween(Integer value1, Integer value2) {
+            addCriterion("ptypestate not between", value1, value2, "ptypestate");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

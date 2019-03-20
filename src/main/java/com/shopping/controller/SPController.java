@@ -36,7 +36,7 @@ public class SPController {
     //查询前台商品
     @RequestMapping("search/{currentPage}/{ptypeid}")
     public ModelAndView searchPage(@PathVariable(value="currentPage") Integer currentPage,
-            @ModelAttribute SP sP) {
+                                   @ModelAttribute SP sP) {
 
         Integer pageSize = 9;
         ModelAndView mav = new ModelAndView();
@@ -74,7 +74,7 @@ public class SPController {
     //查询后台商品
     @RequestMapping("searchBack/{currentPage}/{ptypeid}")
     public ModelAndView searchPageBack(@PathVariable(value="currentPage") Integer currentPage,
-                                   @ModelAttribute SP sP) {
+                                       @ModelAttribute SP sP) {
 
         Integer pageSize = 9;
         ModelAndView mav = new ModelAndView();

@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 @Mapper
 @Repository
 public interface SOrderdetailMapper {
-    int deleteByPrimaryKey(Integer odid);
+    int deleteByPrimaryKey(Integer orderdetailid);
 
     int insert(SOrderdetail record);
 
@@ -19,7 +19,7 @@ public interface SOrderdetailMapper {
 
     List<SOrderdetail> selectByExample(SOrderdetailExample example);
 
-    SOrderdetail selectByPrimaryKey(Integer odid);
+    SOrderdetail selectByPrimaryKey(Integer orderdetailid);
 
     int updateByExampleSelective(@Param("record") SOrderdetail record, @Param("example") SOrderdetailExample example);
 

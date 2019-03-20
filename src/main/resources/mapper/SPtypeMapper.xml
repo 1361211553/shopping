@@ -4,6 +4,7 @@
   <resultMap id="BaseResultMap" type="com.shopping.entity.SPtype" >
     <id column="ptypeid" property="ptypeid" jdbcType="INTEGER" />
     <result column="ptypename" property="ptypename" jdbcType="VARCHAR" />
+    <result column="ptypestate" property="ptypestate" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -64,7 +65,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    ptypeid, ptypename
+    ptypeid, ptypename, ptypestate
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.shopping.entity.SPtypeExample" >
     select
@@ -92,8 +93,10 @@
     where ptypeid = #{ptypeid,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.shopping.entity.SPtype" >
-    insert into s_ptype (ptypeid, ptypename)
-    values (#{ptypeid,jdbcType=INTEGER}, #{ptypename,jdbcType=VARCHAR})
+    insert into s_ptype (ptypeid, ptypename, ptypestate
+      )
+    values (#{ptypeid,jdbcType=INTEGER}, #{ptypename,jdbcType=VARCHAR}, #{ptypestate,jdbcType=INTEGER}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.shopping.entity.SPtype" >
     insert into s_ptype
@@ -104,6 +107,9 @@
       <if test="ptypename != null" >
         ptypename,
       </if>
+      <if test="ptypestate != null" >
+        ptypestate,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="ptypeid != null" >
@@ -111,6 +117,9 @@
       </if>
       <if test="ptypename != null" >
         #{ptypename,jdbcType=VARCHAR},
+      </if>
+      <if test="ptypestate != null" >
+        #{ptypestate,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -123,6 +132,9 @@
       <if test="record.ptypename != null" >
         ptypename = #{record.ptypename,jdbcType=VARCHAR},
       </if>
+      <if test="record.ptypestate != null" >
+        ptypestate = #{record.ptypestate,jdbcType=INTEGER},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -131,7 +143,8 @@
   <update id="updateByExample" parameterType="map" >
     update s_ptype
     set ptypeid = #{record.ptypeid,jdbcType=INTEGER},
-      ptypename = #{record.ptypename,jdbcType=VARCHAR}
+      ptypename = #{record.ptypename,jdbcType=VARCHAR},
+      ptypestate = #{record.ptypestate,jdbcType=INTEGER}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -142,12 +155,16 @@
       <if test="ptypename != null" >
         ptypename = #{ptypename,jdbcType=VARCHAR},
       </if>
+      <if test="ptypestate != null" >
+        ptypestate = #{ptypestate,jdbcType=INTEGER},
+      </if>
     </set>
     where ptypeid = #{ptypeid,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.shopping.entity.SPtype" >
     update s_ptype
-    set ptypename = #{ptypename,jdbcType=VARCHAR}
+    set ptypename = #{ptypename,jdbcType=VARCHAR},
+      ptypestate = #{ptypestate,jdbcType=INTEGER}
     where ptypeid = #{ptypeid,jdbcType=INTEGER}
   </update>
 </mapper>

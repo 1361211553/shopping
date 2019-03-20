@@ -104,133 +104,63 @@ public class SOrderdetailExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
-        public Criteria andOdidIsNull() {
-            addCriterion("odid is null");
+        public Criteria andOrderdetailidIsNull() {
+            addCriterion("orderdetailid is null");
             return (Criteria) this;
         }
 
-        public Criteria andOdidIsNotNull() {
-            addCriterion("odid is not null");
+        public Criteria andOrderdetailidIsNotNull() {
+            addCriterion("orderdetailid is not null");
             return (Criteria) this;
         }
 
-        public Criteria andOdidEqualTo(Integer value) {
-            addCriterion("odid =", value, "odid");
+        public Criteria andOrderdetailidEqualTo(Integer value) {
+            addCriterion("orderdetailid =", value, "orderdetailid");
             return (Criteria) this;
         }
 
-        public Criteria andOdidNotEqualTo(Integer value) {
-            addCriterion("odid <>", value, "odid");
+        public Criteria andOrderdetailidNotEqualTo(Integer value) {
+            addCriterion("orderdetailid <>", value, "orderdetailid");
             return (Criteria) this;
         }
 
-        public Criteria andOdidGreaterThan(Integer value) {
-            addCriterion("odid >", value, "odid");
+        public Criteria andOrderdetailidGreaterThan(Integer value) {
+            addCriterion("orderdetailid >", value, "orderdetailid");
             return (Criteria) this;
         }
 
-        public Criteria andOdidGreaterThanOrEqualTo(Integer value) {
-            addCriterion("odid >=", value, "odid");
+        public Criteria andOrderdetailidGreaterThanOrEqualTo(Integer value) {
+            addCriterion("orderdetailid >=", value, "orderdetailid");
             return (Criteria) this;
         }
 
-        public Criteria andOdidLessThan(Integer value) {
-            addCriterion("odid <", value, "odid");
+        public Criteria andOrderdetailidLessThan(Integer value) {
+            addCriterion("orderdetailid <", value, "orderdetailid");
             return (Criteria) this;
         }
 
-        public Criteria andOdidLessThanOrEqualTo(Integer value) {
-            addCriterion("odid <=", value, "odid");
+        public Criteria andOrderdetailidLessThanOrEqualTo(Integer value) {
+            addCriterion("orderdetailid <=", value, "orderdetailid");
             return (Criteria) this;
         }
 
-        public Criteria andOdidIn(List<Integer> values) {
-            addCriterion("odid in", values, "odid");
+        public Criteria andOrderdetailidIn(List<Integer> values) {
+            addCriterion("orderdetailid in", values, "orderdetailid");
             return (Criteria) this;
         }
 
-        public Criteria andOdidNotIn(List<Integer> values) {
-            addCriterion("odid not in", values, "odid");
+        public Criteria andOrderdetailidNotIn(List<Integer> values) {
+            addCriterion("orderdetailid not in", values, "orderdetailid");
             return (Criteria) this;
         }
 
-        public Criteria andOdidBetween(Integer value1, Integer value2) {
-            addCriterion("odid between", value1, value2, "odid");
+        public Criteria andOrderdetailidBetween(Integer value1, Integer value2) {
+            addCriterion("orderdetailid between", value1, value2, "orderdetailid");
             return (Criteria) this;
         }
 
-        public Criteria andOdidNotBetween(Integer value1, Integer value2) {
-            addCriterion("odid not between", value1, value2, "odid");
-            return (Criteria) this;
-        }
-
-        public Criteria andOidIsNull() {
-            addCriterion("oid is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andOidIsNotNull() {
-            addCriterion("oid is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andOidEqualTo(String value) {
-            addCriterion("oid =", value, "oid");
-            return (Criteria) this;
-        }
-
-        public Criteria andOidNotEqualTo(String value) {
-            addCriterion("oid <>", value, "oid");
-            return (Criteria) this;
-        }
-
-        public Criteria andOidGreaterThan(String value) {
-            addCriterion("oid >", value, "oid");
-            return (Criteria) this;
-        }
-
-        public Criteria andOidGreaterThanOrEqualTo(String value) {
-            addCriterion("oid >=", value, "oid");
-            return (Criteria) this;
-        }
-
-        public Criteria andOidLessThan(String value) {
-            addCriterion("oid <", value, "oid");
-            return (Criteria) this;
-        }
-
-        public Criteria andOidLessThanOrEqualTo(String value) {
-            addCriterion("oid <=", value, "oid");
-            return (Criteria) this;
-        }
-
-        public Criteria andOidLike(String value) {
-            addCriterion("oid like", value, "oid");
-            return (Criteria) this;
-        }
-
-        public Criteria andOidNotLike(String value) {
-            addCriterion("oid not like", value, "oid");
-            return (Criteria) this;
-        }
-
-        public Criteria andOidIn(List<String> values) {
-            addCriterion("oid in", values, "oid");
-            return (Criteria) this;
-        }
-
-        public Criteria andOidNotIn(List<String> values) {
-            addCriterion("oid not in", values, "oid");
-            return (Criteria) this;
-        }
-
-        public Criteria andOidBetween(String value1, String value2) {
-            addCriterion("oid between", value1, value2, "oid");
-            return (Criteria) this;
-        }
-
-        public Criteria andOidNotBetween(String value1, String value2) {
-            addCriterion("oid not between", value1, value2, "oid");
+        public Criteria andOrderdetailidNotBetween(Integer value1, Integer value2) {
+            addCriterion("orderdetailid not between", value1, value2, "orderdetailid");
             return (Criteria) this;
         }
 
@@ -291,6 +221,66 @@ public class SOrderdetailExample {
 
         public Criteria andPidNotBetween(Integer value1, Integer value2) {
             addCriterion("pid not between", value1, value2, "pid");
+            return (Criteria) this;
+        }
+
+        public Criteria andOidIsNull() {
+            addCriterion("oid is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOidIsNotNull() {
+            addCriterion("oid is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOidEqualTo(Integer value) {
+            addCriterion("oid =", value, "oid");
+            return (Criteria) this;
+        }
+
+        public Criteria andOidNotEqualTo(Integer value) {
+            addCriterion("oid <>", value, "oid");
+            return (Criteria) this;
+        }
+
+        public Criteria andOidGreaterThan(Integer value) {
+            addCriterion("oid >", value, "oid");
+            return (Criteria) this;
+        }
+
+        public Criteria andOidGreaterThanOrEqualTo(Integer value) {
+            addCriterion("oid >=", value, "oid");
+            return (Criteria) this;
+        }
+
+        public Criteria andOidLessThan(Integer value) {
+            addCriterion("oid <", value, "oid");
+            return (Criteria) this;
+        }
+
+        public Criteria andOidLessThanOrEqualTo(Integer value) {
+            addCriterion("oid <=", value, "oid");
+            return (Criteria) this;
+        }
+
+        public Criteria andOidIn(List<Integer> values) {
+            addCriterion("oid in", values, "oid");
+            return (Criteria) this;
+        }
+
+        public Criteria andOidNotIn(List<Integer> values) {
+            addCriterion("oid not in", values, "oid");
+            return (Criteria) this;
+        }
+
+        public Criteria andOidBetween(Integer value1, Integer value2) {
+            addCriterion("oid between", value1, value2, "oid");
+            return (Criteria) this;
+        }
+
+        public Criteria andOidNotBetween(Integer value1, Integer value2) {
+            addCriterion("oid not between", value1, value2, "oid");
             return (Criteria) this;
         }
 
@@ -411,66 +401,6 @@ public class SOrderdetailExample {
 
         public Criteria andPtotalpriceNotBetween(Double value1, Double value2) {
             addCriterion("ptotalprice not between", value1, value2, "ptotalprice");
-            return (Criteria) this;
-        }
-
-        public Criteria andAddressidIsNull() {
-            addCriterion("addressid is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andAddressidIsNotNull() {
-            addCriterion("addressid is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andAddressidEqualTo(Integer value) {
-            addCriterion("addressid =", value, "addressid");
-            return (Criteria) this;
-        }
-
-        public Criteria andAddressidNotEqualTo(Integer value) {
-            addCriterion("addressid <>", value, "addressid");
-            return (Criteria) this;
-        }
-
-        public Criteria andAddressidGreaterThan(Integer value) {
-            addCriterion("addressid >", value, "addressid");
-            return (Criteria) this;
-        }
-
-        public Criteria andAddressidGreaterThanOrEqualTo(Integer value) {
-            addCriterion("addressid >=", value, "addressid");
-            return (Criteria) this;
-        }
-
-        public Criteria andAddressidLessThan(Integer value) {
-            addCriterion("addressid <", value, "addressid");
-            return (Criteria) this;
-        }
-
-        public Criteria andAddressidLessThanOrEqualTo(Integer value) {
-            addCriterion("addressid <=", value, "addressid");
-            return (Criteria) this;
-        }
-
-        public Criteria andAddressidIn(List<Integer> values) {
-            addCriterion("addressid in", values, "addressid");
-            return (Criteria) this;
-        }
-
-        public Criteria andAddressidNotIn(List<Integer> values) {
-            addCriterion("addressid not in", values, "addressid");
-            return (Criteria) this;
-        }
-
-        public Criteria andAddressidBetween(Integer value1, Integer value2) {
-            addCriterion("addressid between", value1, value2, "addressid");
-            return (Criteria) this;
-        }
-
-        public Criteria andAddressidNotBetween(Integer value1, Integer value2) {
-            addCriterion("addressid not between", value1, value2, "addressid");
             return (Criteria) this;
         }
     }

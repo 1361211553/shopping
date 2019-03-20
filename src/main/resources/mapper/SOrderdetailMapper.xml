@@ -2,9 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.shopping.dao.SOrderdetailMapper" >
   <resultMap id="BaseResultMap" type="com.shopping.entity.SOrderdetail" >
-    <id column="odid" property="odid" jdbcType="INTEGER" />
-    <result column="oid" property="oid" jdbcType="INTEGER" />
+    <id column="orderdetailid" property="orderdetailid" jdbcType="INTEGER" />
     <result column="pid" property="pid" jdbcType="INTEGER" />
+    <result column="oid" property="oid" jdbcType="INTEGER" />
     <result column="ppurchasenum" property="ppurchasenum" jdbcType="INTEGER" />
     <result column="ptotalprice" property="ptotalprice" jdbcType="DOUBLE" />
   </resultMap>
@@ -67,7 +67,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    odid, oid, pid, ppurchasenum, ptotalprice
+    orderdetailid, pid, oid, ppurchasenum, ptotalprice
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.shopping.entity.SOrderdetailExample" >
     select
@@ -88,29 +88,29 @@
     select 
     <include refid="Base_Column_List" />
     from s_orderdetail
-    where odid = #{odid,jdbcType=INTEGER}
+    where orderdetailid = #{orderdetailid,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from s_orderdetail
-    where odid = #{odid,jdbcType=INTEGER}
+    where orderdetailid = #{orderdetailid,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.shopping.entity.SOrderdetail" >
-    insert into s_orderdetail (odid, oid, pid, 
+    insert into s_orderdetail (orderdetailid, pid, oid, 
       ppurchasenum, ptotalprice)
-    values (#{odid,jdbcType=INTEGER}, #{oid,jdbcType=INTEGER}, #{pid,jdbcType=INTEGER}, 
+    values (#{orderdetailid,jdbcType=INTEGER}, #{pid,jdbcType=INTEGER}, #{oid,jdbcType=INTEGER}, 
       #{ppurchasenum,jdbcType=INTEGER}, #{ptotalprice,jdbcType=DOUBLE})
   </insert>
   <insert id="insertSelective" parameterType="com.shopping.entity.SOrderdetail" >
     insert into s_orderdetail
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="odid != null" >
-        odid,
-      </if>
-      <if test="oid != null" >
-        oid,
+      <if test="orderdetailid != null" >
+        orderdetailid,
       </if>
       <if test="pid != null" >
         pid,
+      </if>
+      <if test="oid != null" >
+        oid,
       </if>
       <if test="ppurchasenum != null" >
         ppurchasenum,
@@ -120,14 +120,14 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="odid != null" >
-        #{odid,jdbcType=INTEGER},
-      </if>
-      <if test="oid != null" >
-        #{oid,jdbcType=INTEGER},
+      <if test="orderdetailid != null" >
+        #{orderdetailid,jdbcType=INTEGER},
       </if>
       <if test="pid != null" >
         #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="oid != null" >
+        #{oid,jdbcType=INTEGER},
       </if>
       <if test="ppurchasenum != null" >
         #{ppurchasenum,jdbcType=INTEGER},
@@ -140,14 +140,14 @@
   <update id="updateByExampleSelective" parameterType="map" >
     update s_orderdetail
     <set >
-      <if test="record.odid != null" >
-        odid = #{record.odid,jdbcType=INTEGER},
-      </if>
-      <if test="record.oid != null" >
-        oid = #{record.oid,jdbcType=INTEGER},
+      <if test="record.orderdetailid != null" >
+        orderdetailid = #{record.orderdetailid,jdbcType=INTEGER},
       </if>
       <if test="record.pid != null" >
         pid = #{record.pid,jdbcType=INTEGER},
+      </if>
+      <if test="record.oid != null" >
+        oid = #{record.oid,jdbcType=INTEGER},
       </if>
       <if test="record.ppurchasenum != null" >
         ppurchasenum = #{record.ppurchasenum,jdbcType=INTEGER},
@@ -162,9 +162,9 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update s_orderdetail
-    set odid = #{record.odid,jdbcType=INTEGER},
-      oid = #{record.oid,jdbcType=INTEGER},
+    set orderdetailid = #{record.orderdetailid,jdbcType=INTEGER},
       pid = #{record.pid,jdbcType=INTEGER},
+      oid = #{record.oid,jdbcType=INTEGER},
       ppurchasenum = #{record.ppurchasenum,jdbcType=INTEGER},
       ptotalprice = #{record.ptotalprice,jdbcType=DOUBLE}
     <if test="_parameter != null" >
@@ -174,11 +174,11 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.shopping.entity.SOrderdetail" >
     update s_orderdetail
     <set >
-      <if test="oid != null" >
-        oid = #{oid,jdbcType=INTEGER},
-      </if>
       <if test="pid != null" >
         pid = #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="oid != null" >
+        oid = #{oid,jdbcType=INTEGER},
       </if>
       <if test="ppurchasenum != null" >
         ppurchasenum = #{ppurchasenum,jdbcType=INTEGER},
@@ -187,14 +187,14 @@
         ptotalprice = #{ptotalprice,jdbcType=DOUBLE},
       </if>
     </set>
-    where odid = #{odid,jdbcType=INTEGER}
+    where orderdetailid = #{orderdetailid,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.shopping.entity.SOrderdetail" >
     update s_orderdetail
-    set oid = #{oid,jdbcType=INTEGER},
-      pid = #{pid,jdbcType=INTEGER},
+    set pid = #{pid,jdbcType=INTEGER},
+      oid = #{oid,jdbcType=INTEGER},
       ppurchasenum = #{ppurchasenum,jdbcType=INTEGER},
       ptotalprice = #{ptotalprice,jdbcType=DOUBLE}
-    where odid = #{odid,jdbcType=INTEGER}
+    where orderdetailid = #{orderdetailid,jdbcType=INTEGER}
   </update>
 </mapper>

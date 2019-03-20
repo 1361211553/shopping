@@ -148,10 +148,6 @@ public class UserController {
             if(sUser.getUserbirthday()!=null && !"".equals(sUser.getUserbirthday())){
                 user.setUserbirthday(sUser.getUserbirthday());
             }
-            
-            if (sUser.getUseraddressid()!=null && sUser.getUseraddressid()>0){
-                user.setUseraddressid(sUser.getUseraddressid());
-            }
 
             if (sUser.getUserrealname()!=null && !"".equals(sUser.getUserrealname())){
                 user.setUserrealname(sUser.getUserrealname());

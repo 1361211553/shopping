@@ -8,6 +8,9 @@
     <result column="ptotalprice" property="ptotalprice" jdbcType="DOUBLE" />
     <result column="pstatus" property="pstatus" jdbcType="INTEGER" />
     <result column="orderdate" property="orderdate" jdbcType="TIMESTAMP" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="recipients" property="recipients" jdbcType="VARCHAR" />
+    <result column="reciphone" property="reciphone" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -68,7 +71,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    oid, userid, pcount, ptotalprice, pstatus, orderdate
+    oid, userid, pcount, ptotalprice, pstatus, orderdate, address, recipients, reciphone
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.shopping.entity.SOrderExample" >
     select
@@ -97,10 +100,12 @@
   </delete>
   <insert id="insert" parameterType="com.shopping.entity.SOrder" >
     insert into s_order (oid, userid, pcount, 
-      ptotalprice, pstatus, orderdate
+      ptotalprice, pstatus, orderdate, 
+      address, recipients, reciphone
       )
     values (#{oid,jdbcType=VARCHAR}, #{userid,jdbcType=INTEGER}, #{pcount,jdbcType=INTEGER}, 
-      #{ptotalprice,jdbcType=DOUBLE}, #{pstatus,jdbcType=INTEGER}, #{orderdate,jdbcType=TIMESTAMP}
+      #{ptotalprice,jdbcType=DOUBLE}, #{pstatus,jdbcType=INTEGER}, #{orderdate,jdbcType=TIMESTAMP}, 
+      #{address,jdbcType=VARCHAR}, #{recipients,jdbcType=VARCHAR}, #{reciphone,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.shopping.entity.SOrder" >
@@ -124,6 +129,15 @@
       <if test="orderdate != null" >
         orderdate,
       </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="recipients != null" >
+        recipients,
+      </if>
+      <if test="reciphone != null" >
+        reciphone,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="oid != null" >
@@ -143,6 +157,15 @@
       </if>
       <if test="orderdate != null" >
         #{orderdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="recipients != null" >
+        #{recipients,jdbcType=VARCHAR},
+      </if>
+      <if test="reciphone != null" >
+        #{reciphone,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -167,6 +190,15 @@
       <if test="record.orderdate != null" >
         orderdate = #{record.orderdate,jdbcType=TIMESTAMP},
       </if>
+      <if test="record.address != null" >
+        address = #{record.address,jdbcType=VARCHAR},
+      </if>
+      <if test="record.recipients != null" >
+        recipients = #{record.recipients,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reciphone != null" >
+        reciphone = #{record.reciphone,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -179,7 +211,10 @@
       pcount = #{record.pcount,jdbcType=INTEGER},
       ptotalprice = #{record.ptotalprice,jdbcType=DOUBLE},
       pstatus = #{record.pstatus,jdbcType=INTEGER},
-      orderdate = #{record.orderdate,jdbcType=TIMESTAMP}
+      orderdate = #{record.orderdate,jdbcType=TIMESTAMP},
+      address = #{record.address,jdbcType=VARCHAR},
+      recipients = #{record.recipients,jdbcType=VARCHAR},
+      reciphone = #{record.reciphone,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -202,6 +237,15 @@
       <if test="orderdate != null" >
         orderdate = #{orderdate,jdbcType=TIMESTAMP},
       </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="recipients != null" >
+        recipients = #{recipients,jdbcType=VARCHAR},
+      </if>
+      <if test="reciphone != null" >
+        reciphone = #{reciphone,jdbcType=VARCHAR},
+      </if>
     </set>
     where oid = #{oid,jdbcType=VARCHAR}
   </update>
@@ -211,7 +255,10 @@
       pcount = #{pcount,jdbcType=INTEGER},
       ptotalprice = #{ptotalprice,jdbcType=DOUBLE},
       pstatus = #{pstatus,jdbcType=INTEGER},
-      orderdate = #{orderdate,jdbcType=TIMESTAMP}
+      orderdate = #{orderdate,jdbcType=TIMESTAMP},
+      address = #{address,jdbcType=VARCHAR},
+      recipients = #{recipients,jdbcType=VARCHAR},
+      reciphone = #{reciphone,jdbcType=VARCHAR}
     where oid = #{oid,jdbcType=VARCHAR}
   </update>
 </mapper>

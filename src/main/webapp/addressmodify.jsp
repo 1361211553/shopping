@@ -7,6 +7,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@include file="appcomm/basePath.jsp"%>
 <html>
 <head>
     <title>修改地址</title>
@@ -504,8 +505,8 @@
                     <!-- 顶部栏 -->
 
                     <div class="has-bind-title">
-                        <p>当前地址：<span id="oldNick">收货人姓名：${address.consignee}联系号码：${address.addressphone}
-                            收货地址：${address.city}${address.dist}${address.detailed}邮编：>${address.zip}</span></p>
+                        <p>当前地址：<span id="oldNick">收货人姓名：${address.consignee} 联系号码：${address.addressphone}
+                             收货地址：${address.city}${address.dist}${address.detailed} 邮编：${address.zip}</span></p>
 
                     </div>
 
@@ -515,6 +516,7 @@
 
                             收货人姓名：<input type="text" name="consignee">
                             联系号码：<input type="text" name="addressphone">
+                            邮编：<input type="text" name="zip">
                                 <div id="city_4">
                                         选择地址：<select class="prov" name="province"></select>
                                         <select class="city" disabled="disabled" name="city"></select>
