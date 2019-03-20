@@ -35,7 +35,7 @@
               <li><a href="${pageContext.request.contextPath }/backuser/search/1">用户管理</a></li>
               <li><a href="${pageContext.request.contextPath }/admin/toPass">密码修改</a></li>
               <li><a href="${pageContext.request.contextPath }/admin/loginOut">退出系统</a></li>
-              <li><a href="${pageContext.request.contextPath }/jsp/user.do?method=query">商品类别管理</a></li>
+              <li><a href="${pageContext.request.contextPath }/sptype/toSPType">商品类别管理</a></li>
              </ul>
          </nav>
      </div>

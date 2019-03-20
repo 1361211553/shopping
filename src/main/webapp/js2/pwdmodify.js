@@ -17,7 +17,7 @@ $(function(){
 	
 	oldpassword.on("blur",function(){
 
-		if(adminpass.val() == oldpassword.val()){
+		if(adminpass.val() == oldpassword.val() && oldpassword.val()!= null){
             validateTip(oldpassword.next(),{"color":"green"},imgYes,true);
 		}else{
             validateTip(oldpassword.next(),{"color":"red"},imgNo + " 原密码输入不正确",false);

@@ -50,6 +50,11 @@ public class SPTypeController {
         m.addAttribute("listRec",listRec);
     }
 
+    @RequestMapping("toSPType")
+    public String toSPType(){
+        return "WEB-INF/jsp/ptypelist";
+    }
+
 
 
 }
