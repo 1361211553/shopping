@@ -39,14 +39,14 @@
         <dependency>
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-jasper</artifactId>
-            <scope>provided</scope>
+            <!--<scope>provided</scope>-->
         </dependency>
         <!-- optional=true,依赖不会传递，该项目依赖devtools；之后依赖该项目的项目如果想要使用devtools，需要重新引入 -->
-        <dependency>
+       <!-- <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <optional>true</optional>
-        </dependency>
+        </dependency>-->
 
         <!-- fastjson -->
         <dependency>
@@ -87,56 +87,31 @@
     <build>
 
         <finalName>shopping</finalName>
-        <resources>
 
-        <resource>
-            <directory>src/main/webapp</directory>
-            <targetPath>META-INF/resources</targetPath>
-            <includes>
-                <include>**/**</include>
-            </includes>
-        </resource>
-
-            <resource>
-                <directory>src/main/resources</directory>
-                <includes>
-                    <include>**/**</include>
-                </includes>
-                <filtering>false</filtering>
-            </resource>
-
-            <resource>
-            <directory>src/main/java</directory>
-            <excludes>
-                <exclude>**/*.java</exclude>
-            </excludes>
-            </resource>
-
-
-        </resources>
         <plugins>
-
-
 
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>1.4.2.RELEASE</version>
-                <configuration>
-                    <fork>true</fork>
-                        <mainClass>com.shopping.ShoppingApplication</mainClass>
-                </configuration>
-
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
 
         </plugins>
+
+        <resources>
+
+            <resource>
+                <!-- 指定resources插件处理哪个目录下的资源文件 -->
+                <directory>src/main/webapp</directory>
+                <!--注意此次必须要放在此目录下才能被访问到 -->
+                <targetPath>META-INF/resources</targetPath>
+                <includes>
+                    <include>**/**</include>
+                </includes>
+            </resource>
+
+        </resources>
+
     </build>
 
 
