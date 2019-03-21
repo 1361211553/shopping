@@ -26,7 +26,7 @@ public class FileController {
         }
         String fileName = file.getOriginalFilename();  // 文件名
         String suffixName = fileName.substring(fileName.lastIndexOf("."));  // 后缀名
-        String filePath = "images/"; // 上传后的路径
+        String filePath = request.getServletContext().getRealPath("/")+"images/"; // 上传后的路径
         fileName = UUID.randomUUID() + suffixName; // 新文件名
         File dest = new File(filePath + fileName);
         if (!dest.getParentFile().exists()) {
@@ -39,7 +39,8 @@ public class FileController {
         }
         String filename = "images/" + fileName;
         model.addAttribute("filename", filename);
-        return "file";
+
+        return "WEB-INF/jsp/productadd";
     }
 
 }

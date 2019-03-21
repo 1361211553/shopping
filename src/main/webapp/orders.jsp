@@ -482,12 +482,30 @@
 
                 }
 
-            })
-        })
+            });
+
+            $("#pay").on("click",function () {
+                var oid = $("#showpay").attr("oid");
+                if(confirm("是否已经完成付款？")){
+                    window.location.href="order/pay/"+oid;
+                    $("#showcode").css("display","none");
+                }
+            });
+
+            $("#showpay").on("click",function(){
+                $("#showcode").css("display","block");
+            });
+        });
 
     </script>
 </head>
 <body>
+<div style="width: 100%;height: 100%;background:rgba(0,0,0,0.3);z-index: 2;position: absolute;display: none;" id="showcode">
+    <div style="width: 200px;height: 200px;margin: 0 auto;">
+    <img src="images/tdcode.gif">
+        <h1><a href="javascript:;" id="pay" style="color:blue;font-size: 28px">点击付款并返回</a></h1>
+    </div>
+</div>
 <!-- header -->
 <%@ include file="appcomm/head.jsp" %>
 
@@ -515,6 +533,9 @@
     <script type="text/javascript" src="js/cookies.js"></script>
     <%@ include file="appcomm/column2.jsp" %>
     <div class="main-col">
+
+
+
         <div class="scroll-content">
             <div class="mod">
 
@@ -545,7 +566,7 @@
 
                    <!-- 非第三方登陆，显示修改密码 -->
                     <table border="0">
-                        <tbody><tr>
+                        <tr>
                             <td align="left"><h4>订单号</h4></td>
                             <td align="left"><h4>购买日期</h4></td>
                                 <td align="left"><h4>购买商品</h4></td>
@@ -565,25 +586,25 @@
 
                             <c:if test="${personorder.pstatus==1}">
                                 <td align="left">未付款</td>
-                                <td><a href="javascript:;" >查看</a></td>
-                                <td><a href="javascript:;" >立即付款</a></td>
+                                <td><a href="/order/showdetail/${personorder.oid}" >查看</a></td>
+                                <td><a href="javascript:;" oid="${personorder.oid}" id="showpay">立即付款</a></td>
                                 <td></td>
                             </c:if>
 
                             <c:if test="${personorder.pstatus==2}">
                                 <td align="left">未发货</td>
-                                <td><a href="javascript:;" >查看</a></td>
+                                <td><a href="/order/showdetail/${personorder.oid}" >查看</a></td>
                             </c:if>
 
                             <c:if test="${personorder.pstatus==3}">
                                 <td align="left" class="fahuo">已发货</td>
-                                <td><a href="javascript:;" >查看</a></td>
+                                <td><a href="/order/showdetail/${personorder.oid}" >查看</a></td>
                                 <td><a href="javascript:;"  oid="${personorder.oid}" class="queren">确认收货</a></td>
                             </c:if>
 
                             <c:if test="${personorder.pstatus==4}">
                                 <td align="left">已完成</td>
-                                <td><a href="javascript:;" >查看</a></td>
+                                <td><a href="/order/showdetail/${personorder.oid}" >查看</a></td>
                             </c:if>
                         </tr>
                         </c:forEach>
@@ -612,7 +633,7 @@
                             <%--<td align="left">7544</td>--%>
                         <%--</tr>--%>
 
-                        </tbody></table>
+                      </table>
                 </div>
             </div>
 
@@ -680,6 +701,7 @@
     });
 </script>
 <!-- //main slider-banner -->
+
 
 </body>
 </html>

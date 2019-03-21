@@ -4,7 +4,7 @@
         <img class="wColck" src="${pageContext.request.contextPath }/images/clock.jpg" alt=""/>
         <div class="wFont">
             <h2>${userSession.userName }</h2>
-            <p>欢迎来到国贸供应商管理系统!</p>
+            <h1>欢迎来到国贸供应商管理系统!</h1>
         </div>
     </div>
 </section>

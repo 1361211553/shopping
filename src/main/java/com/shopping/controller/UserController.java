@@ -52,11 +52,15 @@ public class UserController {
 
                 SUser sUser = listsUser.get(0);
                 if (sUser.getSlock() != 1) {
-
+                    //将用户的登录次数+1
+                    sUser.setLandingtimes(sUser.getLandingtimes()+1);
+                    sUserMapper.updateByPrimaryKey(sUser);
+                    //购物车初始化
                     SCarExample sCarExample = new SCarExample();
                     SCarExample.Criteria criteria1 = sCarExample.createCriteria();
                     criteria1.andUseridEqualTo(sUser.getUserid());
                     List<SCar> listcar = sCarMapper.selectByExample(sCarExample);
+
                     session.setAttribute("user", sUser);
                     session.setAttribute("carNum",listcar.size());
                     mav.setView(new RedirectView("/index.jsp"));
@@ -105,7 +109,7 @@ public class UserController {
                 sUser.setUserface("images/face (" + new Random().nextInt(64 - 1) + ").jpg");
 
                 sUser.setUserregdate(new Date());
-
+                sUser.setLandingtimes(0);
                 sUserMapper.insertSelective(sUser);
                 mav.addObject("errMs", "注册成功");
                 mav.setViewName("login");
