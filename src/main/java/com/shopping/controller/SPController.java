@@ -53,7 +53,6 @@ public class SPController {
 
         //先查出总页数
         Integer sps = spMapper.selectByExample(example).size();//查询记录的总条数
-        System.out.println(sps);
         Integer pageAll = sps%pageSize==0? sps/pageSize:sps/pageSize+1;
 
         //查询分页所得的数据
@@ -62,12 +61,12 @@ public class SPController {
         }
 
         List<SP> listOP =spServiceI.selectByExampleWithPage(sP,currentPage,pageSize);
-        System.out.println("listOP"+listOP.size());
         mav.addObject("listOP",listOP);
         mav.addObject("pageAll",pageAll);
         mav.addObject("currentPage",currentPage);
         mav.addObject("sP",sP);
         mav.setViewName("groceries");
+
         return mav;
     }
 
