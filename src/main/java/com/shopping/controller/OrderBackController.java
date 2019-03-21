@@ -69,15 +69,17 @@ public class OrderBackController {
     }
 
     //模拟订单发货
-    @RequestMapping("changestate/{state}/{oid}")
-    public ModelAndView changestate(@PathVariable(value="state") Integer state,
-            @PathVariable(value="oid") String oid  ){
+    @RequestMapping("changestate/{oid}")
+    public ModelAndView changestate(@PathVariable(value="oid") String oid  ){
         ModelAndView mav = new ModelAndView();
-
+        System.out.println("========"+oid);
         SOrder sOrder = sOrderMapper.selectByPrimaryKey(oid);
+        System.out.println("second"+sOrder.getOid());
+        System.out.println("sOrder.getPstatus()======"+sOrder.getPstatus());
         sOrder.setPstatus(3);
         sOrderMapper.updateByPrimaryKey(sOrder);
         mav.setViewName("redirect:/backorder/search/1");
         return mav;
+
     }
 }

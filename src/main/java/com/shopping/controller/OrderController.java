@@ -14,6 +14,7 @@ import java.util.*;
 
 @Controller
 @RequestMapping("order")
+@SessionAttributes({"order"})
 public class OrderController {
 
     @Autowired
@@ -144,4 +145,41 @@ public class OrderController {
 
         return row;
     }
+
+    @RequestMapping("showdetail/{oid}")
+    public  ModelAndView showdetail(@PathVariable(value = "oid") String oid){
+        ModelAndView mav = new ModelAndView();
+        Integer sum = 0;
+        //获取订单信息
+        SOrder sOrder =sOrderMapper.selectByPrimaryKey(oid);
+        mav.addObject("order",sOrder);
+        //获取订单详情表
+        SOrderdetailExample example = new SOrderdetailExample();
+        example.createCriteria().andOidEqualTo(oid);
+        List<SOrderdetail> sOrderdetails = sOrderdetailMapper.selectByExample(example);
+        //获取商品总件数
+        for(int i=0;i<sOrderdetails.size();i++){
+            sum+=sOrderdetails.get(i).getPpurchasenum();
+        }
+
+        //获取商品信息列表
+        List<SP> listsp = spMapper.selectByExample(null);
+        mav.addObject("sum",sum);
+        mav.addObject("num",sOrderdetails.size());//获取购买产品总数
+        mav.addObject("listsp",listsp);
+        mav.addObject("sOrderdetails",sOrderdetails);
+        mav.setViewName("orderdetail");
+        return mav;
+    }
+    @RequestMapping("pay/{oid}")
+    public ModelAndView paymoney(@PathVariable(value = "oid") String oid){
+        ModelAndView mav = new ModelAndView();
+
+        SOrder sOrder = sOrderMapper.selectByPrimaryKey(oid);
+        sOrder.setPstatus(2);
+        sOrderMapper.updateByPrimaryKey(sOrder);
+        mav.setViewName("redirect:/order/search");
+        return mav;
+    }
+
 }

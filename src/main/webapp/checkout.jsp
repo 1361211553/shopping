@@ -82,9 +82,9 @@
                         <td class="inver2t">
                             <div class="quantity">
                                 <div class="quantity-select">
-                                    <div class="entry value-minus">&nbsp;</div>
-                                    <div class="entry value"><span>${listcar[vs.index].pnum}</span></div>
-                                    <div class="entry value-plus active">&nbsp;</div>
+
+                                    <div class="entry value" style="border-color: darkorange;color: darkorange"><span>${listcar[vs.index].pnum}</span></div>
+
                                 </div>
                             </div>
                         </td>

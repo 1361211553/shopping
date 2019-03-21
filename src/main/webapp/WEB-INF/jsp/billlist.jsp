@@ -65,7 +65,7 @@
 					<td>
 					<span>
 						<c:if test="${bill.pstatus == 1}">未付款</c:if>
-						<c:if test="${bill.pstatus == 2}"><a href="#" style="font-size: 15px;text-align: center;color:red;" onclick="changestate(${bill.oid},${bill.oid})">付款未发货</a></c:if>
+						<c:if test="${bill.pstatus == 2}"><a href="#" style="font-size: 15px;text-align: center;color:red;" oid=${bill.oid} id="changestate">付款未发货</a></c:if>
 						<c:if test="${bill.pstatus == 3}">发货未收货</c:if>
 						<c:if test="${bill.pstatus == 4}">交易成功</c:if>
 					</span>
@@ -135,20 +135,23 @@
  
  }
 
- function changestate(data,oid){
-     $(".zhezhao").css("display","block");
-     $("#removeBi").fadeIn();
+  $("#changestate").on("click",function(){
+      var oid = $(this).attr("oid");
+      $(".zhezhao").css("display","block");
+      $("#removeBi").fadeIn();
 
-     changeDLGContent("你确定要将订单id为"+oid+"的订单发货吗？");
+      changeDLGContent("你确定要将订单id为"+oid+"的订单发货吗？");
 
-     $("#no").on("click",function(){
-         cancel();
-     });
-     $("#yes").on("click",function () {
-         window.location.href=path+"/backorder/changestate/"+data+"/"+oid;
-     });
+      $("#no").on("click",function(){
+          cancel();
+      });
+      $("#yes").on("click",function () {
+          window.location.href=path+"/backorder/changestate/"+oid;
+      });
+  });
 
- }
+
+
 
  function cancel(){
      $(".zhezhao").css("display","none");
