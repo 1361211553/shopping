@@ -125,5 +125,30 @@ public class CarController {
         return row;
 
     }
+    @RequestMapping("jia")
+    @ResponseBody
+    public int jia(@RequestParam Integer pid,@RequestParam Integer pnum){
+
+        SCar sCar = new SCar();
+        SCarExample sCarExample = new SCarExample();
+        SCarExample.Criteria criteria = sCarExample.createCriteria();
+        criteria.andPidEqualTo(pid);
+        sCar.setPnum(pnum);
+        int row =  scarMapper.updateByExampleSelective(sCar,sCarExample);
+        return row;
+    }
+
+    @RequestMapping("jian")
+    @ResponseBody
+    public int jian(@RequestParam Integer pid,@RequestParam Integer pnum){
+
+        SCar sCar = new SCar();
+        SCarExample sCarExample = new SCarExample();
+        SCarExample.Criteria criteria = sCarExample.createCriteria();
+        criteria.andPidEqualTo(pid);
+        sCar.setPnum(pnum);
+        int row =  scarMapper.updateByExampleSelective(sCar,sCarExample);
+        return row;
+    }
 
 }

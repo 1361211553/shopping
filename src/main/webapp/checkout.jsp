@@ -30,6 +30,8 @@
     <script type="text/javascript" src="js/easing.js"></script>
     <script type="text/javascript">
         jQuery(document).ready(function($) {
+
+
             $(".scroll").click(function(event){
                 event.preventDefault();
                 $('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
@@ -79,11 +81,14 @@
                                                                            class="img-responsive"
                                                                           style=" width: 100px" /></a></td>
                         <td class="invert">${cl.pname}</td>
+
                         <td class="inver2t">
                             <div class="quantity">
                                 <div class="quantity-select">
+                                    <div class="entry value-minus">&nbsp;</div>
+                                    <div class="entry value"><span class="span01">${listcar[vs.index].pnum}</span></div>
+                                    <div class="entry value-plus active">&nbsp;</div>
 
-                                    <div class="entry value" style="border-color: darkorange;color: darkorange"><span>${listcar[vs.index].pnum}</span></div>
 
                                 </div>
                             </div>
@@ -110,13 +115,71 @@
                 <!--quantity-->
                 <script>
                     $('.value-plus').on('click', function(){
-                        var divUpd = $(this).parent().find('.value'), newVal = parseInt(divUpd.text(), 10)+1;
-                        divUpd.text(newVal);
+                       /* var divUpd = $(this).parent().find('.value'), newVal = parseInt(divUpd.text(), 10)+1;
+                        divUpd.text(newVal);*/
+                        var dq = $(this).parent().find('.span01');
+                        var obj = dq.html();
+                        var countPrice = $(".font02").html();
+                        var d = $(this).parents('tr').find('.d');
+                        var price = d.attr("price");
+                        var pid = d.attr('pid');
+                        var pnum = parseInt(obj)+1;
+
+
+                        $.ajax({
+
+                            url:'/car/jia',
+                            type:'POST',
+                            data:{
+                                'pid':pid,
+                                'pnum':pnum
+                            },
+                            success:function (data) {
+                                if (data == 1) {
+
+                                    dq.html(parseInt(obj) + 1);
+                                    $(".font02").html((parseFloat(countPrice) + parseFloat(price)).toFixed(2));
+                                }
+                            }
+
+                        })
+
                     });
 
                     $('.value-minus').on('click', function(){
-                        var divUpd = $(this).parent().find('.value'), newVal = parseInt(divUpd.text(), 10)-1;
-                        if(newVal>=1) divUpd.text(newVal);
+                       /* var divUpd = $(this).parent().find('.value'), newVal = parseInt(divUpd.text(), 10)-1;
+                        if(newVal>=1) divUpd.text(newVal);*/
+                        var dq = $(this).parent().find('.span01');
+                        var obj =  dq.html();
+
+                        if (obj != 1) {
+
+                            var countPrice = $(".font02").html();
+                            var d = $(this).parents('tr').find('.d');
+                            var price = d.attr("price");
+                            var pid = d.attr('pid');
+                            var pnum = parseInt(obj)-1;
+
+                            $.ajax({
+
+                                url:'/car/jian',
+                                type:'POST',
+                                data:{
+                                    'pid':pid,
+                                    'pnum':pnum
+                                },
+                                success:function (data) {
+
+                                    if (data == 1) {
+                                        dq.html(parseInt(obj)-1);
+                                        $(".font02").html((parseFloat(countPrice) - parseFloat(price)).toFixed(2));                                    }
+                                }
+
+                            })
+
+
+                        }
+
                     });
                 </script>
                 <!--quantity-->
@@ -186,15 +249,7 @@
     </script>
 <script>
 
-    function carempty(){
 
-        if (confirm("确定清空购物车吗?")){
-            return true;
-        } else {
-            return false;
-        }
-
-    }
 
     $(document).ready(function () {
 
@@ -237,6 +292,16 @@
         })
 
     })
+
+    function carempty(){
+
+        if (confirm("确定清空购物车吗?")){
+            return true;
+        } else {
+            return false;
+        }
+
+    }
 
 </script>
     <!-- //main slider-banner -->

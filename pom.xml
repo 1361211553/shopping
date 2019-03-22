@@ -11,19 +11,34 @@
     <groupId>com.shopping</groupId>
     <artifactId>shopping</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>war</packaging>
     <name>demo</name>
     <description>Demo project for Spring Boot</description>
 
 
     <properties>
         <java.version>1.8</java.version>
+        <start-class>com.shopping.ShoppingApplication</start-class>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <!--<exclusions>
+                <exclusion>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-tomcat</artifactId>
+                </exclusion>
+            </exclusions>-->
         </dependency>
+        <!-- 本地启动需要-->
+        <!--<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
+        </dependency>-->
+
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
@@ -41,12 +56,12 @@
             <artifactId>tomcat-embed-jasper</artifactId>
             <!--<scope>provided</scope>-->
         </dependency>
-        <!-- optional=true,依赖不会传递，该项目依赖devtools；之后依赖该项目的项目如果想要使用devtools，需要重新引入 -->
-       <!-- <dependency>
+         <!--optional=true,依赖不会传递，该项目依赖devtools；之后依赖该项目的项目如果想要使用devtools，需要重新引入-->
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <optional>true</optional>
-        </dependency>-->
+        </dependency>
 
         <!-- fastjson -->
         <dependency>
@@ -61,13 +76,6 @@
             <artifactId>pagehelper-spring-boot-starter</artifactId>
             <version>1.2.3</version>
         </dependency>
-
-        <dependency>
-            <groupId>commons-fileupload</groupId>
-            <artifactId>commons-fileupload</artifactId>
-        </dependency>
-
-
 
 
         <dependency>
@@ -99,23 +107,24 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>1.4.2.RELEASE</version>
+
             </plugin>
 
         </plugins>
 
-        <resources>
+        <!--<resources>-->
 
-            <resource>
-                <!-- 指定resources插件处理哪个目录下的资源文件 -->
-                <directory>src/main/webapp</directory>
-                <!--注意此次必须要放在此目录下才能被访问到 -->
-                <targetPath>META-INF/resources</targetPath>
-                <includes>
-                    <include>**/**</include>
-                </includes>
-            </resource>
+            <!--<resource>-->
+                <!--&lt;!&ndash; 指定resources插件处理哪个目录下的资源文件 &ndash;&gt;-->
+                <!--<directory>src/main/webapp</directory>-->
+                <!--&lt;!&ndash;注意此次必须要放在此目录下才能被访问到 &ndash;&gt;-->
+                <!--<targetPath>META-INF/resources</targetPath>-->
+                <!--<includes>-->
+                    <!--<include>**/**</include>-->
+                <!--</includes>-->
+            <!--</resource>-->
 
-        </resources>
+        <!--</resources>-->
 
     </build>
 

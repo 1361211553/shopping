@@ -101,7 +101,7 @@ public class OrderController {
             SAddress sAddresss = sAddressMapper.selectByPrimaryKey(id);
             sOrder.setReciphone(sAddresss.getAddressphone());
             sOrder.setRecipients(sAddresss.getConsignee());
-            sOrder.setAddress(sAddresss.getProvince()+sAddresss.getCity()+sAddresss.getDist());
+            sOrder.setAddress(sAddresss.getProvince()+sAddresss.getCity()+sAddresss.getDist()+sAddress.getDetailed());
         }else {
             sOrder.setReciphone(sAddress.getAddressphone());
             sOrder.setRecipients(sAddress.getConsignee());
