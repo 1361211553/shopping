@@ -124,6 +124,14 @@ public class SPController {
         mav.setViewName("single");
         return mav;
     }
+
+    @RequestMapping("toAdd")
+    public String toAdd(){
+        return "WEB-INF/jsp/productadd";
+    }
+
+
+
     @RequestMapping("add")
     public ModelAndView addSP(@ModelAttribute SP sp){
         ModelAndView mav = new ModelAndView();
@@ -132,7 +140,7 @@ public class SPController {
         sp.setPcdate(new Date());
 
         spMapper.insert(sp);
-        mav.setViewName("WEB-INF/jsp/productadd");
+        mav.setViewName("redirect:/sp/searchBack/1/0");
         return mav;
     }
 

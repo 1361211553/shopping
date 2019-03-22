@@ -27,7 +27,7 @@
 					 
 					 <input type="hidden" name="pageIndex" value="1"/>
 					 <input	value="查 询" type="submit" id="searchbutton">
-					 <a href="/sp/add" >添加商品</a>
+					 <a href="/sp/toAdd" >添加商品</a>
 				</form>
             </div>
             <!--用户-->

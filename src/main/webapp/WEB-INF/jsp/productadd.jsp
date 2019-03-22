@@ -8,19 +8,25 @@
             <span>商品管理页面 >> 商品新增页面</span>
         </div>
         <div class="providerAdd">
-            <form method="post" action="/fileUpload" enctype="multipart/form-data">
+            <form method="post" action="/f/file" enctype="multipart/form-data">
             <div>
                 <label for="pimg">选择商品图片</label>
 
-                <input type="file" name="file" value="123"/>
-                <input type="submit" value="上传" style="position: relative;top: 8px;width:100px;font-size:12px: "/>
-
+                <input type="file" name="file" value=""/>
+                <input type="submit" value="上传" id="getfilename" style="position: relative;top: 8px;width:100px;font-size:12px: "/>
 
             </div>
+
+            <div>
+                <label>图片显示</label>
+                <img src="${filename}" style="width: 80px;height: 60px;">
+
+            </div>
+
             </form>
 
-            <form id="addProductForm" name="addProductForm" method="post" action="${pageContext.request.contextPath }/address/add/${loginUI.id}.html" enctype="multipart/form-data">
-				<input type="hidden" name="method" value="add">
+            <form id="addProductForm" name="addProductForm" method="post" action="${pageContext.request.contextPath }/sp/add" enctype="multipart/form-data">
+				<input type="hidden" name="method" value="${filename}">
                 <!--div的class 为error是验证错误，ok是验证成功-->
                 <input type="hidden" name="pimg" value="${filename}"/>
                 <div>
@@ -57,13 +63,6 @@
                 </div>
 
 
-                <form action="/fileUpload" method="post" enctype="multipart/form-data">
-                <div>
-                    <label>图片显示</label>
-                    <img src="${filename}">
-                    <input type="hidden" value="上传">
-                </div>
-                </form>
                 
 
                 <div class="providerAddBtn">
@@ -168,7 +167,7 @@
     $("#yes").on("click",function(){
         $('.zhezhao').css('display', 'none');
         $('#modifyAddress').fadeOut();
-        alert(n);
+
         if(n == 1){
             alert("保存成功！");
             $("#modifyAddressForm").submit();
@@ -177,5 +176,6 @@
         }
 
     });
+
 </script>
 <%-- <script type="text/javascript" src="${pageContext.request.contextPath }/js/useradd.js"></script> --%>

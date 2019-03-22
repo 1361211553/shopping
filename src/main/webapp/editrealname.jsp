@@ -20,6 +20,7 @@
         .main-col, .anchor-col, .anchor-content {
             min-height: 1400px;
         }
+
     </style>
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
     <link href="css/userinfo_set_801d6eb.css" rel="stylesheet">
