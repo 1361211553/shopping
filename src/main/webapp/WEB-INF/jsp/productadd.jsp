@@ -10,10 +10,10 @@
         <div class="providerAdd">
             <form method="post" action="/f/file" enctype="multipart/form-data">
             <div>
-                <label for="pimg">选择商品图片</label>
+                <label for="getfilename">选择商品图片</label>
 
                 <input type="file" name="file" value=""/>
-                <input type="submit" value="上传" id="getfilename" style="position: relative;top: 8px;width:100px;font-size:12px: "/>
+                <input type="submit" value="上传" id="getfilename" style="position: relative;top: 8px;width:100px;font-size:12px; "/>
 
             </div>
 
