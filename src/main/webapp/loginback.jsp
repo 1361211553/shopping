@@ -18,7 +18,7 @@
             <h1>国贸供应商管理系统</h1>
         </header>
         <section class="loginCont">
-	        <form class="loginForm" action="/admin/login"  name="actionForm" id="actionForm"  method="post" >
+	        <form class="loginForm" action="admin/login"  name="actionForm" id="actionForm"  method="post" >
 				<div class="info">${error }</div>
 				<div class="inputbox">
                     <label for="adminname">用户名：</label>
