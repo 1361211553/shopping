@@ -54,17 +54,24 @@ public class OrderController {
         example.setOrderByClause(" status desc ");
         List<SAddress> listAddress = sAddressMapper.selectByExample(example);
 
+
         SCarExample sCarExample = new SCarExample();
         SCarExample.Criteria criterias = sCarExample.createCriteria();
         criterias.andUseridEqualTo(sUser.getUserid());
         List<SCar> sCarlist = sCarMapper.selectByExample(sCarExample);
 
-        Map<Double,SP> map = new HashMap<>();
+        for (SCar s: sCarlist) {
+            System.out.println("order  "+s);
+        }
+
+
+        Map<Double,SP> map = new LinkedHashMap<>();
         Double countPrice = 0.00;
         DecimalFormat decimalFormat = new DecimalFormat(".00");
         for (int i = 0; i < sCarlist.size(); i++){
 
             SP sp = spMapper.selectByPrimaryKey(sCarlist.get(i).getPid());
+
             String countPPricestr =  decimalFormat.format(sp.getPprice()*sCarlist.get(i).getPnum());
             countPrice += Double.valueOf(countPPricestr);
             map.put(Double.valueOf(countPPricestr),sp);

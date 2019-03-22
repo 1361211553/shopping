@@ -40,4 +40,15 @@ public class SCar {
     public void setPnum(Integer pnum) {
         this.pnum = pnum;
     }
+
+
+    @Override
+    public String toString() {
+        return "SCar{" +
+                "cid=" + cid +
+                ", userid=" + userid +
+                ", pid=" + pid +
+                ", pnum=" + pnum +
+                '}';
+    }
 }

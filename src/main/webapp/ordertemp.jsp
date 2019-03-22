@@ -125,9 +125,7 @@
                         </td>
                         <td class="invert" >${cl.value.pname}</td>
                         <td class="invert">￥<font color="red">${cl.value.pprice}</font></td>
-                        <td class="invert">
-                                ${listcar[vs.index].pnum}件
-                        </td>
+                        <td class="invert">${listcar[vs.index].pnum}件</td>
                         <td>￥<font color="red">${cl.key}</font></td>
                     </tr>
 

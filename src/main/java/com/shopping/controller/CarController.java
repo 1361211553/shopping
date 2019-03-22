@@ -39,6 +39,7 @@ public class CarController {
             SCarExample.Criteria criteria = sCarExample.createCriteria();
             criteria.andUseridEqualTo(sUser.getUserid());
             List<SCar> listcar = scarMapper.selectByExample(sCarExample);
+
             List<SP> listsp = new ArrayList<SP>();
             Double countPrice = 0.00;
             DecimalFormat decimalFormat = new DecimalFormat(".00");
