@@ -65,7 +65,7 @@
 					<td>
 					<span>
 						<c:if test="${bill.pstatus == 1}">未付款</c:if>
-						<c:if test="${bill.pstatus == 2}"><a href="#" style="font-size: 15px;text-align: center;color:red;" oid=${bill.oid} id="changestate">付款未发货</a></c:if>
+						<c:if test="${bill.pstatus == 2}"><a href="javascript:;" style="font-size: 15px;text-align: center;color:red;" oid=${bill.oid} class="changestate">付款未发货</a></c:if>
 						<c:if test="${bill.pstatus == 3}">发货未收货</c:if>
 						<c:if test="${bill.pstatus == 4}">交易成功</c:if>
 					</span>
@@ -135,7 +135,7 @@
  
  }
 
-  $("#changestate").on("click",function(){
+  $(".changestate").on("click",function(){
       var oid = $(this).attr("oid");
       $(".zhezhao").css("display","block");
       $("#removeBi").fadeIn();
