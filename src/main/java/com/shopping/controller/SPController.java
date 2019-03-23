@@ -37,15 +37,20 @@ public class SPController {
     @RequestMapping("search/{currentPage}/{ptypeid}")
     public ModelAndView searchPage(@PathVariable(value="currentPage") Integer currentPage,
                                    @ModelAttribute SP sP) {
-
+        //定义每个页面的记录数
         Integer pageSize = 9;
+        //初始化模型与视图
         ModelAndView mav = new ModelAndView();
+        //实例化商品的带条件查询类
         SPExample example = new SPExample();
         if(sP!=null){
+            //获取条件查询的核心对象
             SPExample.Criteria criteria = example.createCriteria();
+            //按商品类别查询
             if (sP.getPtypeid()!=null && sP.getPtypeid()>0){
                 criteria.andPtypeidEqualTo(sP.getPtypeid());
             }
+            //按商品名查询
             if(sP.getPname()!=null && !"".equals(sP.getPname())){
                 criteria.andPnameLike("%"+sP.getPname()+"%");
             }
@@ -55,18 +60,23 @@ public class SPController {
         Integer sps = spMapper.selectByExample(example).size();//查询记录的总条数
         Integer pageAll = sps%pageSize==0? sps/pageSize:sps/pageSize+1;
 
-        //查询分页所得的数据
+        //为了防止页面跳转的时候页数会溢出
         if(currentPage > pageAll){
             currentPage = pageAll;
         }
-
+        //获取分页带条件的商品记录
         List<SP> listOP =spServiceI.selectByExampleWithPage(sP,currentPage,pageSize);
+        //将分页带条件的记录放到模型层里面
         mav.addObject("listOP",listOP);
+        //将总页数放到模型层里面
         mav.addObject("pageAll",pageAll);
+        //将总页数放在模型层里面
         mav.addObject("currentPage",currentPage);
+        //将当前页放在模型层里面
         mav.addObject("sP",sP);
+        //调转到groceries.jsp页面
         mav.setViewName("groceries");
-
+        //返回模型与视图
         return mav;
     }
 

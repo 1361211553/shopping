@@ -72,6 +72,7 @@
         <%--<jsp:include page="pagehome?op=clicktype"/>--%>
 
         <div class="agile_top_brands_grids">
+            <!-- 使用foreach遍历-->
             <c:forEach var="op" items="${listOP}">
                 <div class="col-md-4 top_brand_left">
                     <div class="hover14 column">

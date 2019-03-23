@@ -33,15 +33,17 @@ public class SAddressController {
 
         return mav;
     }
-
+    //修改地址信息
     @RequestMapping("edit/{addressid}")
     public ModelAndView edit(@PathVariable Integer addressid,HttpSession session) {
-
+        //获取视图模型
         ModelAndView mav = new ModelAndView("redirect:/address/search");
         SAddressExample sAddressExample = new SAddressExample();
+        //获取用户信息
         SUser sUser = (SUser) session.getAttribute("user");
+        //获取该用户的地址
         SAddressExample.Criteria criteria = sAddressExample.createCriteria();
-        //查出1的
+        //查出1的，1为默认地址，0为常用地址
         criteria.andUseridEqualTo(sUser.getUserid());
         criteria.andStatusEqualTo(1);
         List<SAddress> addresseslist =  sAddressMapper.selectByExample(sAddressExample);
@@ -70,23 +72,27 @@ public class SAddressController {
 
         return row;
     }
-
+    //地址的添加
     @RequestMapping("insert")
     public ModelAndView update(@ModelAttribute SAddress sAddress,HttpSession session) {
-
+        //实例化新的视图与模型
         ModelAndView mav = new ModelAndView("redirect:/address/search");
+        //获取登陆用户信息
         SUser sUser = (SUser) session.getAttribute("user");
-
+        //查询用户下的所有地址
         SAddressExample example = new SAddressExample();
         SAddressExample.Criteria criteria = example.createCriteria();
         criteria.andUseridEqualTo(sUser.getUserid());
+        //查询用户是否有设默认地址
         criteria.andStatusEqualTo(1);
         List<SAddress> sAddresslist = sAddressMapper.selectByExample(example);
         sAddress.setUserid(sUser.getUserid());
+        //若有，将默认地址设为常用
         if (sAddresslist.size() > 0){
 
             sAddress.setStatus(0);
             sAddressMapper.insertSelective(sAddress);
+            //若没有设为默认
         }else {
             sAddress.setStatus(1);
             sAddressMapper.insertSelective(sAddress);

@@ -71,7 +71,7 @@
         <div class="login-form-grids">
 
             <h5>用户信息</h5>
-            <form id=payment method="post" action="/user/regist">
+            <form id="addUser" method="post" action="/user/regist">
 
                 <input type="text" name="username" placeholder="名字：" required=" ">
 
@@ -95,10 +95,11 @@
                 <input type="email" name="useremail" placeholder="邮箱：" required=" ">
                 <input type="password" name="userpass" placeholder="密码：" required=" ">
                 <input type="password" name="password" placeholder="确认密码：" required=" ">
+                <br>
                 <div class="register-check-box">
-
+                    <input type="button" value="确定" id="toAddUser" style="width: 417px;height: 50px;font-size: 25px">
                 </div>
-                <input type="submit" value="确定">
+
 
             </form>
         </div>
@@ -163,10 +164,23 @@
     });
 </script>
 <script>
-    function clean() {
-        
-    }
-    
+    $("#toAddUser").on("click",function () {
+        <!-- 手机号码正则表达-->
+        var str1 = /^0{0,1}(13[0-9]|15[7-9]|153|156|18[7-9])[0-9]{8}$/;
+        <!-- 邮箱正则表达-->
+        var str2 =/^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
+        var telephone = $("input[name='userphone']").val();
+        var email =$("input[name='useremail']").val()
+
+        if (!str1.test(telephone)) {
+            alert("您输入的手机号码有误！");
+
+        } else if(!str2.test(email)){
+            alert("您输入的邮箱有误！")
+        }else{
+            $("#addUser").submit();
+        }
+    });
 </script>
 <!-- //main slider-banner -->
 

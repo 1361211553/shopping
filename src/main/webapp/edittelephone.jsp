@@ -518,8 +518,8 @@
                     <div class="nick-tips">
                         <p class="nick-tips-title">修改规则</p>
 
-                        <p>2.长度为11个数字字</p>
-                        <p>3.只允许输入数字。</p>
+                        <p>1.长度为11个数字字</p>
+                        <p>2.请输入真实的手机号码。</p>
 
                     </div>
                     <div class="nick-tips nick-tips-law">

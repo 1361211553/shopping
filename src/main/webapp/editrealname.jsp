@@ -498,15 +498,15 @@
 
                     </div>
 
-                    <!-- 填写内容 -->
+                    <!-- 填写内容 跳转路径-->
                     <form id="updaterealname"  method="post" action="/user/update">
                         <div class="login-form-grids animated wow slideInUp" data-wow-delay=".5s">
 
                             <input type="hidden" name="userid" value="${user.userid}" >
-
+                            <!--输入姓名-->
                             <input type="text" name="userrealname" placeholder="真实姓名" required=" " >
 
-
+                            <!--确认修改-->
                             <input type="button" style="width: 255px;height: 40px" id="setrealname"  value="确认修改">
 
 
